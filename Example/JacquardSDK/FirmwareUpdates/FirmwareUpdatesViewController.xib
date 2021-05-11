@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FirmwareUpdatesViewController" customModule="JacquardSDK_Example" customModuleProvider="target">
+            <connections>
+                <outlet property="autoUpdateSwitch" destination="5Vq-Nf-YSz" id="MZi-EH-P52"/>
+                <outlet property="forceUpdateCheckSwitch" destination="CZx-Ty-TMs" id="Saz-b6-DvX"/>
+                <outlet property="productVersionLabel" destination="0q8-aE-ZPC" id="P6j-55-DGc"/>
+                <outlet property="tagVersionLabel" destination="VvY-To-mvf" id="ZU2-Gm-4KY"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Firmware Updates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Zs-Wr-22p">
+                    <rect key="frame" x="24" y="114" width="327" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="eUD-WC-cNI"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Install the latest firmware updates" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gs8-O6-ddX">
+                    <rect key="frame" x="24" y="166" width="327" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="9sR-1v-vYp"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fuC-OJ-eBa" userLabel="LineView">
+                    <rect key="frame" x="25" y="239" width="350" height="1"/>
+                    <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="iL6-Af-zfj"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tag Version" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdu-xv-ODH">
+                    <rect key="frame" x="24" y="256" width="327" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="tnx-uX-wtK"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tag Version" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VvY-To-mvf" userLabel="Tag Version Value">
+                    <rect key="frame" x="24" y="280" width="327" height="14"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="14" id="Ntn-7v-Stn"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.39215686274509803" green="0.39215686274509803" blue="0.39215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yt2-6J-pJ2" userLabel="LineView">
+                    <rect key="frame" x="25" y="311" width="350" height="1"/>
+                    <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="o0c-Z0-Ljf"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Version" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvI-oa-FyS">
+                    <rect key="frame" x="24" y="328" width="327" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="Aez-lv-eAs"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0q8-aE-ZPC" userLabel="Product Version Value">
+                    <rect key="frame" x="24" y="352" width="327" height="14"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="14" id="YNx-QY-IEX"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kj7-2O-mMf" userLabel="LineView">
+                    <rect key="frame" x="0.0" y="383" width="375" height="1"/>
+                    <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="xj1-yQ-01s"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Force update" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHn-t8-z16">
+                    <rect key="frame" x="24" y="400" width="269" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="MKh-Ty-eZb"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fetch the firmware update info from cloud" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWz-ew-e1i" userLabel="Force update desc">
+                    <rect key="frame" x="24" y="424" width="268" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="I5F-3i-4nY"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CZx-Ty-TMs">
+                    <rect key="frame" x="302" y="408" width="51" height="31"/>
+                    <color key="onTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </switch>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R87-eV-vNP" userLabel="LineView">
+                    <rect key="frame" x="25" y="467" width="350" height="1"/>
+                    <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="KlN-jo-EXD"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto update " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8hV-bO-iyg">
+                    <rect key="frame" x="24" y="484" width="268" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="iuP-zl-GFN"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="After downloading firmware it will update automatically" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VN4-qm-Kd1" userLabel="Auto update desc">
+                    <rect key="frame" x="24" y="508" width="268" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="q2F-3d-SSt"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5Vq-Nf-YSz">
+                    <rect key="frame" x="302" y="492" width="51" height="31"/>
+                    <color key="onTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </switch>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f48-yp-Q4o" customClass="GreyRoundCornerButton" customModule="JacquardSDK_Example" customModuleProvider="target">
+                    <rect key="frame" x="55.666666666666657" y="740" width="264" height="48"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="264" id="B6E-Wf-Ljs"/>
+                        <constraint firstAttribute="height" constant="48" id="WGA-0R-8Kn"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                    <state key="normal" title="Check firmware update">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="checkFirmwareUpdateButtonTapped:" destination="-1" eventType="touchUpInside" id="rcF-uf-FbX"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="fuC-OJ-eBa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="25" id="0H7-rc-kG7"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0q8-aE-ZPC" secondAttribute="trailing" constant="24" id="0dQ-YL-Gcz"/>
+                <constraint firstItem="fuC-OJ-eBa" firstAttribute="top" secondItem="gs8-O6-ddX" secondAttribute="bottom" constant="25" id="18V-Iu-ViJ"/>
+                <constraint firstItem="kvI-oa-FyS" firstAttribute="top" secondItem="yt2-6J-pJ2" secondAttribute="bottom" constant="16" id="3eV-t9-SYt"/>
+                <constraint firstItem="8Zs-Wr-22p" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="114" id="41a-Mx-jlk"/>
+                <constraint firstItem="kj7-2O-mMf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4jZ-8j-vuC"/>
+                <constraint firstAttribute="trailing" secondItem="R87-eV-vNP" secondAttribute="trailing" id="4sl-sw-jy0"/>
+                <constraint firstItem="yt2-6J-pJ2" firstAttribute="top" secondItem="fuC-OJ-eBa" secondAttribute="bottom" constant="71" id="59Q-Dh-mR9"/>
+                <constraint firstItem="f48-yp-Q4o" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="5Dg-73-CPV"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cHn-t8-z16" secondAttribute="trailing" constant="82" id="6sm-MS-624"/>
+                <constraint firstItem="0q8-aE-ZPC" firstAttribute="top" secondItem="kvI-oa-FyS" secondAttribute="bottom" id="ETz-KV-4SD"/>
+                <constraint firstItem="IWz-ew-e1i" firstAttribute="top" secondItem="cHn-t8-z16" secondAttribute="bottom" id="Fa3-AH-d7n"/>
+                <constraint firstAttribute="trailing" secondItem="fuC-OJ-eBa" secondAttribute="trailing" id="Fm4-96-B68"/>
+                <constraint firstItem="VvY-To-mvf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="Grp-7L-Jv9"/>
+                <constraint firstItem="VN4-qm-Kd1" firstAttribute="top" secondItem="8hV-bO-iyg" secondAttribute="bottom" id="Gu9-14-eel"/>
+                <constraint firstItem="8hV-bO-iyg" firstAttribute="top" secondItem="R87-eV-vNP" secondAttribute="bottom" constant="16" id="J5H-9K-Yko"/>
+                <constraint firstItem="VN4-qm-Kd1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="Ltu-B0-AzR"/>
+                <constraint firstItem="kvI-oa-FyS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="MDv-tE-Abp"/>
+                <constraint firstItem="gs8-O6-ddX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="O1Z-GO-bYa"/>
+                <constraint firstItem="gs8-O6-ddX" firstAttribute="top" secondItem="8Zs-Wr-22p" secondAttribute="bottom" constant="20" id="PWE-NT-jac"/>
+                <constraint firstItem="IWz-ew-e1i" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="Sim-KD-XfQ"/>
+                <constraint firstItem="R87-eV-vNP" firstAttribute="top" secondItem="kj7-2O-mMf" secondAttribute="bottom" constant="83" id="Sl2-G0-EoK"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VN4-qm-Kd1" secondAttribute="trailing" constant="83" id="SoF-KJ-dv4"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="IWz-ew-e1i" secondAttribute="trailing" constant="83" id="Tsh-Jp-2hV"/>
+                <constraint firstItem="VvY-To-mvf" firstAttribute="top" secondItem="Bdu-xv-ODH" secondAttribute="bottom" id="YNs-uX-lGb"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="CZx-Ty-TMs" secondAttribute="trailing" constant="24" id="Yul-BK-ctL"/>
+                <constraint firstItem="CZx-Ty-TMs" firstAttribute="top" secondItem="kj7-2O-mMf" secondAttribute="bottom" constant="24" id="Zl1-6e-eY6"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gs8-O6-ddX" secondAttribute="trailing" constant="24" id="bHK-Af-x4R"/>
+                <constraint firstItem="8hV-bO-iyg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="cJP-Qi-G1V"/>
+                <constraint firstItem="kj7-2O-mMf" firstAttribute="top" secondItem="yt2-6J-pJ2" secondAttribute="bottom" constant="71" id="eyf-cc-GZS"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5Vq-Nf-YSz" secondAttribute="trailing" constant="24" id="g2c-ra-Dz8"/>
+                <constraint firstItem="cHn-t8-z16" firstAttribute="top" secondItem="kj7-2O-mMf" secondAttribute="bottom" constant="16" id="gmn-bi-j24"/>
+                <constraint firstItem="Bdu-xv-ODH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="hli-fY-MUG"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Bdu-xv-ODH" secondAttribute="trailing" constant="24" id="iJ1-Xp-Kxe"/>
+                <constraint firstItem="yt2-6J-pJ2" firstAttribute="trailing" secondItem="fuC-OJ-eBa" secondAttribute="trailing" id="k5p-7P-Cgq"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VvY-To-mvf" secondAttribute="trailing" constant="24" id="kEN-tV-5Aq"/>
+                <constraint firstItem="5Vq-Nf-YSz" firstAttribute="top" secondItem="R87-eV-vNP" secondAttribute="bottom" constant="24" id="lns-kJ-Rlp"/>
+                <constraint firstItem="R87-eV-vNP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="25" id="nBA-eU-R7u"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="8Zs-Wr-22p" secondAttribute="trailing" constant="24" id="nqV-EA-ox5"/>
+                <constraint firstItem="cHn-t8-z16" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="nul-Yi-z7f"/>
+                <constraint firstItem="0q8-aE-ZPC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="pFZ-t8-3YW"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="kvI-oa-FyS" secondAttribute="trailing" constant="24" id="pk1-Be-0nv"/>
+                <constraint firstAttribute="bottom" secondItem="f48-yp-Q4o" secondAttribute="bottom" constant="24" id="rq0-lW-oFt"/>
+                <constraint firstItem="Bdu-xv-ODH" firstAttribute="top" secondItem="fuC-OJ-eBa" secondAttribute="bottom" constant="16" id="t2O-sT-mdn"/>
+                <constraint firstItem="yt2-6J-pJ2" firstAttribute="leading" secondItem="fuC-OJ-eBa" secondAttribute="leading" id="tSz-Ye-eG1"/>
+                <constraint firstItem="8Zs-Wr-22p" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="vf5-r1-8Kg"/>
+                <constraint firstItem="kj7-2O-mMf" firstAttribute="trailing" secondItem="yt2-6J-pJ2" secondAttribute="trailing" id="wum-vt-Lvf"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="8hV-bO-iyg" secondAttribute="trailing" constant="83" id="yGf-eC-bvJ"/>
+            </constraints>
+            <point key="canvasLocation" x="479.71014492753625" y="-27.455357142857142"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="f48-yp-Q4o">
+            <size key="intrinsicContentSize" width="154" height="36"/>
+        </designable>
+    </designables>
+</document>

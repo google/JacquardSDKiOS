@@ -20,14 +20,12 @@ let package = Package(
   name: "JacquardSDK",
   platforms: [
     .iOS(.v13),
+    .macOS(.v10_15),
   ],
   products: [
     .library(
       name: "JacquardSDK",
-      targets: ["JacquardSDK"]),
-    .library(
-      name: "JacquardSDKCore",
-      targets: ["JacquardSDKCore"]),
+      targets: ["JacquardSDK"])
   ],
   dependencies: [
     .package(
@@ -37,17 +35,22 @@ let package = Package(
   ],
   targets: [
     .target(
-      name: "JacquardSDKCore",
-      dependencies: [
-        "JacquardSDK",
-        "SwiftProtobuf",
+      name: "JacquardSDK",
+      dependencies: ["SwiftProtobuf"],
+      path: "JacquardSDK",
+      resources: [
+        .copy("Resources/GearMetadata.json"),
+        .copy("Resources/BadFirmwareVersion.json")
       ]
     ),
-    .binaryTarget(
-      name: "JacquardSDK",
-      url: "https://github.com/google/JacquardSDKiOS/releases/download/v0.1.0/jacquard-sdk-0.1.0-xcframework.zip",
-      checksum: "6df09d335f73d916c645c648e690eff5081e3a548d3eb29eb4008005bd0f1d40"
-    ),
+    .testTarget(
+      name: "JacquardSDKTests",
+      dependencies: ["JacquardSDK"],
+      path: "Tests",
+      resources: [
+        .copy("TestResources/imu1.bin"),
+        .copy("TestResources/imu2.bin")
+      ]),
   ],
   swiftLanguageVersions: [.v5]
 )

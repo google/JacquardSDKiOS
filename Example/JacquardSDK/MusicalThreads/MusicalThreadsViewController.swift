@@ -123,7 +123,7 @@ class MusicalThreadsViewController: UIViewController {
           height: Constants.threadsLineHeight))
     }
     for line in lineViews {
-      line.backgroundColor = UIColor.black
+      line.backgroundColor = .black
       threadViews.addSubview(line)
       line.bounds.size = CGSize(width: line.bounds.width, height: heightFromLineData(0))
     }

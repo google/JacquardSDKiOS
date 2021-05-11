@@ -24,10 +24,13 @@ struct DashboardItem: Hashable {
     case rename
     case tagManager
     case capVisualizer
+    case firmwareUpdates
     case pingPhone
     case timer
     case musicalThread
     case notifications
+    case imu
+    case places
     case other
   }
 

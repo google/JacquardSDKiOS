@@ -21,13 +21,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="155" height="127"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Js3-3z-9bU">
-                                <rect key="frame" x="14" y="106" width="127" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <rect key="frame" x="12" y="106" width="131" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EFj-rc-m6K">
-                                <rect key="frame" x="14" y="111" width="127" height="0.0"/>
+                                <rect key="frame" x="12" y="111" width="131" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -35,12 +35,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Js3-3z-9bU" firstAttribute="leading" secondItem="6AO-lz-UAi" secondAttribute="leading" constant="14" id="CDd-Og-haw"/>
-                            <constraint firstItem="EFj-rc-m6K" firstAttribute="leading" secondItem="6AO-lz-UAi" secondAttribute="leading" constant="14" id="D50-7U-8Tj"/>
-                            <constraint firstAttribute="trailing" secondItem="EFj-rc-m6K" secondAttribute="trailing" constant="14" id="MtN-32-XO8"/>
+                            <constraint firstItem="Js3-3z-9bU" firstAttribute="leading" secondItem="6AO-lz-UAi" secondAttribute="leading" constant="12" id="CDd-Og-haw"/>
+                            <constraint firstItem="EFj-rc-m6K" firstAttribute="leading" secondItem="Js3-3z-9bU" secondAttribute="leading" id="D50-7U-8Tj"/>
+                            <constraint firstItem="Js3-3z-9bU" firstAttribute="trailing" secondItem="EFj-rc-m6K" secondAttribute="trailing" id="MtN-32-XO8"/>
                             <constraint firstAttribute="bottom" secondItem="EFj-rc-m6K" secondAttribute="bottom" constant="16" id="e8A-WO-Ufc"/>
                             <constraint firstItem="EFj-rc-m6K" firstAttribute="top" secondItem="Js3-3z-9bU" secondAttribute="bottom" constant="5" id="kSw-uC-m5d"/>
-                            <constraint firstAttribute="trailing" secondItem="Js3-3z-9bU" secondAttribute="trailing" constant="14" id="ztM-fz-GaF"/>
+                            <constraint firstAttribute="trailing" secondItem="Js3-3z-9bU" secondAttribute="trailing" constant="12" id="ztM-fz-GaF"/>
                         </constraints>
                     </view>
                 </subviews>

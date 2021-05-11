@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -26,7 +26,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="7hA-qC-B4y">
-                    <rect key="frame" x="132" y="237.5" width="20" height="23"/>
+                    <rect key="frame" x="132" y="158" width="20" height="23"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_downArrow" translatesAutoresizingMaskIntoConstraints="NO" id="NaA-Zl-fUo">
                             <rect key="frame" x="4" y="0.0" width="12" height="16"/>
@@ -52,23 +52,23 @@
                         <constraint firstAttribute="bottom" secondItem="Y6m-6T-sQx" secondAttribute="bottom" id="cs9-FX-Axr"/>
                     </constraints>
                 </stackView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Charge your Tag until the LED is pulsing white. Then, press and hold the power button on your Tag for 3 seconds to pair. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kZ-IM-i13">
-                    <rect key="frame" x="37" y="115" width="300" height="79.5"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                    <nil key="textColor"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kZ-IM-i13">
+                    <rect key="frame" x="37" y="115" width="300" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.22745098039215686" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No new tags found nearby" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="goi-xL-ifg">
-                    <rect key="frame" x="87" y="450.5" width="200" height="20.5"/>
+                    <rect key="frame" x="87" y="371" width="200" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="JQTag" translatesAutoresizingMaskIntoConstraints="NO" id="hqG-9U-c50">
-                    <rect key="frame" x="97.5" y="229.5" width="179" height="141"/>
+                    <rect key="frame" x="97.5" y="150" width="179" height="141"/>
                 </imageView>
                 <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hdt-gT-feR">
-                    <rect key="frame" x="24" y="378.5" width="327" height="202.5"/>
+                    <rect key="frame" x="24" y="299" width="327" height="282"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdp-lp-aVh" customClass="GreyRoundCornerButton" customModule="JacquardSDK_Example" customModuleProvider="target">
@@ -78,7 +78,10 @@
                         <constraint firstAttribute="height" constant="48" id="WsK-PB-IS3"/>
                         <constraint firstAttribute="width" constant="240" id="haQ-gH-xMS"/>
                     </constraints>
-                    <state key="normal" title="Scan"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                    <state key="normal" title="Scan">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
                     <connections>
                         <action selector="scanButtonTapped:" destination="-1" eventType="touchUpInside" id="26c-cA-Gcr"/>
                     </connections>
@@ -88,7 +91,7 @@
                     <constraints>
                         <constraint firstAttribute="height" id="KtC-Xd-MXe"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                     <state key="normal" title="Stop Scanning">
                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
@@ -115,7 +118,7 @@
                 <constraint firstItem="goi-xL-ifg" firstAttribute="top" secondItem="hqG-9U-c50" secondAttribute="bottom" constant="80" id="W46-DD-OjL"/>
                 <constraint firstItem="CDC-ZR-6QJ" firstAttribute="top" secondItem="bdp-lp-aVh" secondAttribute="bottom" constant="6" id="acH-B3-JtB"/>
                 <constraint firstItem="CDC-ZR-6QJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="d8C-Hh-hDV"/>
-                <constraint firstItem="0kZ-IM-i13" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="115" id="h8F-a3-5P4"/>
+                <constraint firstItem="0kZ-IM-i13" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="115" id="h8F-a3-5P4"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="CDC-ZR-6QJ" secondAttribute="bottom" constant="24" id="sXG-x3-Eez"/>
                 <constraint firstAttribute="trailing" secondItem="0kZ-IM-i13" secondAttribute="trailing" constant="38" id="uMa-tf-vjk"/>
             </constraints>
@@ -124,7 +127,7 @@
     </objects>
     <designables>
         <designable name="bdp-lp-aVh">
-            <size key="intrinsicContentSize" width="33" height="36"/>
+            <size key="intrinsicContentSize" width="45" height="36"/>
         </designable>
     </designables>
     <resources>

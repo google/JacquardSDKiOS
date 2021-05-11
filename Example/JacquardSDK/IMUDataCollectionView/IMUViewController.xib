@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IMUViewController" customModule="JacquardSDK_Example" customModuleProvider="target">
+            <connections>
+                <outlet property="recordingIndicatorView" destination="uOh-ob-HXC" id="jyW-dn-bXY"/>
+                <outlet property="sessionTableView" destination="1iM-w5-WAF" id="K4T-Ko-prN"/>
+                <outlet property="startStopButton" destination="55m-WK-TI0" id="ggZ-Bf-H1Q"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dQG-qK-Urj">
+                    <rect key="frame" x="0.0" y="44" width="375" height="148"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Motion Capture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdg-P0-hHV">
+                            <rect key="frame" x="24" y="24" width="327" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="32" id="DBS-Xh-x1t"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Record, view and download your tag's IMU motion sensor data: accelerometer (x, y, z), and gyroscope (yaw, pitch, roll) data." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ZD-qC-bO4">
+                            <rect key="frame" x="24" y="76" width="327" height="72"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="72" id="TpT-nM-eQl"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                            <color key="textColor" red="0.39215686274509803" green="0.39215686274509803" blue="0.39215686274509803" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="bdg-P0-hHV" secondAttribute="trailing" constant="24" id="3rQ-dh-Xhv"/>
+                        <constraint firstItem="1ZD-qC-bO4" firstAttribute="top" secondItem="bdg-P0-hHV" secondAttribute="bottom" constant="20" id="BBt-Bt-VrX"/>
+                        <constraint firstItem="bdg-P0-hHV" firstAttribute="leading" secondItem="dQG-qK-Urj" secondAttribute="leading" constant="24" id="IHY-mo-dYz"/>
+                        <constraint firstItem="1ZD-qC-bO4" firstAttribute="leading" secondItem="dQG-qK-Urj" secondAttribute="leading" constant="24" id="KlU-sx-mwp"/>
+                        <constraint firstItem="bdg-P0-hHV" firstAttribute="top" secondItem="dQG-qK-Urj" secondAttribute="top" constant="24" id="mlw-Pl-jgk"/>
+                        <constraint firstAttribute="height" constant="148" id="nQS-Zp-UUN"/>
+                        <constraint firstAttribute="trailing" secondItem="1ZD-qC-bO4" secondAttribute="trailing" constant="24" id="rc7-qi-fVd"/>
+                    </constraints>
+                </view>
+                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="72" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1iM-w5-WAF">
+                    <rect key="frame" x="0.0" y="216" width="375" height="466"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="55m-WK-TI0">
+                    <rect key="frame" x="67" y="706" width="240" height="48"/>
+                    <color key="backgroundColor" red="0.85098039215686272" green="0.18823529411764706" blue="0.14509803921568626" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="hoh-DQ-I5s"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                    <state key="normal" title="Record">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="24"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="startIMUSession:" destination="-1" eventType="touchUpInside" id="cOZ-5f-frZ"/>
+                    </connections>
+                </button>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uOh-ob-HXC">
+                    <rect key="frame" x="266" y="724" width="12" height="12"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="12" id="ali-vv-CWA"/>
+                        <constraint firstAttribute="width" constant="12" id="cBf-Q7-hKO"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="1iM-w5-WAF" secondAttribute="trailing" id="HEv-nV-uDn"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="55m-WK-TI0" secondAttribute="bottom" constant="24" id="K4N-k6-mDb"/>
+                <constraint firstItem="1iM-w5-WAF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="L1R-bP-Stw"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="55m-WK-TI0" secondAttribute="trailing" constant="68" id="Roa-oa-8sd"/>
+                <constraint firstItem="dQG-qK-Urj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="U57-uM-5GR"/>
+                <constraint firstItem="1iM-w5-WAF" firstAttribute="top" secondItem="dQG-qK-Urj" secondAttribute="bottom" constant="24" id="X3y-rK-9hG"/>
+                <constraint firstItem="uOh-ob-HXC" firstAttribute="centerY" secondItem="55m-WK-TI0" secondAttribute="centerY" id="YFX-gp-oAF"/>
+                <constraint firstItem="55m-WK-TI0" firstAttribute="top" secondItem="1iM-w5-WAF" secondAttribute="bottom" constant="24" id="b6F-6c-Chz"/>
+                <constraint firstItem="dQG-qK-Urj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="maO-PG-nHz"/>
+                <constraint firstItem="55m-WK-TI0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="67" id="oa7-40-Jbk"/>
+                <constraint firstAttribute="trailing" secondItem="dQG-qK-Urj" secondAttribute="trailing" id="rI2-ad-xXh"/>
+                <constraint firstItem="uOh-ob-HXC" firstAttribute="trailing" secondItem="55m-WK-TI0" secondAttribute="trailing" constant="-29" id="y3N-hK-8Jt"/>
+            </constraints>
+            <point key="canvasLocation" x="-34.399999999999999" y="0.0"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

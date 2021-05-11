@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,26 +22,30 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jacquard Tag 006P" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEm-u3-4BM">
                                 <rect key="frame" x="13" y="6.5" width="280" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circularUncheck" translatesAutoresizingMaskIntoConstraints="NO" id="b8n-E0-HtH">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vQ1-bu-exk">
                                 <rect key="frame" x="303" y="5" width="24" height="24"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="24" id="Z3O-Rc-pme"/>
-                                    <constraint firstAttribute="height" constant="24" id="vjc-z1-xyM"/>
+                                    <constraint firstAttribute="width" constant="24" id="JrW-g3-vAu"/>
+                                    <constraint firstAttribute="height" constant="24" id="ZHg-Y5-g7g"/>
                                 </constraints>
-                            </imageView>
+                                <state key="normal" image="circularUncheck"/>
+                                <state key="selected" image="circularCheck"/>
+                                <connections>
+                                    <action selector="checkboxTapped:" destination="WBL-bw-gfq" eventType="touchUpInside" id="409-OE-18U"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="34" id="5jo-pQ-sA8"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="5jo-pQ-sA8"/>
                             <constraint firstItem="aEm-u3-4BM" firstAttribute="centerY" secondItem="huu-RL-GZY" secondAttribute="centerY" id="ADH-XM-7SH"/>
-                            <constraint firstAttribute="trailing" secondItem="b8n-E0-HtH" secondAttribute="trailing" constant="19" id="S4o-xz-zE2"/>
-                            <constraint firstItem="b8n-E0-HtH" firstAttribute="centerY" secondItem="huu-RL-GZY" secondAttribute="centerY" id="ZbR-pe-Pjr"/>
-                            <constraint firstItem="b8n-E0-HtH" firstAttribute="leading" secondItem="aEm-u3-4BM" secondAttribute="trailing" constant="10" id="oKF-mP-SA4"/>
+                            <constraint firstItem="vQ1-bu-exk" firstAttribute="leading" secondItem="aEm-u3-4BM" secondAttribute="trailing" constant="10" id="MKf-BF-5Px"/>
+                            <constraint firstItem="vQ1-bu-exk" firstAttribute="centerY" secondItem="huu-RL-GZY" secondAttribute="centerY" id="NLO-01-xni"/>
+                            <constraint firstAttribute="trailing" secondItem="vQ1-bu-exk" secondAttribute="trailing" constant="19" id="nTz-BQ-JSz"/>
                             <constraint firstItem="aEm-u3-4BM" firstAttribute="leading" secondItem="huu-RL-GZY" secondAttribute="leading" constant="13" id="owZ-Od-73n"/>
                         </constraints>
                     </view>
@@ -55,13 +59,14 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="checkboxImageView" destination="b8n-E0-HtH" id="bqR-ZB-93i"/>
+                <outlet property="checkboxButton" destination="vQ1-bu-exk" id="6QR-2f-On6"/>
                 <outlet property="title" destination="aEm-u3-4BM" id="hLc-Fd-Txl"/>
             </connections>
             <point key="canvasLocation" x="-246.37681159420291" y="-56.25"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="circularCheck" width="24" height="24"/>
         <image name="circularUncheck" width="24" height="24"/>
     </resources>
 </document>

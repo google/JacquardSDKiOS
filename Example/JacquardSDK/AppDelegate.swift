@@ -29,7 +29,11 @@ var sharedJacquardManager: JacquardManager = {
   setGlobalJacquardSDKLogger(logger)
 
   let options = [CBCentralManagerOptionRestoreIdentifierKey: "JacquardSDKRestoreIdentifier"]
-  return JacquardManagerImplementation(options: options)
+
+  // Instructions on how to obtain an API Key are at
+  // https://google.github.io/JacquardSDKiOS/cloud-api-terms
+  let config = SDKConfig(apiKey: "REPLACE_WITH_API_KEY")
+  return JacquardManagerImplementation(options: options, config: config)
 }()
 
 @UIApplicationMain
@@ -50,6 +54,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     let navigationController = UINavigationController(rootViewController: rootViewController)
 
+    // Customize navigation appearance.
+    UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+    UINavigationBar.appearance().backgroundColor = .clear
+    UINavigationBar.appearance().isTranslucent = true
+    let backButtonImage = UIImage(named: "back")
+    UINavigationBar.appearance().backIndicatorImage = backButtonImage
+    UINavigationBar.appearance().backIndicatorTransitionMaskImage = backButtonImage
+    UINavigationBar.appearance().tintColor = .black
+    UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(
+      UIOffset(horizontal: -1000.0, vertical: 0.0), for: .default)
+
     window = UIWindow(frame: UIScreen.main.bounds)
     MDCSnackbarManager.default.setPresentationHostView(window)
     window?.rootViewController = navigationController
@@ -59,6 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       target: self,
       action: #selector(showBuildInfo(_:)))
     buildInfoGestureRecognizer.numberOfTapsRequired = 2
+    buildInfoGestureRecognizer.numberOfTouchesRequired = 2
     window?.addGestureRecognizer(buildInfoGestureRecognizer)
 
     return true
@@ -114,4 +130,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
   }
 
+}
+
+extension AppDelegate {
+
+  // Top most view controller in window hirarchy.
+  class var topViewController: UIViewController? {
+    let keyWindow = UIApplication.shared.windows.filter { $0.isKeyWindow }.first
+    var topController = keyWindow?.rootViewController
+    while let presentedViewController = topController?.presentedViewController {
+      topController = presentedViewController
+    }
+    return topController
+  }
 }

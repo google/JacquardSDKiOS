@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import JacquardSDK
 import MaterialComponents
 import UIKit
 
@@ -24,11 +25,11 @@ class ScanningTableViewCell: UITableViewCell {
 
   func configure(with model: AdvertisingTagCellModel, isSelected: Bool) {
 
-    let attributedString = NSMutableAttributedString(string: "Jacquard Tag ")
-    let attrs = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16)]
-    let tagName = NSMutableAttributedString(string: model.tag.displayName, attributes: attrs)
-    attributedString.append(tagName)
-    title.attributedText = attributedString
+    let tagPrefixText = NSMutableAttributedString(string: "Jacquard Tag ")
+    let tagName = NSMutableAttributedString(
+      string: model.tag.displayName,
+      attributes: [NSAttributedString.Key.font: UIFont.system16Medium]
+    )
 
     layer.masksToBounds = true
     layer.cornerRadius = 5
@@ -38,13 +39,35 @@ class ScanningTableViewCell: UITableViewCell {
 
     if isSelected {
       contentView.backgroundColor = .black
-      title.textColor = .white
+      let attributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+      tagPrefixText.addAttributes(attributes, range: NSMakeRange(0, tagPrefixText.string.count))
+      tagName.addAttributes(attributes, range: NSMakeRange(0, tagName.string.count))
       checkboxImageView.image = UIImage(named: "circularCheck")
     } else {
       contentView.backgroundColor = .white
-      title.textColor = .black
+      let attributes = [NSAttributedString.Key.foregroundColor: UIColor.gray]
+      tagPrefixText.addAttributes(attributes, range: NSMakeRange(0, tagPrefixText.string.count))
+      tagName.addAttribute(
+        NSAttributedString.Key.foregroundColor,
+        value: UIColor.black,
+        range: NSMakeRange(0, tagName.string.count)
+      )
       checkboxImageView.image = UIImage(named: "circularUncheck")
     }
+
+    tagPrefixText.append(tagName)
+    if let advertisingTag = model.tag as? AdvertisedTag {
+      let attributes = [
+        NSAttributedString.Key.font: UIFont.system14Medium,
+        NSAttributedString.Key.foregroundColor: UIColor.signalColor(advertisingTag.rssi),
+      ]
+      let rssi = NSMutableAttributedString(
+        string: " (rssi: \(advertisingTag.rssi))",
+        attributes: attributes
+      )
+      tagPrefixText.append(rssi)
+    }
+    title.attributedText = tagPrefixText
 
     let rippleTouchController = MDCRippleTouchController()
     rippleTouchController.addRipple(to: self)

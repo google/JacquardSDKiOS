@@ -13,6 +13,8 @@
 // limitations under the License.
 
 import Combine
+import Foundation
+import UIKit
 
 extension Cancellable {
   /// Provides a convenient way to retain Combine observation/Cancellables.
@@ -56,5 +58,19 @@ extension Publisher {
   /// `will never be executed` warning in the code below.
   func mapNeverToError() -> AnyPublisher<Output, Error> {
     return self.mapError { error -> Error in return error }.eraseToAnyPublisher()
+  }
+}
+
+extension UIFont {
+  static let system12Medium = UIFont.systemFont(ofSize: 12.0, weight: .medium)
+  static let system14Medium = UIFont.systemFont(ofSize: 14.0, weight: .medium)
+  static let system16Medium = UIFont.systemFont(ofSize: 16.0, weight: .medium)
+  static let system20Normal = UIFont.systemFont(ofSize: 20.0, weight: .regular)
+}
+
+extension Int {
+  /// Helper function to convert second to millisec.
+  func convertSecToMilliSec() -> Self {
+    return self * 1000
   }
 }

@@ -21,4 +21,23 @@ extension UIColor {
   static let disabledText = UIColor(white: 0.0, alpha: 0.5)
   static let gearConnected = UIColor(red: 0.2, green: 0.659, blue: 0.322, alpha: 1.0)
   static let gearDisconnected = UIColor(red: 0.918, green: 0.263, blue: 0.208, alpha: 1.0)
+  static let goodSignalRSSI = UIColor(red: 0.117, green: 0.557, blue: 0.243, alpha: 1.0)
+  static let fairSignalRSSI = UIColor(red: 0.95, green: 0.6, blue: 0.0, alpha: 1.0)
+  static let weakSignalRSSI = UIColor(red: 0.850, green: 0.188, blue: 0.145, alpha: 1.0)
+  static let tableViewSectionBackground = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.0)
+  static let tableViewSectionTitle = UIColor(red: 0.39, green: 0.39, blue: 0.39, alpha: 1.0)
+  static let alertDescription = UIColor(red: 0.25, green: 0.25, blue: 0.25, alpha: 1.0)
+}
+
+extension UIColor {
+  // Provides signal color depending upon the range value.
+  static func signalColor(_ signalValue: Float) -> UIColor {
+    if signalValue >= -65.0 {
+      return .goodSignalRSSI
+    } else if signalValue <= -66.0 && signalValue >= -80.0 {
+      return .fairSignalRSSI
+    } else {
+      return .weakSignalRSSI
+    }
+  }
 }

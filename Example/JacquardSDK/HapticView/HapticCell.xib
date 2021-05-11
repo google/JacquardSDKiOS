@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,15 +18,15 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HapticIcon" translatesAutoresizingMaskIntoConstraints="NO" id="mQv-sq-OTj">
-                        <rect key="frame" x="27" y="15" width="49.5" height="49.5"/>
+                        <rect key="frame" x="27" y="15.5" width="49.5" height="49.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="49.5" id="0wj-2Z-RCH"/>
                             <constraint firstAttribute="height" constant="49.5" id="DIc-Zx-SrJ"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Header" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKf-Vo-dSw">
-                        <rect key="frame" x="102" y="25" width="254" height="30"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="102" y="29.5" width="254" height="21.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -40,16 +40,13 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="6Jk-ux-f36" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="6aY-Ih-guV"/>
-                    <constraint firstAttribute="bottom" secondItem="6Jk-ux-f36" secondAttribute="bottom" constant="30" id="CQi-E8-a7b"/>
+                    <constraint firstItem="mQv-sq-OTj" firstAttribute="centerY" secondItem="yKf-Vo-dSw" secondAttribute="centerY" id="3pn-iC-bqb"/>
+                    <constraint firstItem="yKf-Vo-dSw" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6Xf-yv-f6D"/>
+                    <constraint firstItem="6Jk-ux-f36" firstAttribute="centerY" secondItem="yKf-Vo-dSw" secondAttribute="centerY" id="GVT-8d-wVb"/>
                     <constraint firstItem="6Jk-ux-f36" firstAttribute="leading" secondItem="yKf-Vo-dSw" secondAttribute="trailing" constant="12" id="M10-Ku-TF7"/>
                     <constraint firstItem="yKf-Vo-dSw" firstAttribute="leading" secondItem="mQv-sq-OTj" secondAttribute="trailing" constant="25.420000000000002" id="Nm0-ZE-U7g"/>
-                    <constraint firstItem="mQv-sq-OTj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="Xuo-rJ-O5k"/>
-                    <constraint firstItem="yKf-Vo-dSw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="bfS-g1-YQj"/>
                     <constraint firstItem="mQv-sq-OTj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="27" id="kk4-M0-p5U"/>
                     <constraint firstAttribute="trailing" secondItem="6Jk-ux-f36" secondAttribute="trailing" constant="26" id="oLN-xU-3ep"/>
-                    <constraint firstAttribute="bottom" secondItem="mQv-sq-OTj" secondAttribute="bottom" constant="15.5" id="upg-Eq-PBj"/>
-                    <constraint firstAttribute="bottom" secondItem="yKf-Vo-dSw" secondAttribute="bottom" constant="25" id="zWf-ba-dOo"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -61,6 +58,6 @@
     </objects>
     <resources>
         <image name="HapticIcon" width="40" height="40"/>
-        <image name="Play" width="20" height="20"/>
+        <image name="Play" width="24" height="24"/>
     </resources>
 </document>

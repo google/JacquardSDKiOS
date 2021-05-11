@@ -31,7 +31,7 @@
                                 <constraint firstAttribute="height" constant="60" id="h4C-6c-2kd"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Version: 1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1d-Gh-xCY" userLabel="APP_VERSION">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Version: 2.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1d-Gh-xCY" userLabel="APP_VERSION">
                             <rect key="frame" x="0.0" y="140" width="375" height="16"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="16" id="r1G-Qf-RRD"/>

@@ -28,6 +28,7 @@ that connects to a Jacquard tag and garment:
 9. [Connected tags](#9-connected-tags)
 10. [Sending commands](#10-sending-commands)
 11. [Observing Notifications](#11-observing-notifications)
+12. [Updating Firmwares](#12-updating-firmwares)
 
 ## 1. Prepare your Jacquard Tag
 
@@ -103,19 +104,6 @@ If you are not familiar with Cocoapods usage and installation, see [these instru
         ```ruby
         pod 'JacquardSDK'
         ```
-    * At the end of the file (after `end`), add the following
-      `post_install` (see the [integration docs](integration.html) if
-      you're interested why this is necessary):
-   
-        ```ruby
-        post_install do |installer|
-          installer.pods_project.targets.select { |target| target.name == "SwiftProtobuf" }.each do |target|
-            target.build_configurations.each do |config|
-              config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
-            end
-          end
-        end
-        ```
     * Your entire `Podfile` should now look something like this:
         ```ruby
         platform :ios, '13.0'
@@ -123,14 +111,6 @@ If you are not familiar with Cocoapods usage and installation, see [these instru
         target 'Jacquard Tutorial' do
           use_frameworks!
           pod 'JacquardSDK'
-        end
-        
-        post_install do |installer|
-          installer.pods_project.targets.select { |target| target.name == "SwiftProtobuf" }.each do |target|
-            target.build_configurations.each do |config|
-              config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
-            end
-          end
         end
         ```
 4. Save the podfile, and in terminal run the following command: `pod install`
@@ -719,7 +699,7 @@ command is achieved using the `enqueue(_:retries:)` method on
 `ConnectedTag`.
 
 Some commands, as in this case, require a `Component` argument. They
-are documented more thoroughly in the [Components](Components.html)
+are documented more thoroughly in the [Components](Components%20and%20Gear.html)
 documentation, but in essence a `Component` represents a currently
 connected piece of Jacquard gear. The tag has a built-in `Component`
 (which is always available) and Jacquard gear (like a jacket or
@@ -776,7 +756,7 @@ the form of a Combine publisher.
 > Instead of using the `ConnectedTag` instance directly, there is a
 > small extra step to get a `SubscribableTag`. This is an important
 > part of how State Restoration is handled, which is explained in the
-> [`ConnectedTag`](ConnectedTag.html) documentation.
+> `ConnectedTag` documentation.
 
 First add a method to `ConnectedViewContrller` which will do something
 useful with a gesture notification. In this case we will define
@@ -812,6 +792,111 @@ gesture logged into the Xcode console.
 You have now successfully integrated the Jacquard SDK and learned how
 to connect, send commands and observe notifications. There's more to
 the SDK which you can see demonstrated in the [sample
-app](https://github.com/google/JacquardSDKiOS) and read about in the
+app](https://github.com/google/JacquardDSKiOS) and read about in the
 SDK documentation (see the table of contents on the left side of this
 page).
+
+## 12. Updating Firmwares
+Before using any Jacquard SDK core api, it is always recommended to ensure that you have the latest
+available firmware. After your tag is paired, next ideal step should be to check for firmware update
+by calling Jacquard SDK firmware api's which are backed up by Jacquard cloud.
+Updating firmware is a 3 step process -
+
+#### 1. Check if update available
+This step would need internet connectivity as it calls Jacquard cloud api to see if any firmware
+updates are available. If updates are available for your current firmware, sdk will start downloading firmware
+binary implicitly. Updates can be of 2 types.
+
+1. Mandatory - Firmware update is required.
+2. Optional - Firmware update is optional and can be skipped.
+3. None - If there is no updates available.
+
+#### 2. Apply updates
+Jacquard sdk will transfer downloaded firmware binary to the tag using bluetooth connection.
+This step might take a while depending on the size of downloaded firmware binary.
+
+#### 3. Execute updates
+In this step, Jacquard sdk will install the firmware binary on the tag. You can skip this step by passing
+`shouldAutoExecute=true` in Apply updates (Step 2).
+
+The control for executing the installation is provided as a separate API, because the Tag will reboot after
+installation, As a general practice, you should inform the users that this will happen.
+
+Note: This step is not required in case of loadable module.
+
+ Let's start with the implementation. It's pretty much straight forward.
+
+#### Update tag / interposer firmware
+
+ ##### 1. Check if update available -
+
+ To check if update is available for both tag and interposer, insert your tag into your gear and use below piece of
+ code -
+
+```swift
+tag.firmwareUpdateManager.checkUpdates(forceCheck: false)
+  .sink { completion in
+    if case .failure(let error) = completion {
+      print("Firmware update error: \(error)")
+    }
+  } receiveValue: { updates in
+    print("Available firmware updates: \(updates)")
+  }.addTo(&observers)
+```
+
+This code will return an array of <code>DFUUpdateInfo</code> for each input component. Check the value for
+`DFUUpdateInfo.dfuStatus` to know what type of firmware update is available. It could be either
+`mandatory` or `optional` or `none`. `forceCheck` boolean is used by the sdk to decide if data would be retrieved
+from cloud or cached info should be returned.
+
+It's advised to use `forceCheck` as `false`, because it allows SDK to decide the best source of information.
+
+##### 2. Apply updates -
+
+Here, Jacquard sdk will transfer downloaded firmware binary from mobile to the tag. You need to use an array of
+`DFUUpdateInfo` which you have received in previous step.
+
+```swift
+tag.firmwareUpdateManager.applyUpdates(updates, shouldAutoExecute: true)
+  .sink { state in
+    switch state {
+    case .idle: break
+    case .preparingForTransfer: break
+    case .transferring(let progress):
+      print(progress)
+    case .transferred: break
+    case .executing: break
+    case .completed: break
+    case .error(let error):
+      print(error)
+    }
+  }.addTo(&observers)
+```
+
+`FirmwareUpdateState` will give you the exact status of the operation. When Jacquard sdk
+starts transferring firmware binary to the tag. i.e. state is `transferring`, you can track the
+transfer progress using below code:
+
+```swift
+switch state {
+case .transferring(let progress):
+  print(progress)
+}
+```
+
+You can use `shouldAutoExecute=true` to install the updates automatically, otherwise you will need to call
+`executeUpdates()` api explicitly after when state is changed to `transferred`.
+
+`FirwareUpdateState.error()` will give you the error occurred in this step.
+
+##### 3. Execute updates -
+
+This is the last step in firmware update in which Jacquard sdk instructs tag to install the firmware
+binary transferred in previous step. This step is not required if you are sending `shouldAutoExecute=true`
+in `applyUpdates()` api. If you are updating tag firmware, tag will reboot during this step.
+
+```swift
+tag.firmwareUpdateManager.executeUpdates()
+```
+
+`FirmwareUpdateState` returned by this api can either be `executing` or `completed`.

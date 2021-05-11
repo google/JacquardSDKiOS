@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="318" id="KGk-i7-Jjw" customClass="PlaceCell" customModule="JacquardSDK_Example" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="381" height="318"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="381" height="318"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <mapView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="los-pY-AoK">
+                        <rect key="frame" x="24" y="24" width="333" height="160"/>
+                    </mapView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place Name N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFI-aP-uHO">
+                        <rect key="frame" x="20" y="206" width="123" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="M3U-Sm-NMT"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address N/A" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eKw-Lw-oHN">
+                        <rect key="frame" x="20" y="232" width="299" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="Boz-M2-LIz"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RGt-Lw-ULP">
+                        <rect key="frame" x="20" y="270" width="66.5" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="ShU-F2-jmL"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TPg-ak-2c8">
+                        <rect key="frame" x="329" y="212" width="32" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="Hbp-8J-yLc"/>
+                            <constraint firstAttribute="width" constant="32" id="cng-Le-ZEZ"/>
+                        </constraints>
+                        <state key="normal" image="trash" catalog="system"/>
+                        <connections>
+                            <action selector="deleteButtonSelected:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qI6-p8-2Ic"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="TPg-ak-2c8" firstAttribute="top" secondItem="vFI-aP-uHO" secondAttribute="bottom" constant="-18" id="1vo-Rc-ko0"/>
+                    <constraint firstItem="RGt-Lw-ULP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="7fj-Yl-6iS"/>
+                    <constraint firstItem="los-pY-AoK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="B82-yz-1A5"/>
+                    <constraint firstItem="RGt-Lw-ULP" firstAttribute="top" secondItem="eKw-Lw-oHN" secondAttribute="bottom" constant="6" id="BZX-kL-2vJ"/>
+                    <constraint firstItem="eKw-Lw-oHN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Bag-0m-8HW"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="RGt-Lw-ULP" secondAttribute="bottom" constant="5" id="UCr-Gv-IYd"/>
+                    <constraint firstAttribute="trailing" secondItem="los-pY-AoK" secondAttribute="trailing" constant="24" id="XAX-oI-KA7"/>
+                    <constraint firstItem="vFI-aP-uHO" firstAttribute="top" secondItem="los-pY-AoK" secondAttribute="bottom" constant="22" id="XiC-us-SRy"/>
+                    <constraint firstItem="eKw-Lw-oHN" firstAttribute="top" secondItem="vFI-aP-uHO" secondAttribute="bottom" constant="2" id="dUk-bH-nwU"/>
+                    <constraint firstAttribute="trailing" secondItem="TPg-ak-2c8" secondAttribute="trailing" constant="20" symbolic="YES" id="ht0-Vs-X3M"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="eKw-Lw-oHN" secondAttribute="trailing" constant="42" id="nYN-uT-4oV"/>
+                    <constraint firstItem="los-pY-AoK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="uiR-2b-AhK"/>
+                    <constraint firstItem="vFI-aP-uHO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="wFG-A2-xB1"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="deleteButton" destination="TPg-ak-2c8" id="DCf-Jc-eeD"/>
+                <outlet property="mapView" destination="los-pY-AoK" id="28X-o0-cqO"/>
+                <outlet property="placemarkAddress" destination="eKw-Lw-oHN" id="W4v-Yq-CDt"/>
+                <outlet property="placemarkName" destination="vFI-aP-uHO" id="VA3-ZE-xBF"/>
+                <outlet property="timeStamp" destination="RGt-Lw-ULP" id="c2O-3Z-A4g"/>
+            </connections>
+            <point key="canvasLocation" x="-33" y="178"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="trash" catalog="system" width="121" height="128"/>
+    </resources>
+</document>

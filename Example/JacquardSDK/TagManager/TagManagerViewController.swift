@@ -82,6 +82,10 @@ class TagManagerViewController: UIViewController {
           return UITableViewCell()
         }
         cell.configure(with: connectedTagCellModel)
+        cell.checkboxTapped = { [weak self] in
+          guard let self = self else { return }
+          self.updateCurrentTag(connectedTagCellModel.tag)
+        }
         return cell
       })
 
@@ -118,9 +122,6 @@ extension TagManagerViewController {
 
   private func configureTableDataSource(currentConnectedTag: ConnectedTag?) {
 
-    //TODO: Perhaps should put connected cell into its own section with a header, that would
-    // be more clear.
-
     tagsTableView.isHidden = Preferences.knownTags.isEmpty
     connectedTagModels =
       Preferences.knownTags
@@ -148,9 +149,24 @@ extension TagManagerViewController {
 
   /// Initiate scanning on add new tag.
   @objc func addNewTag() {
-    let appDelegate = UIApplication.shared.delegate as? AppDelegate
-    appDelegate?.window?.rootViewController =
-      UINavigationController(rootViewController: ScanningViewController())
+    let scanningVC = ScanningViewController()
+    scanningVC.shouldShowCloseButton = true
+    let navigationController = UINavigationController(rootViewController: scanningVC)
+    navigationController.modalPresentationStyle = .fullScreen
+    present(navigationController, animated: true)
+  }
+
+  private func updateCurrentTag(_ tag: JacquardTag) {
+    // Set selected tag as first tag.
+    guard let index = Preferences.knownTags.firstIndex(where: { $0.identifier == tag.identifier })
+    else {
+      return
+    }
+    let tag = Preferences.knownTags[index]
+    Preferences.knownTags.remove(at: index)
+    Preferences.knownTags.insert(tag, at: 0)
+    NotificationCenter.default.post(name: Notification.Name("setCurrentTag"), object: nil)
+    navigationController?.popViewController(animated: true)
   }
 }
 

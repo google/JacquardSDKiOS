@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F5624E926C2E94800C9FCB0 /* IMUSessionDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F5624E826C2E94800C9FCB0 /* IMUSessionDetailsViewController.xib */; };
+		0F5624EB26C2E96500C9FCB0 /* IMUSessionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5624EA26C2E96500C9FCB0 /* IMUSessionDetailsViewController.swift */; };
+		0F97626A26C40B850095CDD2 /* AppDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F97626926C40B850095CDD2 /* AppDataStorage.swift */; };
 		0F98224826024D65009BCF90 /* CapacitiveVisualizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F98224626024D65009BCF90 /* CapacitiveVisualizerViewController.swift */; };
 		0F98225026024DB8009BCF90 /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F98224F26024DB8009BCF90 /* BarView.swift */; };
 		0FC86B41260A213C00B1BA73 /* RenameTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC86B3F260A213C00B1BA73 /* RenameTagViewController.swift */; };
@@ -22,6 +25,17 @@
 		17875FC02633491C0046D24A /* G2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17875F9A2633491B0046D24A /* G2.mp3 */; };
 		17875FC32633491C0046D24A /* G4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17875F9D2633491C0046D24A /* G4.mp3 */; };
 		17B69A522633855C00319E91 /* B4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 17B69A512633855C00319E91 /* B4.mp3 */; };
+		17F0B0AF26AB2A51005CDA53 /* PlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17F0B09F26AB2A51005CDA53 /* PlaceCell.xib */; };
+		17F0B0B226AB2A51005CDA53 /* CLPlacemark+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F0B0A326AB2A51005CDA53 /* CLPlacemark+Extensions.swift */; };
+		17F0B0B326AB2A51005CDA53 /* Jacquard_SDK.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 17F0B0A426AB2A51005CDA53 /* Jacquard_SDK.xcdatamodel */; };
+		17F0B0B426AB2A51005CDA53 /* PlacesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F0B0A526AB2A51005CDA53 /* PlacesListViewController.swift */; };
+		17F0B0B726AB2A51005CDA53 /* PlacesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F0B0A926AB2A51005CDA53 /* PlacesViewModel.swift */; };
+		17F0B0B926AB2A51005CDA53 /* PlacesListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17F0B0AB26AB2A51005CDA53 /* PlacesListViewController.xib */; };
+		17F0B0BA26AB2A51005CDA53 /* PlacesMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17F0B0AC26AB2A51005CDA53 /* PlacesMapViewController.xib */; };
+		17F0B0BB26AB2A51005CDA53 /* PlacesMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F0B0AD26AB2A51005CDA53 /* PlacesMapViewController.swift */; };
+		17F0B0BC26AB2A51005CDA53 /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F0B0AE26AB2A51005CDA53 /* PlaceCell.swift */; };
+		17F0B0C126ACA9B2005CDA53 /* PlacesGestureSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F0B0BF26ACA9B2005CDA53 /* PlacesGestureSelectionViewController.swift */; };
+		17F0B0C226ACA9B2005CDA53 /* PlacesGestureSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17F0B0C026ACA9B2005CDA53 /* PlacesGestureSelectionViewController.xib */; };
 		2A0C4EA326020D73006941C3 /* GesturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0C4EA126020D73006941C3 /* GesturesViewController.swift */; };
 		2A0C4EA426020D73006941C3 /* GesturesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A0C4EA226020D73006941C3 /* GesturesViewController.xib */; };
 		2A3A9075262487AC008D45E9 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3A9072262487AC008D45E9 /* UIColor+Extension.swift */; };
@@ -37,23 +51,42 @@
 		2AA1473A2620372D007D2914 /* ScanningTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA147362620372D007D2914 /* ScanningTableViewCell.swift */; };
 		2AA1473B2620372D007D2914 /* ScanningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA147372620372D007D2914 /* ScanningViewController.swift */; };
 		2AA1473C2620372D007D2914 /* ScanningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AA147382620372D007D2914 /* ScanningViewController.xib */; };
-		4A24CC723CD10419FE2F3821 /* Pods_JacquardSDK_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EAB5F421C35A7034A1EDB0C /* Pods_JacquardSDK_Example.framework */; };
+		3CFBCA91270B304700F259DD /* Place+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFBCA8F270B304700F259DD /* Place+CoreDataProperties.swift */; };
+		3CFBCA92270B304700F259DD /* Place+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFBCA90270B304700F259DD /* Place+CoreDataClass.swift */; };
+		4D1BE24C841839DA92122C0E /* Pods_JacquardSDK_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA1123B79FE048319F10EB13 /* Pods_JacquardSDK_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		752C1F814555B3C2A9A01DD8 /* Pods_JacquardSDK_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F321BB97A1EC64FD6C8960A1 /* Pods_JacquardSDK_Example.framework */; };
+		802E10E226B93BFA0002D312 /* LocationPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802E10E126B93BFA0002D312 /* LocationPublisher.swift */; };
 		8080B1E826200A5900FAEFBA /* BuildHash.json in Resources */ = {isa = PBXBuildFile; fileRef = 8080B1E726200A5900FAEFBA /* BuildHash.json */; };
 		80C09FAE2637E8D600D6C4EC /* NoteHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C09FAD2637E8D600D6C4EC /* NoteHelper.swift */; };
 		80E2841C263DF4B300E2EDBD /* JacquardSDKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E2841B263DF4B300E2EDBD /* JacquardSDKExtensions.swift */; };
-		A9E77568F58D9375D126DAF2 /* Pods_JacquardSDK_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9FF679C98E37440D71A33D9 /* Pods_JacquardSDK_Tests.framework */; };
 		B2047F4C2604671B00F96F33 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2047F482604671B00F96F33 /* DashboardViewController.swift */; };
 		B2047F4D2604671B00F96F33 /* DashboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2047F492604671B00F96F33 /* DashboardCell.swift */; };
 		B2047F4E2604671B00F96F33 /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2047F4A2604671B00F96F33 /* DashboardViewController.xib */; };
 		B2047F4F2604671B00F96F33 /* DashboardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2047F4B2604671B00F96F33 /* DashboardCell.xib */; };
 		B2437F982608949C0018B900 /* DashboardHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2437F962608949C0018B900 /* DashboardHeaderView.swift */; };
 		B2437F992608949C0018B900 /* DashboardHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2437F972608949C0018B900 /* DashboardHeaderView.xib */; };
+		B25E64FE26DCBFF500977C6D /* ProgressAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B25E64FC26DCBFF500977C6D /* ProgressAlertViewController.xib */; };
+		B25E64FF26DCBFF500977C6D /* ProgressAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25E64FD26DCBFF500977C6D /* ProgressAlertViewController.swift */; };
+		B289A9CD26A57F2200BE6067 /* ModalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B289A9CB26A57F2200BE6067 /* ModalCard.swift */; };
+		B289A9CE26A57F2200BE6067 /* JacquardCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B289A9CC26A57F2200BE6067 /* JacquardCard.swift */; };
+		B289A9D226A5803800BE6067 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B289A9D026A5803800BE6067 /* AlertViewController.swift */; };
+		B289A9D326A5803800BE6067 /* AlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B289A9D126A5803800BE6067 /* AlertViewController.xib */; };
+		B29C39C526A1B53500F2D21E /* FirmwareUpdatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29C39C326A1B53500F2D21E /* FirmwareUpdatesViewController.swift */; };
+		B29C39C626A1B53500F2D21E /* FirmwareUpdatesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B29C39C426A1B53500F2D21E /* FirmwareUpdatesViewController.xib */; };
 		B2AC6BBD2620175900C335AC /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2AC6BBB2620175900C335AC /* LoadingViewController.xib */; };
 		B2AC6BBE2620175900C335AC /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AC6BBC2620175900C335AC /* LoadingViewController.swift */; };
+		B815864E26BB2266009A5E03 /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B815864D26BB2266009A5E03 /* CoreDataStackManager.swift */; };
+		B8170CA426CC787400F74425 /* IMUSessionDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8170CA226CC787400F74425 /* IMUSessionDetailTableViewCell.swift */; };
+		B8170CA526CC787400F74425 /* IMUSessionDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8170CA326CC787400F74425 /* IMUSessionDetailTableViewCell.xib */; };
+		B8170CA826CC8D0C00F74425 /* JacquardSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8170CA726CC8D0C00F74425 /* JacquardSectionHeader.swift */; };
+		B8349F0C26A79930007DCEBD /* IMUViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8349F0A26A79930007DCEBD /* IMUViewController.swift */; };
+		B8349F0D26A79930007DCEBD /* IMUViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8349F0B26A79930007DCEBD /* IMUViewController.xib */; };
+		B8349F0F26A7AE76007DCEBD /* IMUSessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8349F0E26A7AE76007DCEBD /* IMUSessionTableViewCell.swift */; };
+		B8349F1326AA43DB007DCEBD /* IMUSessionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8349F1226AA43DB007DCEBD /* IMUSessionTableViewCell.xib */; };
 		B84AC73A25FEB47400C10A1C /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84AC73925FEB47400C10A1C /* ColorScheme.swift */; };
 		B84AC73E25FEBB9300C10A1C /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84AC73D25FEBB9300C10A1C /* Buttons.swift */; };
 		B85F4412260827AE00B69FB9 /* DashboardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85F4411260827AE00B69FB9 /* DashboardItem.swift */; };
@@ -84,6 +117,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F5624E826C2E94800C9FCB0 /* IMUSessionDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IMUSessionDetailsViewController.xib; sourceTree = "<group>"; };
+		0F5624EA26C2E96500C9FCB0 /* IMUSessionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMUSessionDetailsViewController.swift; sourceTree = "<group>"; };
+		0F97626926C40B850095CDD2 /* AppDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDataStorage.swift; sourceTree = "<group>"; };
 		0F98224626024D65009BCF90 /* CapacitiveVisualizerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapacitiveVisualizerViewController.swift; sourceTree = "<group>"; };
 		0F98224F26024DB8009BCF90 /* BarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
 		0FC86B3F260A213C00B1BA73 /* RenameTagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenameTagViewController.swift; sourceTree = "<group>"; };
@@ -99,8 +135,17 @@
 		17875F9A2633491B0046D24A /* G2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = G2.mp3; sourceTree = "<group>"; };
 		17875F9D2633491C0046D24A /* G4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = G4.mp3; sourceTree = "<group>"; };
 		17B69A512633855C00319E91 /* B4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = B4.mp3; sourceTree = "<group>"; };
-		1A5FD313D0B2084DD96A73B0 /* Pods-JacquardSDK_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JacquardSDK_Tests.debug.xcconfig"; path = "Target Support Files/Pods-JacquardSDK_Tests/Pods-JacquardSDK_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		1EAB5F421C35A7034A1EDB0C /* Pods_JacquardSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JacquardSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		17F0B09F26AB2A51005CDA53 /* PlaceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceCell.xib; sourceTree = "<group>"; };
+		17F0B0A326AB2A51005CDA53 /* CLPlacemark+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLPlacemark+Extensions.swift"; sourceTree = "<group>"; };
+		17F0B0A426AB2A51005CDA53 /* Jacquard_SDK.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Jacquard_SDK.xcdatamodel; sourceTree = "<group>"; };
+		17F0B0A526AB2A51005CDA53 /* PlacesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesListViewController.swift; sourceTree = "<group>"; };
+		17F0B0A926AB2A51005CDA53 /* PlacesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesViewModel.swift; sourceTree = "<group>"; };
+		17F0B0AB26AB2A51005CDA53 /* PlacesListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlacesListViewController.xib; sourceTree = "<group>"; };
+		17F0B0AC26AB2A51005CDA53 /* PlacesMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlacesMapViewController.xib; sourceTree = "<group>"; };
+		17F0B0AD26AB2A51005CDA53 /* PlacesMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesMapViewController.swift; sourceTree = "<group>"; };
+		17F0B0AE26AB2A51005CDA53 /* PlaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
+		17F0B0BF26ACA9B2005CDA53 /* PlacesGestureSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesGestureSelectionViewController.swift; sourceTree = "<group>"; };
+		17F0B0C026ACA9B2005CDA53 /* PlacesGestureSelectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlacesGestureSelectionViewController.xib; sourceTree = "<group>"; };
 		2A0C4EA126020D73006941C3 /* GesturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GesturesViewController.swift; sourceTree = "<group>"; };
 		2A0C4EA226020D73006941C3 /* GesturesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GesturesViewController.xib; sourceTree = "<group>"; };
 		2A3A9072262487AC008D45E9 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -116,6 +161,8 @@
 		2AA147362620372D007D2914 /* ScanningTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanningTableViewCell.swift; sourceTree = "<group>"; };
 		2AA147372620372D007D2914 /* ScanningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanningViewController.swift; sourceTree = "<group>"; };
 		2AA147382620372D007D2914 /* ScanningViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScanningViewController.xib; sourceTree = "<group>"; };
+		3CFBCA8F270B304700F259DD /* Place+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Place+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3CFBCA90270B304700F259DD /* Place+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Place+CoreDataClass.swift"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* JacquardSDK_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JacquardSDK_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -125,7 +172,7 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		6315396926B2E866A1E86622 /* JacquardSDK.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = JacquardSDK.podspec; path = ../JacquardSDK.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		7B0D8A1A9DEBE3F94CF4B9EB /* Pods-JacquardSDK_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JacquardSDK_Tests.release.xcconfig"; path = "Target Support Files/Pods-JacquardSDK_Tests/Pods-JacquardSDK_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		802E10E126B93BFA0002D312 /* LocationPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPublisher.swift; sourceTree = "<group>"; };
 		8080B1E726200A5900FAEFBA /* BuildHash.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = BuildHash.json; sourceTree = "<group>"; };
 		80C09FAD2637E8D600D6C4EC /* NoteHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoteHelper.swift; path = JacquardSDK/MusicalThreads/NoteHelper.swift; sourceTree = SOURCE_ROOT; };
 		80E2841B263DF4B300E2EDBD /* JacquardSDKExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JacquardSDKExtensions.swift; sourceTree = "<group>"; };
@@ -135,10 +182,26 @@
 		B2047F4B2604671B00F96F33 /* DashboardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardCell.xib; sourceTree = "<group>"; };
 		B2437F962608949C0018B900 /* DashboardHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardHeaderView.swift; sourceTree = "<group>"; };
 		B2437F972608949C0018B900 /* DashboardHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardHeaderView.xib; sourceTree = "<group>"; };
+		B25E64FC26DCBFF500977C6D /* ProgressAlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressAlertViewController.xib; sourceTree = "<group>"; };
+		B25E64FD26DCBFF500977C6D /* ProgressAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressAlertViewController.swift; sourceTree = "<group>"; };
+		B289A9CB26A57F2200BE6067 /* ModalCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalCard.swift; sourceTree = "<group>"; };
+		B289A9CC26A57F2200BE6067 /* JacquardCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JacquardCard.swift; sourceTree = "<group>"; };
+		B289A9D026A5803800BE6067 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		B289A9D126A5803800BE6067 /* AlertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
+		B29C39C326A1B53500F2D21E /* FirmwareUpdatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirmwareUpdatesViewController.swift; sourceTree = "<group>"; };
+		B29C39C426A1B53500F2D21E /* FirmwareUpdatesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirmwareUpdatesViewController.xib; sourceTree = "<group>"; };
 		B2AC6BBB2620175900C335AC /* LoadingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingViewController.xib; sourceTree = "<group>"; };
 		B2AC6BBC2620175900C335AC /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
-		B625B2D74F1839E05ECEA0EC /* Pods-JacquardSDK_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JacquardSDK_Example.release.xcconfig"; path = "Target Support Files/Pods-JacquardSDK_Example/Pods-JacquardSDK_Example.release.xcconfig"; sourceTree = "<group>"; };
-		B82209C93FEDF98B36D0AC0B /* LICENSE.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = LICENSE.md; path = ../LICENSE.md; sourceTree = "<group>"; };
+		B7AA9F0EC62D6912B76C82C0 /* Pods-JacquardSDK_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JacquardSDK_Example.debug.xcconfig"; path = "Target Support Files/Pods-JacquardSDK_Example/Pods-JacquardSDK_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		B815864D26BB2266009A5E03 /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
+		B8170CA226CC787400F74425 /* IMUSessionDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMUSessionDetailTableViewCell.swift; sourceTree = "<group>"; };
+		B8170CA326CC787400F74425 /* IMUSessionDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IMUSessionDetailTableViewCell.xib; sourceTree = "<group>"; };
+		B8170CA726CC8D0C00F74425 /* JacquardSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JacquardSectionHeader.swift; sourceTree = "<group>"; };
+		B82209C93FEDF98B36D0AC0B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		B8349F0A26A79930007DCEBD /* IMUViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMUViewController.swift; sourceTree = "<group>"; };
+		B8349F0B26A79930007DCEBD /* IMUViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IMUViewController.xib; sourceTree = "<group>"; };
+		B8349F0E26A7AE76007DCEBD /* IMUSessionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMUSessionTableViewCell.swift; sourceTree = "<group>"; };
+		B8349F1226AA43DB007DCEBD /* IMUSessionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IMUSessionTableViewCell.xib; sourceTree = "<group>"; };
 		B84AC73125FEADC900C10A1C /* ScanningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanningViewController.swift; sourceTree = "<group>"; };
 		B84AC73225FEADC900C10A1C /* ScanningViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScanningViewController.xib; sourceTree = "<group>"; };
 		B84AC73925FEB47400C10A1C /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
@@ -160,9 +223,12 @@
 		CB84D22A2604D540005984A6 /* LEDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LEDViewController.xib; sourceTree = "<group>"; };
 		CB84D22B2604D540005984A6 /* LEDCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LEDCell.xib; sourceTree = "<group>"; };
 		CB84D22C2604D540005984A6 /* LEDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LEDViewController.swift; sourceTree = "<group>"; };
+		DA1123B79FE048319F10EB13 /* Pods_JacquardSDK_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JacquardSDK_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB13CFA63664F44DF61BEA83 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		ED32D728BC1F1F95CA6ACD77 /* Pods-JacquardSDK_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JacquardSDK_Example.debug.xcconfig"; path = "Target Support Files/Pods-JacquardSDK_Example/Pods-JacquardSDK_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		F9FF679C98E37440D71A33D9 /* Pods_JacquardSDK_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JacquardSDK_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB2D9EC4DFE76E9115D15ACF /* Pods-JacquardSDK_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JacquardSDK_Example.release.xcconfig"; path = "Target Support Files/Pods-JacquardSDK_Example/Pods-JacquardSDK_Example.release.xcconfig"; sourceTree = "<group>"; };
+		F207F4DB697469B77A04C0BC /* Pods-JacquardSDK_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JacquardSDK_Tests.debug.xcconfig"; path = "Target Support Files/Pods-JacquardSDK_Tests/Pods-JacquardSDK_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		F29AC8DD7BE8A7484747E426 /* Pods-JacquardSDK_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JacquardSDK_Tests.release.xcconfig"; path = "Target Support Files/Pods-JacquardSDK_Tests/Pods-JacquardSDK_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		F321BB97A1EC64FD6C8960A1 /* Pods_JacquardSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JacquardSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,7 +236,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A24CC723CD10419FE2F3821 /* Pods_JacquardSDK_Example.framework in Frameworks */,
+				752C1F814555B3C2A9A01DD8 /* Pods_JacquardSDK_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,7 +244,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9E77568F58D9375D126DAF2 /* Pods_JacquardSDK_Tests.framework in Frameworks */,
+				4D1BE24C841839DA92122C0E /* Pods_JacquardSDK_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +304,34 @@
 			path = MP3;
 			sourceTree = "<group>";
 		};
+		17F0B09E26AB2A51005CDA53 /* Places */ = {
+			isa = PBXGroup;
+			children = (
+				3CFBCA8E270B304700F259DD /* Place+CoreData */,
+				17F0B0A626AB2A51005CDA53 /* Model */,
+				17F0B0C026ACA9B2005CDA53 /* PlacesGestureSelectionViewController.xib */,
+				17F0B0BF26ACA9B2005CDA53 /* PlacesGestureSelectionViewController.swift */,
+				17F0B0AC26AB2A51005CDA53 /* PlacesMapViewController.xib */,
+				17F0B0AD26AB2A51005CDA53 /* PlacesMapViewController.swift */,
+				17F0B0AB26AB2A51005CDA53 /* PlacesListViewController.xib */,
+				17F0B0A526AB2A51005CDA53 /* PlacesListViewController.swift */,
+				17F0B09F26AB2A51005CDA53 /* PlaceCell.xib */,
+				17F0B0AE26AB2A51005CDA53 /* PlaceCell.swift */,
+				802E10E126B93BFA0002D312 /* LocationPublisher.swift */,
+				B815864D26BB2266009A5E03 /* CoreDataStackManager.swift */,
+			);
+			path = Places;
+			sourceTree = "<group>";
+		};
+		17F0B0A626AB2A51005CDA53 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				17F0B0A326AB2A51005CDA53 /* CLPlacemark+Extensions.swift */,
+				17F0B0A926AB2A51005CDA53 /* PlacesViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		2A0C4E9B26020996006941C3 /* GestureView */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +387,24 @@
 			path = ScanningView;
 			sourceTree = "<group>";
 		};
+		311F6500962395E028DF4025 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F321BB97A1EC64FD6C8960A1 /* Pods_JacquardSDK_Example.framework */,
+				DA1123B79FE048319F10EB13 /* Pods_JacquardSDK_Tests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3CFBCA8E270B304700F259DD /* Place+CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				3CFBCA8F270B304700F259DD /* Place+CoreDataProperties.swift */,
+				3CFBCA90270B304700F259DD /* Place+CoreDataClass.swift */,
+			);
+			path = "Place+CoreData";
+			sourceTree = "<group>";
+		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
@@ -301,8 +413,8 @@
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
 				83044C07E56A7D17EB5F8DBC /* Pods */,
+				311F6500962395E028DF4025 /* Frameworks */,
 				2AA146D5262035A8007D2914 /* Recovered References */,
-				9FB33041E94D5D109CC65998 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -318,6 +430,9 @@
 		607FACD21AFB9204008FA782 /* Example for JacquardSDK */ = {
 			isa = PBXGroup;
 			children = (
+				17F0B09E26AB2A51005CDA53 /* Places */,
+				B29C39C226A1B50200F2D21E /* FirmwareUpdates */,
+				B871B2A426A75E4B00368A76 /* IMUDataCollectionView */,
 				17875B1F262DFF830046D24A /* MusicalThreads */,
 				2A3A907A262487C4008D45E9 /* Utilities */,
 				2A3A9071262487AC008D45E9 /* Extensions */,
@@ -333,6 +448,7 @@
 				0F98224426024D65009BCF90 /* CapacitiveVisualization */,
 				CB19EA4C260084CF005DCAD2 /* HapticView */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
+				0F97626926C40B850095CDD2 /* AppDataStorage.swift */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
@@ -344,6 +460,7 @@
 		607FACD31AFB9204008FA782 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				17F0B0A426AB2A51005CDA53 /* Jacquard_SDK.xcdatamodel */,
 				607FACD41AFB9204008FA782 /* Info.plist */,
 				8080B1E726200A5900FAEFBA /* BuildHash.json */,
 			);
@@ -372,7 +489,7 @@
 			children = (
 				6315396926B2E866A1E86622 /* JacquardSDK.podspec */,
 				EB13CFA63664F44DF61BEA83 /* README.md */,
-				B82209C93FEDF98B36D0AC0B /* LICENSE.md */,
+				B82209C93FEDF98B36D0AC0B /* LICENSE */,
 			);
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
@@ -380,21 +497,12 @@
 		83044C07E56A7D17EB5F8DBC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				ED32D728BC1F1F95CA6ACD77 /* Pods-JacquardSDK_Example.debug.xcconfig */,
-				B625B2D74F1839E05ECEA0EC /* Pods-JacquardSDK_Example.release.xcconfig */,
-				1A5FD313D0B2084DD96A73B0 /* Pods-JacquardSDK_Tests.debug.xcconfig */,
-				7B0D8A1A9DEBE3F94CF4B9EB /* Pods-JacquardSDK_Tests.release.xcconfig */,
+				B7AA9F0EC62D6912B76C82C0 /* Pods-JacquardSDK_Example.debug.xcconfig */,
+				EB2D9EC4DFE76E9115D15ACF /* Pods-JacquardSDK_Example.release.xcconfig */,
+				F207F4DB697469B77A04C0BC /* Pods-JacquardSDK_Tests.debug.xcconfig */,
+				F29AC8DD7BE8A7484747E426 /* Pods-JacquardSDK_Tests.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		9FB33041E94D5D109CC65998 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1EAB5F421C35A7034A1EDB0C /* Pods_JacquardSDK_Example.framework */,
-				F9FF679C98E37440D71A33D9 /* Pods_JacquardSDK_Tests.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		B2047F472604671B00F96F33 /* Dashboard */ = {
@@ -411,6 +519,42 @@
 			path = Dashboard;
 			sourceTree = "<group>";
 		};
+		B25E64FB26DCBFF500977C6D /* ProgressAlertViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B25E64FD26DCBFF500977C6D /* ProgressAlertViewController.swift */,
+				B25E64FC26DCBFF500977C6D /* ProgressAlertViewController.xib */,
+			);
+			path = ProgressAlertViewController;
+			sourceTree = "<group>";
+		};
+		B289A9CA26A57F2200BE6067 /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				B289A9CB26A57F2200BE6067 /* ModalCard.swift */,
+				B289A9CC26A57F2200BE6067 /* JacquardCard.swift */,
+			);
+			path = Cards;
+			sourceTree = "<group>";
+		};
+		B289A9CF26A5802A00BE6067 /* AlertController */ = {
+			isa = PBXGroup;
+			children = (
+				B289A9D026A5803800BE6067 /* AlertViewController.swift */,
+				B289A9D126A5803800BE6067 /* AlertViewController.xib */,
+			);
+			path = AlertController;
+			sourceTree = "<group>";
+		};
+		B29C39C226A1B50200F2D21E /* FirmwareUpdates */ = {
+			isa = PBXGroup;
+			children = (
+				B29C39C326A1B53500F2D21E /* FirmwareUpdatesViewController.swift */,
+				B29C39C426A1B53500F2D21E /* FirmwareUpdatesViewController.xib */,
+			);
+			path = FirmwareUpdates;
+			sourceTree = "<group>";
+		};
 		B2AC6BBA2620175900C335AC /* LoadingViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -420,9 +564,21 @@
 			path = LoadingViewController;
 			sourceTree = "<group>";
 		};
+		B8170CA626CC8CE000F74425 /* TableSectionHeader */ = {
+			isa = PBXGroup;
+			children = (
+				B8170CA726CC8D0C00F74425 /* JacquardSectionHeader.swift */,
+			);
+			path = TableSectionHeader;
+			sourceTree = "<group>";
+		};
 		B84AC73725FEB42C00C10A1C /* UIControls */ = {
 			isa = PBXGroup;
 			children = (
+				B25E64FB26DCBFF500977C6D /* ProgressAlertViewController */,
+				B8170CA626CC8CE000F74425 /* TableSectionHeader */,
+				B289A9CF26A5802A00BE6067 /* AlertController */,
+				B289A9CA26A57F2200BE6067 /* Cards */,
 				B2AC6BBA2620175900C335AC /* LoadingViewController */,
 				B84AC73825FEB44000C10A1C /* Button */,
 			);
@@ -436,6 +592,21 @@
 				B84AC73D25FEBB9300C10A1C /* Buttons.swift */,
 			);
 			path = Button;
+			sourceTree = "<group>";
+		};
+		B871B2A426A75E4B00368A76 /* IMUDataCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				B8349F0A26A79930007DCEBD /* IMUViewController.swift */,
+				B8349F0B26A79930007DCEBD /* IMUViewController.xib */,
+				B8349F0E26A7AE76007DCEBD /* IMUSessionTableViewCell.swift */,
+				B8349F1226AA43DB007DCEBD /* IMUSessionTableViewCell.xib */,
+				0F5624EA26C2E96500C9FCB0 /* IMUSessionDetailsViewController.swift */,
+				0F5624E826C2E94800C9FCB0 /* IMUSessionDetailsViewController.xib */,
+				B8170CA226CC787400F74425 /* IMUSessionDetailTableViewCell.swift */,
+				B8170CA326CC787400F74425 /* IMUSessionDetailTableViewCell.xib */,
+			);
+			path = IMUDataCollectionView;
 			sourceTree = "<group>";
 		};
 		B8F3880A261D842B00284A0D /* Extensions */ = {
@@ -494,13 +665,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "JacquardSDK_Example" */;
 			buildPhases = (
-				688F4517674C62B29FEC6C61 /* [CP] Check Pods Manifest.lock */,
+				6C618A60D5867190BD3E6015 /* [CP] Check Pods Manifest.lock */,
 				8080B1E0261FE85B00FAEFBA /* Update BuildHash.swift */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				2A3C3CF1263C4C930076E53B /* Set APP_VERSION label on LaunchScreen */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				8A16E1332C166777D68B257E /* [CP] Embed Pods Frameworks */,
+				09D0794E2A9B87BB295F74C6 /* [CP] Embed Pods Frameworks */,
+				B84AC58525F039D800C10A1C /* Swift-format Lint */,
 			);
 			buildRules = (
 			);
@@ -515,7 +687,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "JacquardSDK_Tests" */;
 			buildPhases = (
-				2451863CD8D1A9D7A66A295E /* [CP] Check Pods Manifest.lock */,
+				23E74883EC24CEFC5758A5BC /* [CP] Check Pods Manifest.lock */,
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
@@ -580,25 +752,36 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8170CA526CC787400F74425 /* IMUSessionDetailTableViewCell.xib in Resources */,
 				17B69A522633855C00319E91 /* B4.mp3 in Resources */,
 				2A880227261B87CC009A2E58 /* GestureListViewController.xib in Resources */,
+				17F0B0C226ACA9B2005CDA53 /* PlacesGestureSelectionViewController.xib in Resources */,
 				2A0C4EA426020D73006941C3 /* GesturesViewController.xib in Resources */,
 				17875B3E262DFF840046D24A /* MusicalThreads.xib in Resources */,
 				B2047F4E2604671B00F96F33 /* DashboardViewController.xib in Resources */,
 				B2047F4F2604671B00F96F33 /* DashboardCell.xib in Resources */,
 				CB26324D26145C6E000BFE8A /* TagManagerViewController.xib in Resources */,
 				0FE49782260283EF0033EDCF /* CapacitiveVisualizerViewController.xib in Resources */,
+				B25E64FE26DCBFF500977C6D /* ProgressAlertViewController.xib in Resources */,
 				CB84D22F2604D540005984A6 /* LEDCell.xib in Resources */,
+				17F0B0AF26AB2A51005CDA53 /* PlaceCell.xib in Resources */,
 				17875FBC2633491C0046D24A /* D3.mp3 in Resources */,
 				B2AC6BBD2620175900C335AC /* LoadingViewController.xib in Resources */,
+				17F0B0BA26AB2A51005CDA53 /* PlacesMapViewController.xib in Resources */,
 				17875FB72633491C0046D24A /* B3.mp3 in Resources */,
+				B8349F0D26A79930007DCEBD /* IMUViewController.xib in Resources */,
 				0FC86B42260A213C00B1BA73 /* RenameTagViewController.xib in Resources */,
 				2AA147392620372D007D2914 /* ScanningTableViewCell.xib in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				8080B1E826200A5900FAEFBA /* BuildHash.json in Resources */,
 				CB19EA5F26008549005DCAD2 /* HapticViewController.xib in Resources */,
+				B29C39C626A1B53500F2D21E /* FirmwareUpdatesViewController.xib in Resources */,
+				0F5624E926C2E94800C9FCB0 /* IMUSessionDetailsViewController.xib in Resources */,
+				B8349F1326AA43DB007DCEBD /* IMUSessionTableViewCell.xib in Resources */,
 				B2437F992608949C0018B900 /* DashboardHeaderView.xib in Resources */,
+				B289A9D326A5803800BE6067 /* AlertViewController.xib in Resources */,
 				17875FBF2633491C0046D24A /* G3.mp3 in Resources */,
+				17F0B0B926AB2A51005CDA53 /* PlacesListViewController.xib in Resources */,
 				2AA1473C2620372D007D2914 /* ScanningViewController.xib in Resources */,
 				17875FB82633491C0046D24A /* B2.mp3 in Resources */,
 				CB26325526148938000BFE8A /* ConnectedTagTableViewCell.xib in Resources */,
@@ -623,7 +806,41 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2451863CD8D1A9D7A66A295E /* [CP] Check Pods Manifest.lock */ = {
+		09D0794E2A9B87BB295F74C6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JacquardSDK_Example/Pods-JacquardSDK_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/JacquardSDK/JacquardSDK.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
+				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
+				"${BUILT_PRODUCTS_DIR}/MotionAnimator/MotionAnimator.framework",
+				"${BUILT_PRODUCTS_DIR}/MotionInterchange/MotionInterchange.framework",
+				"${BUILT_PRODUCTS_DIR}/ProgressHUD/ProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Starling/Starling.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftProtobuf/SwiftProtobuf.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JacquardSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionAnimator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionInterchange.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starling.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftProtobuf.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JacquardSDK_Example/Pods-JacquardSDK_Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		23E74883EC24CEFC5758A5BC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -663,7 +880,7 @@
 			shellPath = /bin/sh;
 			shellScript = "# Output version & build number to the APP_VERSION label on LaunchScreen.xib\nversionNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"${INFOPLIST_FILE}\")\nsourceFilePath=\"$PROJECT_DIR/$PROJECT_NAME/Base.lproj/LaunchScreen.xib\"\n\nsed -i \"\" -e \"/userLabel=\\\"APP_VERSION\\\"/s/text=\\\"[^\\\"]*\\\"/text=\\\"App Version: $versionNumber\\\"/\" \"$sourceFilePath\"\n";
 		};
-		688F4517674C62B29FEC6C61 /* [CP] Check Pods Manifest.lock */ = {
+		6C618A60D5867190BD3E6015 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -703,39 +920,23 @@
 			shellPath = /bin/sh;
 			shellScript = "python3 ${PROJECT_DIR}/../Scripts/update_build_hash.py\n";
 		};
-		8A16E1332C166777D68B257E /* [CP] Embed Pods Frameworks */ = {
+		B84AC58525F039D800C10A1C /* Swift-format Lint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JacquardSDK_Example/Pods-JacquardSDK_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
-				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
-				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
-				"${BUILT_PRODUCTS_DIR}/MotionAnimator/MotionAnimator.framework",
-				"${BUILT_PRODUCTS_DIR}/MotionInterchange/MotionInterchange.framework",
-				"${BUILT_PRODUCTS_DIR}/ProgressHUD/ProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/Starling/Starling.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftProtobuf/SwiftProtobuf.framework",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/JacquardSDK/JacquardSDK.framework/JacquardSDK",
+			inputFileListPaths = (
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+			);
+			name = "Swift-format Lint";
+			outputFileListPaths = (
+			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionAnimator.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionInterchange.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starling.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftProtobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JacquardSDK.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JacquardSDK_Example/Pods-JacquardSDK_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "if which swift-format >/dev/null; then\n    swift-format -m lint -r JacquardSDK\n    swift-format -m lint -r ../JacquardSDK\n    swift-format -m lint -r ../Tests\n    exit 0\nelse\n    echo \"warning: swift-format not installed\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -746,6 +947,7 @@
 			files = (
 				B2437F982608949C0018B900 /* DashboardHeaderView.swift in Sources */,
 				2A3A9076262487AC008D45E9 /* Extensions.swift in Sources */,
+				B289A9D226A5803800BE6067 /* AlertViewController.swift in Sources */,
 				B84AC73E25FEBB9300C10A1C /* Buttons.swift in Sources */,
 				B84AC73A25FEB47400C10A1C /* ColorScheme.swift in Sources */,
 				0F98225026024DB8009BCF90 /* BarView.swift in Sources */,
@@ -754,27 +956,48 @@
 				CB26325A26148CF2000BFE8A /* TagDetailsViewController.swift in Sources */,
 				17875B3F262DFF840046D24A /* MusicalThreadsViewController.swift in Sources */,
 				B85F4412260827AE00B69FB9 /* DashboardItem.swift in Sources */,
+				B25E64FF26DCBFF500977C6D /* ProgressAlertViewController.swift in Sources */,
+				B8170CA826CC8D0C00F74425 /* JacquardSectionHeader.swift in Sources */,
 				2AA1473A2620372D007D2914 /* ScanningTableViewCell.swift in Sources */,
+				17F0B0B726AB2A51005CDA53 /* PlacesViewModel.swift in Sources */,
 				CB84D22D2604D540005984A6 /* LEDCell.swift in Sources */,
+				B289A9CE26A57F2200BE6067 /* JacquardCard.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				CB19EA6026008549005DCAD2 /* HapticCell.swift in Sources */,
 				CB26324C26145C6E000BFE8A /* TagManagerViewController.swift in Sources */,
+				17F0B0B426AB2A51005CDA53 /* PlacesListViewController.swift in Sources */,
+				3CFBCA91270B304700F259DD /* Place+CoreDataProperties.swift in Sources */,
+				B815864E26BB2266009A5E03 /* CoreDataStackManager.swift in Sources */,
+				0F97626A26C40B850095CDD2 /* AppDataStorage.swift in Sources */,
 				B2047F4C2604671B00F96F33 /* DashboardViewController.swift in Sources */,
+				B8170CA426CC787400F74425 /* IMUSessionDetailTableViewCell.swift in Sources */,
+				B29C39C526A1B53500F2D21E /* FirmwareUpdatesViewController.swift in Sources */,
 				2A880237261BA174009A2E58 /* GestureBlurEffectView.swift in Sources */,
+				B289A9CD26A57F2200BE6067 /* ModalCard.swift in Sources */,
 				B2047F4D2604671B00F96F33 /* DashboardCell.swift in Sources */,
 				2A0C4EA326020D73006941C3 /* GesturesViewController.swift in Sources */,
 				2AA1473B2620372D007D2914 /* ScanningViewController.swift in Sources */,
+				802E10E226B93BFA0002D312 /* LocationPublisher.swift in Sources */,
+				17F0B0B326AB2A51005CDA53 /* Jacquard_SDK.xcdatamodel in Sources */,
+				17F0B0BB26AB2A51005CDA53 /* PlacesMapViewController.swift in Sources */,
 				2A3A9080262487D4008D45E9 /* Preferences.swift in Sources */,
+				17F0B0BC26AB2A51005CDA53 /* PlaceCell.swift in Sources */,
 				CB84D2302604D540005984A6 /* LEDViewController.swift in Sources */,
 				80C09FAE2637E8D600D6C4EC /* NoteHelper.swift in Sources */,
 				2A880223261B8772009A2E58 /* GestureListViewController.swift in Sources */,
+				17F0B0B226AB2A51005CDA53 /* CLPlacemark+Extensions.swift in Sources */,
 				CB26325426148938000BFE8A /* ConnectedTagTableViewCell.swift in Sources */,
+				0F5624EB26C2E96500C9FCB0 /* IMUSessionDetailsViewController.swift in Sources */,
 				B2AC6BBE2620175900C335AC /* LoadingViewController.swift in Sources */,
 				0FC86B41260A213C00B1BA73 /* RenameTagViewController.swift in Sources */,
 				2A3A9077262487AC008D45E9 /* TouchView.swift in Sources */,
+				B8349F0C26A79930007DCEBD /* IMUViewController.swift in Sources */,
+				17F0B0C126ACA9B2005CDA53 /* PlacesGestureSelectionViewController.swift in Sources */,
 				2A3A9075262487AC008D45E9 /* UIColor+Extension.swift in Sources */,
 				2A88022B261B8801009A2E58 /* GestureTableViewCell.swift in Sources */,
+				3CFBCA92270B304700F259DD /* Place+CoreDataClass.swift in Sources */,
 				CB19EA5D26008549005DCAD2 /* HapticViewController.swift in Sources */,
+				B8349F0F26A7AE76007DCEBD /* IMUSessionTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -918,7 +1141,7 @@
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ED32D728BC1F1F95CA6ACD77 /* Pods-JacquardSDK_Example.debug.xcconfig */;
+			baseConfigurationReference = B7AA9F0EC62D6912B76C82C0 /* Pods-JacquardSDK_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -937,7 +1160,7 @@
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B625B2D74F1839E05ECEA0EC /* Pods-JacquardSDK_Example.release.xcconfig */;
+			baseConfigurationReference = EB2D9EC4DFE76E9115D15ACF /* Pods-JacquardSDK_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -956,7 +1179,7 @@
 		};
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1A5FD313D0B2084DD96A73B0 /* Pods-JacquardSDK_Tests.debug.xcconfig */;
+			baseConfigurationReference = F207F4DB697469B77A04C0BC /* Pods-JacquardSDK_Tests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
@@ -984,7 +1207,7 @@
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7B0D8A1A9DEBE3F94CF4B9EB /* Pods-JacquardSDK_Tests.release.xcconfig */;
+			baseConfigurationReference = F29AC8DD7BE8A7484747E426 /* Pods-JacquardSDK_Tests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";

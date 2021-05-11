@@ -22,9 +22,7 @@ website](https://atap.google.com/jacquard/products/).
 
 > If you have just opened a new retail Jacquard product, your tag
 > probably needs a firmware update (and perhaps charging). Review the
-> steps in the [Updating
-> Firmware](https://google.github.io/JacquardSDKiOS/updating-firmware.html)
-> page.
+> steps in the [Updating Firmware](updating-firmware.html) page.
 
 # Join the Jacquard community!
 
@@ -52,10 +50,51 @@ There is an Android equivalent to this SDK available at
 https://github.com/google/JacquardSDKAndroid
 
 
+
 # Integrate JacquardSDK into your Xcode project
 
-See [the integration
-docs](https://google.github.io/JacquardSDKiOS/integration.html).
+## CocoaPods
+
+JacquardSDK can be integrated into your code using
+[CocoaPods](https://cocoapods.org) dependency management. This early
+release version has not yet been added to the CocoaPods directory, the
+best way to integrate it is using a git url. Simply add the following
+line to your `Podfile`:
+
+```ruby
+pod 'JacquardSDK'
+```
+
+## Swift Package Manager - with Xcode project
+
+If you are using the Swift Package Manager with an Xcode project file,
+simply select the `File > Swift Packages > Add Package Dependency...`
+menu option:
+
+Enter the repository URL
+`https://github.com/google/JacquardSDKiOS.git` then click `Next`.
+
+Use the default values in the next window of Version: "Up to Next
+Major 0.2.0" and again click `Next`.
+
+Check the `JacquardSDK` Library and click `Finish`.
+
+Xcode will now download all the relevant files and integrate them into
+
+## Swift Package Manager - with Package.swift
+
+If you are using the Swift Package Manager with a `Package.swift`
+file, you need to add a dependency to your and import the
+`JacquardSDK` library into the desired targets.
+
+```swift
+dependencies: [
+    .package(name: "JacquardSDK", url: "https://github.com/google/JacquardSDKiOS.git", from: "0.2.0"),
+],
+targets: [
+    .target(name: "MyTarget", dependencies: ["JacquardSDK"]),
+]
+```
 
 ## Copyright
 
@@ -63,12 +102,5 @@ Copyright 2021 Google LLC
 
 ## License
 
-Two licenses apply to the Jacquard SDK. The binary-distributed
-framework is licensed under the Jacquard Software Development Kit
-License Agreement, while all files in the GitHub repository (including
-the sample app) are licensed under the Apache v2.0 license.
-
-Both licences appear in the LICENSE.md file in the repository and in
-the
-[documentation](https://google.github.io/JacquardSDKiOS/license.html).
-
+JacquardSDK is licensed under the Apache License, Version 2.0.
+See the LICENSE file for more info.

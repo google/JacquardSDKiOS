@@ -69,7 +69,7 @@ final class GesturesViewController: UIViewController {
     super.viewDidLoad()
     tableView.register(GestureCell.self, forCellReuseIdentifier: GestureCell.reuseIdentifier)
     tagPublisher.sink { tag in
-      tag.registerSubscriptions(self.createGestureSubsctiption)
+      tag.registerSubscriptions(self.createGestureSubscription)
     }.addTo(&observers)
     let infoButton = UIBarButtonItem(
       image: Constants.infoButtonImage, style: .plain, target: self,
@@ -86,7 +86,7 @@ final class GesturesViewController: UIViewController {
   }
 
   // Gestures subscription could be use to get most recently executed gesture.
-  private func createGestureSubsctiption(_ tag: SubscribableTag) {
+  private func createGestureSubscription(_ tag: SubscribableTag) {
     tag.subscribe(GestureNotificationSubscription())
       .sink { [weak self] notification in
         guard let self = self else { return }
@@ -110,6 +110,7 @@ extension GesturesViewController: UITableViewDelegate {
       else {
         return UITableViewCell()
       }
+      cell.textLabel?.font = UIFont.system14Medium
       cell.textLabel?.text = "\(gesture.name) logged"
       return cell
     }

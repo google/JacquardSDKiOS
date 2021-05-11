@@ -56,7 +56,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0C10B018956EF4E46DE16646C0D421E7"
-            BuildableName = "JacquardSDK"
+            BuildableName = "JacquardSDK.framework"
             BlueprintName = "JacquardSDK"
             ReferencedContainer = "container:Pods/Pods.xcodeproj">
          </BuildableReference>

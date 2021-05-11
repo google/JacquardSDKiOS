@@ -52,16 +52,24 @@ final class LoadingViewController: UIViewController {
       indicatorLabel.text = text
       DispatchQueue.main.asyncAfter(
         deadline: DispatchTime.now() + Constants.pairingAnimationDuration
-      ) { self.dismiss(animated: false, completion: completion) }
+      ) {
+        self.indicatorImage.isHidden = true
+        self.dismiss(animated: false, completion: completion)
+      }
     }
   }
 
-  func stopLoading(withError message: String = "") {
+  func stopLoading(
+    message: String = "",
+    timeout: TimeInterval = 0.0,
+    animated: Bool = true,
+    completion: (() -> Void)? = nil
+  ) {
     indicator.stopAnimating()
     indicatorImage.isHidden = true
     indicatorLabel.text = message
-    DispatchQueue.main.asyncAfter(
-      deadline: DispatchTime.now() + Constants.pairingAnimationDuration
-    ) { self.dismiss(animated: false) }
+    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + timeout) {
+      self.dismiss(animated: animated, completion: completion)
+    }
   }
 }
