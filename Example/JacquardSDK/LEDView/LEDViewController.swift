@@ -26,6 +26,7 @@ class LEDViewController: UIViewController {
   @IBOutlet private weak var gearTitleLabel: UILabel!
   @IBOutlet private weak var tagImageView: UIImageView!
   @IBOutlet private weak var tagTitleLabel: UILabel!
+  @IBOutlet private weak var textField: UITextField!
 
   // Publishes a value every time the tag connects or disconnects.
   private var tagPublisher: AnyPublisher<ConnectedTag, Never>
@@ -35,6 +36,13 @@ class LEDViewController: UIViewController {
 
   // Retains references to the Cancellable instances created by publisher subscriptions.
   private var observers = [Cancellable]()
+
+  private var defaultLEDDurationInSec = 5
+
+  // The maximum value that can be sent to tag is UInt32.max miliseconds.
+  private let maximumAllowedDuration = UInt32.max / 1000
+
+  lazy private var ledDurationRange = 1...maximumAllowedDuration
 
   init(tagPublisher: AnyPublisher<ConnectedTag, Never>) {
     self.tagPublisher = tagPublisher
@@ -51,6 +59,77 @@ class LEDViewController: UIViewController {
     gearToggleSwitch.isEnabled = false
     observeGearConnection()
     configureTableDataSource()
+    textField.text = "\(defaultLEDDurationInSec)"
+    textField.layer.borderWidth = 1.0
+    textField.layer.cornerRadius = 5.0
+    tableView.keyboardDismissMode = .onDrag
+    setUpDoneButton()
+    toggleTextFieldAppearnace(isSelected: false)
+
+    NotificationCenter.default.publisher(
+      for: UITextField.textDidBeginEditingNotification,
+      object: textField
+    )
+    .receive(on: RunLoop.main)
+    .sink { [weak self] _ in
+      self?.toggleTextFieldAppearnace(isSelected: true)
+    }.addTo(&observers)
+
+    NotificationCenter.default.publisher(
+      for: UITextField.textDidEndEditingNotification,
+      object: textField
+    )
+    .receive(on: RunLoop.main)
+    .sink { [weak self] notification in
+      self?.updateTextField(notification: notification)
+    }.addTo(&observers)
+  }
+
+  private func updateTextField(notification: NotificationCenter.Publisher.Output) {
+
+    defer { textField.text = "\(defaultLEDDurationInSec)" }
+
+    guard let ledTextField = notification.object as? UITextField,
+      let text = ledTextField.text,
+      let duration = Int(text)
+    else {
+      MDCSnackbarManager.default.show(MDCSnackbarMessage(text: "Enter a valid duration"))
+      return
+    }
+    toggleTextFieldAppearnace(isSelected: false)
+
+    switch duration.signum() {
+    case -1, 0:
+      // Value is <= 0, set maximum allowed duration.
+      defaultLEDDurationInSec = Int(maximumAllowedDuration)
+      MDCSnackbarManager.default.show(MDCSnackbarMessage(text: "Maximum duration is set"))
+      return
+    case 1:
+      if duration > ledDurationRange.upperBound {
+        MDCSnackbarManager.default.show(
+          MDCSnackbarMessage(
+            text:
+              """
+              Maximum duration is \(maximumAllowedDuration) seconds.
+              You can enter 0 to set max duration.
+              """
+          ))
+      } else {
+        // Value is within range, set the duration.
+        defaultLEDDurationInSec = duration
+      }
+    default:
+      assertionFailure("default state should not be reached.")
+    }
+  }
+
+  private func toggleTextFieldAppearnace(isSelected: Bool) {
+    textField.layer.masksToBounds = true
+    if isSelected {
+      textField.layer.borderColor = UIColor.black.cgColor
+    } else {
+      textField.layer.borderColor = UIColor(red: 0.7, green: 0.7, blue: 0.7, alpha: 1).cgColor
+    }
   }
 
   /// Play LED on Gear.
@@ -67,7 +146,7 @@ class LEDViewController: UIViewController {
       .flatMap { (tag, gearComponent) -> AnyPublisher<Void, Error> in
         do {
           // Create command request.
-          let request = try pattern.commandBuilder(gearComponent)
+          let request = try pattern.commandBuilder(gearComponent, self.defaultLEDDurationInSec)
           // Send the command request to play LED on Gear.
           return tag.enqueue(request)
         } catch (let error) {
@@ -101,7 +180,7 @@ class LEDViewController: UIViewController {
       .flatMap { tag -> AnyPublisher<Void, Error> in
         do {
           // Create command request.
-          let request = try pattern.commandBuilder(tag.tagComponent)
+          let request = try pattern.commandBuilder(tag.tagComponent, self.defaultLEDDurationInSec)
           // Send the command request to play LED on Gear.
           return tag.enqueue(request)
         } catch (let error) {
@@ -134,41 +213,60 @@ class LEDViewController: UIViewController {
         guard let gear = gear, gear.capabilities.contains(.led) else {
           self.gearToggleSwitch.isOn = false
           self.gearToggleSwitch.isEnabled = false
-          self.updateUIForGearSwitch(isOn: false)
+          self.toggleGearSwitchUI()
           return
         }
         self.gearToggleSwitch.isOn = true
         self.gearToggleSwitch.isEnabled = true
-        self.updateUIForGearSwitch(isOn: true)
+        self.toggleGearSwitchUI()
       }.addTo(&observers)
   }
 
   @IBAction func gearSwitchTapped(_ sender: UISwitch) {
-    gearToggleSwitch.isOn ? updateUIForGearSwitch(isOn: true) : updateUIForGearSwitch(isOn: false)
+    toggleGearSwitchUI()
   }
 
   @IBAction func tagSwitchTapped(_ sender: UISwitch) {
-    tagToggleSwitch.isOn ? updateUIForTagSwitch(isOn: true) : updateUIForTagSwitch(isOn: false)
+    toggleTagSwitchUI()
   }
 
-  private func updateUIForTagSwitch(isOn: Bool) {
-    if isOn {
+  private func toggleTagSwitchUI() {
+    if tagToggleSwitch.isEnabled {
       tagImageView.image = UIImage(named: "ActiveTag")
-      tagTitleLabel.textColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
+      tagTitleLabel.textColor = .black
     } else {
       tagImageView.image = UIImage(named: "InactiveTag")
       tagTitleLabel.textColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.3)
     }
   }
 
-  private func updateUIForGearSwitch(isOn: Bool) {
-    if isOn {
+  private func toggleGearSwitchUI() {
+    if gearToggleSwitch.isEnabled {
       gearImageView.image = UIImage(named: "ActiveGear")
-      gearTitleLabel.textColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
+      gearTitleLabel.textColor = .black
     } else {
       gearImageView.image = UIImage(named: "InactiveGear")
       gearTitleLabel.textColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.3)
     }
+  }
+
+  /// Configure done button over input accessory view (i.e. keyboard)
+  private func setUpDoneButton() {
+    let doneToolbar =
+      UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+    doneToolbar.barStyle = .default
+    doneToolbar.sizeToFit()
+    let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+    let done =
+      UIBarButtonItem(
+        title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
+    let items = [flexSpace, done]
+    doneToolbar.items = items
+    textField.inputAccessoryView = doneToolbar
+  }
+
+  @objc func doneButtonAction() {
+    view.endEditing(true)
   }
 }
 
@@ -181,6 +279,7 @@ enum SampleLEDPattern: CaseIterable {
   case blink
   case strobe
   case shine
+  case stopAll
 
   var name: String {
     switch self {
@@ -190,6 +289,7 @@ enum SampleLEDPattern: CaseIterable {
     case .blink: return "Blink"
     case .strobe: return "Strobe"
     case .shine: return "Shine"
+    case .stopAll: return "Stop All"
     }
   }
 
@@ -201,6 +301,7 @@ enum SampleLEDPattern: CaseIterable {
     case .blink: return "Blink"
     case .strobe: return "Strobe"
     case .shine: return "Shine"
+    case .stopAll: return "StopAll"
     }
   }
 }
@@ -208,21 +309,20 @@ enum SampleLEDPattern: CaseIterable {
 /// Configure LED command parameters like frame, patternType, patternPlayType, resumable etc.
 extension SampleLEDPattern {
 
-  var commandBuilder: (Component) throws -> PlayLEDPatternCommand {
-    let duration = 5000  // 5 seconds.
+  var commandBuilder: (Component, Int) throws -> PlayLEDPatternCommand {
     var patternColor: PlayLEDPatternCommand.Color
     var playType: PlayLEDPatternCommand.LEDPatternPlayType
 
     switch self {
     case .blueBlink:
       patternColor = PlayLEDPatternCommand.Color(red: 0, green: 0, blue: 255)
-      playType = .play
+      playType = .toggle
     case .greenBlink:
       patternColor = PlayLEDPatternCommand.Color(red: 0, green: 255, blue: 0)
-      playType = .play
+      playType = .toggle
     case .pinkBlink:
       patternColor = PlayLEDPatternCommand.Color(red: 255, green: 102, blue: 178)
-      playType = .play
+      playType = .toggle
     case .blink:
       patternColor = PlayLEDPatternCommand.Color(red: 220, green: 255, blue: 255)
       playType = .toggle
@@ -230,10 +330,9 @@ extension SampleLEDPattern {
       return {
         try PlayLEDPatternCommand(
           color: PlayLEDPatternCommand.Color(red: 220, green: 255, blue: 255),
-          durationMs: duration,
+          durationMs: $1.convertSecToMilliSec(),
           component: $0,
           patternType: .solid,
-          isResumable: true,
           playPauseToggle: .toggle)
       }
     case .strobe:
@@ -254,20 +353,26 @@ extension SampleLEDPattern {
       return {
         try PlayLEDPatternCommand(
           frames: frames,
-          durationMs: duration,
+          durationMs: $1.convertSecToMilliSec(),
           component: $0,
-          isResumable: true,
           playPauseToggle: .toggle)
+      }
+    case .stopAll:
+      return {
+        try PlayLEDPatternCommand(
+          color: PlayLEDPatternCommand.Color(red: 0, green: 0, blue: 0),
+          durationMs: $1.convertSecToMilliSec(),
+          component: $0,
+          haltAll: true)
       }
     }
 
     return {
       try PlayLEDPatternCommand(
         color: patternColor,
-        durationMs: duration,
+        durationMs: $1.convertSecToMilliSec(),
         component: $0,
         patternType: .singleBlink,
-        isResumable: true,
         playPauseToggle: playType)
     }
   }
@@ -325,5 +430,9 @@ extension LEDViewController: UITableViewDelegate {
     }
 
     tableView.deselectRow(at: indexPath, animated: true)
+  }
+
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 80.0
   }
 }

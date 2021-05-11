@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import Combine
+import CoreBluetooth
 import JacquardSDK
 import MaterialComponents
 import UIKit
@@ -47,7 +48,12 @@ class ScanningViewController: UIViewController {
   private enum Constants {
     static let matchSerialNumberDescription =
       "Match the last 4 digits with the serial number on the back of your Tag."
-    static let noTagsFound = "No new tags found nearby, still searching..."
+    static let chargeTagDescription =
+      """
+      Charge your Tag until the LED is pulsing white. Then, press and hold the power button on
+      your Tag for 3 seconds to pair.
+      """
+    static let noTagsFound = "No tags found"
     static let stopScanHeight: CGFloat = 50.0
     static let pairingTimeInterval: TimeInterval = 30.0
     static let pairingTimeOutMessage = "Tag pairing timed out."
@@ -59,6 +65,7 @@ class ScanningViewController: UIViewController {
     case pair = "Pair"
     case pairing = "Pairing..."
     case paired = "Paired"
+    case tryAgain = "Try Again"
   }
 
   @IBOutlet private weak var tagsTableView: UITableView!
@@ -67,6 +74,12 @@ class ScanningViewController: UIViewController {
   @IBOutlet private weak var scanDescriptionLabel: UILabel!
   @IBOutlet private weak var downArrowStackView: UIStackView!
   @IBOutlet private weak var stopScanButtonHeight: NSLayoutConstraint!
+
+  // To trigger failure if device pairing does not succeed in 60 seconds.
+  private var pairingTimer: Timer?
+  private var pairingDuration = 60.0
+
+  var shouldShowCloseButton = false
 
   private var buttonState = ButtonState.scan {
     didSet {
@@ -88,20 +101,39 @@ class ScanningViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    if shouldShowCloseButton {
+      navigationItem.leftBarButtonItem = UIBarButtonItem(
+        image: UIImage(named: "close"),
+        style: .done,
+        target: self,
+        action: #selector(closeButtonTapped))
+    }
     title = "Scan and Pair Tag"
+    scanButton.setTitleFont(UIFont.system20Normal, for: .normal)
+    scanDescriptionLabel.text = Constants.chargeTagDescription
     // Sets up the Tableview before we start receving advertising tags from the publisher.
     configureTagsTableView()
 
     // Subscribe to the advertisingTags publisher.
     // A tag will be published evertyime an advertising Jacquard Tag is found.
     sharedJacquardManager.advertisingTags
+      .throttleAdvertisedTags()
       .sink { [weak self] tag in
-        print("found tag: \(tag.pairingSerialNumber)\n")
+        print("found tag: \(tag.pairingSerialNumber) && \(tag.rssi)\n")
         guard let self = self else { return }
         self.updateScanViewUI()
-        self.advertisedTags.append(tag)
+        if let index = self.advertisedTags.firstIndex(where: { $0.identifier == tag.identifier }) {
+          self.advertisedTags[index] = tag
+        } else {
+          self.advertisedTags.append(tag)
+        }
         self.updateDataSource()
+        self.tagsTableView.reloadData()
       }.addTo(&cancellables)
+  }
+
+  @objc private func closeButtonTapped() {
+    dismiss(animated: true, completion: nil)
   }
 
   override func viewWillDisappear(_ animated: Bool) {
@@ -134,19 +166,37 @@ class ScanningViewController: UIViewController {
     // `startScanning()` only scans for advertising tags, it does not return Tags already connected.
     // see also `preConnectedTags()`
     do {
-      try sharedJacquardManager.startScanning()
+      let options: [String: Any] = [CBCentralManagerScanOptionAllowDuplicatesKey: true]
+      try sharedJacquardManager.startScanning(options: options)
+      scanDescriptionLabel.text = Constants.chargeTagDescription
       buttonState = .scanning
       searchingLabel.text = ButtonState.scanning.rawValue
       searchingLabel.isHidden = false
-      DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
+      DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(30)) {
+        if self.advertisedTags.isEmpty {
+          self.buttonState = .tryAgain
+          self.stopScanButtonHeight.constant = Constants.stopScanHeight
+        }
         self.searchingLabel.text = Constants.noTagsFound
       }
     } catch {
       // startScanning will throw an error, if Bluetooth is unavailable.
       buttonState = .scan
       searchingLabel.isHidden = true
-      MDCSnackbarManager.default.show(
-        MDCSnackbarMessage(text: "Error when scanning for tags, check if bluetooth is available"))
+
+      let message = MDCSnackbarMessage()
+      message.text = "Error when scanning for tags, check if bluetooth is available"
+
+      let action = MDCSnackbarMessageAction()
+      let actionHandler = { () in
+        if let url = URL(string: UIApplication.openSettingsURLString) {
+          UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+      }
+      action.handler = actionHandler
+      action.title = "ACTION"
+      message.action = action
+      MDCSnackbarManager.default.show(message)
       print(error)
     }
 
@@ -154,7 +204,8 @@ class ScanningViewController: UIViewController {
     // Call `JacquardManager.preConnectedTags()` to retrive Tags already connected to the phone.
     preConnectedTags = sharedJacquardManager.preConnectedTags().sorted(
       by: { $0.displayName > $1.displayName })
-    if preConnectedTags.count > 0 {
+    if !preConnectedTags.isEmpty {
+      buttonState = .scanning
       updateScanViewUI()
       self.updateDataSource()
     }
@@ -186,9 +237,7 @@ class ScanningViewController: UIViewController {
     }
 
     stopScanning()
-
-    //TODO: This would be a simpler example if we get rid of the Pair button and simply pair in
-    // the didSelect delegate method.
+    invalidatePairingTimer()
 
     guard let cellModel = scanDiffableDataSource?.itemIdentifier(for: selectedIndexPath) else {
       return
@@ -196,10 +245,26 @@ class ScanningViewController: UIViewController {
 
     let connectionStream = sharedJacquardManager.connect(cellModel.tag)
     handleConnectStateChanges(connectionStream)
+    pairingTimer = Timer.scheduledTimer(
+      withTimeInterval: pairingDuration,
+      repeats: false
+    ) { [weak self] _ in
+      guard let self = self else { return }
+      self.invalidatePairingTimer()
+      self.loadingView.stopLoading()
+      MDCSnackbarManager.default.show(
+        MDCSnackbarMessage(text: "Getting issue to tag pairing, Please retry.")
+      )
+    }
   }
 
   func stopScanning() {
     sharedJacquardManager.stopScanning()
+  }
+
+  private func invalidatePairingTimer() {
+    pairingTimer?.invalidate()
+    pairingTimer = nil
   }
 
   func handleConnectStateChanges(_ connectionStream: AnyPublisher<TagConnectionState, Error>) {
@@ -207,7 +272,8 @@ class ScanningViewController: UIViewController {
       .sink { [weak self] error in
         // Connection attempts never time out,
         // so an error will be received only when the connection cannot be recovered or retried.
-        self?.loadingView.stopLoading(withError: "Connection Error")
+        self?.loadingView.stopLoading(message: "Connection Error")
+        self?.invalidatePairingTimer()
         MDCSnackbarManager.default.show(MDCSnackbarMessage(text: "\(error)"))
       } receiveValue: { [weak self] connectionState in
 
@@ -221,6 +287,7 @@ class ScanningViewController: UIViewController {
         case .connected(let connectedTag):
           // Tag is successfully paired, you can now subscribe and retrieve the tag stream.
           print("connected to tag: \(connectedTag)")
+          self?.invalidatePairingTimer()
           self?.buttonState = .paired
           self?.loadingView.stopLoading(withMessage: "Paired") {
             self?.connectionSuccessful(for: connectedTag)
@@ -229,7 +296,10 @@ class ScanningViewController: UIViewController {
           print("Disconnected with error: \(String(describing: error))")
           self?.buttonState = .pair
           self?.loadingView.stopLoading()
+          self?.invalidatePairingTimer()
           MDCSnackbarManager.default.show(MDCSnackbarMessage(text: "Disconnected"))
+        @unknown default:
+          fatalError("Unknown connection state.")
         }
       }
       .addTo(&cancellables)
@@ -314,6 +384,8 @@ extension ScanningViewController: UITableViewDelegate {
       frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 40))
     let label = UILabel(frame: headerView.bounds)
     label.text = TagSection(rawValue: section)?.title
+    label.font = UIFont.system12Medium
+    label.textColor = UIColor(red: 0.392, green: 0.392, blue: 0.392, alpha: 1)
     headerView.addSubview(label)
     return headerView
   }
@@ -325,5 +397,25 @@ extension ScanningViewController: UITableViewDelegate {
 
     buttonState = .pair
     scanButton.isHidden = false
+  }
+}
+
+extension AnyPublisher where Output == AdvertisedTag {
+
+  func throttleAdvertisedTags() -> AnyPublisher<AdvertisedTag, Failure> {
+    var deliveryInterval = -1
+    let publishers = filter { _ in
+      // Reset interval count.
+      if deliveryInterval >= Int.max || deliveryInterval < 0 {
+        deliveryInterval = -1
+      }
+      deliveryInterval += 1
+      // If CBCentralManagerScanOptionAllowDuplicatesKey is true, in this case peripheral
+      // advertising interval is very fast ~100ms to show on UI. Since there is no api with
+      // central manager which control advertising interval, we need to filter out results to show
+      // in table properly.
+      return deliveryInterval % 60 == 0
+    }
+    return publishers.eraseToAnyPublisher()
   }
 }

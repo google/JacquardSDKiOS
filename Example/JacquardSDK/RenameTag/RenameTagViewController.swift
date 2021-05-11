@@ -24,12 +24,21 @@ class RenameTagViewController: UIViewController {
 
   @IBOutlet weak var tagNameLabel: UILabel!
   @IBOutlet weak var renameButton: UIButton!
-  @IBOutlet weak var rebootWarningLabel: UILabel!
 
   // MARK: - Private variables
 
+  private enum Constants {
+    static let tagRebootingMessage =
+      "The tag is rebooting to reflect the updated name. Please wait..."
+  }
+
   private var observers = [Cancellable]()
   private let tagPublisher: AnyPublisher<ConnectedTag, Never>
+
+  private let loadingView = LoadingViewController.instance
+  private var isTagRebooting = false
+  private var renameTagTimer: Timer?
+  private var renamingTagDuration = 15.0
 
   // MARK: - Initializers
 
@@ -55,8 +64,10 @@ class RenameTagViewController: UIViewController {
       // Keep the app preferences up to date with the current name.
       Preferences.addKnownTag(KnownTag(identifier: nameAndIdentifier.1, name: nameAndIdentifier.0))
 
-      self.rebootWarningLabel.isHidden = true
       self.renameButton.isEnabled = true
+      if self.isTagRebooting {
+        self.toggleTagRebootingState()
+      }
     }.addTo(&observers)
   }
 
@@ -74,7 +85,7 @@ class RenameTagViewController: UIViewController {
         print("Error: New tag name not available.")
         return
       }
-      ProgressHUD.show()
+
       self.tagPublisher
         .prefix(1)
         .mapNeverToError()
@@ -85,19 +96,46 @@ class RenameTagViewController: UIViewController {
             return Fail<Void, Error>(error: error).eraseToAnyPublisher()
           }
         }.sink { (error) in
-          MDCSnackbarManager.default.show(MDCSnackbarMessage(text: "\(error)"))
-          ProgressHUD.dismiss()
+          self.toggleTagRebootingState()
         } receiveValue: { (_) in
-          ProgressHUD.dismiss()
-
-          // Show warning as tag is rebooting.
-          self.rebootWarningLabel.isHidden = false
-
-          self.renameButton.isEnabled = false
+          self.toggleTagRebootingState()
         }.addTo(&self.observers)
     }
     alert.addAction(renameAction)
     alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
     present(alert, animated: true)
+  }
+
+  private func toggleTagRebootingState() {
+    if !isTagRebooting {
+      loadingView.modalPresentationStyle = .overCurrentContext
+      present(loadingView, animated: true) {
+        self.loadingView.startLoading(withMessage: Constants.tagRebootingMessage)
+      }
+      isTagRebooting = true
+      renameButton.isEnabled = false
+
+      renameTagTimer = Timer.scheduledTimer(
+        withTimeInterval: renamingTagDuration,
+        repeats: false
+      ) { [weak self] _ in
+        guard let self = self else { return }
+        self.invalidateRenameTagTimer()
+        self.loadingView.stopLoading()
+        MDCSnackbarManager.default.show(
+          MDCSnackbarMessage(text: "Issue while renaming the tag.")
+        )
+      }
+    } else {
+      loadingView.stopLoading(withMessage: "")
+      invalidateRenameTagTimer()
+    }
+  }
+
+  private func invalidateRenameTagTimer() {
+    renameTagTimer?.invalidate()
+    renameTagTimer = nil
+    isTagRebooting = false
+    renameButton.isEnabled = true
   }
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,23 +18,13 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" alpha="0.59999999999999998" contentMode="scaleToFill" id="i5M-Pr-FkT">
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v4I-dY-OYP">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
-                        <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4FY-Ej-g1o">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.20000000298023224" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="BvR-9e-0Lu">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <blurEffect style="light"/>
-                        </visualEffectView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ELz-LA-rQg">
                             <rect key="frame" x="130.5" y="383" width="153" height="130"/>
                             <subviews>
@@ -53,7 +43,7 @@
                                         <constraint firstAttribute="width" constant="60" id="hOn-Oj-bhb"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntf-bv-pv1" customClass="PrimaryAppHeadingLabel" customModule="googlemac_iPhone_Jacquard_App_Source_AppUIServicesInt3LibSwift">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntf-bv-pv1">
                                     <rect key="frame" x="-46" y="97" width="245" height="46"/>
                                     <constraints>
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="46" id="AFY-Cq-y5H"/>
@@ -77,19 +67,16 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="4FY-Ej-g1o" firstAttribute="top" secondItem="v4I-dY-OYP" secondAttribute="top" id="54u-aL-FiJ"/>
-                        <constraint firstItem="ELz-LA-rQg" firstAttribute="centerY" secondItem="4FY-Ej-g1o" secondAttribute="centerY" id="SGB-is-JYH"/>
-                        <constraint firstItem="4FY-Ej-g1o" firstAttribute="bottom" secondItem="v4I-dY-OYP" secondAttribute="bottom" id="W2p-WY-lcM"/>
-                        <constraint firstItem="4FY-Ej-g1o" firstAttribute="leading" secondItem="v4I-dY-OYP" secondAttribute="leading" id="jp1-Sk-jeG"/>
+                        <constraint firstItem="ELz-LA-rQg" firstAttribute="centerX" secondItem="v4I-dY-OYP" secondAttribute="centerX" id="JV8-lK-qn7"/>
+                        <constraint firstItem="ELz-LA-rQg" firstAttribute="centerY" secondItem="v4I-dY-OYP" secondAttribute="centerY" id="eRf-GI-dvg"/>
                         <constraint firstItem="ELz-LA-rQg" firstAttribute="centerX" secondItem="v4I-dY-OYP" secondAttribute="centerX" id="k3f-PJ-6sA"/>
-                        <constraint firstAttribute="trailing" secondItem="4FY-Ej-g1o" secondAttribute="trailing" id="nh9-SJ-z48"/>
                     </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.60411294090826784" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="v4I-dY-OYP" secondAttribute="bottom" id="1kS-87-VFq"/>
                 <constraint firstItem="v4I-dY-OYP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="CuM-vk-3ba"/>
@@ -99,6 +86,11 @@
             <point key="canvasLocation" x="139" y="130"/>
         </view>
     </objects>
+    <designables>
+        <designable name="coG-lB-O3O">
+            <size key="intrinsicContentSize" width="26.5" height="26.5"/>
+        </designable>
+    </designables>
     <resources>
         <image name="ic_check_box" width="52" height="52"/>
     </resources>

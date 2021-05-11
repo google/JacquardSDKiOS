@@ -62,10 +62,6 @@ final class CapacitiveVisualizerViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Setup bar chart.
-    initializeBarViews()
-    initializeBarValueLabels()
-
     // Subscription for the capacitance values for the threads.
     tagPublisher.sink { [weak self] tag in
       guard let self = self else { return }
@@ -77,6 +73,8 @@ final class CapacitiveVisualizerViewController: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    initializeBarViews()
+    initializeBarValueLabels()
     // Enable the touch mode.
     setTouchMode(.continuous)
   }

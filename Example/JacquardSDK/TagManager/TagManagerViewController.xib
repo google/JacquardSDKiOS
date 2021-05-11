@@ -30,12 +30,12 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAGS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="21S-t0-u6e">
-                    <rect key="frame" x="24" y="133" width="366" height="18"/>
+                    <rect key="frame" x="28" y="133" width="362" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="XuX-bE-FcC"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                    <color key="textColor" red="0.39215686274509803" green="0.39215686274509803" blue="0.39215686274509803" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="L1k-zs-aeP">
@@ -54,7 +54,7 @@
                 <constraint firstItem="L1k-zs-aeP" firstAttribute="top" secondItem="21S-t0-u6e" secondAttribute="bottom" constant="22" id="0mF-yi-aK5"/>
                 <constraint firstItem="L1k-zs-aeP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="0vW-f0-3qr"/>
                 <constraint firstAttribute="trailing" secondItem="L1k-zs-aeP" secondAttribute="trailing" constant="24" id="Gsl-6c-2N8"/>
-                <constraint firstItem="21S-t0-u6e" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="OD7-BW-rKL"/>
+                <constraint firstItem="21S-t0-u6e" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="28" id="OD7-BW-rKL"/>
                 <constraint firstItem="duD-ke-0ab" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="R8z-T4-Vfr"/>
                 <constraint firstItem="21S-t0-u6e" firstAttribute="top" secondItem="duD-ke-0ab" secondAttribute="bottom" constant="9" id="f0Q-TY-H5T"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="21S-t0-u6e" secondAttribute="trailing" constant="24" id="iVn-ye-b0G"/>

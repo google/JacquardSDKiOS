@@ -55,6 +55,18 @@ class HapticViewController: UIViewController {
     subscribeGearConnectionEvent()
   }
 
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    let stopPattern = HapticCellModel(
+      description: "Stop Pattern",
+      onMs: 0,
+      offMs: 0,
+      maxAmplitudePercent: 0,
+      repeatNMinusOne: 0,
+      pattern: .hapticSymbolHalted)
+    playHaptic(for: stopPattern)
+  }
+
   private func subscribeGearConnectionEvent() {
     tagPublisher
       .flatMap { $0.connectedGear }
@@ -170,7 +182,7 @@ private enum SampleHapticPattern: Int, CaseIterable {
         onMs: 170,
         offMs: 700,
         maxAmplitudePercent: 60,
-        repeatNMinusOne: 15,
+        repeatNMinusOne: 14,
         pattern: .hapticSymbolSineIncrease
       )
     }
@@ -222,5 +234,9 @@ extension HapticViewController: UITableViewDelegate {
       playHaptic(for: selectedHaptic)
     }
     tableView.deselectRow(at: indexPath, animated: true)
+  }
+
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 80.0
   }
 }

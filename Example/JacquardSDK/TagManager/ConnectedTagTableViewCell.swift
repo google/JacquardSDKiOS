@@ -21,35 +21,38 @@ class ConnectedTagTableViewCell: UITableViewCell {
     static let circularCheckImageName = "circularCheck"
     static let circularUncheckImageName = "circularUncheck"
     static let tagNamePrefixText = "Jacquard Tag "
-    static let fontSize: CGFloat = 16.0
   }
 
   static let reuseIdentifier = "connectedTagCellIdentifier"
+  var checkboxTapped: (() -> Void)?
 
   @IBOutlet private weak var title: UILabel!
-  @IBOutlet private weak var checkboxImageView: UIImageView!
+  @IBOutlet private weak var checkboxButton: UIButton!
 
   override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
     if selected {
       contentView.backgroundColor = .black
       title.textColor = .white
-      checkboxImageView.image = UIImage(named: Constants.circularCheckImageName)
+      checkboxButton.isSelected = true
     } else {
       contentView.backgroundColor = .white
       title.textColor = .black
-      checkboxImageView.image = UIImage(named: Constants.circularUncheckImageName)
+      checkboxButton.isSelected = false
     }
   }
 
   func configure(with model: TagManagerViewController.TagCellModel) {
 
-    let attributedString = NSMutableAttributedString(string: Constants.tagNamePrefixText)
+    let tagPrefixText = NSMutableAttributedString(string: Constants.tagNamePrefixText)
+    let tagPrefixTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+    tagPrefixText.addAttributes(
+      tagPrefixTextAttributes, range: NSMakeRange(0, tagPrefixText.string.count))
     let attributes =
-      [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: Constants.fontSize)]
+      [NSAttributedString.Key.font: UIFont.system16Medium]
     let tagName = NSMutableAttributedString(string: model.tag.displayName, attributes: attributes)
-    attributedString.append(tagName)
-    title.attributedText = attributedString
+    tagPrefixText.append(tagName)
+    title.attributedText = tagPrefixText
 
     layer.masksToBounds = true
     layer.cornerRadius = 5
@@ -59,5 +62,9 @@ class ConnectedTagTableViewCell: UITableViewCell {
 
     let rippleTouchController = MDCRippleTouchController()
     rippleTouchController.addRipple(to: self)
+  }
+
+  @IBAction func checkboxTapped(_ sender: UIButton) {
+    checkboxTapped?()
   }
 }

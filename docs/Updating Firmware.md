@@ -1,8 +1,21 @@
 # Update your Jacquard tag
 
-If you have just bought your Jacquard product and using it out of the box. Our recomendation is to update the Tag using the Jacquard iOS app. [App Store link](https://apps.apple.com/us/app/jacquard-by-google/id1204971157).
+If you have just bought your Jacquard product and using it out of the
+box, your tag requires a firmware update.
 
-## What you need to get started
+## Recommended firmware update method
+
+Once you have set a valid API key in the `SDKConfig` instance used to
+initialize `JacquardManagerImplementation` (see [this
+page](cloud-api-terms.html) for details on obtaining an API Key) the
+SDK will apply any required firmware updates when your tag connects.
+
+## Alternative firmware update method
+
+Alternatively, you can use the Jacquard iOS app in the App Store to
+update your tag's firmware using the instructions below.
+
+### What you need to get started
 
 To set up your Jacquard Tag, you need:
 
@@ -19,7 +32,8 @@ To set up your Jacquard Tag, you need:
 5. An internet connection
 6. Bluetooth enabled on your mobile phone
 
-## Steps
+### Steps
+
 1. Install the Jacquard app by visiting the [App Store](https://apps.apple.com/us/app/jacquard-by-google/id1204971157).
 2. Open the Jacquard app. Tap Get Started.
 3. Choose or add the Google Account you want to link to Jacquard. Tap NEXT. 
@@ -48,10 +62,12 @@ To set up your Jacquard Tag, you need:
 "forget/unlink" the tag in the Jacquard app, This is because the current tag BLE protocol does not support simultaneous connections from two apps. 
 Read on to learn how you can unlink the Tag.
 
-# Forget/Unlink Tag from Jacquard app
+### Forget/Unlink Tag from Jacquard app
+
 To use your Jacquard product with the SDK or sample app, you must forget the tag from Jacquard app. 
 
-## Steps
+#### Steps
+
 1. Open the Jacquard app .
 2. Tap Menu ![Menu Icon](assets/jqAppMenu.png) button in the top left corner of the home screen.
 ![Tap Menu](assets/jqAppTapMenu.png) 

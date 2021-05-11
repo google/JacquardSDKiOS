@@ -1,5 +1,13 @@
 PODS:
-  - JacquardSDK (0.1.0):
+  - JacquardSDK (0.2.0):
+    - JacquardSDK/SDK (= 0.2.0)
+    - SwiftProtobuf (~> 1.0)
+  - JacquardSDK/Protobuf (0.2.0):
+    - SwiftProtobuf (~> 1.0)
+  - JacquardSDK/SDK (0.2.0):
+    - JacquardSDK/Protobuf
+    - SwiftProtobuf (~> 1.0)
+  - JacquardSDK/Tests (0.2.0):
     - SwiftProtobuf (~> 1.0)
   - MaterialComponents (124.2.0):
     - MaterialComponents/ActionSheet (= 124.2.0)
@@ -648,10 +656,11 @@ PODS:
   - MotionInterchange (3.0.0)
   - ProgressHUD (13.6)
   - Starling (1.0.0)
-  - SwiftProtobuf (1.16.0)
+  - SwiftProtobuf (1.18.0)
 
 DEPENDENCIES:
-  - JacquardSDK (from `../JacquardSDK.podspec`)
+  - JacquardSDK (from `../`)
+  - JacquardSDK/Tests (from `../`)
   - MaterialComponents
   - ProgressHUD (~> 13)
   - Starling (from `https://github.com/matthewreagan/Starling.git`, commit `bf7fb2be59863b4eae8f61694c30b53107135ea1`)
@@ -668,7 +677,7 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   JacquardSDK:
-    :podspec: "../JacquardSDK.podspec"
+    :path: "../"
   Starling:
     :commit: bf7fb2be59863b4eae8f61694c30b53107135ea1
     :git: https://github.com/matthewreagan/Starling.git
@@ -679,7 +688,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/matthewreagan/Starling.git
 
 SPEC CHECKSUMS:
-  JacquardSDK: 32fd5ee54f296714a2a4fec265d59117f8bb129e
+  JacquardSDK: dacca5c73f710dd5123ee9c17f00d841b4ec77ba
   MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
   MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
   MDFTextAccessibility: f4bb4cc2194286651b59a215fdeaa0e05dc90ba5
@@ -687,8 +696,8 @@ SPEC CHECKSUMS:
   MotionInterchange: 13adae439b377e31d1674cc165539d50e1d1566a
   ProgressHUD: 4bdaa0d2ddf676b23324b199f9facffb5c3a1620
   Starling: aa6aa7edffc3592ccb2cb57781b7f603fc3bedc2
-  SwiftProtobuf: 4e16842b83c6fda06b10fac50d73b3f1fce8ab7b
+  SwiftProtobuf: c3c12645230d9b09c72267e0de89468c5543bd86
 
-PODFILE CHECKSUM: a86fa613ed222861327cd4e0e0bce232c75fc873
+PODFILE CHECKSUM: eb9a54fca0b732b60662830444ed371009013a23
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.2

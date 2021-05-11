@@ -42,6 +42,13 @@ final class DashboardViewController: UIViewController {
     static let itemHeight: CGFloat = 100.0
     static let tagDisconnectedSnackbarMessage = "Tag is disconnected."
     static let tagNotAttachedSnackbarMessage = "Tag is detached from the gear."
+    static let tagDisconnectedSnackbarActionText = "HELP"
+    static let tagDisconnectedAlertTitle = "Tag is disconnected"
+    static let tagDisconnectedAlertDescription = """
+      Tag is disconnected because of any of the reason below -\n
+      """
+    static let tagDisconnectedReason = "Out of range\nBattery drained\nSleep mode\nBluetooth is OFF"
+    static let alertAcceptButtonText = "Got It"
   }
 
   // MARK: IBOutlets
@@ -51,6 +58,7 @@ final class DashboardViewController: UIViewController {
   @IBOutlet private weak var gearNameLabel: UILabel!
   @IBOutlet private weak var gearImageView: UIImageView!
   @IBOutlet private weak var batteryStatusLabel: UILabel!
+  @IBOutlet private weak var rssiLabel: UILabel!
   @IBOutlet private weak var dashboardCollectionView: UICollectionView!
 
   // MARK: Instance vars
@@ -62,27 +70,44 @@ final class DashboardViewController: UIViewController {
   private var tagPublisher: AnyPublisher<ConnectedTag, Never>?
   /// Collection of subscribers.
   private var observers = [AnyCancellable]()
-
+  private var notificationCancellable: Cancellable?
   private var isGearConnected = false
   private var isTagConnected = false
   /// Currently selected Jacquard Tag identifier.
   private var selectedTagIdentifier: UUID?
+  private var timerPublisher: Timer.TimerPublisher?
 
   // MARK: View life cycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    setupCollectionView()
+    configureCollectionDataSource()
+    updateDataSource()
     updateUI()
     subscribeSelectCurrentTagEvents()
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    navigationController?.isNavigationBarHidden = true
+  }
+
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    navigationController?.isNavigationBarHidden = false
   }
 
   /// To update dashboard after setting the current tag on tag details screen.
   private func subscribeSelectCurrentTagEvents() {
     let publisher = NotificationCenter.default.publisher(for: Notification.Name("setCurrentTag"))
-    publisher.sink { [weak self] _ in
+    // Holding `NotificationCenter` cancellable separately so that it will not remove when we remove
+    // all observers for previously selected tag.
+    notificationCancellable = publisher.sink { [weak self] _ in
       guard let self = self else { return }
       self.updateUI()
-    }.addTo(&observers)
+      self.updateDataSource()
+    }
   }
 
   private func updateUI() {
@@ -95,11 +120,6 @@ final class DashboardViewController: UIViewController {
       sharedJacquardManager.shouldRestoreConnection = { $0 == currentTag.identifier }
     }
     tagNameLabel.text = Preferences.knownTags.first?.displayName ?? "Unknown"
-    updateGearState(nil)
-    setupCollectionView()
-    configureCollectionDataSource()
-
-    updateDataSource()
 
     if currentTag.identifier == selectedTagIdentifier {
       // SelectedTagIdentifier has not changed, no need for re-connection.
@@ -107,10 +127,12 @@ final class DashboardViewController: UIViewController {
       observerTagPublisher()
       print("SelectedTagIdentifier has not changed skip reconnection")
     } else {
+      // Remove all existing observers for previous tag.
+      observers.removeAll()
       // Initiate tag connection if
       // `selectedTagIdentifier == nil`, means this is first launch, or
       // The selected tag has changed, so connect to the newly selected tag.
-      self.selectedTagIdentifier = currentTag.identifier
+      selectedTagIdentifier = currentTag.identifier
       initateConnectionForTag(identifier: currentTag.identifier)
     }
   }
@@ -129,6 +151,7 @@ final class DashboardViewController: UIViewController {
           self.isTagConnected = false
           self.updateGearState(nil)
           self.updateDataSource()
+          self.batteryStatusLabel.text = "Battery: --"
         @unknown default:
           break
         }
@@ -182,7 +205,9 @@ final class DashboardViewController: UIViewController {
         guard let self = self else { return }
         if optionalTag != nil {
           self.isTagConnected = true
-          self.updateGearState(nil, isTagDisconnected: false)
+          if optionalTag?.identifier == self.selectedTagIdentifier {
+            self.updateGearState(nil, isTagDisconnected: false)
+          }
         } else {
           self.isTagConnected = false
           self.updateGearState(nil)
@@ -220,12 +245,32 @@ final class DashboardViewController: UIViewController {
       .sink { [weak self] gear in
         guard let self = self else { return }
         self.updateGearState(gear, isTagDisconnected: false)
+        if gear == nil {
+          MDCSnackbarManager.default.show(
+            MDCSnackbarMessage(text: Constants.tagNotAttachedSnackbarMessage))
+        }
         self.updateDataSource()
       }.addTo(&observers)
 
     // Register for tag notifications. e.g. Battery status.
     tagPublisher.sink { tag in
       tag.registerSubscriptions(self.createSubscriptions)
+    }.addTo(&observers)
+
+    // Read signal strength for tag.
+    tagPublisher.sink { [weak self] tag in
+      guard let self = self else { return }
+      self.timerPublisher = Timer.publish(every: 1.0, on: .main, in: .common)
+      self.timerPublisher?.autoconnect().sink { _ in
+        tag.readRSSI()
+      }.addTo(&self.observers)
+
+      tag.rssiPublisher
+        .sink { [weak self] rssiValue in
+          guard let self = self, tag.identifier == self.selectedTagIdentifier else { return }
+          self.rssiLabel.text = "RSSI: \(rssiValue)"
+          self.rssiLabel.textColor = UIColor.signalColor(rssiValue)
+        }.addTo(&self.observers)
     }.addTo(&observers)
   }
 
@@ -280,7 +325,6 @@ extension DashboardViewController: UICollectionViewDelegateFlowLayout {
     let itemWidth =
       ((UIScreen.main.bounds.width - marginsAndInsets) / CGFloat(Constants.cellsPerRow))
       .rounded(.down)
-
     return CGSize(width: itemWidth, height: Constants.itemHeight)
   }
 
@@ -301,59 +345,43 @@ extension DashboardViewController: UICollectionViewDelegate {
     collectionView.deselectItem(at: indexPath, animated: true)
 
     let selectedItem = diffableDataSource.itemIdentifier(for: indexPath)
+    var nextViewController: UIViewController?
     switch selectedItem?.feature {
     case .gestures:
-      showGesturesScreen()
+      nextViewController = GesturesViewController(tagPublisher: tagPublisher!)
     case .haptics:
-      showHapticScreen()
+      nextViewController = HapticViewController(tagPublisher: tagPublisher!)
     case .led:
-      showLEDScreen()
+      nextViewController = LEDViewController(tagPublisher: tagPublisher!)
     case .capVisualizer:
-      showCapacitiveVisualization()
+      nextViewController = CapacitiveVisualizerViewController(tagPublisher: tagPublisher!)
     case .rename:
-      showRenameTagScreen()
+      nextViewController = RenameTagViewController(tagPublisher: tagPublisher!)
     case .tagManager:
-      showTagManagerScreen()
+      nextViewController = TagManagerViewController(tagPublisher: tagPublisher)
+    case .firmwareUpdates:
+      nextViewController = FirmwareUpdatesViewController(connectionStream: connectionStream)
     case .musicalThread:
-      showMusicalThreadsScreen()
+      nextViewController = MusicalThreadsViewController(tagPublisher: tagPublisher!)
+    case .imu:
+      nextViewController = IMUViewController(tagPublisher: tagPublisher!)
+    case .places:
+      if PlacesViewModel.shared.assignedGesture == .noInference
+        || !PlacesViewModel.shared.isLocationPermissionEnabled()
+      {
+        nextViewController = PlacesGestureSelectionViewController(
+          tagPublisher: tagPublisher!,
+          hideAssignFAB: false
+        )
+      } else {
+        nextViewController = PlacesListViewController(tagPublisher: tagPublisher!)
+      }
     default:
       MDCSnackbarManager.default.show(MDCSnackbarMessage(text: "Feature coming soon..."))
     }
-  }
-
-  private func showGesturesScreen() {
-    let gesturesVC = GesturesViewController(tagPublisher: tagPublisher!)
-    navigationController?.pushViewController(gesturesVC, animated: true)
-  }
-
-  private func showHapticScreen() {
-    let hapticVC = HapticViewController(tagPublisher: tagPublisher!)
-    navigationController?.pushViewController(hapticVC, animated: true)
-  }
-
-  private func showLEDScreen() {
-    let ledVC = LEDViewController(tagPublisher: tagPublisher!)
-    navigationController?.pushViewController(ledVC, animated: true)
-  }
-
-  private func showCapacitiveVisualization() {
-    let nextVC = CapacitiveVisualizerViewController(tagPublisher: tagPublisher!)
-    self.navigationController?.pushViewController(nextVC, animated: true)
-  }
-
-  private func showRenameTagScreen() {
-    let renameTagVC = RenameTagViewController(tagPublisher: tagPublisher!)
-    navigationController?.pushViewController(renameTagVC, animated: true)
-  }
-
-  private func showTagManagerScreen() {
-    let tagManagerVC = TagManagerViewController(tagPublisher: tagPublisher)
-    navigationController?.pushViewController(tagManagerVC, animated: true)
-  }
-
-  private func showMusicalThreadsScreen() {
-    let nextVC = MusicalThreadsViewController(tagPublisher: tagPublisher!)
-    navigationController?.pushViewController(nextVC, animated: true)
+    if let viewController = nextViewController {
+      navigationController?.pushViewController(viewController, animated: true)
+    }
   }
 }
 
@@ -456,8 +484,8 @@ extension DashboardViewController {
       feature: .tagManager
     )
     let capacitiveVisualizer = DashboardItem(
-      name: "Cap. Visualizer",
-      description: "View capacitive values of touch sensor lines ",
+      name: "Capacitive Sense Visualizer",
+      description: "View capacitive values of touch sensor lines",
       enabled: isGearConnected,
       feature: .capVisualizer
     )
@@ -467,9 +495,37 @@ extension DashboardViewController {
       enabled: isGearConnected,
       feature: .musicalThread
     )
+    let firmwareUpdate = DashboardItem(
+      name: "Firmware Updates",
+      description: "Install the latest updates",
+      enabled: isTagConnected,
+      feature: .firmwareUpdates
+    )
+    let placesSample = DashboardItem(
+      name: "Places",
+      description: "",
+      enabled: isGearConnected,
+      feature: .places
+    )
 
-    let apiItems = [gesture, haptics, leds, capacitiveVisualizer, renameTag, tagManager]
-    let sampleUseCaseItems = [musicalThreads]
+    let imuDataCollection = DashboardItem(
+      name: "Motion Capture",
+      description: "Record IMU motion sensor data ",
+      enabled: isTagConnected,
+      feature: .imu
+    )
+
+    let apiItems = [
+      gesture,
+      haptics,
+      leds,
+      capacitiveVisualizer,
+      renameTag,
+      tagManager,
+      firmwareUpdate,
+      imuDataCollection,
+    ]
+    let sampleUseCaseItems = [musicalThreads, placesSample]
 
     var snapshot = NSDiffableDataSourceSnapshot<Section, DashboardItem>()
     snapshot.appendSections([.apis, .sampleUseCases])
@@ -498,14 +554,60 @@ extension DashboardViewController {
       if isTagDisconnected {
         errorMessage = Constants.tagDisconnectedSnackbarMessage
         gearNameLabel.text = "Disconnected"
+        rssiLabel.text = ""
+        timerPublisher?.connect().cancel()
+        let action = MDCSnackbarMessageAction()
+        let actionHandler = { [weak self] () in
+          guard let self = self else { return }
+          self.showTagDisconnectedHelpAlert()
+        }
+        action.handler = actionHandler
+        action.title = Constants.tagDisconnectedSnackbarActionText
+        let message = MDCSnackbarMessage(text: errorMessage)
+        message.action = action
+        MDCSnackbarManager.default.setButtonTitleColor(.white, for: .normal)
+        MDCSnackbarManager.default.show(message)
       } else {
-        errorMessage = Constants.tagNotAttachedSnackbarMessage
         gearNameLabel.text = "Not Attached"
       }
       connectionStatusView.backgroundColor = .gearDisconnected
       gearNameLabel.textColor = .disabledText
       isGearConnected = false
-      MDCSnackbarManager.default.show(MDCSnackbarMessage(text: errorMessage))
     }
+  }
+
+  private func showTagDisconnectedHelpAlert() {
+    let alertViewController = AlertViewController()
+    let paragraphStyle = NSMutableParagraphStyle()
+    paragraphStyle.lineHeightMultiple = 1.28
+
+    let attributedDescription = NSMutableAttributedString(
+      string: Constants.tagDisconnectedAlertDescription + Constants.tagDisconnectedReason,
+      attributes: [
+        NSAttributedString.Key.kern: 0.25,
+        NSAttributedString.Key.paragraphStyle: paragraphStyle,
+      ]
+    )
+    let range = NSString(
+      string: attributedDescription.string
+    ).range(of: Constants.tagDisconnectedReason)
+    attributedDescription.addAttributes(
+      [
+        NSAttributedString.Key.foregroundColor: UIColor.alertDescription,
+        NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16, weight: .medium) as Any,
+      ],
+      range: range
+    )
+
+    alertViewController.configureAlertView(
+      attibutedTitle: NSAttributedString(string: Constants.tagDisconnectedAlertTitle),
+      attibutedDescription: attributedDescription,
+      acceptButtonTitle: Constants.alertAcceptButtonText,
+      acceptAction: nil,
+      cancelAction: nil
+    )
+    alertViewController.modalPresentationStyle = .custom
+    alertViewController.modalTransitionStyle = .crossDissolve
+    AppDelegate.topViewController?.present(alertViewController, animated: true)
   }
 }

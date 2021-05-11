@@ -81,7 +81,6 @@ class TagDetailsViewController: UIViewController {
         if self.selectedTag.identifier == tag.identifier {
           tag.registerSubscriptions(self.createSubscriptions)
           self.subscribeGearConnection(tag)
-          self.fetchComponentInfo(componentID: tag.tagComponent.componentID)
         } else {
           // if selected tag is not connected then connect it.
           self.connectToTag()
@@ -90,38 +89,17 @@ class TagDetailsViewController: UIViewController {
     } else {
       MDCSnackbarManager.default.show(MDCSnackbarMessage(text: Constants.tagIsNotCurrentTag))
     }
-  }
-
-  /// Fetch tag firmware version.
-  private func fetchComponentInfo(componentID: UInt32) {
-    tagPublisher?
-      // Ensure the tag firmware is not replayed every time the tag or gear reconnects.
-      .prefix(1)
-      // Combine requires the Error type to match before applying flatMap.
-      .mapNeverToError()
-      .flatMap { tag -> AnyPublisher<ComponentInfo, Error> in
-        // Create command request.
-        let request = ComponentInfoCommand(componentID: tag.tagComponent.componentID)
-        // Send a command request to fetch tag firmaware version.
-        return tag.enqueue(request)
-      }.sink { completion in
-        switch completion {
-        case .finished:
-          break
-        case .failure(let error):
-          MDCSnackbarManager.default.show(MDCSnackbarMessage(text: "\(error)"))
-        }
-      } receiveValue: { [weak self] componentInfo in
-        guard let self = self else { return }
-        print("Received device info.")
-        self.versionLabel.text = componentInfo.version
-      }.addTo(&observers)
+    if let tag = selectedTag as? ConnectedTag {
+      versionLabel.text = tag.tagComponent.version?.description ?? "--"
+    }
   }
 
   /// Disconnect command call to disconnect the connected tag.
   private func disconnectTag() {
-    // Only connected tags can be disconnected.
+
     guard let tag = selectedTag as? ConnectedTag else {
+      // If it's not current Tag then remove it from Preferences.
+      removeTagFromKnownTags()
       return
     }
 
@@ -199,6 +177,8 @@ class TagDetailsViewController: UIViewController {
         case .disconnected(let error):
           print("Disconnected with error: \(String(describing: error))")
           self.updateUIForTagDisconnect()
+        @unknown default:
+          fatalError("Unknown connection state.")
         }
       }.addTo(&observers)
   }
@@ -208,10 +188,10 @@ class TagDetailsViewController: UIViewController {
     // Subscibe gear connection and battery status events.
     subscribeGearConnection(tag)
     tag.registerSubscriptions(createSubscriptions)
-    // fetch device firmware version.
-    fetchComponentInfo(componentID: tag.tagComponent.componentID)
     // Update tag status to `Current tag`.
     updateTagStatus()
+    // Update tag firmware version.
+    versionLabel.text = tag.tagComponent.version?.description ?? "--"
   }
 
   @IBAction func setCurrentTag(_ sender: Any) {

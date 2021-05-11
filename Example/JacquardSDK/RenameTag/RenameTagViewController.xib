@@ -11,7 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RenameTagViewController" customModule="JacquardSDK_Example" customModuleProvider="target">
             <connections>
-                <outlet property="rebootWarningLabel" destination="ka7-xQ-VxL" id="hON-iU-qDK"/>
                 <outlet property="renameButton" destination="aVK-ha-xZl" id="gTE-ix-tK7"/>
                 <outlet property="tagNameLabel" destination="sEm-0O-ef1" id="7Qe-gI-Yfb"/>
                 <outlet property="view" destination="iN0-l3-epB" id="orq-yd-ZPt"/>
@@ -68,7 +67,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="ZHF-hF-4Oi"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                     <state key="normal" title="Rename This Tag">
                         <color key="titleColor" red="0.10196078431372549" green="0.45098039215686275" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
@@ -76,12 +75,6 @@
                         <action selector="rename:" destination="-1" eventType="touchUpInside" id="2dL-y9-Y0X"/>
                     </connections>
                 </button>
-                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The tag is rebooting to reflect the updated name. Please wait..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ka7-xQ-VxL">
-                    <rect key="frame" x="20" y="569" width="335" height="48"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <color key="textColor" systemColor="systemRedColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -90,11 +83,8 @@
                 <constraint firstAttribute="trailing" secondItem="aVK-ha-xZl" secondAttribute="trailing" constant="24" id="3Wt-JS-EH2"/>
                 <constraint firstItem="sEm-0O-ef1" firstAttribute="top" secondItem="ASm-YY-Drz" secondAttribute="bottom" constant="8" symbolic="YES" id="3pS-4l-jC7"/>
                 <constraint firstAttribute="trailing" secondItem="ASm-YY-Drz" secondAttribute="trailing" constant="24" id="41u-a1-vDz"/>
-                <constraint firstItem="ka7-xQ-VxL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="6Bd-ZW-zZ2"/>
                 <constraint firstItem="ASm-YY-Drz" firstAttribute="top" secondItem="2Ik-rm-EEm" secondAttribute="bottom" constant="16" id="80L-YN-Ouj"/>
-                <constraint firstAttribute="bottom" secondItem="ka7-xQ-VxL" secondAttribute="bottom" constant="50" id="9No-Im-HKT"/>
                 <constraint firstAttribute="trailing" secondItem="d7t-yr-Z1k" secondAttribute="trailing" id="Ec3-DO-53q"/>
-                <constraint firstAttribute="trailing" secondItem="ka7-xQ-VxL" secondAttribute="trailing" constant="20" id="HRO-xg-fFc"/>
                 <constraint firstItem="aVK-ha-xZl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="KVe-6P-lLV"/>
                 <constraint firstItem="IYC-Vi-R2j" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="Nlk-vG-fJU"/>
                 <constraint firstItem="d7t-yr-Z1k" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="RM4-8p-P3U"/>
@@ -114,9 +104,6 @@
         <image name="JQTag" width="179" height="141"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
