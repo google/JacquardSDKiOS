@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScanningViewController" customModule="JacquardSDK_Example" customModuleProvider="target">
+            <connections>
+                <outlet property="downArrowStackView" destination="7hA-qC-B4y" id="JnG-Nh-ds0"/>
+                <outlet property="scanButton" destination="bdp-lp-aVh" id="BYi-dp-WTw"/>
+                <outlet property="scanDescriptionLabel" destination="0kZ-IM-i13" id="4CJ-CA-hOq"/>
+                <outlet property="searchingLabel" destination="goi-xL-ifg" id="sgw-i2-Cvz"/>
+                <outlet property="stopScanButtonHeight" destination="KtC-Xd-MXe" id="vsE-Q5-xnq"/>
+                <outlet property="tagsTableView" destination="hdt-gT-feR" id="yH3-bt-TEe"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="7hA-qC-B4y">
+                    <rect key="frame" x="132" y="237.5" width="20" height="23"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_downArrow" translatesAutoresizingMaskIntoConstraints="NO" id="NaA-Zl-fUo">
+                            <rect key="frame" x="4" y="0.0" width="12" height="16"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="16" id="WJI-7K-Uka"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6m-6T-sQx">
+                            <rect key="frame" x="0.0" y="21" width="20" height="2"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="2" id="Cqa-XZ-fqp"/>
+                                <constraint firstAttribute="width" constant="20" id="pW1-ng-1jx"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Y6m-6T-sQx" secondAttribute="trailing" id="0Gb-7W-mMx"/>
+                        <constraint firstItem="Y6m-6T-sQx" firstAttribute="leading" secondItem="7hA-qC-B4y" secondAttribute="leading" id="FVc-gA-6TO"/>
+                        <constraint firstAttribute="bottom" secondItem="Y6m-6T-sQx" secondAttribute="bottom" id="cs9-FX-Axr"/>
+                    </constraints>
+                </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Charge your Tag until the LED is pulsing white. Then, press and hold the power button on your Tag for 3 seconds to pair. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kZ-IM-i13">
+                    <rect key="frame" x="37" y="115" width="300" height="79.5"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No new tags found nearby" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="goi-xL-ifg">
+                    <rect key="frame" x="87" y="450.5" width="200" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="JQTag" translatesAutoresizingMaskIntoConstraints="NO" id="hqG-9U-c50">
+                    <rect key="frame" x="97.5" y="229.5" width="179" height="141"/>
+                </imageView>
+                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hdt-gT-feR">
+                    <rect key="frame" x="24" y="378.5" width="327" height="202.5"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdp-lp-aVh" customClass="GreyRoundCornerButton" customModule="JacquardSDK_Example" customModuleProvider="target">
+                    <rect key="frame" x="67.5" y="589" width="240" height="48"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="WsK-PB-IS3"/>
+                        <constraint firstAttribute="width" constant="240" id="haQ-gH-xMS"/>
+                    </constraints>
+                    <state key="normal" title="Scan"/>
+                    <connections>
+                        <action selector="scanButtonTapped:" destination="-1" eventType="touchUpInside" id="26c-cA-Gcr"/>
+                    </connections>
+                </button>
+                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CDC-ZR-6QJ" userLabel="StopScan">
+                    <rect key="frame" x="20" y="643" width="335" height="0.0"/>
+                    <constraints>
+                        <constraint firstAttribute="height" id="KtC-Xd-MXe"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <state key="normal" title="Stop Scanning">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="stopScanButtonTapped:" destination="-1" eventType="touchUpInside" id="fta-Ri-Eq3"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="hqG-9U-c50" firstAttribute="centerX" secondItem="0kZ-IM-i13" secondAttribute="centerX" id="1Rz-XO-paz"/>
+                <constraint firstItem="7hA-qC-B4y" firstAttribute="centerX" secondItem="hqG-9U-c50" secondAttribute="centerX" constant="-45" id="2cZ-Qy-yja"/>
+                <constraint firstItem="goi-xL-ifg" firstAttribute="centerX" secondItem="hqG-9U-c50" secondAttribute="centerX" id="7Vz-Qz-cCI"/>
+                <constraint firstItem="hdt-gT-feR" firstAttribute="top" secondItem="hqG-9U-c50" secondAttribute="bottom" constant="8" symbolic="YES" id="EPj-e1-1iA"/>
+                <constraint firstItem="0kZ-IM-i13" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="37" id="KxE-TT-bhQ"/>
+                <constraint firstItem="7hA-qC-B4y" firstAttribute="top" secondItem="hqG-9U-c50" secondAttribute="top" constant="8" id="Kzn-9q-ivH"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="CDC-ZR-6QJ" secondAttribute="trailing" constant="20" id="NVL-bs-pNU"/>
+                <constraint firstItem="bdp-lp-aVh" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Ndm-t6-bS5"/>
+                <constraint firstItem="bdp-lp-aVh" firstAttribute="top" secondItem="hdt-gT-feR" secondAttribute="bottom" constant="8" symbolic="YES" id="RVx-k3-SVW"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hdt-gT-feR" secondAttribute="trailing" constant="24" id="Rvk-Q0-A2O"/>
+                <constraint firstItem="hdt-gT-feR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="U73-Dw-saa"/>
+                <constraint firstItem="hqG-9U-c50" firstAttribute="top" secondItem="0kZ-IM-i13" secondAttribute="bottom" constant="35" id="VNM-4i-mPF"/>
+                <constraint firstItem="goi-xL-ifg" firstAttribute="top" secondItem="hqG-9U-c50" secondAttribute="bottom" constant="80" id="W46-DD-OjL"/>
+                <constraint firstItem="CDC-ZR-6QJ" firstAttribute="top" secondItem="bdp-lp-aVh" secondAttribute="bottom" constant="6" id="acH-B3-JtB"/>
+                <constraint firstItem="CDC-ZR-6QJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="d8C-Hh-hDV"/>
+                <constraint firstItem="0kZ-IM-i13" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="115" id="h8F-a3-5P4"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="CDC-ZR-6QJ" secondAttribute="bottom" constant="24" id="sXG-x3-Eez"/>
+                <constraint firstAttribute="trailing" secondItem="0kZ-IM-i13" secondAttribute="trailing" constant="38" id="uMa-tf-vjk"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="99.776785714285708"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="bdp-lp-aVh">
+            <size key="intrinsicContentSize" width="33" height="36"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="JQTag" width="179" height="141"/>
+        <image name="ic_downArrow" width="12" height="16"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

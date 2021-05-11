@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="hapticCell" rowHeight="80" id="KGk-i7-Jjw" customClass="HapticCell" customModule="JacquardSDK_Example" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HapticIcon" translatesAutoresizingMaskIntoConstraints="NO" id="mQv-sq-OTj">
+                        <rect key="frame" x="27" y="15" width="49.5" height="49.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="49.5" id="0wj-2Z-RCH"/>
+                            <constraint firstAttribute="height" constant="49.5" id="DIc-Zx-SrJ"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Header" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKf-Vo-dSw">
+                        <rect key="frame" x="102" y="25" width="254" height="30"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Jk-ux-f36">
+                        <rect key="frame" x="368" y="30" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="5Ck-WX-ruD"/>
+                            <constraint firstAttribute="height" constant="20" id="VVB-Cm-u8N"/>
+                        </constraints>
+                        <state key="normal" image="Play"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="6Jk-ux-f36" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="6aY-Ih-guV"/>
+                    <constraint firstAttribute="bottom" secondItem="6Jk-ux-f36" secondAttribute="bottom" constant="30" id="CQi-E8-a7b"/>
+                    <constraint firstItem="6Jk-ux-f36" firstAttribute="leading" secondItem="yKf-Vo-dSw" secondAttribute="trailing" constant="12" id="M10-Ku-TF7"/>
+                    <constraint firstItem="yKf-Vo-dSw" firstAttribute="leading" secondItem="mQv-sq-OTj" secondAttribute="trailing" constant="25.420000000000002" id="Nm0-ZE-U7g"/>
+                    <constraint firstItem="mQv-sq-OTj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="Xuo-rJ-O5k"/>
+                    <constraint firstItem="yKf-Vo-dSw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="bfS-g1-YQj"/>
+                    <constraint firstItem="mQv-sq-OTj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="27" id="kk4-M0-p5U"/>
+                    <constraint firstAttribute="trailing" secondItem="6Jk-ux-f36" secondAttribute="trailing" constant="26" id="oLN-xU-3ep"/>
+                    <constraint firstAttribute="bottom" secondItem="mQv-sq-OTj" secondAttribute="bottom" constant="15.5" id="upg-Eq-PBj"/>
+                    <constraint firstAttribute="bottom" secondItem="yKf-Vo-dSw" secondAttribute="bottom" constant="25" id="zWf-ba-dOo"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="title" destination="yKf-Vo-dSw" id="cmV-Rt-2Uo"/>
+            </connections>
+            <point key="canvasLocation" x="142.02898550724638" y="98.4375"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="HapticIcon" width="40" height="40"/>
+        <image name="Play" width="20" height="20"/>
+    </resources>
+</document>

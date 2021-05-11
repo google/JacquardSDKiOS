@@ -1,0 +1,25 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Export xcframework"
+  lane :export_xcframework do
+    create_xcframework(
+      scheme: 'JacquardSDK',
+      xcodeproj: '_Pods.xcodeproj',
+      destinations: ['iOS'],
+      xcframework_output_directory: 'generated-framework'
+    )
+  end
+end

@@ -1,0 +1,20 @@
+use_frameworks!
+install! 'cocoapods', :share_schemes_for_development_pods => true
+
+platform :ios, '13.0'
+
+target 'JacquardSDK_Example' do
+
+  pod 'JacquardSDK', :path => '../', :testspecs => ['Tests']
+
+  pod 'ProgressHUD', '~> 13'
+  pod 'MaterialComponents'
+  pod 'Starling', :git => 'https://github.com/matthewreagan/Starling.git', :commit => 'bf7fb2be59863b4eae8f61694c30b53107135ea1'
+  
+  target 'JacquardSDK_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
+
