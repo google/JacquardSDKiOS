@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Capability Enumeration Reference</title>
+    <link rel="stylesheet" type="text/css" href="../../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../../js/jquery.min.js" defer></script>
+    <script src="../../js/jazzy.js" defer></script>
+    
+    <script src="../../js/lunr.min.js" defer></script>
+    <script src="../../js/typeahead.jquery.js" defer></script>
+    <script src="../../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Enum/Capability" class="dashAnchor"></a>
+
+    <a title="Capability Enumeration Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../../index.html">
+          JacquardSDK 0.1.0 Docs
+        </a>
+         (100% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/google/JacquardSDKiOS">
+            <img class="header-icon" src="../../img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../../index.html">JacquardSDK Reference</a>
+      <img class="carat" src="../../img/carat.png" />
+      Capability Enumeration Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../../Getting%20Started.html">Getting Started</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../tutorial.html">Tutorial</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../updating-firmware.html">Updating Firmware</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../integration.html">Integration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../api-overview.html">API Overview</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../releases.html">Releases</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../license.html">License</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../contributing.html">Contributing</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../code-of-conduct.html">Code of Conduct</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../../Connecting%20to%20Tags.html">Connecting to Tags</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Protocols/JacquardManager.html">JacquardManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/JacquardManagerImplementation.html">JacquardManagerImplementation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Enums/ManagerScanningError.html">ManagerScanningError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Enums/TagConnectionState.html">TagConnectionState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Enums/TagConnectionError.html">TagConnectionError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../../Tags.html">Tags</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Protocols/JacquardTag.html">JacquardTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Protocols/ConnectedTag.html">ConnectedTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Protocols/SubscribableTag.html">SubscribableTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Protocols/AdvertisedTag.html">AdvertisedTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Protocols/PreConnectedTag.html">PreConnectedTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Tags.html#/s:11JacquardSDK14ConnectableTagP">ConnectableTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Enums/TouchMode.html">TouchMode</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Enums/SetNameError.html">SetNameError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../../Components%20and%20Gear.html">Components and Gear</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Protocols/Component.html">Component</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Components%20and%20Gear.html#/s:11JacquardSDK11ComponentIDa">ComponentID</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Components%20and%20Gear.html#/s:11JacquardSDK12GearMetadataa">GearMetadata</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/Google_Jacquard_Protocol_Public_Sdk_GearMetadata.html">Google_Jacquard_Protocol_Public_Sdk_GearMetadata</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/Google_Jacquard_Protocol_Public_Sdk_GearMetadata/Capability.html">– Capability</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/Google_Jacquard_Protocol_Public_Sdk_GearMetadata/GearData.html">– GearData</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/ComponentInfo.html">ComponentInfo</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../../Commands.html">Commands</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Protocols/CommandRequest.html">CommandRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Enums/CommandResponseStatus.html">CommandResponseStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Enums/JacquardCommandError.html">JacquardCommandError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/BatteryStatusCommand.html">BatteryStatusCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/PlayLEDPatternCommand.html">PlayLEDPatternCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/PlayLEDPatternCommand/Error.html">– Error</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/PlayLEDPatternCommand/LEDPatternType.html">– LEDPatternType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/PlayLEDPatternCommand/LEDPatternPlayType.html">– LEDPatternPlayType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/PlayLEDPatternCommand/Color.html">– Color</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/PlayLEDPatternCommand/Frame.html">– Frame</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/PlayHapticCommand.html">PlayHapticCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/PlayHapticCommand/HapticPatternType.html">– HapticPatternType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/PlayHapticCommand/Error.html">– Error</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/PlayHapticCommand/HapticFrame.html">– HapticFrame</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/DisconnectTagCommand.html">DisconnectTagCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/ComponentInfoCommand.html">ComponentInfoCommand</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../../Notifications.html">Notifications</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Protocols/NotificationSubscription.html">NotificationSubscription</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/BatteryStatusNotificationSubscription.html">BatteryStatusNotificationSubscription</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/GestureNotificationSubscription.html">GestureNotificationSubscription</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/ContinuousTouchNotificationSubscription.html">ContinuousTouchNotificationSubscription</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../../Response%20Types.html">Response Types</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/BatteryStatus.html">BatteryStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/BatteryStatus/ChargingState.html">– ChargingState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Enums/Gesture.html">Gesture</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Structs/TouchData.html">TouchData</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../../Logging.html">Logging</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Logging.html#/s:11JacquardSDK09setGlobalA9SDKLoggeryyAA6Logger_pF">setGlobalJacquardSDKLogger(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Protocols/Logger.html">Logger</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Enums/LogLevel.html">LogLevel</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Classes/PrintLogger.html">PrintLogger</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../../Other%20Enums.html">Other Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../../Enums/JacquardSDKVersion.html">JacquardSDKVersion</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            <h1>Capability</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Capability</span> <span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Enum</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt"><a href="../../Structs/Google_Jacquard_Protocol_Public_Sdk_GearMetadata.html">Google_Jacquard_Protocol_Public_Sdk_GearMetadata</a></span><span class="o">.</span><span class="kt">Capability</span><span class="p">:</span> <span class="kt">CaseIterable</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt"><a href="../../Structs/Google_Jacquard_Protocol_Public_Sdk_GearMetadata.html">Google_Jacquard_Protocol_Public_Sdk_GearMetadata</a></span><span class="o">.</span><span class="kt">Capability</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_ProtoNameProviding</span></code></pre>
+
+                </div>
+              </div>
+            <p>Gear capabilitiy options.</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SY8RawValueQa"></a>
+                    <a name="//apple_ref/swift/Alias/RawValue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SY8RawValueQa">RawValue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">RawValue</span> <span class="o">=</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK07Google_A33_Protocol_Public_Sdk_GearMetadataV10CapabilityO3ledyA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/led" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK07Google_A33_Protocol_Public_Sdk_GearMetadataV10CapabilityO3ledyA2EmF">led</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This gear can be used for <code><a href="../../Structs/PlayLEDPatternCommand.html">PlayLEDPatternCommand</a></code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">led</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK07Google_A33_Protocol_Public_Sdk_GearMetadataV10CapabilityO7gestureyA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/gesture" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK07Google_A33_Protocol_Public_Sdk_GearMetadataV10CapabilityO7gestureyA2EmF">gesture</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This gear supports gestures. i.e<code><a href="../../Enums/TouchMode.html#/s:11JacquardSDK9TouchModeO7gestureyA2CmF">TouchMode.gesture</a></code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">gesture</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK07Google_A33_Protocol_Public_Sdk_GearMetadataV10CapabilityO15touchDataStreamyA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/touchDataStream" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK07Google_A33_Protocol_Public_Sdk_GearMetadataV10CapabilityO15touchDataStreamyA2EmF">touchDataStream</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This gear supports touch data stream. i.e <code>TouchMode.touchDataStream</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">touchDataStream</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK07Google_A33_Protocol_Public_Sdk_GearMetadataV10CapabilityO6hapticyA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/haptic" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK07Google_A33_Protocol_Public_Sdk_GearMetadataV10CapabilityO6hapticyA2EmF">haptic</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This gear can be used for <code><a href="../../Structs/PlayHapticCommand.html">PlayHapticCommand</a></code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">haptic</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK07Google_A33_Protocol_Public_Sdk_GearMetadataV10CapabilityO12UNRECOGNIZEDyAESicAEmF"></a>
+                    <a name="//apple_ref/swift/Element/UNRECOGNIZED(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK07Google_A33_Protocol_Public_Sdk_GearMetadataV10CapabilityO12UNRECOGNIZEDyAESicAEmF">UNRECOGNIZED(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Unknown capability.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="kt">UNRECOGNIZED</span><span class="p">(</span><span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SwiftProtobuf4EnumPxycfc"></a>
+                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SwiftProtobuf4EnumPxycfc">init()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SwiftProtobuf4EnumP8rawValuexSgSi_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(rawValue:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SwiftProtobuf4EnumP8rawValuexSgSi_tcfc">init(rawValue:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">?(</span><span class="nv">rawValue</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SwiftProtobuf4EnumP8rawValueSivp"></a>
+                    <a name="//apple_ref/swift/Property/rawValue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SwiftProtobuf4EnumP8rawValueSivp">rawValue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">rawValue</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:s12CaseIterableP8allCases03AllD0QzvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/allCases" class="dashAnchor"></a>
+                    <a class="token" href="#/s:s12CaseIterableP8allCases03AllD0QzvpZ">allCases</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">allCases</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../../Structs/Google_Jacquard_Protocol_Public_Sdk_GearMetadata.html">Google_Jacquard_Protocol_Public_Sdk_GearMetadata</a></span><span class="o">.</span><span class="kt">Capability</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Code%20below%20here%20is%20support%20for%20the%20SwiftProtobuf%20runtime."></a>
+                <a name="//apple_ref/swift/Section/Code below here is support for the SwiftProtobuf runtime." class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Code%20below%20here%20is%20support%20for%20the%20SwiftProtobuf%20runtime."></a>
+                  <h3 class="section-name"><p>Code below here is support for the SwiftProtobuf runtime.</p>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SwiftProtobuf19_ProtoNameProvidingP17_protobuf_nameMapAA01_dH0VvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/_protobuf_nameMap" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SwiftProtobuf19_ProtoNameProvidingP17_protobuf_nameMapAA01_dH0VvpZ">_protobuf_nameMap</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">_protobuf_nameMap</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_NameMap</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <div id="jacquard_footer">
+        <div class="left_panel">
+            <h1>Get updates on Jacquard</h1>
+            <div>Join the <a href="https://github.com/google/JacquardSDKiOS/discussions/">Jacquard iOS SDK community discussion</a> on GitHub.</div>
+            <div>Learn more about Google Jaquard and sign up for Jacquard updates at the <a href="https://atap.google.com/jacquard/">Jacquard by Google website</a>.</div>
+        </div>
+        <div class="right_panel">
+            <table cellspacing="0" cellpadding="0">
+                <tbody><tr>
+                    <th>Sitemap</th>
+                    <th>Other</th>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="Getting%20Started.html">Getting Started</a>
+                        <a href="Connecting%20to%20Tags.html">Connecting to Tags</a>
+                        <a href="Tags.html">Tags</a>
+                        <a href="Components%20and%20Gear.html">Components and Gear</a>
+                        <a href="Commands.html">Commands</a>
+                        <a href="Notifications.html">Notifications</a>
+                    </td>
+                    <td>
+                        <a href="https://github.com/google/JacquardSDKiOS/discussions/">Jacquard iOS SDK Discussions</a>
+                        <a href="https://atap.google.com/jacquard/">Jacquard</a>
+                        <a href="https://atap.google.com">Google ATAP</a>
+                        <a href="license.html">License</a>
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+        <div>Copyright 2021-present, Google LLC.</div>
+    </div>
+  </body>
+</div>
+</html>

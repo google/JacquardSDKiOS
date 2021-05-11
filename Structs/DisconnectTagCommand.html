@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>DisconnectTagCommand Structure Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Struct/DisconnectTagCommand" class="dashAnchor"></a>
+
+    <a title="DisconnectTagCommand Structure Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          JacquardSDK 0.1.0 Docs
+        </a>
+         (100% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/google/JacquardSDKiOS">
+            <img class="header-icon" src="../img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">JacquardSDK Reference</a>
+      <img class="carat" src="../img/carat.png" />
+      DisconnectTagCommand Structure Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Getting%20Started.html">Getting Started</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../tutorial.html">Tutorial</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../updating-firmware.html">Updating Firmware</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../integration.html">Integration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../api-overview.html">API Overview</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../releases.html">Releases</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../license.html">License</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../contributing.html">Contributing</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../code-of-conduct.html">Code of Conduct</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Connecting%20to%20Tags.html">Connecting to Tags</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/JacquardManager.html">JacquardManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/JacquardManagerImplementation.html">JacquardManagerImplementation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ManagerScanningError.html">ManagerScanningError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TagConnectionState.html">TagConnectionState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TagConnectionError.html">TagConnectionError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Tags.html">Tags</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/JacquardTag.html">JacquardTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/ConnectedTag.html">ConnectedTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/SubscribableTag.html">SubscribableTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/AdvertisedTag.html">AdvertisedTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/PreConnectedTag.html">PreConnectedTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Tags.html#/s:11JacquardSDK14ConnectableTagP">ConnectableTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TouchMode.html">TouchMode</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/SetNameError.html">SetNameError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Components%20and%20Gear.html">Components and Gear</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/Component.html">Component</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Components%20and%20Gear.html#/s:11JacquardSDK11ComponentIDa">ComponentID</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Components%20and%20Gear.html#/s:11JacquardSDK12GearMetadataa">GearMetadata</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Google_Jacquard_Protocol_Public_Sdk_GearMetadata.html">Google_Jacquard_Protocol_Public_Sdk_GearMetadata</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Google_Jacquard_Protocol_Public_Sdk_GearMetadata/Capability.html">– Capability</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Google_Jacquard_Protocol_Public_Sdk_GearMetadata/GearData.html">– GearData</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/ComponentInfo.html">ComponentInfo</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Commands.html">Commands</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CommandRequest.html">CommandRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/CommandResponseStatus.html">CommandResponseStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/JacquardCommandError.html">JacquardCommandError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/BatteryStatusCommand.html">BatteryStatusCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/PlayLEDPatternCommand.html">PlayLEDPatternCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/PlayLEDPatternCommand/Error.html">– Error</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/PlayLEDPatternCommand/LEDPatternType.html">– LEDPatternType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/PlayLEDPatternCommand/LEDPatternPlayType.html">– LEDPatternPlayType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/PlayLEDPatternCommand/Color.html">– Color</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/PlayLEDPatternCommand/Frame.html">– Frame</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/PlayHapticCommand.html">PlayHapticCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/PlayHapticCommand/HapticPatternType.html">– HapticPatternType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/PlayHapticCommand/Error.html">– Error</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/PlayHapticCommand/HapticFrame.html">– HapticFrame</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DisconnectTagCommand.html">DisconnectTagCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/ComponentInfoCommand.html">ComponentInfoCommand</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Notifications.html">Notifications</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/NotificationSubscription.html">NotificationSubscription</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/BatteryStatusNotificationSubscription.html">BatteryStatusNotificationSubscription</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/GestureNotificationSubscription.html">GestureNotificationSubscription</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/ContinuousTouchNotificationSubscription.html">ContinuousTouchNotificationSubscription</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Response%20Types.html">Response Types</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/BatteryStatus.html">BatteryStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/BatteryStatus/ChargingState.html">– ChargingState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/Gesture.html">Gesture</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/TouchData.html">TouchData</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Logging.html">Logging</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Logging.html#/s:11JacquardSDK09setGlobalA9SDKLoggeryyAA6Logger_pF">setGlobalJacquardSDKLogger(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/Logger.html">Logger</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/LogLevel.html">LogLevel</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PrintLogger.html">PrintLogger</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Other%20Enums.html">Other Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/JacquardSDKVersion.html">JacquardSDKVersion</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            <h1>DisconnectTagCommand</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">DisconnectTagCommand</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/CommandRequest.html">CommandRequest</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>Command to request that the tag disconnects the Bluetooth connection.</p>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code>Commands</code>
+
+</div>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK20DisconnectTagCommandV8Responsea"></a>
+                    <a name="//apple_ref/swift/Alias/Response" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK20DisconnectTagCommandV8Responsea">Response</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><code>DisconnectTagCommand</code> response value is Void to indicate success.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">Response</span> <span class="o">=</span> <span class="kt">Void</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK20DisconnectTagCommandV13timeoutSecond18reconnectOnlyOnWomACs6UInt32V_Sbtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(timeoutSecond:reconnectOnlyOnWom:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK20DisconnectTagCommandV13timeoutSecond18reconnectOnlyOnWomACs6UInt32V_Sbtcfc">init(timeoutSecond:<wbr>reconnectOnlyOnWom:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes command.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">timeoutSecond</span><span class="p">:</span> <span class="kt">UInt32</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">reconnectOnlyOnWom</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>timeoutSecond</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Time to wait before disconnection.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>reconnectOnlyOnWom</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Reconnect only when the tag moves/wakes (default is to immediately reconnect).</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <div id="jacquard_footer">
+        <div class="left_panel">
+            <h1>Get updates on Jacquard</h1>
+            <div>Join the <a href="https://github.com/google/JacquardSDKiOS/discussions/">Jacquard iOS SDK community discussion</a> on GitHub.</div>
+            <div>Learn more about Google Jaquard and sign up for Jacquard updates at the <a href="https://atap.google.com/jacquard/">Jacquard by Google website</a>.</div>
+        </div>
+        <div class="right_panel">
+            <table cellspacing="0" cellpadding="0">
+                <tbody><tr>
+                    <th>Sitemap</th>
+                    <th>Other</th>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="Getting%20Started.html">Getting Started</a>
+                        <a href="Connecting%20to%20Tags.html">Connecting to Tags</a>
+                        <a href="Tags.html">Tags</a>
+                        <a href="Components%20and%20Gear.html">Components and Gear</a>
+                        <a href="Commands.html">Commands</a>
+                        <a href="Notifications.html">Notifications</a>
+                    </td>
+                    <td>
+                        <a href="https://github.com/google/JacquardSDKiOS/discussions/">Jacquard iOS SDK Discussions</a>
+                        <a href="https://atap.google.com/jacquard/">Jacquard</a>
+                        <a href="https://atap.google.com">Google ATAP</a>
+                        <a href="license.html">License</a>
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+        <div>Copyright 2021-present, Google LLC.</div>
+    </div>
+  </body>
+</div>
+</html>
