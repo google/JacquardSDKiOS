@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MusicalThreadsViewController" customModule="JacquardSDK_Example">
+            <connections>
+                <outlet property="threadViews" destination="jF2-fh-cP2" id="O83-0f-1sH"/>
+                <outlet property="view" destination="iN0-l3-epB" id="aBD-3F-7cW"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iyF-mM-Vbl">
+                    <rect key="frame" x="0.0" y="44" width="414" height="133"/>
+                    <subviews>
+                        <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch the threads to hear different sounds " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E3b-5m-co3" userLabel="Touch the threads to hear different sounds">
+                            <rect key="frame" x="24" y="80" width="366" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="22" id="odp-IB-qkU"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" red="0.39215686274509803" green="0.39215686274509803" blue="0.39215686274509803" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Musical Threads" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdG-yP-6cf">
+                            <rect key="frame" x="24" y="24" width="366" height="36"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="cdG-yP-6cf" firstAttribute="top" secondItem="iyF-mM-Vbl" secondAttribute="top" constant="24" id="CNP-B8-Dab"/>
+                        <constraint firstAttribute="trailing" secondItem="cdG-yP-6cf" secondAttribute="trailing" constant="24" id="GXc-su-PsT"/>
+                        <constraint firstAttribute="trailing" secondItem="E3b-5m-co3" secondAttribute="trailing" constant="24" id="KTj-MI-uAA"/>
+                        <constraint firstItem="cdG-yP-6cf" firstAttribute="leading" secondItem="iyF-mM-Vbl" secondAttribute="leading" constant="24" id="Uvn-cU-guP"/>
+                        <constraint firstAttribute="height" constant="133" id="aXf-5O-V3g"/>
+                        <constraint firstItem="E3b-5m-co3" firstAttribute="leading" secondItem="iyF-mM-Vbl" secondAttribute="leading" constant="24" id="bgZ-OB-69Q"/>
+                        <constraint firstItem="E3b-5m-co3" firstAttribute="top" secondItem="cdG-yP-6cf" secondAttribute="bottom" constant="20" id="jMW-vV-atw"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jF2-fh-cP2" userLabel="ThreadsView">
+                    <rect key="frame" x="1" y="177" width="412" height="338"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="jF2-fh-cP2" secondAttribute="height" multiplier="206:169" id="cMQ-3T-SdK"/>
+                        <constraint firstAttribute="height" constant="338" id="t12-9d-qqv"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="iyF-mM-Vbl" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="05g-e1-Hd4"/>
+                <constraint firstItem="jF2-fh-cP2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="1" id="0na-de-q4f"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="iyF-mM-Vbl" secondAttribute="trailing" id="18X-9k-CjO"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="jF2-fh-cP2" secondAttribute="trailing" constant="1" id="8yh-Gg-qH0"/>
+                <constraint firstItem="jF2-fh-cP2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="1" id="Yvf-oK-hDw"/>
+                <constraint firstItem="jF2-fh-cP2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="1" id="ZAM-m8-cyn"/>
+                <constraint firstItem="iyF-mM-Vbl" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="bwu-sJ-UXL"/>
+                <constraint firstItem="jF2-fh-cP2" firstAttribute="top" secondItem="iyF-mM-Vbl" secondAttribute="bottom" id="ca9-pv-eU5"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="jF2-fh-cP2" secondAttribute="trailing" constant="1" id="h4K-Fh-aEp"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="jF2-fh-cP2" secondAttribute="trailing" constant="1" id="jXt-9t-9h3"/>
+            </constraints>
+            <point key="canvasLocation" x="-200.00000000000003" y="152.67857142857142"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

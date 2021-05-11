@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CapacitiveVisualizerViewController" customModule="JacquardSDK_Example" customModuleProvider="target">
+            <connections>
+                <outlet property="barChartView" destination="wgL-q9-5H9" id="bgO-eR-nlj"/>
+                <outlet property="barValuesView" destination="KrC-4C-vp6" id="59N-Ig-R7C"/>
+                <outlet property="view" destination="iN0-l3-epB" id="OJb-QK-qAO"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Capacitive Visualizer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EzS-OW-fM9">
+                    <rect key="frame" x="24" y="114" width="366" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="sPI-AY-WI7"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View the capacitive values of each touch sensor line." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIH-p4-3y2">
+                    <rect key="frame" x="24" y="166" width="366" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="sPE-bl-F3Z"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.39215686274509803" green="0.39215686274509803" blue="0.39215686274509803" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wgL-q9-5H9">
+                    <rect key="frame" x="10" y="248" width="393" height="485"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KrC-4C-vp6">
+                    <rect key="frame" x="10" y="733" width="393" height="40"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="g8j-gZ-yvO"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="QIH-p4-3y2" firstAttribute="top" secondItem="EzS-OW-fM9" secondAttribute="bottom" constant="20" id="49Z-uq-8k1"/>
+                <constraint firstItem="KrC-4C-vp6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="6cq-lG-IZ9"/>
+                <constraint firstAttribute="bottom" secondItem="KrC-4C-vp6" secondAttribute="bottom" constant="123" id="EY6-hr-xiG"/>
+                <constraint firstItem="EzS-OW-fM9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="114" id="LCT-1Y-x5n"/>
+                <constraint firstItem="wgL-q9-5H9" firstAttribute="top" secondItem="QIH-p4-3y2" secondAttribute="bottom" constant="34" id="PGu-gh-PpI"/>
+                <constraint firstAttribute="trailing" secondItem="KrC-4C-vp6" secondAttribute="trailing" constant="11" id="RTs-sE-Moj"/>
+                <constraint firstAttribute="trailing" secondItem="QIH-p4-3y2" secondAttribute="trailing" constant="24" id="dQl-mB-zOE"/>
+                <constraint firstItem="KrC-4C-vp6" firstAttribute="top" secondItem="wgL-q9-5H9" secondAttribute="bottom" id="mKr-iz-b1Z"/>
+                <constraint firstAttribute="trailing" secondItem="wgL-q9-5H9" secondAttribute="trailing" constant="11" id="o9z-f3-PGI"/>
+                <constraint firstItem="wgL-q9-5H9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="ocw-yw-Yy8"/>
+                <constraint firstAttribute="trailing" secondItem="EzS-OW-fM9" secondAttribute="trailing" constant="24" id="yfW-Ei-NSh"/>
+                <constraint firstItem="QIH-p4-3y2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="zQi-17-6Sg"/>
+                <constraint firstItem="EzS-OW-fM9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="zjE-NP-PaP"/>
+            </constraints>
+            <point key="canvasLocation" x="21.600000000000001" y="81.409295352323838"/>
+        </view>
+    </objects>
+</document>
