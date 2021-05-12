@@ -312,64 +312,32 @@ the <a href="https://atap.google.com/jacquard/">Jacquard by Google website</a>.<
 
 <p>To run the example project, clone the repo, and run <code>pod install</code> from
 the Example directory first. For more detailed instructions, see the
-full documentation at <a href="https://google.github.com/JacquardSDKiOS">https://google.github.com/JacquardSDKiOS</a></p>
+full documentation at <a href="https://google.github.io/JacquardSDKiOS">https://google.github.io/JacquardSDKiOS</a></p>
 <h2 id='documentation-amp-tutorial' class='heading'>Documentation &amp; Tutorial</h2>
 
 <p>Full documentation including a tutorial is available at
-<a href="https://google.github.com/JacquardSDKiOS">https://google.github.com/JacquardSDKiOS</a></p>
+<a href="https://google.github.io/JacquardSDKiOS">https://google.github.io/JacquardSDKiOS</a></p>
 <h2 id='android-sdk' class='heading'>Android SDK</h2>
 
 <p>There is an Android equivalent to this SDK available at
 <a href="https://github.com/google/JacquardSDKAndroid">https://github.com/google/JacquardSDKAndroid</a></p>
 <h1 id='integrate-jacquardsdk-into-your-xcode-project' class='heading'>Integrate JacquardSDK into your Xcode project</h1>
-<h2 id='cocoapods' class='heading'>CocoaPods</h2>
 
-<p>JacquardSDK can be integrated into your code using
-<a href="https://cocoapods.org">CocoaPods</a> dependency management. This early
-release version has not yet been added to the CocoaPods directory, the
-best way to integrate it is using a git url. Simply add the following
-line to your <code>Podfile</code>:</p>
-<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'JacquardSDK'</span>
-</code></pre>
-<h2 id='swift-package-manager-with-xcode-project' class='heading'>Swift Package Manager - with Xcode project</h2>
-
-<p>If you are using the Swift Package Manager with an Xcode project file,
-simply select the <code>File &gt; Swift Packages &gt; Add Package Dependency...</code>
-menu option:</p>
-
-<p>Enter the repository URL
-<code>https://github.com/google/JacquardSDKiOS.git</code> then click <code>Next</code>.</p>
-
-<p>Use the default values in the next window of Version: &ldquo;Up to Next
-Major 0.1.0&rdquo; and again click <code>Next</code>.</p>
-
-<p>Check the <code>JacquardSDK</code> Library and click <code>Finish</code>.</p>
-
-<p>Xcode will now download all the relevant files and integrate them into</p>
-<h2 id='swift-package-manager-with-package-swift' class='heading'>Swift Package Manager - with Package.swift</h2>
-
-<p>If you are using the Swift Package Manager with a <code>Package.swift</code>
-file, you need to add a dependency to your and import the
-<code>JacquardSDK</code> library into the desired targets.</p>
-<pre class="highlight swift"><code><span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
-    <span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"JacquardSDK"</span><span class="p">,</span> <span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/google/JacquardSDKiOS.git"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"0.1.0"</span><span class="p">),</span>
-<span class="p">],</span>
-<span class="nv">targets</span><span class="p">:</span> <span class="p">[</span>
-    <span class="o">.</span><span class="nf">target</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"MyTarget"</span><span class="p">,</span> <span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span><span class="s">"JacquardSDK"</span><span class="p">]),</span>
-<span class="p">]</span>
-</code></pre>
+<p>See <a href="https://google.github.io/JacquardSDKiOS/integration.html">the integration
+docs</a>.</p>
 <h2 id='copyright' class='heading'>Copyright</h2>
 
 <p>Copyright 2021 Google LLC</p>
-<h2 id='license-sample-app' class='heading'>License - Sample App</h2>
+<h2 id='license' class='heading'>License</h2>
 
-<p>The code in this repository is licensed under the Apache License,
-Version 2.0. See the LICENSE file for more info.</p>
-<h2 id='license-framework' class='heading'>License - Framework</h2>
+<p>Two licenses apply to the Jacquard SDK. The binary-distributed
+framework is licensed under the Jacquard Software Development Kit
+License Agreement, while all files in the GitHub repository (including
+the sample app) are licensed under the Apache v2.0 license.</p>
 
-<p>The JacquardSDK Framework is licensed under the Jacquard Software
-Development Kit License Agreement. See the BINARY_LICENSE.md file for
-more info.</p>
+<p>Both licences appear in the LICENSE.md file in the repository and in
+the
+<a href="https://google.github.io/JacquardSDKiOS/license.html">documentation</a>.</p>
 
           </div>
         </section>

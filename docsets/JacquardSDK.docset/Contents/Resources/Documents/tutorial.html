@@ -362,35 +362,32 @@ to <code>Info.plist</code>. Open <code>Info.plist</code> in the Project Navigato
 description string with that key.</p>
 
 <p><img src="assets/tutorial-info-plist.jpg" alt="Info.plist"></p>
-<h2 id='4-integrate-jacquard-sdk-using-swift-package-manager' class='heading'>4. Integrate Jacquard SDK using Swift Package Manager</h2>
+<h2 id='4-integrate-jacquard-sdk-using-cocoapods' class='heading'>4. Integrate Jacquard SDK using Cocoapods</h2>
 
-<p>The easiest way to integrate the Jacquard SDK is using Swift Package
-Manager (if you would prefer to use CocoaPods, see <a href="integration.html">these
-instructions</a>). Simply select the <code>File &gt; Swift
-Packages &gt; Add Package Dependency...</code> menu option:</p>
+<p>The easiest way to integrate the Jacquard SDK is using Cocoapods dependency management. 
+If you are not familiar with Cocoapods usage and installation, see <a href="integration.html">these instructions</a>.</p>
 
-<p><img src="assets/tutorial-add-swift-package.jpg" alt="Screen shot of add Swift Package menu option"></p>
+<ol>
+<li><p>In the terminal, navigate to the directory containing your project&rsquo;s .xcodeproj file.</p></li>
+<li><p>Run this command: <code>pod init</code></p>
 
-<p>Enter the repository URL
-<code>https://github.com/google/JacquardSDKiOS.git</code> then click <code>Next</code>.</p>
+<ul>
+<li>A file named <em>Podfile</em> would be created in the directory.</li>
+</ul></li>
+<li><p>Open the Podfile and add the following lines to the Podfile:</p>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'JacquardSDK'</span>
+<span class="n">post_install</span> <span class="k">do</span> <span class="o">|</span><span class="n">installer</span><span class="o">|</span>
+  <span class="n">installer</span><span class="p">.</span><span class="nf">pods_project</span><span class="p">.</span><span class="nf">targets</span><span class="p">.</span><span class="nf">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">target</span><span class="o">|</span> <span class="n">target</span><span class="p">.</span><span class="nf">name</span> <span class="o">==</span> <span class="s2">"SwiftProtobuf"</span> <span class="p">}.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">target</span><span class="o">|</span>
+    <span class="n">target</span><span class="p">.</span><span class="nf">build_configurations</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+      <span class="n">config</span><span class="p">.</span><span class="nf">build_settings</span><span class="p">[</span><span class="s1">'BUILD_LIBRARY_FOR_DISTRIBUTION'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'YES'</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></li>
+<li><p>Save the podfile, and in terminal run the following command: <code>pod install</code></p></li>
+</ol>
 
-<p>Use the default values in the next window of Version: &ldquo;Up to Next
-Major 0.1.0&rdquo; and again click <code>Next</code>.</p>
-
-<p><img src="assets/integration-package-options.jpg" alt="Screen shot of package options"></p>
-
-<p>In the next screen, check <strong>both</strong> the <code>JacquardSDK</code> <strong>and</strong>
-<code>JacquardSDKCore</code> libraries and click <code>Finish</code>.</p>
-
-<p><img src="assets/integration-package-list.jpg" alt="Screen shot of package list"></p>
-
-<p>Even though you will only <code>import JacquardSDK</code> in your code, it&rsquo;s
-important to check both to ensure you link with the required
-<code>SwiftProtobuf</code> dependency (since Swift Package Manager does not yet
-have a way to specify dependencies for a binary target directly).</p>
-
-<p>Xcode will now download all the relevant files and integrate them into
-your project.</p>
+<p>Xcode will download all the relevant files and integrate them with your Xcode project. If your project is already open in xcode close it and open the generated <code>.xcworkspace</code> file.</p>
 <h2 id='5-add-the-scanning-table-view' class='heading'>5. Add the scanning table view</h2>
 
 <p>The app you will make has two screens. The first is a tableview
