@@ -273,10 +273,6 @@
           <div class="section-content top-matter">
             
             <h1 id='integrate-jacquardsdk-into-your-xcode-project' class='heading'>Integrate JacquardSDK into your Xcode project</h1>
-
-<p>Currently only CocoaPods is supported. We are working to resolve
-linking issues with Swift Package Manager <code>.binaryTarget</code>s that have
-non-binary target dependencies.</p>
 <h2 id='using-cocoapods' class='heading'>Using CocoaPods</h2>
 
 <p>To use CocoaPods to integrate Jacquard&rsquo;s iOS SDK, follow these steps:</p>
@@ -285,26 +281,20 @@ non-binary target dependencies.</p>
 <li><p>If cocoapods is not already installed on your Mac</p>
 
 <ul>
-<li>Refer Cocoapods <a href="https://guides.cocoapods.org/using/getting-started.html">getting
-started</a>.</li>
+<li>Refer Cocoapods <a href="https://guides.cocoapods.org/using/getting-started.html">getting started</a>.</li>
 </ul></li>
-<li><p>If your project does not have a <code>Podfile</code>, create one by following
-below steps:</p>
+<li><p>If your project does not have a <code>Podfile</code>, create one by following below steps:</p>
 
 <ul>
-<li>In the terminal, navigate to the directory containing your
-project&rsquo;s .xcodeproj file.</li>
+<li>In the terminal, navigate to the directory containing your project&rsquo;s .xcodeproj file.</li>
 <li>Run this command: <code>pod init</code></li>
 <li>A file named <strong>Podfile</strong> would be created in the directory.</li>
 </ul></li>
 <li><p>Edit the Podfile:</p>
 
 <ul>
-<li>In this file, add <code>pod &#39;JacquardSDK&#39;</code> to your project&rsquo;s app
-target.</li>
-<li>You will also need to add the below post install hook to work
-around a current limitation in the way Swift binary xcframeworks
-are linked</li>
+<li>In this file, add  <code>pod &#39;JacquardSDK&#39;</code> to your project&rsquo;s app target.</li>
+<li>You will also need to add the below post install hook to work around a current limitation in the way Swift binary xcframeworks are linked</li>
 </ul>
 <pre class="highlight ruby"><code><span class="n">post_install</span> <span class="k">do</span> <span class="o">|</span><span class="n">installer</span><span class="o">|</span>
   <span class="n">installer</span><span class="p">.</span><span class="nf">pods_project</span><span class="p">.</span><span class="nf">targets</span><span class="p">.</span><span class="nf">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">target</span><span class="o">|</span> <span class="n">target</span><span class="p">.</span><span class="nf">name</span> <span class="o">==</span> <span class="s2">"SwiftProtobuf"</span> <span class="p">}.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">target</span><span class="o">|</span>
@@ -314,8 +304,7 @@ are linked</li>
   <span class="k">end</span>
 <span class="k">end</span>
 </code></pre></li>
-<li><p>After these changes, your Podfile should look similar to the
-following:</p>
+<li><p>After these changes, your Podfile should look similar to the following:</p>
 <pre class="highlight ruby"><code><span class="n">platform</span> <span class="ss">:ios</span><span class="p">,</span> <span class="s1">'13.0'</span>
 
 <span class="n">use_frameworks!</span>
@@ -337,18 +326,14 @@ following:</p>
 <li><p>In the terminal, run <code>pod install</code>. </p>
 
 <ul>
-<li>If this fails, you may need to update your CocoaPods master spec
-repository checkout.</li>
-<li>Use the command <code>pod install --repo-update</code> and follow any
-instructions.</li>
+<li>If this fails, you may need to update your CocoaPods master spec repository checkout.</li>
+<li>Use the command <code>pod install --repo-update</code> and follow any instructions.</li>
 </ul></li>
 <li><p>Your project directory now has an <strong>.xcworkspace</strong> file.  </p>
 
 <ul>
-<li>If your project is already open in Xcode, close it and open the
-.xcworkspace file.</li>
-<li>From now on, you need to use this file to open your project,
-instead of its .xcodeproj file.</li>
+<li>If your project is already open in Xcode, close it and open the .xcworkspace file.</li>
+<li>From now on, you need to use this file to open your project, instead of its .xcodeproj file.</li>
 </ul></li>
 <li><p>To use the Jacquard API&rsquo;s import JacquardSDK wherever necessary, </p>
 <pre class="highlight swift"><code> <span class="c1">// In AppDelegate.swift or any other file where you're using JacquardSDK</span>
