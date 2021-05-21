@@ -62,8 +62,8 @@ important to set up signing and entitlements correctly. This setup can
 be done in the Target's "Signing and Capabilities" tab. The easiest
 way to manage signing and capabilities (assuming you are correctly
 logged into your developer account in Xcode's preferences) is to leave
-"Automatically manage signing" checked, we can then click the "+"
-button to find and add the Bluetooth capability.
+"Automatically manage signing" checked, and then click the "+
+Capability" button to find and add the Bluetooth capability.
 
 ![Xcode signing](assets/tutorial-signing.jpg)
 
@@ -94,22 +94,52 @@ If you are not familiar with Cocoapods usage and installation, see [these instru
 2. Run this command: `pod init`
     * A file named *Podfile* would be created in the directory.
 
-3. Open the Podfile and add the following lines to the Podfile:
+3. Open the Podfile and make the following three changes:
+    * Uncomment the `platform` directive and set to `13.0`:
+        ```ruby
+        platform :ios, '13.0'
+        ```
+    * Inside the `target`, add:
+        ```ruby
+        pod 'JacquardSDK'
+        ```
+    * At the end of the file (after `end`), add the following
+      `post_install` (see the [integration docs](integration.html) if
+      you're interested why this is necessary):
    
-    ```ruby
-    pod 'JacquardSDK'
-    post_install do |installer|
-      installer.pods_project.targets.select { |target| target.name == "SwiftProtobuf" }.each do |target|
-        target.build_configurations.each do |config|
-          config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
+        ```ruby
+        post_install do |installer|
+          installer.pods_project.targets.select { |target| target.name == "SwiftProtobuf" }.each do |target|
+            target.build_configurations.each do |config|
+              config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
+            end
+          end
         end
-      end
-    end
-    ```
+        ```
+    * Your entire `Podfile` should now look something like this:
+        ```ruby
+        platform :ios, '13.0'
 
+        target 'Jacquard Tutorial' do
+          use_frameworks!
+          pod 'JacquardSDK'
+        end
+        
+        post_install do |installer|
+          installer.pods_project.targets.select { |target| target.name == "SwiftProtobuf" }.each do |target|
+            target.build_configurations.each do |config|
+              config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
+            end
+          end
+        end
+        ```
 4. Save the podfile, and in terminal run the following command: `pod install`
 
-Xcode will download all the relevant files and integrate them with your Xcode project. If your project is already open in xcode close it and open the generated `.xcworkspace` file.
+Xcode will download all the relevant files and integrate them with
+your Xcode project. If your project is already open in xcode close it
+and open the generated `.xcworkspace` file. (If you get an error
+indicating that JacquardSDK could not be found, your CocoaPods cache
+may be out of date - try `pod install --repo-update` instead.)
 
 ## 5. Add the scanning table view
 
@@ -121,44 +151,65 @@ functions.
 First lets set up the Scanning view controller.
 
 1. Select `Main.storyboard` in the Project Navigator
-2. Add a table view by i. opening the Object Library (View menu ->
-   Show Library, or Command-Shift-L) i. find table view, and drag into
-   the view controller.  i. Resize the table view to fill the view
-   controller and add appropriate constraints in the usual way.
+2. Add a table view by
+    * opening the Object Library (View menu -> Show Library, or
+      Command-Shift-L)
+    * find table view, and drag into the view controller.
+    * Resize the table view to fill the view controller and add
+      appropriate constraints in the usual way.
 3. Your storyboard should look something like this: ![Initial
    storyboard](assets/tutorial-initial-storyboard.jpg)
 4. The one last step to do before you start writing code is to connect
    the table view to an outlet in your view controller.
-   i. Option-click `ViewController.swift` in the Project Navigator to
-   open it alongside the storyboard ii. Control-drag the table view
-   into the ViewController class body to create an outlet (call it
-   tableView) ![Creating an outlet](assets/tutorial-outlet.jpg)
+    * Option-click `ViewController.swift` in the Project Navigator to
+      open it alongside the storyboard
+    * Control-drag the table view into the ViewController class body
+      to create an outlet (call it tableView) ![Creating an
+      outlet](assets/tutorial-outlet.jpg)
 
-You're now ready to start coding! You will need to import two
-libraries into ViewController.swift. `JacquardSDK` and
-`Combine`. Keeping app state correct in the face of changing
-connection conditions etc. can be challenging. To make this easier and
-safer, the Jacquard SDK leans heavily on Apple's Combine* Functional
-Reactive Programming framework. You can read more about this approach
-in [API Overview](api-overview.html).
+You're now ready to start coding!
 
-With these two imports, your ViewController.swift should look like
-this:
+First, `import` two libraries into ViewController.swift, `JacquardSDK`
+and `Combine`.
+
+> Keeping app state correct in the face of changing connection
+> conditions etc. can be challenging. To make this easier and safer,
+> the Jacquard SDK leans heavily on Apple's Combine* Functional
+> Reactive Programming framework. You can read more about this
+> approach in [API Overview](api-overview.html).
+
+With the `tableView` outlet and these two imports added, your
+ViewController.swift should look like this:
 
 ![Outlet created](assets/tutorial-vc-1.jpg)
 
-The `JacquardSDKManager` protocol (and its concrete implementation,
+> If you see an Xcode error that `JacquardSDK` does not exist, you may
+> need to build (Cmd-B) the project once for Xcode to notice the new
+> libraries that CocoaPods has added.
+
+The `JacquardManager` protocol (and its concrete implementation,
 `JacquardManagerImplementation`) is the entry point to scanning for,
 and connecting to, tags. Since for this demo you don't need to supply
-a custom queue or any options, creating the manager is as simple as:
+a custom queue or any options, creating the manager is as simple as:[^init]
 
 ```swift
-let jqManager: JacquardManager = JacquardManagerImplementation()
+let jqManager: JacquardManager = JacquardManagerImplementation(publishQueue: .main, options: [:])
 ```
 
+[^init]: The eagle eyed may notice that it would be simpler to use the
+    default arguments. Unfortunately there is currently an issue with
+    the way the Swift binary `swiftinterface` file is generated for
+    Objective-C ABI classes that means
+    `JacquardManagerImplementation()` would compile but generate a
+    runtime exception. This will be fixed in the next
+    release. [#3](https://github.com/google/JacquardSDKiOS/issues/3).
+
+Add this as a property to the ViewController class.
+
 Since this code will make use of a number of `Combine` publishers, you
-need to store references to some `AnyCancelable` instances. Let's make
-that easy with a simple extension to track them in an array:
+need to store references to some `AnyCancellable` instances. Make that
+easy with a simple extension, and create an array property in
+`ViewController`
 
 ```swift
 extension AnyCancellable {
@@ -177,7 +228,8 @@ This tutorial app will start scanning as soon as possible. If you've
 used Apple's `CoreBluetooth` before, you will know that you need to
 wait for Bluetooth to become available before that will work. The
 Jacquard SDK exposes the state you need as a `Combine` publisher, so
-you can start scanning as soon as the state becomes `.poweredOn`.[^1]
+you can start scanning as soon as the state becomes
+`.poweredOn`.[^thereIsNoTry] Add this snippet to `viewDidLoad()`:
 
 ```swift
     jqManager.centralState.sink { [weak self] state in
@@ -191,11 +243,13 @@ you can start scanning as soon as the state becomes `.poweredOn`.[^1]
     }.addTo(&observations)
 ```
 
-[^1]: As always, in a real app try to avoid using the `try!` force-try.
+[^thereIsNoTry]: As always, in a real app try to avoid using the
+    `try!` force-try.
 
 Once scanning has commenced, any tags that are discovered will be
 available, again via a `Combine` publisher, from the `advertisingTag`
-var. To check everything is working so far, just print out found tags.
+var. To check everything is working so far, just print out found
+tags. Again, add this to `viewDidLoad()`:
 
 ```swift
     jqManager.advertisingTags.sink { advertisedTag in
@@ -263,7 +317,8 @@ different).
 ## 6. Displaying the advertised tags and connecting the TableView Delegate
 
 Here we are using a standard iOS approach to display the found tag in
-a cell and respond to a tapped cell. Use the code prepared here:
+a cell and respond to a tapped cell. Here is the full code -
+copy/paste to replace the entirety of `ViewController.swift`:
 
 ```swift
 import UIKit
@@ -304,7 +359,7 @@ class ViewController: UIViewController {
 
   @IBOutlet weak var tableView: UITableView!
 
-  let jqManager: JacquardManager = JacquardManagerImplementation()
+  let jqManager: JacquardManager = JacquardManagerImplementation(publishQueue: .main, options: [:])
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -363,12 +418,14 @@ Jacquard tags stop advertising after 60 seconds).
 ## 7. Displaying already connected tags
 
 When the tag is paired and connected to iOS, it will no longer
-advertise. Instead, the list of tags already known and connected to
-iOS can be retrieved. The view controller needs to be updated to
-display those for connection also.
+advertise. This means we need to use a different mechanism to obtain a
+connection object for an already-connected tag. The view controller
+will be updated to display those already-connected tags as well as
+advertising tags.
 
 Add an instance variable to the view controller to keep a consistent
-view of pre-connected tags, and also add a new `Section` for the table view:
+view of pre-connected tags, and also add a new entry to the `Section`
+enum for the table view:
 
 ```swift
 class ViewController: UIViewController {
@@ -384,32 +441,40 @@ class ViewController: UIViewController {
 }
 ```
 
-Like most CoreBluetooth functions, we can't read the list of connected tags until the `CBCentralState` is `.poweredOn`, so in `viewDidLoad` we will update the central state observation to also update our list of tags:
+Like most CoreBluetooth functions, we can't read the list of connected
+tags until the `CBCentralState` is `.poweredOn`, so in `viewDidLoad`
+we will update the central state observation to also update our list
+of tags:
 
 ```swift
-    jqManager.centralState.sink { [weak self] state in
-      switch state {
-      case .poweredOn:
-        guard let self = self else { return }
-        self.preConnectedTags = self.jqManager.preConnectedTags()
-        self.updateDataSource()
-        try! self.jqManager.startScanning()
-        print("Scanning...")
-      default:
-        break
-      }
-    }.addTo(&observations)
+jqManager.centralState.sink { [weak self] state in
+  switch state {
+  case .poweredOn:
+    guard let self = self else { return }
+    self.advertisedTags.append(advertisedTag)
+    //
+    // *** The following line is added
+    //
+    self.preConnectedTags = self.jqManager.preConnectedTags()
+    // ***
+    self.updateDataSource()
+    try! self.jqManager.startScanning()
+    print("Scanning...")
+  default:
+    break
+  }
+}.addTo(&observations)
 ```
 
 > Note that since reading pre-connected tags from CoreBluetooth is
 > synchronous only, this method won't automatically update if a nearby
 > tag wakes up and connects while the view is on screen. In a real app
-> you may wish to keep a list of known tag UUIDs - the [sample
-> app](https://github.com/google/JacquardSDKiOS) has an example of
+> you may wish to persist a list of known tag UUIDs - the [sample
+> app](https://github.com/google/JacquardSDKiOS) is an example of
 > doing that.
 
-Finally `updateDataSource()` needs to be updated to also display these
-tags in a new section:
+Finally the `updateDataSource()` method needs to be updated to also
+display these tags in a new section:
 
 ```swift
   func updateDataSource() {
@@ -427,13 +492,14 @@ tags in a new section:
 
 First create an empty View Controller class.
 
-1. File > New > File
+1. Right-click on the `Jacquard Tutorial` folder icon in the Project
+   Navigator and select `New File...`
 1. Select Cocoa Touch Class ![New file](assets/tutorial-new-file.jpg)
 1. Click Next
 1. Name the class `ConnectedViewController`, subclass of
    `UIViewController`. ![New
    viewcontroller](assets/tutorial-connected-viewcontroller.jpg)
-1. Click Next and save it within your Xcode project.
+1. Click Next and save
 
 The storyboard needs the second view controller, but first we need to
 embed our first view controller in a `NavigationController`.
@@ -483,14 +549,21 @@ Connecting to tags is an important step that is fully documented in
 > your app is always using the most recent connected tag instance -
 > resist the temptation to store a `ConnectedTag` in an instance
 > variable.
+>
+> One case that is not handled for you is when Bluetooth is turned off
+> (and possibly back on). You should observe the other states of
+> `jqManager.centralState` to respond to this.
 
 ### Using a connected tag
 
-First, let's update `ConnectedViewController.swift` to store the
+First, let's update `ConnectedViewController` to store the
 relevant connection publisher, and set the title by observing the
 tag's name. As above, the expected pattern is to interact
 with `ConnectedTag` instances always from the connection publisher (to
 ensure you are never using a stale/disconnected instance).
+
+Replace the entire contents of `ConnectedViewController.swift` with
+the following code block:
 
 ```swift
 import UIKit
@@ -532,14 +605,7 @@ later.
 
 Returning to the original `ViewController.swift` file, we will update
 `tableView(_, didSelectRowAt:)` to connect to the selected tag and
-present the second view controller.[^2]
-
-[^2]: It will usually be useful to have the `tagConnectionPublisher`
-    always replay the latest known tag. Combine doesn't have a
-    built-in share/replay operator, but the excellent
-    [CombineExt](https://github.com/CombineCommunity/CombineExt)
-    package does, which you can see used in the [sample
-    app](https://github.com/google/JacquardSDKiOS).
+present the second view controller.
 
 ```swift
 extension ViewController: UITableViewDelegate {
@@ -570,8 +636,8 @@ press the tag's button for four seconds to restart pairing mode).
 ## 10. Sending commands
 
 Now we'll explore sending commands to the tag, in this case
-`PlayLEDPatternCommand`, but commands are documented fully in the
-[Commands](Commands.html) documentation.
+`PlayLEDPatternCommand` (commands are documented in the
+[Commands](Commands.html) documentation).
 
 But first, lets tidy up that long Combine operator chain by creating a
 simpler publisher. Normally we're only interested in getting access to
@@ -584,7 +650,8 @@ both.
 
 When the `tagConnectionPublisher` instance variable is set in
 `ConnectedViewController.swift`, we will also create the derived
-publishers we want.
+publishers we want. Switch to `ConnectedViewController.swift`, add
+a `tagPublisher` property and set it by adding a `didSet` observer:
 
 ```swift
   var tagPublisher: AnyPublisher<ConnectedTag, Never>?
@@ -634,9 +701,10 @@ independently, but here we will use the tag's built-in LED).
 1. Drag a UIButton from the Object Library onto "Connected View Controller"
 1. Set the button's title to "Play LED Pattern"
 1. Apply constraints to locate the button wherever you wish
-1. Open `ConnectedViewController.swift` alongside, and control-drag
-   from the button to create a target/action method
-   ![Connecting button](assets/tutorial-play-led-action.jpg)
+1. Option-click `ConnectedViewController.swift` in the project
+   navigator to open it alongside the storyboard, and control-drag
+   from the button to create a target/action method ![Connecting
+   button](assets/tutorial-play-led-action.jpg)
 1. Name the method `playLEDTap`
 
 Sending a command to a tag has three phases, constructing the command
@@ -664,16 +732,21 @@ Your `playLEDTap` method should look something like:
 
 ```swift
   @IBAction func playLEDTap(_ sender: Any) {
+    let blue = PlayLEDPatternCommand.Color(red: 0, green: 0, blue: 255)
     let red = PlayLEDPatternCommand.Color(red: 255, green: 0, blue: 0)
+    let yellow = PlayLEDPatternCommand.Color(red: 255, green: 255, blue: 0)
+    let green = PlayLEDPatternCommand.Color(red: 0, green: 255, blue: 0)
     let off = PlayLEDPatternCommand.Color(red: 0, green: 0, blue: 0)
-    let onFrame = PlayLEDPatternCommand.Frame(color: red, durationMs: 250)
-    let offFrame = PlayLEDPatternCommand.Frame(color: off, durationMs: 250)
+
+    let frames = [blue, red, yellow, blue, green, red, off].map {
+      PlayLEDPatternCommand.Frame(color: $0, durationMs: 250)
+    }
 
     tagPublisher?
       .prefix(1)
       .flatMap { tag -> AnyPublisher<Void, Error> in
         let commandRequest = try! PlayLEDPatternCommand(
-          frames: [onFrame, offFrame],
+          frames: frames,
           durationMs: 6000,
           component: tag.tagComponent)
         return tag.enqueue(commandRequest)
@@ -690,26 +763,24 @@ connected tag and then stop. If we didn't apply that here, then if the
 tag disconnected and reconnected, the led pattern would be played
 again!
 
-One quick note before you try to run this. We haven't implemented
-reconnecting to a known tag here (you can see how to do that by saving
-the tag's `identifier` UUID in the [sample
-app](https://github.com/google/JacquardDSKiOS)). This means that to
-make your tag appear on the connection screen again, you will have to
-"Forget this device" in iOS Bluetooth settings again.
+Try building and running your app - you should be able to make the LED
+play this pattern.
 
 ## 11. Observing Notifications
 
 Commands are initiated by the app and sent to the tag (possibly with a
 response). Notifications on the other hand originate from the tag at
-any time. We can ask to be notified any time a notification of
-interest occurs. As you may have guessed, the notification
-subscriptions come in the form of a Combine publisher. There is a
-small extra step to get a `SubscribableTag`. This is important for how
-State Restoration is handled, which is explained in the
-[`ConnectedTag`](ConnectedTag.html) documentation.
+any time. As you may have guessed, notification subscriptions come in
+the form of a Combine publisher.
 
-First create a method which will do something useful with a gesture
-notification. In this case "useful" means printing out to the console:
+> Instead of using the `ConnectedTag` instance directly, there is a
+> small extra step to get a `SubscribableTag`. This is an important
+> part of how State Restoration is handled, which is explained in the
+> [`ConnectedTag`](ConnectedTag.html) documentation.
+
+First add a method to `ConnectedViewContrller` which will do something
+useful with a gesture notification. In this case we will define
+"useful" to mean printing out to the console:
 
 ```swift
   func createSubscriptions(_ tag: SubscribableTag) {
@@ -721,9 +792,9 @@ notification. In this case "useful" means printing out to the console:
   }
 ```
 
-Now we need to call this method with a `SubscribableTag` instance
-whenever the tag connects or reconnects. Place this code in your
-`viewDidLoad()`:
+Now call this method with a `SubscribableTag` instance whenever the
+tag connects or reconnects. Place this code in the `viewDidLoad()`
+method of `ConnectedViewController`:
 
 ```swift
     tagPublisher?
