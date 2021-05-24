@@ -20,9 +20,11 @@ come with one tag). Currently supported products are:
 You can find links to purchase these products on the [Google Jacquard
 website](https://atap.google.com/jacquard/products/).
 
-> If yo have just opened a new retail Jacquard product, your tag
+> If you have just opened a new retail Jacquard product, your tag
 > probably needs a firmware update (and perhaps charging). Review the
-> steps in the [Updating Firmware](updating-firmware.html) page.
+> steps in the [Updating
+> Firmware](https://google.github.io/JacquardSDKiOS/updating-firmware.html)
+> page.
 
 # Join the Jacquard community!
 
