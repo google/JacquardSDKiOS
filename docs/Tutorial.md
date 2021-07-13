@@ -545,7 +545,7 @@ Connecting to tags is an important step that is fully documented in
 > relatively quick succession.
 > 
 > Relying on the Combine Publishers as shown in this tutorial and the
-> [sample app](https://github.com/google/JacquardDSKiOS) will ensure
+> [sample app](https://github.com/google/JacquardSDKiOS) will ensure
 > your app is always using the most recent connected tag instance -
 > resist the temptation to store a `ConnectedTag` in an instance
 > variable.
@@ -812,6 +812,6 @@ gesture logged into the Xcode console.
 You have now successfully integrated the Jacquard SDK and learned how
 to connect, send commands and observe notifications. There's more to
 the SDK which you can see demonstrated in the [sample
-app](https://github.com/google/JacquardDSKiOS) and read about in the
+app](https://github.com/google/JacquardSDKiOS) and read about in the
 SDK documentation (see the table of contents on the left side of this
 page).
