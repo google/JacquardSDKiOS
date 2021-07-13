@@ -331,33 +331,12 @@ best way to integrate it is using a git url. Simply add the following
 line to your <code>Podfile</code>:</p>
 <pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'JacquardSDK'</span>
 </code></pre>
-<h2 id='swift-package-manager-with-xcode-project' class='heading'>Swift Package Manager - with Xcode project</h2>
+<h2 id='swift-package-managerg' class='heading'>Swift Package Manager</h2>
 
-<p>If you are using the Swift Package Manager with an Xcode project file,
-simply select the <code>File &gt; Swift Packages &gt; Add Package Dependency...</code>
-menu option:</p>
+<p>Currently only CocoaPods is
+supported while we work to resolve linking issues with Swift Package
+Manager `.binaryTarget`s that have non-binary target dependencies.</p>
 
-<p>Enter the repository URL
-<code>https://github.com/google/JacquardSDKiOS.git</code> then click <code>Next</code>.</p>
-
-<p>Use the default values in the next window of Version: &ldquo;Up to Next
-Major 0.1.0&rdquo; and again click <code>Next</code>.</p>
-
-<p>Check the <code>JacquardSDK</code> Library and click <code>Finish</code>.</p>
-
-<p>Xcode will now download all the relevant files and integrate them into</p>
-<h2 id='swift-package-manager-with-package-swift' class='heading'>Swift Package Manager - with Package.swift</h2>
-
-<p>If you are using the Swift Package Manager with a <code>Package.swift</code>
-file, you need to add a dependency to your and import the
-<code>JacquardSDK</code> library into the desired targets.</p>
-<pre class="highlight swift"><code><span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
-    <span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"JacquardSDK"</span><span class="p">,</span> <span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/google/JacquardSDKiOS.git"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"0.1.0"</span><span class="p">),</span>
-<span class="p">],</span>
-<span class="nv">targets</span><span class="p">:</span> <span class="p">[</span>
-    <span class="o">.</span><span class="nf">target</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"MyTarget"</span><span class="p">,</span> <span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span><span class="s">"JacquardSDK"</span><span class="p">]),</span>
-<span class="p">]</span>
-</code></pre>
 <h2 id='copyright' class='heading'>Copyright</h2>
 
 <p>Copyright 2021 Google LLC</p>

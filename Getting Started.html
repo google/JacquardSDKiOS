@@ -314,9 +314,9 @@ the <a href="https://atap.google.com/jacquard/">Jacquard by Google website</a>.<
 <p>The sample app allows you to explore the functionality of the SDK and
 Jacquard gear. It also serves as a code example of how you can use the
 SDK in your own app. The sample app has some dependencies which need
-to be installed via CocoaPods. (You can use either CocoaPods or Swift
-Package Manager when you integrate with your own app, but CocoaPods is
-currently required for building the sample app).</p>
+to be installed via CocoaPods.  (Currently only CocoaPods is
+supported while we work to resolve linking issues with Swift Package
+Manager `.binaryTarget`s that have non-binary target dependencies.)</p>
 <pre class="highlight plaintext"><code>git clone https://github.com/google/JacquardSDKiOS.git
 cd JacquardSDKiOS/Example
 pod install
