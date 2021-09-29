@@ -20,7 +20,7 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="index.html">
-          JacquardSDK 0.1.0 Docs
+          JacquardSDK 0.2.0 Docs
         </a>
          (100% documented)
       </p>
@@ -65,10 +65,16 @@
                 <a class="nav-group-task-link" href="api-overview.html">API Overview</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="motion-capture.html">Motion Capture</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="releases.html">Releases</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="license.html">License</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="cloud-api-terms.html">Cloud API Terms</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="contributing.html">Contributing</a>
@@ -258,10 +264,79 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other%20Classes.html">Other Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/IMUModuleImplementation.html">IMUModuleImplementation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/SDKConfig.html">SDKConfig</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a class="nav-group-name-link" href="Other%20Enums.html">Other Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/APIError.html">APIError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/DFUUpdateInfoStatus.html">DFUUpdateInfoStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/DataCollectionStatus.html">DataCollectionStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/FirmwareUpdateError.html">FirmwareUpdateError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/FirmwareUpdateState.html">FirmwareUpdateState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/IMUSessionDownloadState.html">IMUSessionDownloadState</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Enums/JacquardSDKVersion.html">JacquardSDKVersion</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/ModuleError.html">ModuleError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other%20Protocols.html">Other Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/FirmwareUpdateManager.html">FirmwareUpdateManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/IMUModule.html">IMUModule</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other%20Structs.html">Other Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/APIServer.html">APIServer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/DFUUpdateInfo.html">DFUUpdateInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IMUSample.html">IMUSample</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IMUSessionData.html">IMUSessionData</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IMUSessionInfo.html">IMUSessionInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Structs.html#/s:11JacquardSDK6ModuleV">Module</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Version.html">Version</a>
               </li>
             </ul>
           </li>
@@ -296,7 +371,7 @@ come with one tag). Currently supported products are:</p>
 website</a>.</p>
 
 <blockquote>
-<p>If yo have just opened a new retail Jacquard product, your tag
+<p>If you have just opened a new retail Jacquard product, your tag
 probably needs a firmware update (and perhaps charging). Review the
 steps in the <a href="updating-firmware.html">Updating Firmware</a> page.</p>
 </blockquote>
@@ -312,11 +387,11 @@ the <a href="https://atap.google.com/jacquard/">Jacquard by Google website</a>.<
 
 <p>To run the example project, clone the repo, and run <code>pod install</code> from
 the Example directory first. For more detailed instructions, see the
-full documentation at <a href="https://google.github.com/JacquardSDKiOS">https://google.github.com/JacquardSDKiOS</a></p>
+full documentation at <a href="https://google.github.io/JacquardSDKiOS">https://google.github.io/JacquardSDKiOS</a></p>
 <h2 id='documentation-amp-tutorial' class='heading'>Documentation &amp; Tutorial</h2>
 
 <p>Full documentation including a tutorial is available at
-<a href="https://google.github.com/JacquardSDKiOS">https://google.github.com/JacquardSDKiOS</a></p>
+<a href="https://google.github.io/JacquardSDKiOS">https://google.github.io/JacquardSDKiOS</a></p>
 <h2 id='android-sdk' class='heading'>Android SDK</h2>
 
 <p>There is an Android equivalent to this SDK available at
@@ -331,12 +406,33 @@ best way to integrate it is using a git url. Simply add the following
 line to your <code>Podfile</code>:</p>
 <pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'JacquardSDK'</span>
 </code></pre>
-<h2 id='swift-package-managerg' class='heading'>Swift Package Manager</h2>
+<h2 id='swift-package-manager-with-xcode-project' class='heading'>Swift Package Manager - with Xcode project</h2>
 
-<p>Currently only CocoaPods is
-supported while we work to resolve linking issues with Swift Package
-Manager `.binaryTarget`s that have non-binary target dependencies.</p>
+<p>If you are using the Swift Package Manager with an Xcode project file,
+simply select the <code>File &gt; Swift Packages &gt; Add Package Dependency...</code>
+menu option:</p>
 
+<p>Enter the repository URL
+<code>https://github.com/google/JacquardSDKiOS.git</code> then click <code>Next</code>.</p>
+
+<p>Use the default values in the next window of Version: &ldquo;Up to Next
+Major 0.2.0&rdquo; and again click <code>Next</code>.</p>
+
+<p>Check the <code>JacquardSDK</code> Library and click <code>Finish</code>.</p>
+
+<p>Xcode will now download all the relevant files and integrate them into</p>
+<h2 id='swift-package-manager-with-package-swift' class='heading'>Swift Package Manager - with Package.swift</h2>
+
+<p>If you are using the Swift Package Manager with a <code>Package.swift</code>
+file, you need to add a dependency to your and import the
+<code>JacquardSDK</code> library into the desired targets.</p>
+<pre class="highlight swift"><code><span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
+    <span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"JacquardSDK"</span><span class="p">,</span> <span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/google/JacquardSDKiOS.git"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"0.2.0"</span><span class="p">),</span>
+<span class="p">],</span>
+<span class="nv">targets</span><span class="p">:</span> <span class="p">[</span>
+    <span class="o">.</span><span class="nf">target</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"MyTarget"</span><span class="p">,</span> <span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span><span class="s">"JacquardSDK"</span><span class="p">]),</span>
+<span class="p">]</span>
+</code></pre>
 <h2 id='copyright' class='heading'>Copyright</h2>
 
 <p>Copyright 2021 Google LLC</p>

@@ -20,7 +20,7 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="index.html">
-          JacquardSDK 0.1.0 Docs
+          JacquardSDK 0.2.0 Docs
         </a>
          (100% documented)
       </p>
@@ -65,10 +65,16 @@
                 <a class="nav-group-task-link" href="api-overview.html">API Overview</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="motion-capture.html">Motion Capture</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="releases.html">Releases</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="license.html">License</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="cloud-api-terms.html">Cloud API Terms</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="contributing.html">Contributing</a>
@@ -258,10 +264,79 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other%20Classes.html">Other Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/IMUModuleImplementation.html">IMUModuleImplementation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/SDKConfig.html">SDKConfig</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a class="nav-group-name-link" href="Other%20Enums.html">Other Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/APIError.html">APIError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/DFUUpdateInfoStatus.html">DFUUpdateInfoStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/DataCollectionStatus.html">DataCollectionStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/FirmwareUpdateError.html">FirmwareUpdateError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/FirmwareUpdateState.html">FirmwareUpdateState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/IMUSessionDownloadState.html">IMUSessionDownloadState</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Enums/JacquardSDKVersion.html">JacquardSDKVersion</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/ModuleError.html">ModuleError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other%20Protocols.html">Other Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/FirmwareUpdateManager.html">FirmwareUpdateManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/IMUModule.html">IMUModule</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other%20Structs.html">Other Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/APIServer.html">APIServer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/DFUUpdateInfo.html">DFUUpdateInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IMUSample.html">IMUSample</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IMUSessionData.html">IMUSessionData</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IMUSessionInfo.html">IMUSessionInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Structs.html#/s:11JacquardSDK6ModuleV">Module</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Version.html">Version</a>
               </li>
             </ul>
           </li>
@@ -274,8 +349,19 @@
             
             <h1 id='update-your-jacquard-tag' class='heading'>Update your Jacquard tag</h1>
 
-<p>If you have just bought your Jacquard product and using it out of the box. Our recomendation is to update the Tag using the Jacquard iOS app. <a href="https://apps.apple.com/us/app/jacquard-by-google/id1204971157">App Store link</a>.</p>
-<h2 id='what-you-need-to-get-started' class='heading'>What you need to get started</h2>
+<p>If you have just bought your Jacquard product and using it out of the
+box, your tag requires a firmware update.</p>
+<h2 id='recommended-firmware-update-method' class='heading'>Recommended firmware update method</h2>
+
+<p>Once you have set a valid API key in the <code><a href="Classes/SDKConfig.html">SDKConfig</a></code> instance used to
+initialize <code><a href="Classes/JacquardManagerImplementation.html">JacquardManagerImplementation</a></code> (see <a href="cloud-api-terms.html">this
+page</a> for details on obtaining an API Key) the
+SDK will apply any required firmware updates when your tag connects.</p>
+<h2 id='alternative-firmware-update-method' class='heading'>Alternative firmware update method</h2>
+
+<p>Alternatively, you can use the Jacquard iOS app in the App Store to
+update your tag&rsquo;s firmware using the instructions below.</p>
+<h3 id='what-you-need-to-get-started' class='heading'>What you need to get started</h3>
 
 <p>To set up your Jacquard Tag, you need:</p>
 
@@ -301,7 +387,7 @@
 <li>An internet connection</li>
 <li>Bluetooth enabled on your mobile phone</li>
 </ol>
-<h2 id='steps' class='heading'>Steps</h2>
+<h3 id='steps' class='heading'>Steps</h3>
 
 <ol>
 <li>Install the Jacquard app by visiting the <a href="https://apps.apple.com/us/app/jacquard-by-google/id1204971157">App Store</a>.</li>
@@ -334,10 +420,10 @@
 &ldquo;forget/unlink&rdquo; the tag in the Jacquard app, This is because the current tag BLE protocol does not support simultaneous connections from two apps. 
 Read on to learn how you can unlink the Tag.</p>
 </blockquote>
-<h1 id='forget-unlink-tag-from-jacquard-app' class='heading'>Forget/Unlink Tag from Jacquard app</h1>
+<h3 id='forget-unlink-tag-from-jacquard-app' class='heading'>Forget/Unlink Tag from Jacquard app</h3>
 
 <p>To use your Jacquard product with the SDK or sample app, you must forget the tag from Jacquard app. </p>
-<h2 id='steps' class='heading'>Steps</h2>
+<h4 id='steps' class='heading'>Steps</h4>
 
 <ol>
 <li>Open the Jacquard app .</li>

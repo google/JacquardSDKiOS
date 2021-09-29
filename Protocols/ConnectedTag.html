@@ -21,7 +21,7 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="../index.html">
-          JacquardSDK 0.1.0 Docs
+          JacquardSDK 0.2.0 Docs
         </a>
          (100% documented)
       </p>
@@ -66,10 +66,16 @@
                 <a class="nav-group-task-link" href="../api-overview.html">API Overview</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../motion-capture.html">Motion Capture</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../releases.html">Releases</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../license.html">License</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../cloud-api-terms.html">Cloud API Terms</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../contributing.html">Contributing</a>
@@ -259,10 +265,79 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Other%20Classes.html">Other Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/IMUModuleImplementation.html">IMUModuleImplementation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SDKConfig.html">SDKConfig</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a class="nav-group-name-link" href="../Other%20Enums.html">Other Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/APIError.html">APIError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/DFUUpdateInfoStatus.html">DFUUpdateInfoStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/DataCollectionStatus.html">DataCollectionStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/FirmwareUpdateError.html">FirmwareUpdateError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/FirmwareUpdateState.html">FirmwareUpdateState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/IMUSessionDownloadState.html">IMUSessionDownloadState</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Enums/JacquardSDKVersion.html">JacquardSDKVersion</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ModuleError.html">ModuleError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Other%20Protocols.html">Other Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/FirmwareUpdateManager.html">FirmwareUpdateManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/IMUModule.html">IMUModule</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Other%20Structs.html">Other Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/APIServer.html">APIServer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DFUUpdateInfo.html">DFUUpdateInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/IMUSample.html">IMUSample</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/IMUSessionData.html">IMUSessionData</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/IMUSessionInfo.html">IMUSessionInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Structs.html#/s:11JacquardSDK6ModuleV">Module</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Version.html">Version</a>
               </li>
             </ul>
           </li>
@@ -346,6 +421,33 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:11JacquardSDK12ConnectedTagP13rssiPublisher7Combine03AnyF0VySfs5NeverOGvp"></a>
+                    <a name="//apple_ref/swift/Property/rssiPublisher" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK12ConnectedTagP13rssiPublisher7Combine03AnyF0VySfs5NeverOGvp">rssiPublisher</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Publishes one signal strength value in response to each <code><a href="../Protocols/ConnectedTag.html#/s:11JacquardSDK12ConnectedTagP8readRSSIyyF">readRSSI()</a></code> function call.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">rssiPublisher</span><span class="p">:</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">Float</span><span class="p">,</span> <span class="kt">Never</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:11JacquardSDK12ConnectedTagP12tagComponentAA0F0_pvp"></a>
                     <a name="//apple_ref/swift/Property/tagComponent" class="dashAnchor"></a>
                     <a class="token" href="#/s:11JacquardSDK12ConnectedTagP12tagComponentAA0F0_pvp">tagComponent</a>
@@ -364,6 +466,62 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">tagComponent</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Component.html">Component</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK12ConnectedTagP13gearComponentAA0F0_pSgvp"></a>
+                    <a name="//apple_ref/swift/Property/gearComponent" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK12ConnectedTagP13gearComponentAA0F0_pSgvp">gearComponent</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Gear information when tag is attached with any gear.</p>
+
+<p>Nil, If ujt is detached from gear.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">gearComponent</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Component.html">Component</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK12ConnectedTagP21firmwareUpdateManagerAA08FirmwarefG0_pvp"></a>
+                    <a name="//apple_ref/swift/Property/firmwareUpdateManager" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK12ConnectedTagP21firmwareUpdateManagerAA08FirmwarefG0_pvp">firmwareUpdateManager</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Provides firmware updates related apis.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">firmwareUpdateManager</span><span class="p">:</span> <span class="kt"><a href="../Protocols/FirmwareUpdateManager.html">FirmwareUpdateManager</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -680,6 +838,34 @@ tag instance.</p>
                             </tr>
                           </tbody>
                         </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK12ConnectedTagP8readRSSIyyF"></a>
+                    <a name="//apple_ref/swift/Method/readRSSI()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK12ConnectedTagP8readRSSIyyF">readRSSI()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Each call to this function results in one signal strength value being published by the
+<code><a href="../Protocols/ConnectedTag.html#/s:11JacquardSDK12ConnectedTagP13rssiPublisher7Combine03AnyF0VySfs5NeverOGvp">rssiPublisher</a></code> publisher.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">readRSSI</span><span class="p">()</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>

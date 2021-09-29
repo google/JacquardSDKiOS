@@ -21,7 +21,7 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="index.html">
-          JacquardSDK 0.1.0 Docs
+          JacquardSDK 0.2.0 Docs
         </a>
          (100% documented)
       </p>
@@ -66,10 +66,16 @@
                 <a class="nav-group-task-link" href="api-overview.html">API Overview</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="motion-capture.html">Motion Capture</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="releases.html">Releases</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="license.html">License</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="cloud-api-terms.html">Cloud API Terms</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="contributing.html">Contributing</a>
@@ -259,10 +265,79 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other%20Classes.html">Other Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/IMUModuleImplementation.html">IMUModuleImplementation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/SDKConfig.html">SDKConfig</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a class="nav-group-name-link" href="Other%20Enums.html">Other Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/APIError.html">APIError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/DFUUpdateInfoStatus.html">DFUUpdateInfoStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/DataCollectionStatus.html">DataCollectionStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/FirmwareUpdateError.html">FirmwareUpdateError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/FirmwareUpdateState.html">FirmwareUpdateState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/IMUSessionDownloadState.html">IMUSessionDownloadState</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Enums/JacquardSDKVersion.html">JacquardSDKVersion</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/ModuleError.html">ModuleError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other%20Protocols.html">Other Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/FirmwareUpdateManager.html">FirmwareUpdateManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/IMUModule.html">IMUModule</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other%20Structs.html">Other Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/APIServer.html">APIServer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/DFUUpdateInfo.html">DFUUpdateInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IMUSample.html">IMUSample</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IMUSessionData.html">IMUSessionData</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IMUSessionInfo.html">IMUSessionInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Structs.html#/s:11JacquardSDK6ModuleV">Module</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Version.html">Version</a>
               </li>
             </ul>
           </li>
@@ -308,7 +383,7 @@ wish to connect to again), use <code>JacquardManager.connect(_ uuid:)</code>.</p
 <p>Otherwise you have two ways to get one of the <code><a href="Tags.html#/s:11JacquardSDK14ConnectableTagP">ConnectableTag</a></code> instances:</p>
 
 <ol>
-<li>Start scanning for advertising tags with <code><a href="Protocols/JacquardManager.html#/s:11JacquardSDK0A7ManagerP13startScanningyyKF">JacquardManager.startScanning()</a></code>,</li>
+<li>Start scanning for advertising tags with <code>JacquardManager.startScanning()</code>,</li>
 <li>and then observe the <code><a href="Protocols/JacquardManager.html#/s:11JacquardSDK0A7ManagerP15advertisingTags7Combine12AnyPublisherVyAA13AdvertisedTag_ps5NeverOGvp">JacquardManager.advertisingTags</a></code> publisher,</li>
 <li>which will publish <code><a href="Protocols/AdvertisedTag.html">AdvertisedTag</a></code> instances.</li>
 </ol>
@@ -562,7 +637,7 @@ published first.&nbsp;<a href="#fnref4">&#8617;</a></div></li></p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Errors thrown by <code><a href="Protocols/JacquardManager.html#/s:11JacquardSDK0A7ManagerP13startScanningyyKF">JacquardManager.startScanning()</a></code>.</p>
+                        <p>Errors thrown by <code>JacquardManager.startScanning()</code>.</p>
 
                         <a href="Enums/ManagerScanningError.html" class="slightly-smaller">See more</a>
                       </div>

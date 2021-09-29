@@ -20,7 +20,7 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="index.html">
-          JacquardSDK 0.1.0 Docs
+          JacquardSDK 0.2.0 Docs
         </a>
          (100% documented)
       </p>
@@ -65,10 +65,16 @@
                 <a class="nav-group-task-link" href="api-overview.html">API Overview</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="motion-capture.html">Motion Capture</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="releases.html">Releases</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="license.html">License</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="cloud-api-terms.html">Cloud API Terms</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="contributing.html">Contributing</a>
@@ -258,10 +264,79 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other%20Classes.html">Other Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/IMUModuleImplementation.html">IMUModuleImplementation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/SDKConfig.html">SDKConfig</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a class="nav-group-name-link" href="Other%20Enums.html">Other Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/APIError.html">APIError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/DFUUpdateInfoStatus.html">DFUUpdateInfoStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/DataCollectionStatus.html">DataCollectionStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/FirmwareUpdateError.html">FirmwareUpdateError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/FirmwareUpdateState.html">FirmwareUpdateState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/IMUSessionDownloadState.html">IMUSessionDownloadState</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Enums/JacquardSDKVersion.html">JacquardSDKVersion</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/ModuleError.html">ModuleError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other%20Protocols.html">Other Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/FirmwareUpdateManager.html">FirmwareUpdateManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/IMUModule.html">IMUModule</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other%20Structs.html">Other Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/APIServer.html">APIServer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/DFUUpdateInfo.html">DFUUpdateInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IMUSample.html">IMUSample</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IMUSessionData.html">IMUSessionData</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IMUSessionInfo.html">IMUSessionInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Structs.html#/s:11JacquardSDK6ModuleV">Module</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Version.html">Version</a>
               </li>
             </ul>
           </li>
@@ -297,7 +372,7 @@ that connects to a Jacquard tag and garment:</p>
 <li><a href="#1-prepare-your-jacquard-tag">Prepare your Jacquard Tag</a></li>
 <li><a href="#2-create-a-new-xcode-project">Create a new Xcode project</a></li>
 <li><a href="#3-configure-bluetooth-access-and-signing">Configure Bluetooth access and signing</a></li>
-<li><a href="#4-integrate-jacquard-sdk-using-cocoapods">Integrate Jacquard SDK using CocoaPods</a></li>
+<li><a href="#4-integrate-jacquard-sdk-using-swift-package-manager">Integrate Jacquard SDK using Swift Package Manager</a></li>
 <li><a href="#5-add-the-scanning-table-view">Add the scanning table view</a></li>
 <li><a href="#6-displaying-the-advertised-tags-and-connecting-the-tableview-delegate">Displaying the advertised tags and connecting the TableView Delegate</a></li>
 <li><a href="#7-displaying-already-connected-tags">Displaying already connected tags</a></li>
@@ -305,6 +380,7 @@ that connects to a Jacquard tag and garment:</p>
 <li><a href="#9-connected-tags">Connected tags</a></li>
 <li><a href="#10-sending-commands">Sending commands</a></li>
 <li><a href="#11-observing-notifications">Observing Notifications</a></li>
+<li><a href="#12-updating-firmwares">Updating Firmwares</a></li>
 </ol>
 <h2 id='1-prepare-your-jacquard-tag' class='heading'>1. Prepare your Jacquard Tag</h2>
 
@@ -385,31 +461,12 @@ platform :ios, &#39;13.0&#39;
 <code>ruby
 pod &#39;JacquardSDK&#39;
 </code></li>
-<li><p>At the end of the file (after <code>end</code>), add the following
-<code>post_install</code> (see the <a href="integration.html">integration docs</a> if
-you&rsquo;re interested why this is necessary):</p>
-<pre class="highlight ruby"><code><span class="n">post_install</span> <span class="k">do</span> <span class="o">|</span><span class="n">installer</span><span class="o">|</span>
-  <span class="n">installer</span><span class="p">.</span><span class="nf">pods_project</span><span class="p">.</span><span class="nf">targets</span><span class="p">.</span><span class="nf">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">target</span><span class="o">|</span> <span class="n">target</span><span class="p">.</span><span class="nf">name</span> <span class="o">==</span> <span class="s2">"SwiftProtobuf"</span> <span class="p">}.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">target</span><span class="o">|</span>
-    <span class="n">target</span><span class="p">.</span><span class="nf">build_configurations</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
-      <span class="n">config</span><span class="p">.</span><span class="nf">build_settings</span><span class="p">[</span><span class="s1">'BUILD_LIBRARY_FOR_DISTRIBUTION'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'YES'</span>
-    <span class="k">end</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></li>
 <li><p>Your entire <code>Podfile</code> should now look something like this:</p>
 <pre class="highlight ruby"><code><span class="n">platform</span> <span class="ss">:ios</span><span class="p">,</span> <span class="s1">'13.0'</span>
 
 <span class="n">target</span> <span class="s1">'Jacquard Tutorial'</span> <span class="k">do</span>
   <span class="n">use_frameworks!</span>
   <span class="n">pod</span> <span class="s1">'JacquardSDK'</span>
-<span class="k">end</span>
-
-<span class="n">post_install</span> <span class="k">do</span> <span class="o">|</span><span class="n">installer</span><span class="o">|</span>
-  <span class="n">installer</span><span class="p">.</span><span class="nf">pods_project</span><span class="p">.</span><span class="nf">targets</span><span class="p">.</span><span class="nf">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">target</span><span class="o">|</span> <span class="n">target</span><span class="p">.</span><span class="nf">name</span> <span class="o">==</span> <span class="s2">"SwiftProtobuf"</span> <span class="p">}.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">target</span><span class="o">|</span>
-    <span class="n">target</span><span class="p">.</span><span class="nf">build_configurations</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
-      <span class="n">config</span><span class="p">.</span><span class="nf">build_settings</span><span class="p">[</span><span class="s1">'BUILD_LIBRARY_FOR_DISTRIBUTION'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'YES'</span>
-    <span class="k">end</span>
-  <span class="k">end</span>
 <span class="k">end</span>
 </code></pre></li>
 </ul></li>
@@ -812,7 +869,7 @@ it is common for a lot of <code>.connected()</code> states to be published in
 relatively quick succession.</p>
 
 <p>Relying on the Combine Publishers as shown in this tutorial and the
-<a href="https://github.com/google/JacquardSDKiOS">sample app</a> will ensure
+<a href="https://github.com/google/JacquardDSKiOS">sample app</a> will ensure
 your app is always using the most recent connected tag instance -
 resist the temptation to store a <code><a href="Protocols/ConnectedTag.html">ConnectedTag</a></code> in an instance
 variable.</p>
@@ -977,7 +1034,7 @@ command is achieved using the <code>enqueue(_:retries:)</code> method on
 <code><a href="Protocols/ConnectedTag.html">ConnectedTag</a></code>.</p>
 
 <p>Some commands, as in this case, require a <code><a href="Protocols/Component.html">Component</a></code> argument. They
-are documented more thoroughly in the <a href="Components.html">Components</a>
+are documented more thoroughly in the <a href="Components%20and%20Gear.html">Components</a>
 documentation, but in essence a <code><a href="Protocols/Component.html">Component</a></code> represents a currently
 connected piece of Jacquard gear. The tag has a built-in <code><a href="Protocols/Component.html">Component</a></code>
 (which is always available) and Jacquard gear (like a jacket or
@@ -1032,7 +1089,7 @@ the form of a Combine publisher.</p>
 <p>Instead of using the <code><a href="Protocols/ConnectedTag.html">ConnectedTag</a></code> instance directly, there is a
 small extra step to get a <code><a href="Protocols/SubscribableTag.html">SubscribableTag</a></code>. This is an important
 part of how State Restoration is handled, which is explained in the
-<a href="ConnectedTag.html"><code><a href="Protocols/ConnectedTag.html">ConnectedTag</a></code></a> documentation.</p>
+<code><a href="Protocols/ConnectedTag.html">ConnectedTag</a></code> documentation.</p>
 </blockquote>
 
 <p>First add a method to <code>ConnectedViewContrller</code> which will do something
@@ -1064,10 +1121,106 @@ gesture logged into the Xcode console.</p>
 
 <p>You have now successfully integrated the Jacquard SDK and learned how
 to connect, send commands and observe notifications. There&rsquo;s more to
-the SDK which you can see demonstrated in the <a href="https://github.com/google/JacquardSDKiOS">sample
+the SDK which you can see demonstrated in the <a href="https://github.com/google/JacquardDSKiOS">sample
 app</a> and read about in the
 SDK documentation (see the table of contents on the left side of this
 page).</p>
+<h2 id='12-updating-firmwares' class='heading'>12. Updating Firmwares</h2>
+
+<p>Before using any Jacquard SDK core api, it is always recommended to ensure that you have the latest
+available firmware. After your tag is paired, next ideal step should be to check for firmware update
+by calling Jacquard SDK firmware api&rsquo;s which are backed up by Jacquard cloud.
+Updating firmware is a 3 step process -</p>
+<h4 id='1-check-if-update-available' class='heading'>1. Check if update available</h4>
+
+<p>This step would need internet connectivity as it calls Jacquard cloud api to see if any firmware
+updates are available. If updates are available for your current firmware, sdk will start downloading firmware
+binary implicitly. Updates can be of 2 types.</p>
+
+<ol>
+<li>Mandatory - Firmware update is required.</li>
+<li>Optional - Firmware update is optional and can be skipped.</li>
+<li>None - If there is no updates available.</li>
+</ol>
+<h4 id='2-apply-updates' class='heading'>2. Apply updates</h4>
+
+<p>Jacquard sdk will transfer downloaded firmware binary to the tag using bluetooth connection.
+This step might take a while depending on the size of downloaded firmware binary.</p>
+<h4 id='3-execute-updates' class='heading'>3. Execute updates</h4>
+
+<p>In this step, Jacquard sdk will install the firmware binary on the tag. You can skip this step by passing
+<code>shouldAutoExecute=true</code> in Apply updates (Step 2).</p>
+
+<p>The control for executing the installation is provided as a separate API, because the Tag will reboot after
+installation, As a general practice, you should inform the users that this will happen.</p>
+
+<p>Note: This step is not required in case of loadable module.</p>
+
+<p>Let&rsquo;s start with the implementation. It&rsquo;s pretty much straight forward.</p>
+<h4 id='update-tag-interposer-firmware' class='heading'>Update tag / interposer firmware</h4>
+
+<p>##### 1. Check if update available -</p>
+
+<p>To check if update is available for both tag and interposer, insert your tag into your gear and use below piece of
+ code -</p>
+<pre class="highlight swift"><code><span class="n">tag</span><span class="o">.</span><span class="n">firmwareUpdateManager</span><span class="o">.</span><span class="nf">checkUpdates</span><span class="p">(</span><span class="nv">forceCheck</span><span class="p">:</span> <span class="kc">false</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">sink</span> <span class="p">{</span> <span class="n">completion</span> <span class="k">in</span>
+    <span class="k">if</span> <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">)</span> <span class="o">=</span> <span class="n">completion</span> <span class="p">{</span>
+      <span class="nf">print</span><span class="p">(</span><span class="s">"Firmware update error: </span><span class="se">\(</span><span class="n">error</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span> <span class="nv">receiveValue</span><span class="p">:</span> <span class="p">{</span> <span class="n">updates</span> <span class="k">in</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Available firmware updates: </span><span class="se">\(</span><span class="n">updates</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+  <span class="p">}</span><span class="o">.</span><span class="nf">addTo</span><span class="p">(</span><span class="o">&amp;</span><span class="n">observers</span><span class="p">)</span>
+</code></pre>
+
+<p>This code will return an array of <code><a href="Structs/DFUUpdateInfo.html">DFUUpdateInfo</a></code> for each input component. Check the value for
+<code><a href="Structs/DFUUpdateInfo.html#/s:11JacquardSDK13DFUUpdateInfoV9dfuStatusAA0cdF0Ovp">DFUUpdateInfo.dfuStatus</a></code> to know what type of firmware update is available. It could be either
+<code>mandatory</code> or <code>optional</code> or <code>none</code>. <code>forceCheck</code> boolean is used by the sdk to decide if data would be retrieved
+from cloud or cached info should be returned.</p>
+
+<p>It&rsquo;s advised to use <code>forceCheck</code> as <code>false</code>, because it allows SDK to decide the best source of information.</p>
+<h5 id='2-apply-updates' class='heading'>2. Apply updates -</h5>
+
+<p>Here, Jacquard sdk will transfer downloaded firmware binary from mobile to the tag. You need to use an array of
+<code><a href="Structs/DFUUpdateInfo.html">DFUUpdateInfo</a></code> which you have received in previous step.</p>
+<pre class="highlight swift"><code><span class="n">tag</span><span class="o">.</span><span class="n">firmwareUpdateManager</span><span class="o">.</span><span class="nf">applyUpdates</span><span class="p">(</span><span class="n">updates</span><span class="p">,</span> <span class="nv">shouldAutoExecute</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">sink</span> <span class="p">{</span> <span class="n">state</span> <span class="k">in</span>
+    <span class="k">switch</span> <span class="n">state</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nv">idle</span><span class="p">:</span> <span class="k">break</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nv">preparingForTransfer</span><span class="p">:</span> <span class="k">break</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">transferring</span><span class="p">(</span><span class="k">let</span> <span class="nv">progress</span><span class="p">):</span>
+      <span class="nf">print</span><span class="p">(</span><span class="n">progress</span><span class="p">)</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nv">transferred</span><span class="p">:</span> <span class="k">break</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nv">executing</span><span class="p">:</span> <span class="k">break</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nv">completed</span><span class="p">:</span> <span class="k">break</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">error</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+      <span class="nf">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span><span class="o">.</span><span class="nf">addTo</span><span class="p">(</span><span class="o">&amp;</span><span class="n">observers</span><span class="p">)</span>
+</code></pre>
+
+<p><code><a href="Enums/FirmwareUpdateState.html">FirmwareUpdateState</a></code> will give you the exact status of the operation. When Jacquard sdk
+starts transferring firmware binary to the tag. i.e. state is <code>transferring</code>, you can track the
+transfer progress using below code:</p>
+<pre class="highlight swift"><code><span class="k">switch</span> <span class="n">state</span> <span class="p">{</span>
+<span class="k">case</span> <span class="o">.</span><span class="nf">transferring</span><span class="p">(</span><span class="k">let</span> <span class="nv">progress</span><span class="p">):</span>
+  <span class="nf">print</span><span class="p">(</span><span class="n">progress</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>You can use <code>shouldAutoExecute=true</code> to install the updates automatically, otherwise you will need to call
+<code>executeUpdates()</code> api explicitly after when state is changed to <code>transferred</code>.</p>
+
+<p><code>FirwareUpdateState.error()</code> will give you the error occurred in this step.</p>
+<h5 id='3-execute-updates' class='heading'>3. Execute updates -</h5>
+
+<p>This is the last step in firmware update in which Jacquard sdk instructs tag to install the firmware
+binary transferred in previous step. This step is not required if you are sending <code>shouldAutoExecute=true</code>
+in <code>applyUpdates()</code> api. If you are updating tag firmware, tag will reboot during this step.</p>
+<pre class="highlight swift"><code><span class="n">tag</span><span class="o">.</span><span class="n">firmwareUpdateManager</span><span class="o">.</span><span class="nf">executeUpdates</span><span class="p">()</span>
+</code></pre>
+
+<p><code><a href="Enums/FirmwareUpdateState.html">FirmwareUpdateState</a></code> returned by this api can either be <code>executing</code> or <code>completed</code>.</p>
 
 <div class="footnotes">
 <hr>
