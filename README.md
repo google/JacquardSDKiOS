@@ -68,18 +68,18 @@ pod 'JacquardSDK'
 ## Swift Package Manager - with Xcode project
 
 If you are using the Swift Package Manager with an Xcode project file,
-simply select the `File > Swift Packages > Add Package Dependency...`
-menu option:
+for xcode 13, navigate to your project settings, where you will see a new menu called Package Dependencies.
+Click the + button to add JacquardSDK package.
 
 Enter the repository URL
-`https://github.com/google/JacquardSDKiOS.git` then click `Next`.
+`https://github.com/google/JacquardSDKiOS.git`.
 
-Use the default values in the next window of Version: "Up to Next
-Major 0.2.0" and again click `Next`.
+As soon as you enter the URL, xcode will find the `JacquardSDKiOS` package, 
+for the dependancy rule, use the default values : "Up to Next Major Version" and again click `Add Package`.
 
-Check the `JacquardSDK` Library and click `Finish`.
+Check the `JacquardSDK` Library and click `Add Package`.
 
-Xcode will now download all the relevant files and integrate them into
+Xcode will now download all the relevant files and integrate them into your project.
 
 ## Swift Package Manager - with Package.swift
 

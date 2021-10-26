@@ -43,3 +43,37 @@ To use CocoaPods to integrate Jacquard's iOS SDK, follow these steps:
      import JacquardSDK
     ```
     For more on how to use the SDK, follow on with the [tutorial](tutorial.html)
+
+
+## Swift Package Manager - with Xcode project
+
+If you are using the Swift Package Manager with an Xcode project
+
+1. Navigate to your project settings, where you will see a new menu called Package Dependencies.
+2. Click the + button to add JacquardSDK package.
+      ![Swift Packet Manager option](assets/integrationSwiftPacketManagerOption.png)
+
+3. Enter the repository URL `https://github.com/google/JacquardSDKiOS.git`.
+    * As soon as you enter the URL, xcode will find the `JacquardSDKiOS` package. 
+    * For the dependancy rule, use the default values : "Up to Next Major Version".
+    * Click `Add Package`.
+      ![JacquardSDKiOS Package](assets/integrationJQSDKPackage.png)
+
+4. Check the `JacquardSDK` Library and click `Add Package`.
+
+Xcode will now download all the relevant files and integrate them into your project.
+
+## Swift Package Manager - with Package.swift
+
+If you are using the Swift Package Manager with a `Package.swift`
+file, you need to add a dependency to your and import the
+`JacquardSDK` library into the desired targets.
+
+```swift
+dependencies: [
+    .package(name: "JacquardSDK", url: "https://github.com/google/JacquardSDKiOS.git", from: "0.2.0"),
+],
+targets: [
+    .target(name: "MyTarget", dependencies: ["JacquardSDK"]),
+]
+```
