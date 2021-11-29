@@ -31,6 +31,8 @@ protocol Transport {
 
   var rawDataPublisher: AnyPublisher<Data, Never> { get }
 
+  var rawBytesPublisher: AnyPublisher<[UInt8], Never> { get }
+
   var peripheralNamePublisher: AnyPublisher<String, Never> { get set }
 
   /// Publishes one signal strength value in response to each `readRSSI()` function call.

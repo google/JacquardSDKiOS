@@ -28,6 +28,11 @@ struct Fragmenter {
   private var fragmentCounter: UInt8 = 0
   private var dataLength: Int = 0
 
+  /// Pending incoming data buffer length.
+  ///
+  /// Useful for testing correct reset() calls.
+  var incomingDataCount: Int { incomingData.count }
+
   init(mtu: Int) {
     maximumFragmentLength = mtu - 3  // 1 byte opcode, 2 bytes att handle
     incomingData = Data(capacity: maximumFragmentLength)

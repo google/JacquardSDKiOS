@@ -173,7 +173,7 @@ extension JacquardManagerImplementation: JacquardManager {
       throw ManagerScanningError.bluetoothUnavailable(centralStateSubject.value)
     }
     centralManager.scanForPeripherals(
-      withServices: [PeripheralUUID(uuid: JacquardServices.v2Service)],
+      withServices: [UUID(JacquardServices.v2Service)],
       options: options
     )
   }
@@ -192,7 +192,7 @@ extension JacquardManagerImplementation: JacquardManager {
     return
       centralManager
       .retrieveConnectedPeripherals(
-        withServices: [PeripheralUUID(uuid: JacquardServices.v2Service)]
+        withServices: [UUID(JacquardServices.v2Service)]
       )
       .map { PreConnectedTagModel(peripheral: $0) }
   }

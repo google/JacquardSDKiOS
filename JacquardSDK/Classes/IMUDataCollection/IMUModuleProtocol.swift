@@ -185,4 +185,16 @@ public protocol IMUModule {
     session: IMUSessionInfo
   ) -> AnyPublisher<(fullyParsed: Bool, session: IMUSessionData), Error>
 
+  /// Starts streaming IMU data.
+  ///
+  /// - Returns: Any publisher with a `IMUSample` Result, indicating motion sensor data for the sample from the stream
+  ///   or will publish an error if streaming could not be started.
+  func startIMUStreaming() -> AnyPublisher<IMUSample, Error>
+
+  /// Stops the IMU streaming.
+  ///
+  /// - Returns: Any publisher with a `Void` Result, indicating that IMU streaming was stopped
+  ///   or will publish an error if streaming could not be stopped.
+  func stopIMUStreaming() -> AnyPublisher<Void, Error>
+
 }

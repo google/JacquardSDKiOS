@@ -14,12 +14,40 @@
 
 import CoreBluetooth
 
+struct CharacteristicProperties: OptionSet {
+  let rawValue: UInt
+
+  static var broadcast = CharacteristicProperties(.broadcast)
+  static var read = CharacteristicProperties(.read)
+  static var writeWithoutResponse = CharacteristicProperties(.writeWithoutResponse)
+  static var write = CharacteristicProperties(.write)
+  static var notify = CharacteristicProperties(.notify)
+  static var indicate = CharacteristicProperties(.indicate)
+  static var authenticatedSignedWrites = CharacteristicProperties(.authenticatedSignedWrites)
+  static var extendedProperties = CharacteristicProperties(.extendedProperties)
+  static var notifyEncryptionRequired = CharacteristicProperties(.notifyEncryptionRequired)
+  static var indicateEncryptionRequired = CharacteristicProperties(.indicateEncryptionRequired)
+
+  fileprivate init(_ cbProperty: CBCharacteristicProperties) {
+    self.rawValue = cbProperty.rawValue
+  }
+
+  init(rawValue: UInt) {
+    self.rawValue = rawValue
+  }
+}
+
 protocol Characteristic {
   var uuid: CBUUID { get }
   var value: Data? { get }
+  var charProperties: CharacteristicProperties { get }
 }
 
-extension CBCharacteristic: Characteristic {}
+extension CBCharacteristic: Characteristic {
+  var charProperties: CharacteristicProperties {
+    CharacteristicProperties(rawValue: properties.rawValue)
+  }
+}
 
 enum CharacteristicWriteType {
   case withResponse
@@ -44,8 +72,17 @@ protocol Service {
 
 extension CBService: Service {}
 
-struct PeripheralUUID: Hashable {
-  let uuid: CBUUID
+extension UUID {
+  init(_ cbUUID: CBUUID) {
+    // Force unwrap is safe since CBUUID cannot output an invalid UUID string.
+    self.init(uuidString: cbUUID.uuidString)!
+  }
+}
+
+extension CBUUID {
+  convenience init(_ uuid: UUID) {
+    self.init(string: uuid.uuidString)
+  }
 }
 
 /// Provides peripheral characteristic updates.
@@ -146,14 +183,14 @@ protocol Peripheral {
   /// Discover peripheral services.
   ///
   /// - Paramater serviceUUIDs: Service UUIDs for peripheral.
-  func discoverServices(_ serviceUUIDs: [PeripheralUUID]?)
+  func discoverServices(_ serviceUUIDs: [UUID]?)
 
   /// Discover characteristics for peripheral's services.
   ///
   /// - Paramaters:
   ///  - characteristicUUIDs: Characteristic UUIDs to be discover for any service.
   ///  - service: Peripheral service for which characteristics need to be discover.
-  func discoverCharacteristics(_ characteristicUUIDs: [PeripheralUUID]?, for service: Service)
+  func discoverCharacteristics(_ characteristicUUIDs: [UUID]?, for service: Service)
 
   /// Enable/Disable notification for characteristic.
   func setNotifyValue(_ enabled: Bool, for characteristic: Characteristic)

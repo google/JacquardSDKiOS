@@ -21,23 +21,19 @@ import XCTest
 final class ConnectedTagModelTests: XCTestCase {
 
   private var commandCharacteristic: FakeCharacteristic {
-    let commandUUID = CBUUID(string: "D2F2EABB-D165-445C-B0E1-2D6B642EC57B")
-    return FakeCharacteristic(uuid: commandUUID, value: nil)
+    return FakeCharacteristic(commandValue: nil)
   }
 
   private var responseCharacteristic: FakeCharacteristic {
-    let responseUUID = CBUUID(string: "D2F2B8D0-D165-445C-B0E1-2D6B642EC57B")
-    return FakeCharacteristic(uuid: responseUUID, value: nil)
+    return FakeCharacteristic(responseValue: nil)
   }
 
   private var notifyCharacteristic: FakeCharacteristic {
-    let notifyUUID = CBUUID(string: "D2F2B8D1-D165-445C-B0E1-2D6B642EC57B")
-    return FakeCharacteristic(uuid: notifyUUID, value: nil)
+    return FakeCharacteristic(notifyValue: nil)
   }
 
   private var rawDataCharacteristic: FakeCharacteristic {
-    let rawDataUUID = CBUUID(string: "D2F2B8D2-D165-445C-B0E1-2D6B642EC57B")
-    return FakeCharacteristic(uuid: rawDataUUID, value: nil)
+    return FakeCharacteristic(rawDataValue: nil)
   }
 
   private lazy var requiredCharacteristics = RequiredCharacteristics(
@@ -213,10 +209,7 @@ final class ConnectedTagModelTests: XCTestCase {
       XCTAssertEqual(type, .withoutResponse, "Received wrong request type.")
 
       // Create the response characteristic with config write success data.
-      let response = FakeCharacteristic(
-        uuid: self.responseCharacteristic.uuid,
-        value: self.nameConfigWriteCommandSuccessResponse
-      )
+      let response = FakeCharacteristic(responseValue: self.nameConfigWriteCommandSuccessResponse)
       peripheral.delegate?.peripheral(peripheral, didUpdateValueFor: response, error: nil)
 
       nameConfigWriteExpectation.fulfill()
@@ -255,10 +248,7 @@ final class ConnectedTagModelTests: XCTestCase {
       XCTAssertEqual(type, .withoutResponse, "Received wrong request type.")
 
       // Create the response characteristic with disconnect success data.
-      let response = FakeCharacteristic(
-        uuid: self.responseCharacteristic.uuid,
-        value: self.disconnectCommandSuccessResponse
-      )
+      let response = FakeCharacteristic(responseValue: self.disconnectCommandSuccessResponse)
       peripheral.delegate?.peripheral(peripheral, didUpdateValueFor: response, error: nil)
 
       disconnectTagExpectation.fulfill()
@@ -287,10 +277,7 @@ final class ConnectedTagModelTests: XCTestCase {
     peripheral.writeValueHandler = { _, _, _ in
 
       // Create the response characteristic with config write failure data.
-      let response = FakeCharacteristic(
-        uuid: self.responseCharacteristic.uuid,
-        value: self.commandFailureResponse
-      )
+      let response = FakeCharacteristic(responseValue: self.commandFailureResponse)
       peripheral.delegate?.peripheral(peripheral, didUpdateValueFor: response, error: nil)
 
       nameConfigWriteExpectation.fulfill()
@@ -327,10 +314,7 @@ final class ConnectedTagModelTests: XCTestCase {
     peripheral.writeValueHandler = { _, _, _ in
 
       // Create the response characteristic with config write success data.
-      let response = FakeCharacteristic(
-        uuid: self.responseCharacteristic.uuid,
-        value: self.nameConfigWriteCommandSuccessResponse
-      )
+      let response = FakeCharacteristic(responseValue: self.nameConfigWriteCommandSuccessResponse)
       peripheral.delegate?.peripheral(peripheral, didUpdateValueFor: response, error: nil)
 
       nameConfigWriteExpectation.fulfill()
@@ -351,10 +335,7 @@ final class ConnectedTagModelTests: XCTestCase {
     peripheral.writeValueHandler = { _, _, _ in
 
       // Create the response characteristic with disconnect request failure data.
-      let response = FakeCharacteristic(
-        uuid: self.responseCharacteristic.uuid,
-        value: self.commandFailureResponse
-      )
+      let response = FakeCharacteristic(responseValue: self.commandFailureResponse)
       peripheral.delegate?.peripheral(peripheral, didUpdateValueFor: response, error: nil)
 
       disconnectTagExpectation.fulfill()
@@ -508,10 +489,7 @@ final class ConnectedTagModelTests: XCTestCase {
       XCTAssertEqual(type, .withoutResponse, "Received wrong request type.")
 
       // Create the response characteristic with touch mode command success data.
-      let response = FakeCharacteristic(
-        uuid: self.responseCharacteristic.uuid,
-        value: self.dataChannelUpdateSuccessResponse
-      )
+      let response = FakeCharacteristic(responseValue: self.dataChannelUpdateSuccessResponse)
       peripheral.delegate?.peripheral(peripheral, didUpdateValueFor: response, error: nil)
 
       dataChannelUpdateExpectation.fulfill()
@@ -559,9 +537,7 @@ final class ConnectedTagModelTests: XCTestCase {
 
       // Create the response characteristic with notification queue depth set success data.
       let response = FakeCharacteristic(
-        uuid: self.responseCharacteristic.uuid,
-        value: self.notificationQueueDepthSetSuccessResponse
-      )
+        responseValue: self.notificationQueueDepthSetSuccessResponse)
       peripheral.delegate?.peripheral(peripheral, didUpdateValueFor: response, error: nil)
 
       notificationQueueDepthSetExpectation.fulfill()
@@ -592,10 +568,7 @@ final class ConnectedTagModelTests: XCTestCase {
     peripheral.writeValueHandler = { _, _, _ in
 
       // Create the response characteristic with touch mode command failure data.
-      let response = FakeCharacteristic(
-        uuid: self.responseCharacteristic.uuid,
-        value: self.commandFailureResponse
-      )
+      let response = FakeCharacteristic(responseValue: self.commandFailureResponse)
       peripheral.delegate?.peripheral(peripheral, didUpdateValueFor: response, error: nil)
 
       dataChannelUpdateExpectation.fulfill()
@@ -633,10 +606,7 @@ final class ConnectedTagModelTests: XCTestCase {
     peripheral.writeValueHandler = { _, _, _ in
 
       // Create the response characteristic with touch mode command success data.
-      let response = FakeCharacteristic(
-        uuid: self.responseCharacteristic.uuid,
-        value: self.dataChannelUpdateSuccessResponse
-      )
+      let response = FakeCharacteristic(responseValue: self.dataChannelUpdateSuccessResponse)
       peripheral.delegate?.peripheral(peripheral, didUpdateValueFor: response, error: nil)
 
       dataChannelUpdateExpectation.fulfill()
@@ -658,10 +628,7 @@ final class ConnectedTagModelTests: XCTestCase {
     peripheral.writeValueHandler = { _, _, _ in
 
       // Create the response characteristic with notification queue depth set failure data.
-      let response = FakeCharacteristic(
-        uuid: self.responseCharacteristic.uuid,
-        value: self.commandFailureResponse
-      )
+      let response = FakeCharacteristic(responseValue: self.commandFailureResponse)
       peripheral.delegate?.peripheral(peripheral, didUpdateValueFor: response, error: nil)
 
       notificationQueueDepthSetExpectation.fulfill()

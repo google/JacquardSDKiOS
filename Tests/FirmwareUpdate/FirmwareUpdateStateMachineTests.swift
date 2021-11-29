@@ -26,8 +26,8 @@ final class FirmwareUpdateStateMachineTests: XCTestCase {
   private var connectCancellable: Cancellable?
 
   func testApplyAndExecuteUpdateStateMachineSuccess() throws {
-    throw XCTSkip("Test currently flaky (sometimes times out) b/204121008")
-    
+    throw XCTSkip("b/204121008 - flaky tests")
+
     // Connect fake tag before apply update.
     connectFakeTag()
 
@@ -177,7 +177,7 @@ final class FirmwareUpdateStateMachineTests: XCTestCase {
   }
 
   func testApplyAndAutoExecuteUpdateStateMachineSuccess() throws {
-    throw XCTSkip("Test currently flaky (somtimes times out) b/204121008")
+    throw XCTSkip("b/204121008 - flaky tests")
 
     // Connect fake tag before apply update.
     connectFakeTag()
@@ -681,9 +681,7 @@ final class FirmwareUpdateStateMachineTests: XCTestCase {
     )
   }
 
-  func testFirmwareApplyUpdateWhenLowBattery() throws {
-    throw XCTSkip("Test is flaky b/204123001")
-
+  func testFirmwareApplyUpdateWhenLowBattery() {
     // Connect fake tag before apply update.
     connectFakeTag()
 

@@ -19,9 +19,9 @@ class TagPairingStateMachine: NSObject {
 
   static let initialState: State = .disconnected
   static let requiredNotifyingCharacteristics = [
-    PeripheralUUID(uuid: JacquardServices.responseUUID),
-    PeripheralUUID(uuid: JacquardServices.notifyUUID),
-    PeripheralUUID(uuid: JacquardServices.rawDataUUID),
+    UUID(JacquardServices.responseUUID),
+    UUID(JacquardServices.notifyUUID),
+    UUID(JacquardServices.rawDataUUID),
   ]
 
   private let stateSubject = CurrentValueSubject<State, Never>(TagPairingStateMachine.initialState)
@@ -71,7 +71,7 @@ class TagPairingStateMachine: NSObject {
     var responseCharacteristic: Characteristic?
     var notifyCharacteristic: Characteristic?
     var rawDataCharacteristic: Characteristic?
-    var successfulNotifyChars = Set<PeripheralUUID>()
+    var successfulNotifyChars = Set<UUID>()
   }
 
   init(peripheral: Peripheral) {
@@ -168,7 +168,7 @@ extension TagPairingStateMachine {
     where peripheral.identifier == self.peripheral.identifier:
       state = .bluetoothConnected
       // Discover services.
-      peripheral.discoverServices([PeripheralUUID(uuid: JacquardServices.v2Service)])
+      peripheral.discoverServices([UUID(JacquardServices.v2Service)])
 
     // (e3)
     case (.disconnected, .didConnect):
@@ -200,7 +200,7 @@ extension TagPairingStateMachine {
       state = .servicesDiscovered
       // Discover the v2Characteristics
       peripheral.discoverCharacteristics(
-        JacquardServices.v2Characteristics.map { PeripheralUUID(uuid: $0) },
+        JacquardServices.v2Characteristics.map { UUID($0) },
         for: v2Service
       )
 
@@ -214,25 +214,38 @@ extension TagPairingStateMachine {
       service.uuid == JacquardServices.v2Service
       && Set(chars.map({ $0.uuid })).isSuperset(of: JacquardServices.v2Characteristics):
 
+      var expectedProperties: CharacteristicProperties = []
+
       for characteristic in chars {
         switch characteristic.uuid {
         case JacquardServices.commandUUID:
+          expectedProperties = [.write, .writeWithoutResponse]
           context.commandCharacteristic = characteristic
         case JacquardServices.responseUUID:
+          expectedProperties = [.notify]
           context.responseCharacteristic = characteristic
         case JacquardServices.notifyUUID:
+          expectedProperties = [.notify]
           context.notifyCharacteristic = characteristic
         case JacquardServices.rawDataUUID:
+          expectedProperties = [.notify]
           context.rawDataCharacteristic = characteristic
         default:
           // Ignore unexpected characteristics.
           break
         }
+
+        guard expectedProperties.isSubset(of: characteristic.charProperties) else {
+          jqLogger.error("Unexpected properties for characteristic: \(characteristic)")
+          state = .error(TagConnectionError.characteristicDiscoveryError)
+          break
+        }
       }
+
       state = .awaitingNotificationUpdates
       // / Start Notifications
       for characteristic in chars {
-        let uuid = PeripheralUUID(uuid: characteristic.uuid)
+        let uuid = UUID(characteristic.uuid)
         if TagPairingStateMachine.requiredNotifyingCharacteristics.contains(uuid) {
           peripheral.setNotifyValue(true, for: characteristic)
         }
@@ -250,18 +263,20 @@ extension TagPairingStateMachine {
     // (t10)
     case (.awaitingNotificationUpdates, .didUpdateNotificationState(let characteristic, _))
     where
-      context.successfulNotifyChars.union([PeripheralUUID(uuid: characteristic.uuid)]).isSuperset(
+      context.successfulNotifyChars.union([UUID(characteristic.uuid)]).isSuperset(
         of: TagPairingStateMachine.requiredNotifyingCharacteristics):
       guard let commandCharacteristic = context.commandCharacteristic,
         let responseCharacteristic = context.responseCharacteristic,
         let notifyCharacteristic = context.notifyCharacteristic,
         let rawDataCharacteristic = context.rawDataCharacteristic
       else {
-        assertionFailure(
+        jqLogger.assert(
           "It shouldn't be possible to be missing any characteristics at transition (t5)")
         state = .error(TagConnectionError.characteristicDiscoveryError)
         return
       }
+      jqLogger.info(
+        "Discovery completed for \(peripheral.name ?? peripheral.identifier.uuidString)")
       let characteristics = RequiredCharacteristics(
         commandCharacteristic: commandCharacteristic,
         responseCharacteristic: responseCharacteristic,
@@ -273,7 +288,7 @@ extension TagPairingStateMachine {
     case (.awaitingNotificationUpdates, .didUpdateNotificationState(let characteristic, _)):
       state = .awaitingNotificationUpdates
       // / Record notifying characteristic.
-      context.successfulNotifyChars.insert(PeripheralUUID(uuid: characteristic.uuid))
+      context.successfulNotifyChars.insert(UUID(characteristic.uuid))
 
     // No valid transition found.
     default:

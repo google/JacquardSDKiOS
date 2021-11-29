@@ -205,6 +205,11 @@ final class IMUViewController: UIViewController {
 extension IMUViewController {
 
   private func showDeleteAllSessionsAlert() {
+    guard !isRecordingInProgress else {
+      MDCSnackbarManager.default.show(
+        MDCSnackbarMessage(text: Constants.recordingInProgressWarning))
+      return
+    }
     let alertViewController = AlertViewController()
     let acceptHandler: () -> Void = { [weak self] in
       self?.deleteAllSessions()
@@ -539,8 +544,6 @@ extension IMUViewController {
   }
 
   private func deleteAllSessions() {
-
-    deleteAllLocalSessions()
     guard let imuModule = imuModule else {
       assertionFailure("IMU module not available.")
       return
@@ -561,6 +564,7 @@ extension IMUViewController {
         ProgressHUD.dismiss()
         guard let self = self else { return }
         print("All sessions deleted.")
+        self.deleteAllLocalSessions()
         self.imuSessions.removeAll()
         self.updateDataSource()
         self.sessionTableView.reloadData()
@@ -663,8 +667,6 @@ extension IMUViewController {
             let downloadedSession = self.imuSessions[index]
             self.copyFileLocally(filePath: filePath, session: downloadedSession)
           }
-        @unknown default:
-          preconditionFailure("switch case not implemented.")
         }
       }
       .addTo(&observers)

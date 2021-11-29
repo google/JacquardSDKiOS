@@ -26,5 +26,19 @@
           "image" : "ic_backpack",
           "capabilities" : [0,1,2,3]
       }]
+    }, {
+      "id" : "11-78-30-c8",
+      "name" : "Google",
+      "products": [{
+        "id" : "15-29-c7-5b",
+        "name" : "Patch A0",
+        "image" : "ic_patch_A0",
+        "capabilities" : [1, 2, 3]
+      }, {
+        "id" : "09-2f-41-ab",
+        "name" : "Patch B0",
+        "image" : "ic_patch_B0",
+        "capabilities" : [0, 1, 2, 3]
+      }]
     }]
 }

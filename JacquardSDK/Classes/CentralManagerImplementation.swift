@@ -34,19 +34,20 @@ class CentralManagerImplementation: NSObject, CentralManager {
   }
 
   func scanForPeripherals(
-    withServices serviceUUIDs: [PeripheralUUID]?,
+    withServices serviceUUIDs: [UUID]?,
     options: [String: Any]? = nil
   ) {
-    centralManager.scanForPeripherals(withServices: serviceUUIDs?.map { $0.uuid }, options: options)
+    centralManager.scanForPeripherals(
+      withServices: serviceUUIDs?.map { CBUUID($0) }, options: options)
   }
 
   func stopScan() {
     centralManager.stopScan()
   }
 
-  func retrieveConnectedPeripherals(withServices serviceUUIDs: [PeripheralUUID]) -> [Peripheral] {
+  func retrieveConnectedPeripherals(withServices serviceUUIDs: [UUID]) -> [Peripheral] {
     centralManager.retrieveConnectedPeripherals(
-      withServices: serviceUUIDs.map { $0.uuid }
+      withServices: serviceUUIDs.map { CBUUID($0) }
     ).map { PeripheralImplementation(peripheral: $0) }
   }
 
@@ -60,6 +61,7 @@ class CentralManagerImplementation: NSObject, CentralManager {
     guard let peripheral = peripheral as? PeripheralImplementation else {
       preconditionFailure("Unable to convert peripheral as CBPeripheral.")
     }
+    jqLogger.info("Connect to \(peripheral.name ?? peripheral.identifier.uuidString)")
     centralManager.connect(peripheral.peripheral, options: options)
   }
 
@@ -67,13 +69,39 @@ class CentralManagerImplementation: NSObject, CentralManager {
     guard let peripheral = peripheral as? PeripheralImplementation else {
       preconditionFailure("Unable to convert peripheral as CBPeripheral.")
     }
+    jqLogger.info("Cancel connection: \(peripheral.name ?? peripheral.identifier.uuidString)")
     centralManager.cancelPeripheralConnection(peripheral.peripheral)
+  }
+}
+
+extension CBManagerState: CustomStringConvertible {
+
+  /// :nodoc:
+  public var description: String {
+    switch self {
+    case .unknown:
+      return "Unknown"
+    case .poweredOn:
+      return "Power On"
+    case .poweredOff:
+      return "Power Off"
+    case .resetting:
+      return "Resetting"
+    case .unauthorized:
+      return "Unauthorized"
+    case .unsupported:
+      return "Unsupported"
+    @unknown default:
+      assertionFailure("Unknown default switch case")
+      return "Unknown default switch case"
+    }
   }
 }
 
 extension CentralManagerImplementation: CBCentralManagerDelegate {
 
   func centralManagerDidUpdateState(_ central: CBCentralManager) {
+    jqLogger.info("\(central.state.description)")
     delegate?.centralManagerDidUpdateState(central.state)
   }
 
@@ -92,6 +120,7 @@ extension CentralManagerImplementation: CBCentralManagerDelegate {
   }
 
   func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+    jqLogger.info("Did connect: \(peripheral.name ?? peripheral.identifier.uuidString)")
     delegate?.centralManager(self, didConnect: PeripheralImplementation(peripheral: peripheral))
   }
 
@@ -100,6 +129,7 @@ extension CentralManagerImplementation: CBCentralManagerDelegate {
     didFailToConnect peripheral: CBPeripheral,
     error: Error?
   ) {
+    jqLogger.info("Did fail to connect: \(peripheral.name ?? peripheral.identifier.uuidString)")
     delegate?.centralManager(
       self,
       didFailToConnect: PeripheralImplementation(peripheral: peripheral),
@@ -112,6 +142,7 @@ extension CentralManagerImplementation: CBCentralManagerDelegate {
     didDisconnectPeripheral peripheral: CBPeripheral,
     error: Error?
   ) {
+    jqLogger.info("Did disconnect: \(peripheral.name ?? peripheral.identifier.uuidString)")
     delegate?.centralManager(
       self,
       didDisconnectPeripheral: PeripheralImplementation(peripheral: peripheral),
@@ -120,7 +151,7 @@ extension CentralManagerImplementation: CBCentralManagerDelegate {
   }
 
   func centralManager(_ central: CBCentralManager, willRestoreState dict: [String: Any]) {
-    jqLogger.debug("willRestoreState for \(dict)")
+    jqLogger.info("willRestoreState for \(dict)")
     guard !dict.isEmpty else {
       jqLogger.warning("No restored connections")
       return

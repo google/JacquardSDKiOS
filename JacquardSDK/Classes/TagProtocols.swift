@@ -69,11 +69,15 @@ public protocol SubscribableTag {
     S.Notification, Never
   >
 
-  /// Subscribe to the data channel.
+  /// Subscribe to the data channel for raw data packets.
   ///
   /// The data packet will be published everytime a packet is received on the RawData characteristic of the tag.
   func subscribeRawData() -> AnyPublisher<Data, Never>
 
+  /// Subscribe to the data channel for raw bytes.
+  ///
+  /// The raw bytes will be published everytime they are received on the RawData characteristic of the tag.
+  func subscribeRawBytes() -> AnyPublisher<[UInt8], Never>
 }
 
 /// The tag type for connected tags.

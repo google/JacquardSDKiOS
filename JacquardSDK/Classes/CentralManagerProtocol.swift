@@ -64,14 +64,14 @@ protocol CentralManager {
   var delegate: CentralManagerDelegate? { get }
 
   /// Starts scanning for peripherals that are advertising any of the services listed.
-  func scanForPeripherals(withServices serviceUUIDs: [PeripheralUUID]?, options: [String: Any]?)
+  func scanForPeripherals(withServices serviceUUIDs: [UUID]?, options: [String: Any]?)
 
   /// Stops scanning for peripherals.
   func stopScan()
 
   /// Retrieves all peripherals that are connected to the system and implement any of the services
   /// listed in serviceUUIDs.
-  func retrieveConnectedPeripherals(withServices serviceUUIDs: [PeripheralUUID]) -> [Peripheral]
+  func retrieveConnectedPeripherals(withServices serviceUUIDs: [UUID]) -> [Peripheral]
 
   /// Attempts to retrieve the `CBPeripheral` with the corresponding identifiers.
   func retrievePeripherals(withIdentifiers identifiers: [UUID]) -> [Peripheral]

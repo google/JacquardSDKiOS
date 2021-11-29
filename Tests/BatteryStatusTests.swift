@@ -20,7 +20,9 @@ import XCTest
 class BatteryServiceTests: XCTestCase {
 
   struct CatchLogger: Logger {
-    func log(level: LogLevel, file: String, line: Int, function: String, message: () -> String) {
+    func log(
+      level: LogLevel, file: StaticString, line: UInt, function: String, message: () -> String
+    ) {
       expectation.fulfill()
     }
 

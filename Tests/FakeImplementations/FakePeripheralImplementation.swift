@@ -19,6 +19,37 @@ import CoreBluetooth
 struct FakeCharacteristic: Characteristic {
   var uuid: CBUUID
   var value: Data?
+  var charProperties: CharacteristicProperties
+
+  init(uuid: CBUUID, value: Data?, properties: CharacteristicProperties) {
+    self.uuid = uuid
+    self.charProperties = properties
+    self.value = value
+  }
+
+  init(responseValue: Data?) {
+    self.uuid = JacquardServices.responseUUID
+    self.charProperties = [.notify]
+    self.value = responseValue
+  }
+
+  init(notifyValue: Data?) {
+    self.uuid = JacquardServices.notifyUUID
+    self.charProperties = [.notify]
+    self.value = notifyValue
+  }
+
+  init(commandValue: Data?) {
+    self.uuid = JacquardServices.commandUUID
+    self.charProperties = [.write, .writeWithoutResponse]
+    self.value = commandValue
+  }
+
+  init(rawDataValue: Data?) {
+    self.uuid = JacquardServices.rawDataUUID
+    self.charProperties = [.notify]
+    self.value = rawDataValue
+  }
 }
 
 struct FakeService: Service {
@@ -138,10 +169,7 @@ class FakePeripheralImplementation: Peripheral {
   func postUpdateForHelloCommandResponse() {
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
       // Create response characteristic with success data.
-      let responseUUID = CBUUID(string: "D2F2B8D0-D165-445C-B0E1-2D6B642EC57B")
-      let responseCharacteristic = FakeCharacteristic(
-        uuid: responseUUID, value: self.helloCommandResponse
-      )
+      let responseCharacteristic = FakeCharacteristic(responseValue: self.helloCommandResponse)
 
       // When receives success response for given command.
       self.delegate?.peripheral(self, didUpdateValueFor: responseCharacteristic, error: nil)
@@ -153,17 +181,12 @@ class FakePeripheralImplementation: Peripheral {
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
 
       // Create response characteristic with success data.
-      let responseUUID = CBUUID(string: "D2F2B8D0-D165-445C-B0E1-2D6B642EC57B")
       let responseCharacteristicPart1 = FakeCharacteristic(
-        uuid: responseUUID,
-        value: self.componentInfoCommandResponsePart1
-      )
+        responseValue: self.componentInfoCommandResponsePart1)
       self.delegate?.peripheral(self, didUpdateValueFor: responseCharacteristicPart1, error: nil)
 
       let responseCharacteristicPart2 = FakeCharacteristic(
-        uuid: responseUUID,
-        value: self.componentInfoCommandResponsePart2
-      )
+        responseValue: self.componentInfoCommandResponsePart2)
       self.delegate?.peripheral(self, didUpdateValueFor: responseCharacteristicPart2, error: nil)
       self.completionHandler?(self, .didUpdateValue(.componentInfoCommand))
     }
@@ -172,44 +195,32 @@ class FakePeripheralImplementation: Peripheral {
   /// Post config tag command response.
   func postConfigTagCommandResponse() {
     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-      let responseUUID = CBUUID(string: "D2F2B8D0-D165-445C-B0E1-2D6B642EC57B")
 
       let responseCharacteristicPart1 = FakeCharacteristic(
-        uuid: responseUUID, value: self.depthQueueResponsePart1
-      )
+        responseValue: self.depthQueueResponsePart1)
       self.delegate?.peripheral(self, didUpdateValueFor: responseCharacteristicPart1, error: nil)
 
       let responseCharacteristicPart2 = FakeCharacteristic(
-        uuid: responseUUID, value: self.depthQueueResponsePart2
-      )
+        responseValue: self.depthQueueResponsePart2)
       self.delegate?.peripheral(self, didUpdateValueFor: responseCharacteristicPart2, error: nil)
     }
   }
 
   /// Post attach notification to handle notifyUUID through peripheral delegate.
   func postGearAttachNotification() {
-    let notifyUUID = CBUUID(string: "D2F2B8D1-D165-445C-B0E1-2D6B642EC57B")
-    let notifyCharacteristic = FakeCharacteristic(
-      uuid: notifyUUID, value: attachNotification
-    )
+    let notifyCharacteristic = FakeCharacteristic(notifyValue: attachNotification)
     delegate?.peripheral(self, didUpdateValueFor: notifyCharacteristic, error: nil)
   }
 
   /// Post battery status notification to handle notifyUUID through peripheral delegate.
   func postBatteryStatusNotification() {
-    let notifyUUID = CBUUID(string: "D2F2B8D1-D165-445C-B0E1-2D6B642EC57B")
-    let notifyCharacteristic = FakeCharacteristic(
-      uuid: notifyUUID, value: batteryStatusNotification
-    )
+    let notifyCharacteristic = FakeCharacteristic(notifyValue: batteryStatusNotification)
     delegate?.peripheral(self, didUpdateValueFor: notifyCharacteristic, error: nil)
   }
 
   /// Post notification with empty characteristic data.
   func postNotificationWithEmptyData() {
-    let notifyUUID = CBUUID(string: "D2F2B8D1-D165-445C-B0E1-2D6B642EC57B")
-    let notifyCharacteristic = FakeCharacteristic(
-      uuid: notifyUUID, value: nil
-    )
+    let notifyCharacteristic = FakeCharacteristic(notifyValue: nil)
     delegate?.peripheral(self, didUpdateValueFor: notifyCharacteristic, error: nil)
   }
 
@@ -217,7 +228,9 @@ class FakePeripheralImplementation: Peripheral {
   func postUnknownBluetoothNotification() {
     let unknownUUID = CBUUID(string: "D2F2B8D1-D165-445C-B0E1-2D6B642EC58B")
     let unknownCharacteristic = FakeCharacteristic(
-      uuid: unknownUUID, value: nil
+      uuid: unknownUUID,
+      value: nil,
+      properties: [.read]
     )
     delegate?.peripheral(self, didUpdateValueFor: unknownCharacteristic, error: nil)
   }
@@ -233,10 +246,7 @@ class FakePeripheralImplementation: Peripheral {
       completionHandler?(self, .didWriteValue(responseType))
     case .didWriteValueWithError:
       // Create response characteristic.
-      let responseUUID = CBUUID(string: "D2F2B8D0-D165-445C-B0E1-2D6B642EC57B")
-      let responseCharacteristic = FakeCharacteristic(
-        uuid: responseUUID, value: helloCommandResponse
-      )
+      let responseCharacteristic = FakeCharacteristic(responseValue: helloCommandResponse)
       // When didWriteValueFor callback called for wrong characteristic.
       delegate?.peripheral(self, didWriteValueFor: responseCharacteristic, error: nil)
       completionHandler?(self, .didWriteValueWithError)
@@ -250,20 +260,14 @@ class FakePeripheralImplementation: Peripheral {
       }
     case .didUpdateValueForResponseCharacteristicWithEmptyData:
       // Create response characteristic with empty data.
-      let responseUUID = CBUUID(string: "D2F2B8D0-D165-445C-B0E1-2D6B642EC57B")
-      let responseCharacteristic = FakeCharacteristic(
-        uuid: responseUUID, value: nil
-      )
+      let responseCharacteristic = FakeCharacteristic(responseValue: nil)
 
       // When receives empty response for given command.
       delegate?.peripheral(self, didUpdateValueFor: responseCharacteristic, error: nil)
       completionHandler?(self, .didUpdateValueForResponseCharacteristicWithEmptyData)
     case .didResendResponseCharacteristic:
       // Create response characteristic with success data.
-      let responseUUID = CBUUID(string: "D2F2B8D0-D165-445C-B0E1-2D6B642EC57B")
-      let responseCharacteristic = FakeCharacteristic(
-        uuid: responseUUID, value: helloCommandResponse
-      )
+      let responseCharacteristic = FakeCharacteristic(responseValue: helloCommandResponse)
 
       // Send updates for given command.
       delegate?.peripheral(self, didUpdateValueFor: responseCharacteristic, error: nil)
@@ -277,12 +281,12 @@ class FakePeripheralImplementation: Peripheral {
     writeValueHandler?(data, characteristic, type)
   }
 
-  func discoverServices(_ serviceUUIDs: [PeripheralUUID]?) {
+  func discoverServices(_ serviceUUIDs: [UUID]?) {
     delegate?.peripheral(self, didDiscoverServices: nil)
     completionHandler?(self, .didDiscoverServices)
   }
 
-  func discoverCharacteristics(_ characteristicUUIDs: [PeripheralUUID]?, for service: Service) {
+  func discoverCharacteristics(_ characteristicUUIDs: [UUID]?, for service: Service) {
     delegate?.peripheral(self, didDiscoverCharacteristicsFor: service, error: nil)
     completionHandler?(self, .didDiscoverCharacteristics)
   }

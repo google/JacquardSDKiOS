@@ -20,7 +20,9 @@ import XCTest
 class FirmwareUpdateManagerTests: XCTestCase {
 
   struct CatchLogger: Logger {
-    func log(level: LogLevel, file: String, line: Int, function: String, message: () -> String) {
+    func log(
+      level: LogLevel, file: StaticString, line: UInt, function: String, message: () -> String
+    ) {
       let _ = message()
       if level == .assertion {
         expectation.fulfill()
@@ -184,6 +186,11 @@ class FirmwareUpdateManagerTests: XCTestCase {
     let dfuPrepareExpectation = expectation(description: "dfuPrepareExpectation")
     let applyUpdateExpectation = expectation(description: "applyUpdateExpectation")
     let executeUpdateExpectation = expectation(description: "executeUpdateExpectation")
+    let stateApiExpectation = expectation(description: "stateApiExpectation")
+    let repeatApplyUpdateCallExpectation = expectation(
+      description: "repeatApplyUpdateCallExpectation"
+    )
+
     let image = Data((0..<1000).map { UInt8($0 % 255) })
     let updateInfo = DFUUpdateInfo(
       date: "21-06-2016",
@@ -254,6 +261,12 @@ class FirmwareUpdateManagerTests: XCTestCase {
       sdkConfig: config
     )
 
+    connectedTag.firmwareUpdateManager.state.sink { state in
+      if case .completed = state {
+        stateApiExpectation.fulfill()
+      }
+    }.addTo(&observations)
+
     connectedTag.firmwareUpdateManager.applyUpdates(
       [updateInfo],
       shouldAutoExecute: false
@@ -266,10 +279,25 @@ class FirmwareUpdateManagerTests: XCTestCase {
       }
     }.addTo(&observations)
 
+    connectedTag.firmwareUpdateManager.applyUpdates(
+      [updateInfo],
+      shouldAutoExecute: false
+    )
+    .sink { state in
+      if case .error(let error) = state, case .invalidState(_) = error {
+        repeatApplyUpdateCallExpectation.fulfill()
+      }
+    }.addTo(&observations)
+
     wait(
-      for: [batteryStatusExpectation, dfuStatusExpectation, dfuPrepareExpectation],
+      for: [
+        batteryStatusExpectation,
+        dfuStatusExpectation,
+        dfuPrepareExpectation,
+        repeatApplyUpdateCallExpectation,
+      ],
       timeout: 1.0,
-      enforceOrder: true
+      enforceOrder: false
     )
 
     // Assert multiple write requests till entire image is written.
@@ -335,7 +363,7 @@ class FirmwareUpdateManagerTests: XCTestCase {
     }
     connectedTag.firmwareUpdateManager.executeUpdates()
 
-    wait(for: [executeUpdateExpectation], timeout: 5.0)
+    wait(for: [executeUpdateExpectation, stateApiExpectation], timeout: 5.0)
   }
 
   func testApplyModuleUpdate() {

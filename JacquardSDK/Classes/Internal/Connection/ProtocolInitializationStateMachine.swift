@@ -293,6 +293,7 @@ extension ProtocolInitializationStateMachine {
 
     // (t10)
     case (.creatingTagInstance, .createdConnectedTagInstance(let tag)):
+      jqLogger.info("Tag negotiated: \(tag.name)")
       state = .tagInitialized(tag)
 
     // No valid transition found.

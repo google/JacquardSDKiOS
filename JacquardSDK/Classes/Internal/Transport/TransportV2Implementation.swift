@@ -71,6 +71,7 @@ class TransportV2Implementation: Transport {
   >()
 
   private let rawDataSubject = PassthroughSubject<Data, Never>()
+  private let rawBytesSubject = PassthroughSubject<[UInt8], Never>()
 
   var notificationPublisher: AnyPublisher<Google_Jacquard_Protocol_Notification, Never> {
     notificationCacheLock.lock()
@@ -91,6 +92,11 @@ class TransportV2Implementation: Transport {
   var rawDataPublisher: AnyPublisher<Data, Never> {
     return rawDataSubject.eraseToAnyPublisher()
   }
+
+  var rawBytesPublisher: AnyPublisher<[UInt8], Never> {
+    return rawBytesSubject.eraseToAnyPublisher()
+  }
+
   // Since we want this object to have sole access to the peripheral we also
   // need to expose the name here.
   private let peripheralNameSubject: CurrentValueSubject<String, Never>
@@ -349,6 +355,7 @@ extension TransportV2Implementation: PeripheralDelegate {
         jqLogger.assert("Received didUpdateValueFor data characteristic with empty data")
         return
       }
+      rawBytesSubject.send([UInt8](data))
       if let packet = self.transportState.rawDataFragmenter.packet(fromAddedFragment: data) {
         self.processRawDataPacket(packet: packet)
       }

@@ -50,17 +50,17 @@ class PeripheralImplementation: NSObject, Peripheral {
     peripheral.writeValue(data, for: characteristic, type: CBCharacteristicWriteType(type))
   }
 
-  func discoverServices(_ serviceUUIDs: [PeripheralUUID]?) {
-    peripheral.discoverServices(serviceUUIDs?.map { $0.uuid })
+  func discoverServices(_ serviceUUIDs: [UUID]?) {
+    peripheral.discoverServices(serviceUUIDs?.map { CBUUID($0) })
   }
 
-  func discoverCharacteristics(_ characteristicUUIDs: [PeripheralUUID]?, for service: Service) {
+  func discoverCharacteristics(_ characteristicUUIDs: [UUID]?, for service: Service) {
     guard let service = service as? CBService else {
       jqLogger.preconditionAssertFailure(
         "discoverCharacteristics() in concrete type Peripheral requires a real CBService")
       return
     }
-    peripheral.discoverCharacteristics(characteristicUUIDs?.map { $0.uuid }, for: service)
+    peripheral.discoverCharacteristics(characteristicUUIDs?.map { CBUUID($0) }, for: service)
   }
 
   func setNotifyValue(_ enabled: Bool, for characteristic: Characteristic) {

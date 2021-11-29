@@ -76,8 +76,8 @@ public protocol Logger {
   ///   - message: A closure which returns the message to display.
   func log(
     level: LogLevel,
-    file: String,
-    line: Int,
+    file: StaticString,
+    line: UInt,
     function: String,
     message: () -> String
   )
@@ -91,7 +91,7 @@ public protocol Logger {
   ///   - line: The line where the log message comes from.
   ///   - function: The function where the log message comes from.
   ///   - message: the message to display. It is an autoclosure so that if that log level is filtered the code will not be evaluated.
-  func debug(file: String, function: String, line: Int, _ message: @autoclosure () -> String)
+  func debug(file: StaticString, function: String, line: UInt, _ message: @autoclosure () -> String)
 
   /// Logs a message with level `LogLevel.info`.
   ///
@@ -102,7 +102,7 @@ public protocol Logger {
   ///   - line: The line where the log message comes from.
   ///   - function: The function where the log message comes from.
   ///   - message: the message to display. It is an autoclosure so that if that log level is filtered the code will not be evaluated.
-  func info(file: String, function: String, line: Int, _ message: @autoclosure () -> String)
+  func info(file: StaticString, function: String, line: UInt, _ message: @autoclosure () -> String)
 
   /// Logs a message with level `LogLevel.warning`.
   ///
@@ -113,7 +113,8 @@ public protocol Logger {
   ///   - line: The line where the log message comes from.
   ///   - function: The function where the log message comes from.
   ///   - message: the message to display. It is an autoclosure so that if that log level is filtered the code will not be evaluated.
-  func warning(file: String, function: String, line: Int, _ message: @autoclosure () -> String)
+  func warning(
+    file: StaticString, function: String, line: UInt, _ message: @autoclosure () -> String)
 
   /// Logs a message with level `LogLevel.error`.
   ///
@@ -124,7 +125,7 @@ public protocol Logger {
   ///   - line: The line where the log message comes from.
   ///   - function: The function where the log message comes from.
   ///   - message: the message to display. It is an autoclosure so that if that log level is filtered the code will not be evaluated.
-  func error(file: String, function: String, line: Int, _ message: @autoclosure () -> String)
+  func error(file: StaticString, function: String, line: UInt, _ message: @autoclosure () -> String)
 
   /// Raise an assertion with a message.
   ///
@@ -135,7 +136,8 @@ public protocol Logger {
   ///   - line: The line where the log message comes from.
   ///   - function: The function where the log message comes from.
   ///   - message: the message to display. It is an autoclosure so that if that log level is filtered the code will not be evaluated.
-  func assert(file: String, function: String, line: Int, _ message: @autoclosure () -> String)
+  func assert(
+    file: StaticString, function: String, line: UInt, _ message: @autoclosure () -> String)
 
   /// Precondition failure with a message.
   ///
@@ -147,15 +149,53 @@ public protocol Logger {
   ///   - function: The function where the log message comes from.
   ///   - message: the message to display. It is an autoclosure so that if that log level is filtered the code will not be evaluated.
   func preconditionAssertFailure(
-    file: String,
+    file: StaticString,
     function: String,
-    line: Int,
+    line: UInt,
     _ message: @autoclosure () -> String
   )
 }
 
 /// Default `Logger` implementation that prints messages to the console.
 public class PrintLogger: Logger {
+
+  private enum LogSettings {
+    static let numberOfBackup = 5
+  }
+
+  private var fileHandle: FileHandle?
+  private var logURL = URL(fileURLWithPath: "~/jacquardSDK.0.log")
+
+  private let dateFormatter: DateFormatter = {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"  // ISO8601 format
+    dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+    dateFormatter.timeZone = TimeZone.current
+    return dateFormatter
+  }()
+
+  private let rootDirectory: URL? = {
+    do {
+      guard let docDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last
+      else {
+        assertionFailure("documentDirectory not found")
+        return nil
+      }
+      let rootDirectoryPath = docDir.appendingPathComponent("Logs")
+      if !FileManager.default.fileExists(atPath: rootDirectoryPath.absoluteString) {
+        try FileManager.default.createDirectory(
+          at: rootDirectoryPath,
+          withIntermediateDirectories: true,
+          attributes: [FileAttributeKey.protectionKey: FileProtectionType.none]
+        )
+      }
+      return rootDirectoryPath
+    } catch {
+      assertionFailure("Failed to create 'Logs` directory: \(error)")
+      return nil
+    }
+  }()
+
   /// Which log levels should be displayed.
   let logLevels: [LogLevel]
 
@@ -168,9 +208,122 @@ public class PrintLogger: Logger {
   /// assertion message will still be printed to the console based on the usual `logLevels` check.
   ///
   /// - Parameter logLevels: Which log levels should be displayed.
-  public init(logLevels: [LogLevel], includeSourceDetails: Bool) {
+  public init(logLevels: [LogLevel], includeSourceDetails: Bool, includeFileLogs: Bool = false) {
     self.logLevels = logLevels
     self.includeSourceDetails = includeSourceDetails
+    if includeFileLogs {
+      openFileHandle()
+    }
+  }
+
+  private func openFileHandle() {
+    let fileManager = FileManager.default
+    guard let rootDirectory = rootDirectory else {
+      Swift.assertionFailure("Root directory not found.")
+      return
+    }
+    var isDir: ObjCBool = false
+    var exist = fileManager.fileExists(atPath: rootDirectory.path, isDirectory: &isDir)
+    if exist && !isDir.boolValue {
+      do {
+        try fileManager.removeItem(at: rootDirectory)
+        exist = false
+      } catch {
+        print(error)
+        Swift.assertionFailure("Could not remove \(rootDirectory)")
+        return
+      }
+    }
+    let attributes = [FileAttributeKey.protectionKey: FileProtectionType.none]
+    if !exist {
+      do {
+        try fileManager.createDirectory(
+          at: rootDirectory, withIntermediateDirectories: true, attributes: attributes)
+      } catch {
+        print(error)
+        Swift.assertionFailure("Could not create and set \(rootDirectory)")
+        return
+      }
+    }
+
+    let newURL = rootDirectory.appendingPathComponent("jacquardSDK")
+    logURL = newURL.appendingPathExtension("0.log")
+
+    // Log file size in MB.
+    var fileSize = 0.0
+    do {
+      let currentFileAttribute = try fileManager.attributesOfItem(atPath: logURL.path)
+      if let size = currentFileAttribute[FileAttributeKey.size] as? NSNumber {
+        fileSize = size.doubleValue
+      }
+    } catch {
+      print("Error while getting log file size: \(error).")
+    }
+
+    let fileExists = fileManager.fileExists(atPath: logURL.path)
+
+    if !fileExists || fileSize > 0 {
+      let removedURL = newURL.appendingPathExtension("\(LogSettings.numberOfBackup).log")
+      do {
+        try fileManager.removeItem(at: removedURL)
+      } catch {
+        print("Error \(error) while removing log file at \(removedURL).")
+      }
+      for i in (0..<LogSettings.numberOfBackup).reversed() {
+        let backupURL = newURL.appendingPathExtension("\(i+1).log")
+        let fromURL = newURL.appendingPathExtension("\(i).log")
+        do {
+          try fileManager.moveItem(at: fromURL, to: backupURL)
+          print("Move \(fromURL.path) to \(backupURL.path)")
+        } catch {
+          print("Error while moving \(fromURL.path) to \(backupURL.path).")
+        }
+      }
+
+      guard
+        fileManager.createFile(
+          atPath: logURL.path,
+          contents: Data(),
+          attributes: [FileAttributeKey.protectionKey: FileProtectionType.completeUnlessOpen]
+        )
+      else {
+        Swift.assertionFailure("Failed to create log file")
+        return
+      }
+    }
+
+    do {
+      var resourceValues = URLResourceValues()
+      resourceValues.isExcludedFromBackup = true
+      try logURL.setResourceValues(resourceValues)
+    } catch {
+      Swift.assertionFailure("Failed to set log file exclusion from backup")
+      return
+    }
+
+    guard let fileHandle = FileHandle(forWritingAtPath: logURL.path) else {
+      Swift.assertionFailure("Failed to open log file for writing")
+      return
+    }
+    self.fileHandle = fileHandle
+    fileHandle.seekToEndOfFile()
+  }
+
+  deinit {
+    print("Syncing and Closing File")
+    fileHandle?.synchronizeFile()
+    fileHandle?.closeFile()
+  }
+
+  private func logWithTimeStamp(_ message: String) {
+    let now = Date()
+    let decoratedMessage = "\(dateFormatter.string(from: now)): \(message)\n"
+
+    guard let fileHandle = self.fileHandle else {
+      print("Could not find fileHandle to log.")
+      return
+    }
+    fileHandle.write(decoratedMessage.data(using: .utf8) ?? Data())
   }
 
   /// Logs a message
@@ -178,8 +331,8 @@ public class PrintLogger: Logger {
   /// - SeeAlso: `Logger.log(level:message:)`
   public func log(
     level: LogLevel,
-    file: String,
-    line: Int,
+    file: StaticString,
+    line: UInt,
     function: String,
     message: () -> String
   ) {
@@ -187,23 +340,25 @@ public class PrintLogger: Logger {
       // Return early to avoid overhead of evaluating message.
       return
     }
-
     var sourceDetails = ""
     if includeSourceDetails {
-      let filename = URL(fileURLWithPath: file).lastPathComponent
+      let filename = URL(fileURLWithPath: file.description).lastPathComponent
       sourceDetails = " [\(filename)@\(line);\(function)]"
     }
 
     let fullMessage = "[\(level.rawValue)]\(sourceDetails) \(message())"
 
     if level == .assertion {
-      assertionFailure(fullMessage)
+      assertionFailure(fullMessage, file: file, line: line)
     }
     if level == .preconditionFailure {
-      preconditionFailure(fullMessage)
+      preconditionFailure(fullMessage, file: file, line: line)
     }
     if logLevels.contains(level) {
       print(fullMessage)
+      if fileHandle != nil {
+        logWithTimeStamp(fullMessage)
+      }
     }
   }
 }
@@ -211,7 +366,7 @@ public class PrintLogger: Logger {
 extension Logger {
   /// Logs a message with level `LogLevel.debug`.
   public func debug(
-    file: String = #file, function: String = #function, line: Int = #line,
+    file: StaticString = #file, function: String = #function, line: UInt = #line,
     _ message: @autoclosure () -> String
   ) {
     log(level: .debug, file: file, line: line, function: function, message: message)
@@ -219,7 +374,7 @@ extension Logger {
 
   /// Logs a message with level `LogLevel.info()`.
   public func info(
-    file: String = #file, function: String = #function, line: Int = #line,
+    file: StaticString = #file, function: String = #function, line: UInt = #line,
     _ message: @autoclosure () -> String
   ) {
     log(level: .info, file: file, line: line, function: function, message: message)
@@ -227,7 +382,7 @@ extension Logger {
 
   /// Logs a message with level `LogLevel.warning`.
   public func warning(
-    file: String = #file, function: String = #function, line: Int = #line,
+    file: StaticString = #file, function: String = #function, line: UInt = #line,
     _ message: @autoclosure () -> String
   ) {
     log(level: .warning, file: file, line: line, function: function, message: message)
@@ -235,7 +390,7 @@ extension Logger {
 
   /// Logs a message with level `LogLevel.error`.
   public func error(
-    file: String = #file, function: String = #function, line: Int = #line,
+    file: StaticString = #file, function: String = #function, line: UInt = #line,
     _ message: @autoclosure () -> String
   ) {
     log(level: .error, file: file, line: line, function: function, message: message)
@@ -243,14 +398,14 @@ extension Logger {
 
   /// Raise an assertion.
   public func assert(
-    file: String = #file, function: String = #function, line: Int = #line,
+    file: StaticString = #file, function: String = #function, line: UInt = #line,
     _ message: @autoclosure () -> String
   ) {
     log(level: .assertion, file: file, line: line, function: function, message: message)
   }
 
   public func preconditionAssertFailure(
-    file: String = #file, function: String = #function, line: Int = #line,
+    file: StaticString = #file, function: String = #function, line: UInt = #line,
     _ message: @autoclosure () -> String
   ) {
     log(level: .preconditionFailure, file: file, line: line, function: function, message: message)

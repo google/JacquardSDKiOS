@@ -30,6 +30,7 @@ struct DashboardItem: Hashable {
     case musicalThread
     case notifications
     case imu
+    case imuStreaming
     case places
     case other
   }

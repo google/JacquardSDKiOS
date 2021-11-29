@@ -45,6 +45,14 @@ public enum DataCollectionStatus {
   }
 }
 
+/// Represents error related to IMU streaming.
+public enum IMUStreamingError: Error {
+  /// Data collection status other than logging, after `StartIMUSessionCommand`.
+  case invalidStatus
+  /// Raw byte stream could not be parsed.
+  case parsingError
+}
+
 /// Provides implementation of `IMUModule` and helper methods for IMU sessions.
 public final class IMUModuleImplementation: IMUModule {
 
@@ -59,6 +67,7 @@ public final class IMUModuleImplementation: IMUModule {
   private var module: Module?
   private var listSessionObserver: Cancellable?
   private var loadModuleObserver: Cancellable?
+  private var imuDataObserver: Cancellable?
 
   private var currentDownloadingSession: IMUSessionInfo?
   private var fileHandle: FileHandle?
@@ -364,6 +373,10 @@ public final class IMUModuleImplementation: IMUModule {
 
   /// Stops the current data collection session.
   public func stopRecording() -> AnyPublisher<Void, Error> {
+    stopIMUDataCollection()
+  }
+
+  private func stopIMUDataCollection() -> AnyPublisher<Void, Error> {
     jqLogger.info("Sending command to Stop recording IMU data")
     let stopDataCollectionRequest = StopIMUSessionCommand()
     return tag.enqueue(stopDataCollectionRequest)
@@ -492,8 +505,6 @@ public final class IMUModuleImplementation: IMUModule {
     tag.registerSubscriptions { subscribableTag in
       fileDownloadObserver = subscribableTag.subscribeRawData()
         .sink(receiveValue: { data in
-          print("Data packet recieved: \(data)")
-
           if data.isEmpty {
             jqLogger.error("Received empty data packet for session id: \(session.sessionID).")
             dataDownloadSubject.send(completion: .failure(ModuleError.emptyDataReceived))
@@ -553,6 +564,43 @@ public final class IMUModuleImplementation: IMUModule {
   ) -> AnyPublisher<(fullyParsed: Bool, session: IMUSessionData), Error> {
     let sessionFile = RawDataPath.filePath(for: session)
     return parseIMUSession(path: sessionFile)
+  }
+
+  public func startIMUStreaming() -> AnyPublisher<IMUSample, Error> {
+    let startStreamingRequest = StartIMUStreamingCommand()
+    return tag.enqueue(startStreamingRequest)
+      .flatMap { status -> AnyPublisher<IMUSample, Error> in
+        let status: DataCollectionStatus = DataCollectionStatus.valueFromProto(status)
+        if status == .recordingInProgress {
+
+          let imuStreamSubject = PassthroughSubject<IMUSample, Error>()
+
+          // Data collection status is logging. So, start listening raw data characteristics to get
+          // the stream of raw bytes indicating IMU samples.
+          self.tag.registerSubscriptions { subscribableTag in
+            self.imuDataObserver = subscribableTag.subscribeRawBytes()
+              .sink(receiveValue: { bytes in
+                do {
+                  let parser = IMUStreamDataParser()
+                  let updatedBytes: [UInt8] = Array(bytes.dropFirst(2))
+                  let samples = try parser.parseIMUSamples(bytesData: updatedBytes)
+                  samples.forEach { sample in
+                    imuStreamSubject.send(sample)
+                  }
+                } catch {
+                  imuStreamSubject.send(completion: .failure(IMUStreamingError.parsingError))
+                }
+              })
+          }
+          return imuStreamSubject.eraseToAnyPublisher()
+        } else {
+          return Result.Publisher(IMUStreamingError.invalidStatus).eraseToAnyPublisher()
+        }
+      }.eraseToAnyPublisher()
+  }
+
+  public func stopIMUStreaming() -> AnyPublisher<Void, Error> {
+    stopIMUDataCollection()
   }
 }
 

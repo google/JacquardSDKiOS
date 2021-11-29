@@ -34,33 +34,29 @@ final class FakeCentralManager: CentralManager {
   private var fakeService: CBService {
     let service = CBMutableService(type: JacquardServices.v2Service, primary: true)
 
-    let commandUUID = CBUUID(string: "D2F2EABB-D165-445C-B0E1-2D6B642EC57B")
     let commandCharacteristic = CBMutableCharacteristic(
-      type: commandUUID,
-      properties: [.write],
+      type: JacquardServices.commandUUID,
+      properties: [.write, .writeWithoutResponse],
       value: nil,
       permissions: .writeable
     )
 
-    let responseUUID = CBUUID(string: "D2F2B8D0-D165-445C-B0E1-2D6B642EC57B")
     let responseCharacteristic = CBMutableCharacteristic(
-      type: responseUUID,
+      type: JacquardServices.responseUUID,
       properties: [.notify],
       value: nil,
       permissions: .readable
     )
 
-    let notifyUUID = CBUUID(string: "D2F2B8D1-D165-445C-B0E1-2D6B642EC57B")
     let notifyCharacteristic = CBMutableCharacteristic(
-      type: notifyUUID,
+      type: JacquardServices.notifyUUID,
       properties: [.notify],
       value: nil,
       permissions: .readable
     )
 
-    let rawDataUUID = CBUUID(string: "D2F2B8D2-D165-445C-B0E1-2D6B642EC57B")
     let rawDataCharacteristic = CBMutableCharacteristic(
-      type: rawDataUUID,
+      type: JacquardServices.rawDataUUID,
       properties: [.notify],
       value: nil,
       permissions: .readable
@@ -92,7 +88,7 @@ final class FakeCentralManager: CentralManager {
   }
 
   func scanForPeripherals(
-    withServices serviceUUIDs: [PeripheralUUID]?,
+    withServices serviceUUIDs: [UUID]?,
     options: [String: Any]? = nil
   ) {
     queue.async {
@@ -113,7 +109,7 @@ final class FakeCentralManager: CentralManager {
     }
   }
 
-  func retrieveConnectedPeripherals(withServices serviceUUIDs: [PeripheralUUID]) -> [Peripheral] {
+  func retrieveConnectedPeripherals(withServices serviceUUIDs: [UUID]) -> [Peripheral] {
     peripherals
   }
 

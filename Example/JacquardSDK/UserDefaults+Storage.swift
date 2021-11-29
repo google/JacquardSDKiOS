@@ -14,29 +14,12 @@
 
 import Foundation
 
-final class AppDataStorage {
-  var defaults: UserDefaults? = {
-    guard let defaults = UserDefaults(suiteName: "AppDataStorage") else {
-      assertionFailure("Unable to create UserDefaults for suiteName: AppDataStorage")
-      return nil
-    }
-    return defaults
-  }()
-
-  func store<V: Codable>(_ value: V, for key: String) {
-    defaults?.set(encodable: value, forKey: key)
-  }
-
-  func retrieve<T: Codable>(for key: String) -> T? {
-    return defaults?.value(T.self, forKey: key)
-  }
-
-  func remove(key: String) {
-    defaults?.removeObject(forKey: key)
-  }
-}
-
 extension UserDefaults {
+
+  private enum Constants {
+    static let keyAutoUpdateSwitchValue = "autoUpdateSwitchValue"
+    static let keyForceCheckUpdateSwitchValue = "forceCheckUpdateSwitchValue"
+  }
 
   private var primitiveTypes: [Encodable.Type] {
     return [
@@ -46,7 +29,7 @@ extension UserDefaults {
   }
 
   /// Allows the storing of type T that conforms to the Encodable protocol.
-  func set<T: Encodable>(encodable: T, forKey key: String) {
+  private func set<T: Encodable>(encodable: T, forKey key: String) {
     if primitiveTypes.first(where: { return $0 is T.Type }) != nil {
       set(encodable, forKey: key)
     } else if let data = try? PropertyListEncoder().encode(encodable) {
@@ -55,7 +38,7 @@ extension UserDefaults {
   }
 
   /// Allows for retrieval of type T that conforms to the Decodable protocol.
-  func value<T: Decodable>(_ type: T.Type, forKey key: String) -> T? {
+  private func value<T: Decodable>(_ type: T.Type, forKey key: String) -> T? {
     if let value = object(forKey: key) as? T {
       return value
     } else if let data = object(forKey: key) as? Data,
@@ -64,5 +47,23 @@ extension UserDefaults {
       return value
     }
     return nil
+  }
+
+  @objc var autoUpdateSwitch: Bool {
+    get {
+      return value(Bool.self, forKey: Constants.keyAutoUpdateSwitchValue) ?? false
+    }
+    set {
+      set(encodable: newValue, forKey: Constants.keyAutoUpdateSwitchValue)
+    }
+  }
+
+  @objc var forceCheckUpdateSwitch: Bool {
+    get {
+      return value(Bool.self, forKey: Constants.keyForceCheckUpdateSwitchValue) ?? false
+    }
+    set {
+      set(encodable: newValue, forKey: Constants.keyForceCheckUpdateSwitchValue)
+    }
   }
 }

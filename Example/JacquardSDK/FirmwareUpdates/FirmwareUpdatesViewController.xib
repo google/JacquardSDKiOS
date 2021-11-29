@@ -11,6 +11,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FirmwareUpdatesViewController" customModule="JacquardSDK_Example" customModuleProvider="target">
             <connections>
                 <outlet property="autoUpdateSwitch" destination="5Vq-Nf-YSz" id="MZi-EH-P52"/>
+                <outlet property="checkFirmwareButton" destination="f48-yp-Q4o" id="Ehz-H5-5dl"/>
+                <outlet property="checkFirmwareButtonBottomConstraint" destination="rq0-lW-oFt" id="Dra-Nq-CoU"/>
                 <outlet property="forceUpdateCheckSwitch" destination="CZx-Ty-TMs" id="Saz-b6-DvX"/>
                 <outlet property="productVersionLabel" destination="0q8-aE-ZPC" id="P6j-55-DGc"/>
                 <outlet property="tagVersionLabel" destination="VvY-To-mvf" id="ZU2-Gm-4KY"/>
@@ -118,6 +120,9 @@
                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CZx-Ty-TMs">
                     <rect key="frame" x="302" y="408" width="51" height="31"/>
                     <color key="onTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <action selector="forceCheckUpdateSwitchValueChanged:" destination="-1" eventType="valueChanged" id="rHH-Es-LEF"/>
+                    </connections>
                 </switch>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R87-eV-vNP" userLabel="LineView">
                     <rect key="frame" x="25" y="467" width="350" height="1"/>
@@ -147,6 +152,9 @@
                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5Vq-Nf-YSz">
                     <rect key="frame" x="302" y="492" width="51" height="31"/>
                     <color key="onTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <action selector="autoUpdateSwitchValueChanged:" destination="-1" eventType="valueChanged" id="eul-Cj-W2r"/>
+                    </connections>
                 </switch>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f48-yp-Q4o" customClass="GreyRoundCornerButton" customModule="JacquardSDK_Example" customModuleProvider="target">
                     <rect key="frame" x="55.666666666666657" y="740" width="264" height="48"/>
@@ -221,7 +229,7 @@
     </objects>
     <designables>
         <designable name="f48-yp-Q4o">
-            <size key="intrinsicContentSize" width="154" height="36"/>
+            <size key="intrinsicContentSize" width="210" height="36"/>
         </designable>
     </designables>
 </document>

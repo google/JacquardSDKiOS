@@ -1,13 +1,20 @@
 PODS:
+  - Charts (3.6.0):
+    - Charts/Core (= 3.6.0)
+  - Charts/Core (3.6.0)
   - JacquardSDK (0.2.0):
     - JacquardSDK/SDK (= 0.2.0)
+    - SwiftCheck (~> 0.12.0)
     - SwiftProtobuf (~> 1.0)
   - JacquardSDK/Protobuf (0.2.0):
+    - SwiftCheck (~> 0.12.0)
     - SwiftProtobuf (~> 1.0)
   - JacquardSDK/SDK (0.2.0):
     - JacquardSDK/Protobuf
+    - SwiftCheck (~> 0.12.0)
     - SwiftProtobuf (~> 1.0)
   - JacquardSDK/Tests (0.2.0):
+    - SwiftCheck (~> 0.12.0)
     - SwiftProtobuf (~> 1.0)
   - MaterialComponents (124.2.0):
     - MaterialComponents/ActionSheet (= 124.2.0)
@@ -656,9 +663,11 @@ PODS:
   - MotionInterchange (3.0.0)
   - ProgressHUD (13.6)
   - Starling (1.0.0)
+  - SwiftCheck (0.12.0)
   - SwiftProtobuf (1.18.0)
 
 DEPENDENCIES:
+  - Charts
   - JacquardSDK (from `../`)
   - JacquardSDK/Tests (from `../`)
   - MaterialComponents
@@ -667,12 +676,14 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Charts
     - MaterialComponents
     - MDFInternationalization
     - MDFTextAccessibility
     - MotionAnimator
     - MotionInterchange
     - ProgressHUD
+    - SwiftCheck
     - SwiftProtobuf
 
 EXTERNAL SOURCES:
@@ -688,7 +699,8 @@ CHECKOUT OPTIONS:
     :git: https://github.com/matthewreagan/Starling.git
 
 SPEC CHECKSUMS:
-  JacquardSDK: dacca5c73f710dd5123ee9c17f00d841b4ec77ba
+  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
+  JacquardSDK: b61dd4567b61d9cccdd57ce91c9813a47bb5d635
   MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
   MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
   MDFTextAccessibility: f4bb4cc2194286651b59a215fdeaa0e05dc90ba5
@@ -696,8 +708,9 @@ SPEC CHECKSUMS:
   MotionInterchange: 13adae439b377e31d1674cc165539d50e1d1566a
   ProgressHUD: 4bdaa0d2ddf676b23324b199f9facffb5c3a1620
   Starling: aa6aa7edffc3592ccb2cb57781b7f603fc3bedc2
+  SwiftCheck: d1dd04d955cc76620b0f84e087536bd059a11c24
   SwiftProtobuf: c3c12645230d9b09c72267e0de89468c5543bd86
 
-PODFILE CHECKSUM: eb9a54fca0b732b60662830444ed371009013a23
+PODFILE CHECKSUM: 342714d60a758cdef293e9a83237806a18e6e2cf
 
 COCOAPODS: 1.11.2

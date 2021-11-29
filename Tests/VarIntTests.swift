@@ -12,14 +12,32 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import SwiftCheck
 import XCTest
 
 @testable import JacquardSDK
 
 final class VarIntTests: XCTestCase {
 
+  /// SwiftCheck generator for number >= 0
+  ///
+  /// Only 0 or positive integers are supported by Varint.
+  struct ArbitraryPositive<A: Arbitrary & Comparable & SignedNumeric>: Arbitrary {
+    public let getPositive: A
+
+    public init(_ pos: A) {
+      self.getPositive = pos
+    }
+
+    public static var arbitrary: Gen<ArbitraryPositive<A>> {
+      return A.arbitrary.map { ArbitraryPositive.init(abs($0)) }
+    }
+  }
+
   struct CatchLogger: Logger {
-    func log(level: LogLevel, file: String, line: Int, function: String, message: () -> String) {
+    func log(
+      level: LogLevel, file: StaticString, line: UInt, function: String, message: () -> String
+    ) {
       let _ = message()
       if level == .preconditionFailure {
         expectation.fulfill()
@@ -29,22 +47,28 @@ final class VarIntTests: XCTestCase {
     var expectation: XCTestExpectation
   }
 
-  override func setUp() {
-    super.setUp()
-
-    let logger = PrintLogger(
-      logLevels: [.debug, .info, .warning, .error, .assertion, .preconditionFailure],
-      includeSourceDetails: true
-    )
-    setGlobalJacquardSDKLogger(logger)
-  }
-
   override func tearDown() {
     // Other tests may run in the same process. Ensure that any fake logger fulfillment doesn't
     // cause any assertions later.
     JacquardSDK.setGlobalJacquardSDKLogger(JacquardSDK.createDefaultLogger())
 
     super.tearDown()
+  }
+
+  func testSymmetric() {
+    property("Varint decode(encode()) should return the original number")
+      <- forAll { (num: ArbitraryPositive) in
+        Varint.decode(data: Varint.encode(value: num.getPositive)).value == num.getPositive
+      }
+  }
+
+  func testAllDataConsumed() {
+    property("Varint decode should consume all bytes produced by encode")
+      <- forAll { (num: ArbitraryPositive<Int>) in
+        let encoded = Varint.encode(value: num.getPositive)
+        let decoded = Varint.decode(data: encoded)
+        return decoded.bytesConsumed == encoded.count
+      }
   }
 
   func testVarIntEncode() {

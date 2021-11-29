@@ -95,7 +95,8 @@ extension Version {
     return (try? JSONDecoder().decode([Version].self, from: data)) ?? []
   }
 
-  /// Representation in 9 digit string format, for instance, Version 12.2.48 would be represented as 012002048.
+  /// Representation in 9 digit string format, for instance, Version 12.2.48 would be represented
+  /// as 012002048.
   var asDecimalEncodedString: String {
     return String(format: "%03d%03d%03d", major, minor, micro)
   }

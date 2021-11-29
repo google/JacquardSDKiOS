@@ -33,27 +33,24 @@ final class IMUSessionDetailsViewController: UIViewController {
   var selectedSession: IMUSessionData!
 
   @IBOutlet private weak var sessionName: UILabel!
+  @IBOutlet private weak var sessionDate: UILabel!
+  @IBOutlet private weak var sessionTime: UILabel!
   @IBOutlet private weak var samplesTableView: UITableView!
 
   private var samplesDiffableDataSource: UITableViewDiffableDataSource<Int, IMUSampleCellModel>?
-
-  private lazy var dateFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.timeStyle = DateFormatter.Style.medium
-    formatter.dateStyle = DateFormatter.Style.medium
-    formatter.timeZone = .current
-    return formatter
-  }()
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
     if let timestamp = TimeInterval(selectedSession.metadata.sessionID) {
       let date = Date(timeIntervalSinceReferenceDate: timestamp)
-      sessionName.text = dateFormatter.string(from: date)
-    } else {
-      sessionName.text = selectedSession.metadata.sessionID
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateFormat = "MMM d, yyyy"
+      sessionDate.text = "Session Date: \(dateFormatter.string(from: date))"
+      dateFormatter.dateFormat = "HH:mm"
+      sessionTime.text = "Session Started: \(dateFormatter.string(from: date))"
     }
+    sessionName.text = selectedSession.metadata.sessionID
     configureSessionTableView()
     updateDataSource()
   }
@@ -98,7 +95,7 @@ extension IMUSessionDetailsViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     let headerView = JacquardSectionHeader(
       frame: CGRect(x: 0.0, y: 0.0, width: samplesTableView.frame.width, height: 40.0))
-    headerView.title = "DATA: (\(selectedSession.samples.count) samples)"
+    headerView.title = "SESSION DATA"
     return headerView
   }
 

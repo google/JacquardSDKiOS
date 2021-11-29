@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		0F5624E926C2E94800C9FCB0 /* IMUSessionDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F5624E826C2E94800C9FCB0 /* IMUSessionDetailsViewController.xib */; };
 		0F5624EB26C2E96500C9FCB0 /* IMUSessionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5624EA26C2E96500C9FCB0 /* IMUSessionDetailsViewController.swift */; };
-		0F97626A26C40B850095CDD2 /* AppDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F97626926C40B850095CDD2 /* AppDataStorage.swift */; };
+		0F97626A26C40B850095CDD2 /* UserDefaults+Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F97626926C40B850095CDD2 /* UserDefaults+Storage.swift */; };
 		0F98224826024D65009BCF90 /* CapacitiveVisualizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F98224626024D65009BCF90 /* CapacitiveVisualizerViewController.swift */; };
 		0F98225026024DB8009BCF90 /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F98224F26024DB8009BCF90 /* BarView.swift */; };
 		0FC86B41260A213C00B1BA73 /* RenameTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC86B3F260A213C00B1BA73 /* RenameTagViewController.swift */; };
 		0FC86B42260A213C00B1BA73 /* RenameTagViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FC86B40260A213C00B1BA73 /* RenameTagViewController.xib */; };
+		0FE2F493270984CF0099FFBA /* IMUStreamingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE2F492270984CE0099FFBA /* IMUStreamingViewController.xib */; };
+		0FE2F495270985000099FFBA /* IMUStreamingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE2F494270985000099FFBA /* IMUStreamingViewController.swift */; };
 		0FE49782260283EF0033EDCF /* CapacitiveVisualizerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE49781260283EF0033EDCF /* CapacitiveVisualizerViewController.xib */; };
 		17875B3E262DFF840046D24A /* MusicalThreads.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17875B20262DFF840046D24A /* MusicalThreads.xib */; };
 		17875B3F262DFF840046D24A /* MusicalThreadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17875B21262DFF840046D24A /* MusicalThreadsViewController.swift */; };
@@ -67,6 +69,8 @@
 		B2047F4D2604671B00F96F33 /* DashboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2047F492604671B00F96F33 /* DashboardCell.swift */; };
 		B2047F4E2604671B00F96F33 /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2047F4A2604671B00F96F33 /* DashboardViewController.xib */; };
 		B2047F4F2604671B00F96F33 /* DashboardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2047F4B2604671B00F96F33 /* DashboardCell.xib */; };
+		B22FFBA4273A5F91007B63C1 /* BottomProgressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22FFBA3273A5F91007B63C1 /* BottomProgressController.swift */; };
+		B22FFBA6273A6001007B63C1 /* BottomProgressController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B22FFBA5273A6001007B63C1 /* BottomProgressController.xib */; };
 		B2437F982608949C0018B900 /* DashboardHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2437F962608949C0018B900 /* DashboardHeaderView.swift */; };
 		B2437F992608949C0018B900 /* DashboardHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2437F972608949C0018B900 /* DashboardHeaderView.xib */; };
 		B25E64FE26DCBFF500977C6D /* ProgressAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B25E64FC26DCBFF500977C6D /* ProgressAlertViewController.xib */; };
@@ -119,11 +123,13 @@
 /* Begin PBXFileReference section */
 		0F5624E826C2E94800C9FCB0 /* IMUSessionDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IMUSessionDetailsViewController.xib; sourceTree = "<group>"; };
 		0F5624EA26C2E96500C9FCB0 /* IMUSessionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMUSessionDetailsViewController.swift; sourceTree = "<group>"; };
-		0F97626926C40B850095CDD2 /* AppDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDataStorage.swift; sourceTree = "<group>"; };
+		0F97626926C40B850095CDD2 /* UserDefaults+Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Storage.swift"; sourceTree = "<group>"; };
 		0F98224626024D65009BCF90 /* CapacitiveVisualizerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapacitiveVisualizerViewController.swift; sourceTree = "<group>"; };
 		0F98224F26024DB8009BCF90 /* BarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
 		0FC86B3F260A213C00B1BA73 /* RenameTagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenameTagViewController.swift; sourceTree = "<group>"; };
 		0FC86B40260A213C00B1BA73 /* RenameTagViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RenameTagViewController.xib; sourceTree = "<group>"; };
+		0FE2F492270984CE0099FFBA /* IMUStreamingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IMUStreamingViewController.xib; sourceTree = "<group>"; };
+		0FE2F494270985000099FFBA /* IMUStreamingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMUStreamingViewController.swift; sourceTree = "<group>"; };
 		0FE49781260283EF0033EDCF /* CapacitiveVisualizerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CapacitiveVisualizerViewController.xib; sourceTree = "<group>"; };
 		17875B20262DFF840046D24A /* MusicalThreads.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MusicalThreads.xib; sourceTree = "<group>"; };
 		17875B21262DFF840046D24A /* MusicalThreadsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicalThreadsViewController.swift; sourceTree = "<group>"; };
@@ -180,6 +186,8 @@
 		B2047F492604671B00F96F33 /* DashboardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardCell.swift; sourceTree = "<group>"; };
 		B2047F4A2604671B00F96F33 /* DashboardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardViewController.xib; sourceTree = "<group>"; };
 		B2047F4B2604671B00F96F33 /* DashboardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardCell.xib; sourceTree = "<group>"; };
+		B22FFBA3273A5F91007B63C1 /* BottomProgressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomProgressController.swift; sourceTree = "<group>"; };
+		B22FFBA5273A6001007B63C1 /* BottomProgressController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomProgressController.xib; sourceTree = "<group>"; };
 		B2437F962608949C0018B900 /* DashboardHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardHeaderView.swift; sourceTree = "<group>"; };
 		B2437F972608949C0018B900 /* DashboardHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardHeaderView.xib; sourceTree = "<group>"; };
 		B25E64FC26DCBFF500977C6D /* ProgressAlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressAlertViewController.xib; sourceTree = "<group>"; };
@@ -268,6 +276,15 @@
 				0FC86B40260A213C00B1BA73 /* RenameTagViewController.xib */,
 			);
 			path = RenameTag;
+			sourceTree = "<group>";
+		};
+		0FE2F491270984970099FFBA /* IMUStreaming */ = {
+			isa = PBXGroup;
+			children = (
+				0FE2F492270984CE0099FFBA /* IMUStreamingViewController.xib */,
+				0FE2F494270985000099FFBA /* IMUStreamingViewController.swift */,
+			);
+			path = IMUStreaming;
 			sourceTree = "<group>";
 		};
 		17875B1F262DFF830046D24A /* MusicalThreads */ = {
@@ -430,6 +447,7 @@
 		607FACD21AFB9204008FA782 /* Example for JacquardSDK */ = {
 			isa = PBXGroup;
 			children = (
+				0FE2F491270984970099FFBA /* IMUStreaming */,
 				17F0B09E26AB2A51005CDA53 /* Places */,
 				B29C39C226A1B50200F2D21E /* FirmwareUpdates */,
 				B871B2A426A75E4B00368A76 /* IMUDataCollectionView */,
@@ -448,7 +466,7 @@
 				0F98224426024D65009BCF90 /* CapacitiveVisualization */,
 				CB19EA4C260084CF005DCAD2 /* HapticView */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				0F97626926C40B850095CDD2 /* AppDataStorage.swift */,
+				0F97626926C40B850095CDD2 /* UserDefaults+Storage.swift */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
@@ -519,6 +537,15 @@
 			path = Dashboard;
 			sourceTree = "<group>";
 		};
+		B22FFBA2273A5F69007B63C1 /* BottomProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				B22FFBA3273A5F91007B63C1 /* BottomProgressController.swift */,
+				B22FFBA5273A6001007B63C1 /* BottomProgressController.xib */,
+			);
+			path = BottomProgressView;
+			sourceTree = "<group>";
+		};
 		B25E64FB26DCBFF500977C6D /* ProgressAlertViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -575,6 +602,7 @@
 		B84AC73725FEB42C00C10A1C /* UIControls */ = {
 			isa = PBXGroup;
 			children = (
+				B22FFBA2273A5F69007B63C1 /* BottomProgressView */,
 				B25E64FB26DCBFF500977C6D /* ProgressAlertViewController */,
 				B8170CA626CC8CE000F74425 /* TableSectionHeader */,
 				B289A9CF26A5802A00BE6067 /* AlertController */,
@@ -759,6 +787,7 @@
 				2A0C4EA426020D73006941C3 /* GesturesViewController.xib in Resources */,
 				17875B3E262DFF840046D24A /* MusicalThreads.xib in Resources */,
 				B2047F4E2604671B00F96F33 /* DashboardViewController.xib in Resources */,
+				0FE2F493270984CF0099FFBA /* IMUStreamingViewController.xib in Resources */,
 				B2047F4F2604671B00F96F33 /* DashboardCell.xib in Resources */,
 				CB26324D26145C6E000BFE8A /* TagManagerViewController.xib in Resources */,
 				0FE49782260283EF0033EDCF /* CapacitiveVisualizerViewController.xib in Resources */,
@@ -788,6 +817,7 @@
 				CB84D22E2604D540005984A6 /* LEDViewController.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 				17875FC02633491C0046D24A /* G2.mp3 in Resources */,
+				B22FFBA6273A6001007B63C1 /* BottomProgressController.xib in Resources */,
 				CB26325B26148CF2000BFE8A /* TagDetailsViewController.xib in Resources */,
 				17875FB92633491C0046D24A /* D4.mp3 in Resources */,
 				17875FC32633491C0046D24A /* G4.mp3 in Resources */,
@@ -813,6 +843,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-JacquardSDK_Example/Pods-JacquardSDK_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/JacquardSDK/JacquardSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
 				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
@@ -821,10 +852,12 @@
 				"${BUILT_PRODUCTS_DIR}/MotionInterchange/MotionInterchange.framework",
 				"${BUILT_PRODUCTS_DIR}/ProgressHUD/ProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Starling/Starling.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftCheck/SwiftCheck.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftProtobuf/SwiftProtobuf.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JacquardSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
@@ -833,6 +866,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionInterchange.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starling.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftCheck.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftProtobuf.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -947,6 +981,7 @@
 			files = (
 				B2437F982608949C0018B900 /* DashboardHeaderView.swift in Sources */,
 				2A3A9076262487AC008D45E9 /* Extensions.swift in Sources */,
+				B22FFBA4273A5F91007B63C1 /* BottomProgressController.swift in Sources */,
 				B289A9D226A5803800BE6067 /* AlertViewController.swift in Sources */,
 				B84AC73E25FEBB9300C10A1C /* Buttons.swift in Sources */,
 				B84AC73A25FEB47400C10A1C /* ColorScheme.swift in Sources */,
@@ -968,7 +1003,7 @@
 				17F0B0B426AB2A51005CDA53 /* PlacesListViewController.swift in Sources */,
 				3CFBCA91270B304700F259DD /* Place+CoreDataProperties.swift in Sources */,
 				B815864E26BB2266009A5E03 /* CoreDataStackManager.swift in Sources */,
-				0F97626A26C40B850095CDD2 /* AppDataStorage.swift in Sources */,
+				0F97626A26C40B850095CDD2 /* UserDefaults+Storage.swift in Sources */,
 				B2047F4C2604671B00F96F33 /* DashboardViewController.swift in Sources */,
 				B8170CA426CC787400F74425 /* IMUSessionDetailTableViewCell.swift in Sources */,
 				B29C39C526A1B53500F2D21E /* FirmwareUpdatesViewController.swift in Sources */,
@@ -997,6 +1032,7 @@
 				2A88022B261B8801009A2E58 /* GestureTableViewCell.swift in Sources */,
 				3CFBCA92270B304700F259DD /* Place+CoreDataClass.swift in Sources */,
 				CB19EA5D26008549005DCAD2 /* HapticViewController.swift in Sources */,
+				0FE2F495270985000099FFBA /* IMUStreamingViewController.swift in Sources */,
 				B8349F0F26A7AE76007DCEBD /* IMUSessionTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

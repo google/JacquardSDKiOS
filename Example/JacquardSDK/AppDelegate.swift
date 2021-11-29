@@ -25,7 +25,9 @@ var sharedJacquardManager: JacquardManager = {
   // JacquardManagerImplementation.
   let logger = PrintLogger(
     logLevels: [.info, .warning, .error, .assertion, .preconditionFailure],
-    includeSourceDetails: true)
+    includeSourceDetails: true,
+    includeFileLogs: true
+  )
   setGlobalJacquardSDKLogger(logger)
 
   let options = [CBCentralManagerOptionRestoreIdentifierKey: "JacquardSDKRestoreIdentifier"]

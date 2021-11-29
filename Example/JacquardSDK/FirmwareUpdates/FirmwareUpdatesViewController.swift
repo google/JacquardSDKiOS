@@ -32,15 +32,20 @@ class FirmwareUpdatesViewController: UIViewController {
   @IBOutlet private weak var productVersionLabel: UILabel!
   @IBOutlet private weak var forceUpdateCheckSwitch: UISwitch!
   @IBOutlet private weak var autoUpdateSwitch: UISwitch!
+  @IBOutlet private weak var checkFirmwareButton: GreyRoundCornerButton!
+  @IBOutlet private var checkFirmwareButtonBottomConstraint: NSLayoutConstraint!
 
   // MARK: - Variables
 
   private var alertViewController: AlertViewController?
   private var firmwareUpdateProgressViewController: ProgressAlertViewController?
+  private var bottomProgressController: BottomProgressController?
   private let loadingView = LoadingViewController.instance
   private let connectionStream: AnyPublisher<TagConnectionState, Never>?
   private var connectedTag: ConnectedTag?
   private var observers = [Cancellable]()
+  private var isForegroundUpdateInProgress = false
+  private var dfuUpdates: [DFUUpdateInfo] = []
 
   // MARK: - Initializers
 
@@ -58,6 +63,21 @@ class FirmwareUpdatesViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    let defaults = UserDefaults.standard
+    defaults
+      .publisher(for: \.autoUpdateSwitch)
+      .removeDuplicates()
+      .sink { [weak self] value in
+        self?.autoUpdateSwitch.isOn = value
+      }.addTo(&observers)
+
+    defaults
+      .publisher(for: \.forceCheckUpdateSwitch)
+      .removeDuplicates()
+      .sink { [weak self] value in
+        self?.forceUpdateCheckSwitch.isOn = value
+      }.addTo(&observers)
 
     updateTagVersion()
     updateProductVersion()
@@ -79,6 +99,14 @@ class FirmwareUpdatesViewController: UIViewController {
     }
 
     checkFirmwareUpdates(tag)
+  }
+
+  @IBAction func forceCheckUpdateSwitchValueChanged(_ sender: UISwitch) {
+    UserDefaults.standard.forceCheckUpdateSwitch = sender.isOn
+  }
+
+  @IBAction func autoUpdateSwitchValueChanged(_ sender: UISwitch) {
+    UserDefaults.standard.autoUpdateSwitch = sender.isOn
   }
 }
 
@@ -105,6 +133,12 @@ extension FirmwareUpdatesViewController {
       }
       self.productVersionLabel.text = gearComponent.version?.description
     }
+  }
+
+  private func enableUIControl(_ enable: Bool) {
+    autoUpdateSwitch.isEnabled = enable
+    forceUpdateCheckSwitch.isEnabled = enable
+    checkFirmwareButton.isEnabled = enable
   }
 
   private func showFirmwareUpdateAvailableAlert(_ updates: [DFUUpdateInfo], tag: ConnectedTag) {
@@ -139,11 +173,15 @@ extension FirmwareUpdatesViewController {
     present(alertViewController, animated: true)
   }
 
-  private func showUpdateProgressAlert(isTagOnlyUpdate: Bool) {
+  private func showUpdateProgressAlert(_ tag: ConnectedTag) {
     firmwareUpdateProgressViewController = ProgressAlertViewController()
     guard let firmwareUpdateProgressViewController = firmwareUpdateProgressViewController else {
       return
     }
+    let isTagOnlyUpdate = self.dfuUpdates.reduce(false) { _, info in
+      self.isUpdateInfoForTag(tag, updateInfo: info)
+    }
+    self.isForegroundUpdateInProgress = true
     var alertDescription = ""
     if isTagOnlyUpdate {
       alertDescription =
@@ -152,11 +190,19 @@ extension FirmwareUpdatesViewController {
       alertDescription =
         "Keep your Tag plugged in to your product while updating. We’ll notify you when the update is completed."
     }
+    let actionHandler = { [weak self] in
+      guard let self = self else { return }
+      self.firmwareUpdateProgressViewController = nil
+      self.isForegroundUpdateInProgress = false
+      self.showBottomProgressView()
+    }
 
     firmwareUpdateProgressViewController.configureView(
       title: "Update in progress...",
       description: alertDescription,
-      progressTitle: "Downloading..."
+      progressTitle: "Downloading...",
+      actionTitle: "Ok",
+      actionHandler: actionHandler
     )
     firmwareUpdateProgressViewController.modalPresentationStyle = .custom
     firmwareUpdateProgressViewController.modalTransitionStyle = .crossDissolve
@@ -236,7 +282,7 @@ extension FirmwareUpdatesViewController {
     present(alertViewController, animated: true)
   }
 
-  private func showSomethingWentWrongAlert(_ isTagOnlyUpdate: Bool) {
+  private func showSomethingWentWrongAlert(_ tag: ConnectedTag) {
     dismissAlert {
 
       let measurement = Measurement(value: Constants.tagDistanceFromPhone, unit: UnitLength.feet)
@@ -246,6 +292,9 @@ extension FirmwareUpdatesViewController {
       measurementFormatter.locale = .current
       let localizedDistance = measurementFormatter.string(from: measurement)
 
+      let isTagOnlyUpdate = self.dfuUpdates.reduce(false) { _, info in
+        self.isUpdateInfoForTag(tag, updateInfo: info)
+      }
       let alertViewController = AlertViewController()
       let alertTitle = "Something went wrong"
       var alertDescription =
@@ -266,6 +315,96 @@ extension FirmwareUpdatesViewController {
       alertViewController.modalTransitionStyle = .crossDissolve
       self.present(alertViewController, animated: true)
     }
+  }
+
+  private func showBottomProgressView() {
+    guard bottomProgressController == nil else {
+      return
+    }
+    enableUIControl(false)
+
+    let bottomProgressController = BottomProgressController()
+    addChild(bottomProgressController)
+    bottomProgressController.view.translatesAutoresizingMaskIntoConstraints = false
+    view.addSubview(bottomProgressController.view)
+    bottomProgressController.didMove(toParent: self)
+
+    bottomProgressController.view.layer.shadowColor =
+      UIColor(red: 0.235, green: 0.251, blue: 0.263, alpha: 0.15).cgColor
+    bottomProgressController.view.layer.shadowOffset = CGSize(width: 5.0, height: 0.0)
+    bottomProgressController.view.layer.shadowOpacity = 1
+    bottomProgressController.view.layer.shadowRadius = 7
+
+    self.bottomProgressController = bottomProgressController
+
+    let leadingConstraint = NSLayoutConstraint(
+      item: bottomProgressController.view as Any,
+      attribute: .leading,
+      relatedBy: .equal,
+      toItem: view,
+      attribute: .leading,
+      multiplier: 1.0,
+      constant: 0.0
+    )
+
+    let trailingConstraint = NSLayoutConstraint(
+      item: bottomProgressController.view as Any,
+      attribute: .trailing,
+      relatedBy: .equal,
+      toItem: view,
+      attribute: .trailing,
+      multiplier: 1.0,
+      constant: 0.0
+    )
+
+    let bottomConstraint = NSLayoutConstraint(
+      item: bottomProgressController.view as Any,
+      attribute: .bottom,
+      relatedBy: .equal,
+      toItem: view,
+      attribute: .bottom,
+      multiplier: 1.0,
+      constant: 0.0
+    )
+
+    let heightConstraint = bottomProgressController.view.heightAnchor.constraint(
+      equalToConstant: 71.0 + view.safeAreaInsets.bottom
+    )
+
+    view.addConstraints(
+      [leadingConstraint, trailingConstraint, bottomConstraint, heightConstraint]
+    )
+
+    checkFirmwareButtonBottomConstraint.isActive = false
+    checkFirmwareButtonBottomConstraint.priority = .defaultLow
+
+    let layoutConstraint = NSLayoutConstraint(
+      item: bottomProgressController.view as Any,
+      attribute: .top,
+      relatedBy: .equal,
+      toItem: checkFirmwareButton,
+      attribute: .bottom,
+      multiplier: 1.0,
+      constant: 17.0
+    )
+    layoutConstraint.isActive = true
+    layoutConstraint.priority = .required
+
+    view.addConstraint(layoutConstraint)
+
+    view.layoutIfNeeded()
+  }
+
+  private func hideBottomProgressView() {
+    enableUIControl(true)
+    bottomProgressController?.view.removeFromSuperview()
+    bottomProgressController?.removeFromParent()
+    bottomProgressController = nil
+
+    checkFirmwareButtonBottomConstraint.isActive = true
+    checkFirmwareButtonBottomConstraint.priority = .required
+
+    view.layoutIfNeeded()
   }
 }
 
@@ -308,6 +447,7 @@ extension FirmwareUpdatesViewController {
         guard let self = self else { return }
         self.connectedTag = optionalTag
         self.updateTagVersion()
+        self.subscribeForFirmwareStates()
         self.subscribeGearConnection()
       }.addTo(&observers)
   }
@@ -339,7 +479,7 @@ extension FirmwareUpdatesViewController {
         }
       } receiveValue: { [weak self] updates in
         guard let self = self else { return }
-
+        self.dfuUpdates = updates
         self.loadingView.stopLoading {
           if updates.isEmpty {
             self.showNoUpdateAvailableAlert()
@@ -358,52 +498,8 @@ extension FirmwareUpdatesViewController {
       return
     }
 
-    tag.firmwareUpdateManager.applyUpdates(updates, shouldAutoExecute: autoUpdateSwitch.isOn)
-      .sink { [weak self] state in
-        guard let self = self else { return }
-
-        switch state {
-        case .idle: break
-        case .preparingForTransfer:
-          let isTagOnlyUpdate = updates.reduce(false) { _, info in
-            self.isUpdateInfoForTag(tag, updateInfo: info)
-          }
-          self.showUpdateProgressAlert(isTagOnlyUpdate: isTagOnlyUpdate)
-          self.firmwareUpdateProgressViewController?.progress = 0.0
-        case .transferring(let progress):
-          self.firmwareUpdateProgressViewController?.progress = progress
-        case .transferred:
-          self.firmwareUpdateProgressViewController?.progress = 100.0
-          self.firmwareUpdateProgressViewController?.dismiss(animated: true) {
-            self.firmwareUpdateProgressViewController = nil
-            if !self.autoUpdateSwitch.isOn {
-              self.showAlmostReadyAlert()
-            }
-          }
-        case .executing:
-          self.dismissAlert {
-            self.loadingView.modalPresentationStyle = .overCurrentContext
-            self.present(self.loadingView, animated: true) {
-              self.loadingView.startLoading(withMessage: "Finishing")
-            }
-          }
-        case .completed:
-          self.loadingView.stopLoading {
-            self.showUpdateCompleteAlert()
-          }
-        case .error(.lowBattery):
-          self.showLowTagBatteryAlert()
-        case .error(_):
-          let isTagOnlyUpdate = updates.reduce(false) { _, info in
-            self.isUpdateInfoForTag(tag, updateInfo: info)
-          }
-          self.loadingView.stopLoading {
-            self.showSomethingWentWrongAlert(isTagOnlyUpdate)
-          }
-        @unknown default:
-          fatalError("Unknown case \(state)")
-        }
-      }.addTo(&observers)
+    let _ =
+      tag.firmwareUpdateManager.applyUpdates(updates, shouldAutoExecute: autoUpdateSwitch.isOn)
   }
 
   private func executeUpdates() {
@@ -414,5 +510,65 @@ extension FirmwareUpdatesViewController {
       return
     }
     tag.firmwareUpdateManager.executeUpdates()
+  }
+
+  private func subscribeForFirmwareStates() {
+    if let tag = connectedTag {
+      tag.firmwareUpdateManager.state
+        .sink { [weak self] state in
+          guard let self = self else { return }
+
+          switch state {
+          case .idle: break
+          case .preparingForTransfer:
+            self.showUpdateProgressAlert(tag)
+            self.firmwareUpdateProgressViewController?.progress = 0.0
+          case .transferring(let progress):
+            if !self.isForegroundUpdateInProgress {
+              self.showBottomProgressView()
+            }
+            if let bottomProgressController = self.bottomProgressController {
+              bottomProgressController.progress = progress
+            } else {
+              self.firmwareUpdateProgressViewController?.progress = progress
+            }
+          case .transferred:
+            if let bottomProgressController = self.bottomProgressController {
+              bottomProgressController.progress = 100.0
+              self.hideBottomProgressView()
+              if !self.autoUpdateSwitch.isOn {
+                self.showAlmostReadyAlert()
+              }
+            } else {
+              self.firmwareUpdateProgressViewController?.progress = 100.0
+              self.firmwareUpdateProgressViewController?.dismiss(animated: true) {
+                self.firmwareUpdateProgressViewController = nil
+                if !self.autoUpdateSwitch.isOn {
+                  self.showAlmostReadyAlert()
+                }
+              }
+            }
+          case .executing:
+            self.dismissAlert {
+              self.loadingView.modalPresentationStyle = .overCurrentContext
+              self.present(self.loadingView, animated: true) {
+                self.loadingView.startLoading(withMessage: "Finishing")
+              }
+            }
+          case .completed:
+            self.loadingView.stopLoading {
+              self.showUpdateCompleteAlert()
+            }
+          case .error(.lowBattery):
+            self.hideBottomProgressView()
+            self.showLowTagBatteryAlert()
+          case .error(_):
+            self.hideBottomProgressView()
+            self.loadingView.stopLoading {
+              self.showSomethingWentWrongAlert(tag)
+            }
+          }
+        }.addTo(&observers)
+    }
   }
 }

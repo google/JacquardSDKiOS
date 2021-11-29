@@ -19,7 +19,9 @@ import XCTest
 class AttachedNotificationTests: XCTestCase {
 
   struct CatchLogger: Logger {
-    func log(level: LogLevel, file: String, line: Int, function: String, message: () -> String) {
+    func log(
+      level: LogLevel, file: StaticString, line: UInt, function: String, message: () -> String
+    ) {
       // Exercise the implicit closure.
       let _ = message()
       expectation.fulfill()

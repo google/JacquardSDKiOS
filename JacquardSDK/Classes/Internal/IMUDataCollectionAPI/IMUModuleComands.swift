@@ -312,3 +312,52 @@ struct RetreiveIMUSessionDataCommand: CommandRequest {
     return .failure(CommandResponseStatus.errorUnknown)
   }
 }
+
+/// Command request to start streaming motion sensor data.
+struct StartIMUStreamingCommand: CommandRequest {
+
+  let sessionID: String
+
+  init() {
+    self.sessionID = "\(Date().timeIntervalSinceReferenceDate)"
+  }
+
+  var request: V2ProtocolCommandRequestIDInjectable {
+    var request = Google_Jacquard_Protocol_Request()
+    request.domain = .dataCollection
+    request.opcode = .dataCollectionStart
+
+    var metadata = Google_Jacquard_Protocol_DataCollectionMetadata()
+    metadata.mode = .streaming
+    metadata.campaignID = "IMU_Campaign"
+    metadata.sessionID = "IMU_Group"
+    metadata.trialID = sessionID
+    metadata.subjectID = "IMU_Subject"
+    metadata.productID = "IMU_Product"
+    var startRequest = Google_Jacquard_Protocol_DataCollectionStartRequest()
+    startRequest.metadata = metadata
+
+    request.Google_Jacquard_Protocol_DataCollectionStartRequest_start = startRequest
+    return request
+  }
+
+  func parseResponse(
+    outerProto: Any
+  ) -> Result<Google_Jacquard_Protocol_DataCollectionStatus, Error> {
+
+    guard
+      let outerProto = outerProto as? Google_Jacquard_Protocol_Response
+    else {
+      jqLogger.assert(
+        "calling parseResponse() with anything other than Google_Jacquard_Protocol_Response is an error"
+      )
+      return .failure(CommandResponseStatus.errorAppUnknown)
+    }
+
+    if outerProto.hasGoogle_Jacquard_Protocol_DataCollectionStartResponse_start {
+      return .success(
+        outerProto.Google_Jacquard_Protocol_DataCollectionStartResponse_start.dcStatus)
+    }
+    return .failure(CommandResponseStatus.errorUnknown)
+  }
+}

@@ -28,7 +28,9 @@ class ModuleComandsTests: XCTestCase {
   )
 
   struct CatchLogger: Logger {
-    func log(level: LogLevel, file: String, line: Int, function: String, message: () -> String) {
+    func log(
+      level: LogLevel, file: StaticString, line: UInt, function: String, message: () -> String
+    ) {
       let _ = message()
       if level == .assertion {
         expectation.fulfill()

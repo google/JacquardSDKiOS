@@ -31,7 +31,8 @@ let package = Package(
     .package(
       name: "SwiftProtobuf",
       url: "https://github.com/apple/swift-protobuf.git",
-      from: "1.16.0")
+      from: "1.16.0"),
+    .package(url: "https://github.com/typelift/SwiftCheck.git", from: "0.12.0")
   ],
   targets: [
     .target(
@@ -45,7 +46,10 @@ let package = Package(
     ),
     .testTarget(
       name: "JacquardSDKTests",
-      dependencies: ["JacquardSDK"],
+      dependencies: [
+        "JacquardSDK",
+        "SwiftCheck",
+      ],
       path: "Tests",
       resources: [
         .copy("TestResources/imu1.bin"),

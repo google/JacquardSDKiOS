@@ -20,7 +20,7 @@ class IMUParserTests: XCTestCase {
 
   func testParser() throws {
 
-    let testBundle = Bundle(for: type(of: self))
+    let testBundle = Bundle.test
     guard
       let path1 = testBundle.path(forResource: "imu1", ofType: "bin"),
       let stream = InputStream(fileAtPath: path1)
@@ -69,4 +69,43 @@ class IMUParserTests: XCTestCase {
 
   }
 
+}
+
+class IMUStreamDataParserTests: XCTestCase {
+
+  func testParser() throws {
+
+    let parser = IMUStreamDataParser()
+    let rawBytes: [UInt8] = [
+      117, 255, 30, 0, 75, 8, 235, 255, 1, 0, 0, 0, 89, 3, 51, 0, 117, 255, 28, 0, 82, 8, 238, 255,
+      2, 0, 2, 0, 245, 3, 51, 0, 117, 255, 26, 0, 87, 8, 236, 255, 254, 255, 2, 0, 146, 4, 51, 0,
+    ]
+    let samples = try parser.parseIMUSamples(bytesData: rawBytes)
+
+    XCTAssertEqual(samples.count, 3)
+    XCTAssertEqual(
+      samples[0],
+      IMUSample(
+        acceleration: .init(x: -139, y: 30, z: 2123),
+        gyro: .init(x: -21, y: 1, z: 0),
+        timestamp: 3_343_193
+      )
+    )
+    XCTAssertEqual(
+      samples[1],
+      IMUSample(
+        acceleration: .init(x: -139, y: 28, z: 2130),
+        gyro: .init(x: -18, y: 2, z: 2),
+        timestamp: 3_343_349
+      )
+    )
+    XCTAssertEqual(
+      samples[2],
+      IMUSample(
+        acceleration: .init(x: -139, y: 26, z: 2135),
+        gyro: .init(x: -20, y: -2, z: 2),
+        timestamp: 3_343_506
+      )
+    )
+  }
 }

@@ -298,8 +298,6 @@ class ScanningViewController: UIViewController {
           self?.loadingView.stopLoading()
           self?.invalidatePairingTimer()
           MDCSnackbarManager.default.show(MDCSnackbarMessage(text: "Disconnected"))
-        @unknown default:
-          fatalError("Unknown connection state.")
         }
       }
       .addTo(&cancellables)

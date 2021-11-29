@@ -23,6 +23,9 @@ class FakeTransport: Transport {
   var rawDataPublisher: AnyPublisher<Data, Never> {
     return Just<Data>(Data()).eraseToAnyPublisher()
   }
+  var rawBytesPublisher: AnyPublisher<[UInt8], Never> {
+    return Just<[UInt8]>([UInt8]()).eraseToAnyPublisher()
+  }
 
   private var notificationSubject = PassthroughSubject<
     Google_Jacquard_Protocol_Notification, Never

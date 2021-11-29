@@ -38,6 +38,9 @@ class TagDetailsViewController: UIViewController {
     static let selectedAsCurrentTag = "Selected As Current Tag"
     static let tagIsNotCurrentTag =
       "All details can't be shown as the tag is not set as the current tag."
+
+    // Notification name
+    static let setCurrentTag = "setCurrentTag"
   }
 
   @IBOutlet private weak var serialNumberLabel: UILabel!
@@ -126,6 +129,7 @@ class TagDetailsViewController: UIViewController {
     Preferences.knownTags.removeAll(where: { $0.identifier == selectedTag.identifier })
     if Preferences.knownTags.count > 0 {
       navigationController?.popViewController(animated: true)
+      NotificationCenter.default.post(name: Notification.Name(Constants.setCurrentTag), object: nil)
     } else {
       let appDelegate = UIApplication.shared.delegate as? AppDelegate
       appDelegate?.window?.rootViewController =
@@ -177,8 +181,6 @@ class TagDetailsViewController: UIViewController {
         case .disconnected(let error):
           print("Disconnected with error: \(String(describing: error))")
           self.updateUIForTagDisconnect()
-        @unknown default:
-          fatalError("Unknown connection state.")
         }
       }.addTo(&observers)
   }
@@ -208,7 +210,7 @@ class TagDetailsViewController: UIViewController {
     Preferences.knownTags.remove(at: index)
     Preferences.knownTags.insert(tag, at: 0)
     navigationController?.popViewController(animated: true)
-    NotificationCenter.default.post(name: Notification.Name("setCurrentTag"), object: nil)
+    NotificationCenter.default.post(name: Notification.Name(Constants.setCurrentTag), object: nil)
   }
 
   @IBAction func forgetTag(_ sender: Any) {

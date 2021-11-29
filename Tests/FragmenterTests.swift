@@ -20,7 +20,9 @@ import XCTest
 class FragmenterTests: XCTestCase {
 
   struct CatchLogger: Logger {
-    func log(level: LogLevel, file: String, line: Int, function: String, message: () -> String) {
+    func log(
+      level: LogLevel, file: StaticString, line: UInt, function: String, message: () -> String
+    ) {
       expectation.fulfill()
     }
 
@@ -191,5 +193,36 @@ class FragmenterTests: XCTestCase {
   func testWithMaximumPacketSize() {
     testMultiPacketFragmenting(packetLength: 1024)
     testMultiFragmentAssembling(packetLength: 1024)
+  }
+
+  func testUnFinishedPacket() {
+    var fragmenter = Fragmenter(mtu: mtu)
+    let packetLength = 61  // Arbitrary packet length for testing.
+
+    // payload lengths taking into account the initial header (one byte) and varint payload length.
+    let firstPayloadLength = packetLength - 3
+    let secondPayloadLength = packetLength - 1
+
+    let packet = Data((1...3 * packetLength).map { UInt8($0 % 256) })
+    let firstFragments = fragmenter.fragments(fromPacket: packet)
+    precondition(firstFragments.count > 2, "Need multiple fragments for this test")
+
+    XCTAssertEqual(
+      fragmenter.incomingDataCount, 0, "New fragmenter should have 0 incomingDataCount")
+    XCTAssertNil(fragmenter.packet(fromAddedFragment: firstFragments[0]))
+    XCTAssertEqual(
+      fragmenter.incomingDataCount, firstPayloadLength,
+      "Fragmenter incomingDataCount should reflect first packet")
+    XCTAssertNil(fragmenter.packet(fromAddedFragment: firstFragments[1]))
+    XCTAssertEqual(
+      fragmenter.incomingDataCount, firstPayloadLength + secondPayloadLength,
+      "Fragmenter incomingDataCount should reflect second packet")
+
+    let secondFragments = fragmenter.fragments(fromPacket: packet)
+    precondition(secondFragments.count > 2, "Need multiple fragments for this test")
+    XCTAssertNil(fragmenter.packet(fromAddedFragment: secondFragments[0]))
+    XCTAssertEqual(
+      fragmenter.incomingDataCount, firstPayloadLength,
+      "Fragmenter incomingDataCount should be reset and reflect first packet")
   }
 }

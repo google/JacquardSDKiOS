@@ -96,6 +96,9 @@ public enum FirmwareUpdateState {
 /// Provides a way to check, apply and execute firmware updates.
 public protocol FirmwareUpdateManager: AnyObject {
 
+  /// Publishes current firmware update state.
+  var state: AnyPublisher<FirmwareUpdateState, Never> { get }
+
   /// Checks for updates and publishes the available updates info or an error.
   ///
   /// - Parameter forceCheck: If `true`, api will fetch update info from cloud forcefully.

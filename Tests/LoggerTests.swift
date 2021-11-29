@@ -19,13 +19,15 @@ import XCTest
 class LoggerTests: XCTestCase {
 
   class FakeLogger: Logger {
-    var callback: (LogLevel, String, Int, String, () -> String) -> Void
+    var callback: (LogLevel, StaticString, UInt, String, () -> String) -> Void
 
-    init(callback: @escaping (LogLevel, String, Int, String, () -> String) -> Void) {
+    init(callback: @escaping (LogLevel, StaticString, UInt, String, () -> String) -> Void) {
       self.callback = callback
     }
 
-    func log(level: LogLevel, file: String, line: Int, function: String, message: () -> String) {
+    func log(
+      level: LogLevel, file: StaticString, line: UInt, function: String, message: () -> String
+    ) {
       callback(level, file, line, function, message)
     }
   }
@@ -75,7 +77,7 @@ class LoggerTests: XCTestCase {
     PrintLogger(logLevels: [.warning], includeSourceDetails: false).debug("test log")
   }
 
-  func whoseLineIsThisAnyway(line: Int = #line) -> Int { line }
+  func whoseLineIsThisAnyway(line: UInt = #line) -> UInt { line }
 
   /// Tests the default `Logger.debug()` method implementation on the `Logger` protocol.
   func testDefaultDebugImplementation() {
@@ -83,7 +85,7 @@ class LoggerTests: XCTestCase {
     let actualLine = whoseLineIsThisAnyway() + 10
     let fakeLogger = FakeLogger { (logLevel, file, line, function, messageClosure) in
       XCTAssertEqual(logLevel, .debug)
-      XCTAssertEqual(URL(fileURLWithPath: file).lastPathComponent, "LoggerTests.swift")
+      XCTAssertEqual(URL(fileURLWithPath: file.description).lastPathComponent, "LoggerTests.swift")
       XCTAssertEqual(function, "testDefaultDebugImplementation()")
       XCTAssertEqual(messageClosure(), "debug message")
       XCTAssertEqual(line, actualLine)
@@ -100,7 +102,7 @@ class LoggerTests: XCTestCase {
     let actualLine = whoseLineIsThisAnyway() + 10
     let fakeLogger = FakeLogger { (logLevel, file, line, function, messageClosure) in
       XCTAssertEqual(logLevel, .info)
-      XCTAssertEqual(URL(fileURLWithPath: file).lastPathComponent, "LoggerTests.swift")
+      XCTAssertEqual(URL(fileURLWithPath: file.description).lastPathComponent, "LoggerTests.swift")
       XCTAssertEqual(function, "testDefaultInfoImplementation()")
       XCTAssertEqual(messageClosure(), "info message")
       XCTAssertEqual(line, actualLine)
@@ -117,7 +119,7 @@ class LoggerTests: XCTestCase {
     let actualLine = whoseLineIsThisAnyway() + 10
     let fakeLogger = FakeLogger { (logLevel, file, line, function, messageClosure) in
       XCTAssertEqual(logLevel, .warning)
-      XCTAssertEqual(URL(fileURLWithPath: file).lastPathComponent, "LoggerTests.swift")
+      XCTAssertEqual(URL(fileURLWithPath: file.description).lastPathComponent, "LoggerTests.swift")
       XCTAssertEqual(function, "testDefaultWarningImplementation()")
       XCTAssertEqual(messageClosure(), "warning message")
       XCTAssertEqual(line, actualLine)
@@ -134,7 +136,7 @@ class LoggerTests: XCTestCase {
     let actualLine = whoseLineIsThisAnyway() + 10
     let fakeLogger = FakeLogger { (logLevel, file, line, function, messageClosure) in
       XCTAssertEqual(logLevel, .error)
-      XCTAssertEqual(URL(fileURLWithPath: file).lastPathComponent, "LoggerTests.swift")
+      XCTAssertEqual(URL(fileURLWithPath: file.description).lastPathComponent, "LoggerTests.swift")
       XCTAssertEqual(function, "testDefaultErrorImplementation()")
       XCTAssertEqual(messageClosure(), "error message")
       XCTAssertEqual(line, actualLine)
@@ -153,7 +155,7 @@ class LoggerTests: XCTestCase {
     let actualLine = whoseLineIsThisAnyway() + 10
     let fakeLogger = FakeLogger { (logLevel, file, line, function, messageClosure) in
       XCTAssertEqual(logLevel, .assertion)
-      XCTAssertEqual(URL(fileURLWithPath: file).lastPathComponent, "LoggerTests.swift")
+      XCTAssertEqual(URL(fileURLWithPath: file.description).lastPathComponent, "LoggerTests.swift")
       XCTAssertEqual(function, "testDefaultAssertImplementation()")
       XCTAssertEqual(messageClosure(), "assertion message")
       XCTAssertEqual(line, actualLine)

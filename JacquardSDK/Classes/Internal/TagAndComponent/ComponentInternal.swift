@@ -59,9 +59,7 @@ extension ComponentImplementation {
     guard
       string.range(
         of: "^[0-9a-fA-F]{2}-[0-9a-fA-F]{2}-[0-9a-fA-F]{2}-[0-9a-fA-F]{2}$",
-        options: .regularExpression,
-        range: nil,
-        locale: nil
+        options: .regularExpression
       ) != nil
     else {
       jqLogger.assert("Invalid hexadecimal string: \(string)")
@@ -69,7 +67,7 @@ extension ComponentImplementation {
     }
 
     guard let value = UInt32(string.replacingOccurrences(of: "-", with: ""), radix: 16) else {
-      assertionFailure("Invalid hexadecimal string: \(string)")
+      jqLogger.assert("Invalid hexadecimal string: \(string)")
       return 0
     }
     return value

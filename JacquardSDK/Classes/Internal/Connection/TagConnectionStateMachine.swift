@@ -324,16 +324,20 @@ extension TagConnectionStateMachine {
 
     // (t8)
     case (.configuring, .tagConfigured(let tag)):
+      jqLogger.info("Tag configured: \(tag.name)")
       state = .connected(tag)
 
     // (t9)
     case (.connected, .didDisconnect(let error))
     where shouldReconnectForDisconnection(error: error):
+      jqLogger.error("Tag reconnecting with error: \(String(describing: error))")
       state = .preparingToConnect
       connect()
 
     // (t10)
     case (.connected, .didDisconnect(let error)):
+      jqLogger.info("User disconnected: \(context.isUserDisconnect)")
+      jqLogger.error("Tag disconnected with error: \(String(describing: error))")
       state = .disconnected(error)
 
     // No valid transition found.

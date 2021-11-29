@@ -19,7 +19,9 @@ import XCTest
 class IMUModuleComandsTests: XCTestCase {
 
   struct CatchLogger: Logger {
-    func log(level: LogLevel, file: String, line: Int, function: String, message: () -> String) {
+    func log(
+      level: LogLevel, file: StaticString, line: UInt, function: String, message: () -> String
+    ) {
       let _ = message()
       if level == .assertion {
         expectation.fulfill()
@@ -247,6 +249,37 @@ class IMUModuleComandsTests: XCTestCase {
     }
 
     command.parseResponse(outerProto: response).assertSuccess()
+    verifyBadProtoResponse(command)
+  }
+
+  func testStartStreamingCommand() {
+    let command = StartIMUStreamingCommand()
+    XCTAssertNotNil(command)
+
+    guard let request = command.request as? Google_Jacquard_Protocol_Request else {
+      XCTFail("Request type should be Jacquard Protocol Request.")
+      return
+    }
+    XCTAssertEqual(request.domain, .dataCollection)
+    XCTAssertEqual(request.opcode, .dataCollectionStart)
+
+    let startRequest = request.Google_Jacquard_Protocol_DataCollectionStartRequest_start
+    XCTAssertEqual(startRequest.metadata.campaignID, "IMU_Campaign")
+    XCTAssertEqual(startRequest.metadata.sessionID, "IMU_Group")
+    XCTAssertEqual(startRequest.metadata.subjectID, "IMU_Subject")
+    XCTAssertEqual(startRequest.metadata.productID, "IMU_Product")
+    XCTAssertEqual(startRequest.metadata.mode, .streaming)
+
+    let startResponse = Google_Jacquard_Protocol_Response.with {
+      let start = Google_Jacquard_Protocol_DataCollectionStartResponse.with {
+        $0.dcStatus = .dataCollectionLogging
+      }
+      $0.Google_Jacquard_Protocol_DataCollectionStartResponse_start = start
+    }
+
+    command.parseResponse(outerProto: startResponse).assertSuccess { result in
+      XCTAssertEqual(result, .dataCollectionLogging)
+    }
     verifyBadProtoResponse(command)
   }
 }

@@ -252,6 +252,12 @@ class ConnectedTagModel: ConnectedTag, SubscribableTag {
       .eraseToAnyPublisher()
   }
 
+  func subscribeRawBytes() -> AnyPublisher<[UInt8], Never> {
+    return transport.rawBytesPublisher
+      .receive(on: userPublishQueue)
+      .eraseToAnyPublisher()
+  }
+
   func readRSSI() {
     transport.readRSSI()
   }

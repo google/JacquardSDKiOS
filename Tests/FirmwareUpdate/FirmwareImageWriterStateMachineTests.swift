@@ -215,7 +215,9 @@ final class FirmwareImageWriterStateMachineTests: XCTestCase {
       timeout: 1.0, enforceOrder: true)
   }
 
-  func testDFUPrepareFailure() {
+  func testDFUPrepareFailure() throws {
+    throw XCTSkip("b/204121008 - flaky tests")
+
     let stateChangeExpectation = expectation(description: "stateChangeExpectation")
     let checkingStatusExpectation = expectation(description: "checkingStatusExpectation")
     let preparingForWriteExpectation = expectation(description: "preparingForWriteExpectation")

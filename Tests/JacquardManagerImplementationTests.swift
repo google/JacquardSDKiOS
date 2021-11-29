@@ -21,7 +21,9 @@ import XCTest
 final class JacquardManagerImplementationTests: XCTestCase {
 
   struct CatchLogger: Logger {
-    func log(level: LogLevel, file: String, line: Int, function: String, message: () -> String) {
+    func log(
+      level: LogLevel, file: StaticString, line: UInt, function: String, message: () -> String
+    ) {
       let _ = message()
       if level == .preconditionFailure {
         expectation.fulfill()
@@ -50,23 +52,19 @@ final class JacquardManagerImplementationTests: XCTestCase {
   }
 
   private var commandCharacteristic: FakeCharacteristic {
-    let commandUUID = CBUUID(string: "D2F2EABB-D165-445C-B0E1-2D6B642EC57B")
-    return FakeCharacteristic(uuid: commandUUID, value: nil)
+    return FakeCharacteristic(commandValue: nil)
   }
 
   private var responseCharacteristic: FakeCharacteristic {
-    let responseUUID = CBUUID(string: "D2F2B8D0-D165-445C-B0E1-2D6B642EC57B")
-    return FakeCharacteristic(uuid: responseUUID, value: nil)
+    return FakeCharacteristic(responseValue: nil)
   }
 
   private var notifyCharacteristic: FakeCharacteristic {
-    let notifyUUID = CBUUID(string: "D2F2B8D1-D165-445C-B0E1-2D6B642EC57B")
-    return FakeCharacteristic(uuid: notifyUUID, value: nil)
+    return FakeCharacteristic(notifyValue: nil)
   }
 
   private var rawDataCharacteristic: FakeCharacteristic {
-    let rawDataUUID = CBUUID(string: "D2F2B8D2-D165-445C-B0E1-2D6B642EC57B")
-    return FakeCharacteristic(uuid: rawDataUUID, value: nil)
+    return FakeCharacteristic(rawDataValue: nil)
   }
 
   private lazy var requiredCharacteristics = RequiredCharacteristics(
@@ -80,8 +78,8 @@ final class JacquardManagerImplementationTests: XCTestCase {
   var centralManager: FakeCentralManager?
 
   func testVerifyPublicJacquardManagerInitializer() throws {
-    throw XCTSkip("Test is flaky b/204123001")
-    
+    throw XCTSkip("b/204121008 - flaky tests")
+
     let publicInitializerExpectation = expectation(description: "publicInitializerExpectation")
     publicInitializerExpectation.expectedFulfillmentCount = 2
 
@@ -93,6 +91,9 @@ final class JacquardManagerImplementationTests: XCTestCase {
         publicInitializerExpectation.fulfill()
       case .unknown:
         // Initial value.
+        publicInitializerExpectation.fulfill()
+      case .poweredOn:
+        // Can report poweredOn under swift test
         publicInitializerExpectation.fulfill()
       default:
         XCTFail("Unexpected bluetooth state \(state.rawValue)")

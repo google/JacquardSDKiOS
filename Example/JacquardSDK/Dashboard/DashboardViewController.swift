@@ -365,6 +365,9 @@ extension DashboardViewController: UICollectionViewDelegate {
       nextViewController = MusicalThreadsViewController(tagPublisher: tagPublisher!)
     case .imu:
       nextViewController = IMUViewController(tagPublisher: tagPublisher!)
+    case .imuStreaming:
+      nextViewController = IMUStreamingViewController(tagPublisher: tagPublisher!)
+
     case .places:
       if PlacesViewModel.shared.assignedGesture == .noInference
         || !PlacesViewModel.shared.isLocationPermissionEnabled()
@@ -510,9 +513,16 @@ extension DashboardViewController {
 
     let imuDataCollection = DashboardItem(
       name: "Motion Capture",
-      description: "Record IMU motion sensor data ",
+      description: "Record IMU motion sensor data",
       enabled: isTagConnected,
       feature: .imu
+    )
+
+    let imuStreaming = DashboardItem(
+      name: "IMU Streaming",
+      description: "See IMU motion sensor data streaming",
+      enabled: isTagConnected,
+      feature: .imuStreaming
     )
 
     let apiItems = [
@@ -524,6 +534,7 @@ extension DashboardViewController {
       tagManager,
       firmwareUpdate,
       imuDataCollection,
+      imuStreaming,
     ]
     let sampleUseCaseItems = [musicalThreads, placesSample]
 

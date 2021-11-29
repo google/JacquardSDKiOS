@@ -21,7 +21,33 @@ final class FirmwareUpdateManagerImplementation: FirmwareUpdateManager {
   private let userPublishQueue: DispatchQueue
   private let firmwareUpdateRetriever: FirmwareUpdateRetriever
   private let tag: ConnectedTag
-  private var updateStateMachine: FirmwareUpdateStateMachine?
+
+  private var updateStateMachine: FirmwareUpdateStateMachine? {
+    didSet {
+      if let updateStateMachine = updateStateMachine {
+        stateMachineSubject.send(updateStateMachine)
+      }
+    }
+  }
+
+  lazy private var stateMachineSubject =
+    CurrentValueSubject<FirmwareUpdateStateMachine?, Never>(nil)
+
+  var state: AnyPublisher<FirmwareUpdateState, Never> {
+    return
+      stateMachineSubject
+      // If firmware update is not started yet, State should be idle by default.
+      .flatMap { $0?.statePublisher ?? Just<FirmwareUpdateState>(.idle).eraseToAnyPublisher() }
+      .receive(on: userPublishQueue)
+      .eraseToAnyPublisher()
+  }
+
+  private var isUpdateInProgress: Bool {
+    if let stateMachine = updateStateMachine {
+      return !stateMachine.state.isTerminal
+    }
+    return false
+  }
 
   init(
     publishQueue: DispatchQueue = .main,
@@ -100,6 +126,15 @@ final class FirmwareUpdateManagerImplementation: FirmwareUpdateManager {
     _ updates: [DFUUpdateInfo],
     shouldAutoExecute: Bool
   ) -> AnyPublisher<FirmwareUpdateState, Never> {
+
+    guard !isUpdateInProgress else {
+      var message = "Unknown state found. State should be idle."
+      if let stateMachine = updateStateMachine {
+        message = "Incorrect state \(stateMachine.state) found. State should be idle."
+      }
+      jqLogger.info("Apply firmware updates called while update is in progress.")
+      return Result.Publisher((.error(.invalidState(message)))).eraseToAnyPublisher()
+    }
 
     let updateStateMachine = FirmwareUpdateStateMachine(
       userPublishQueue: userPublishQueue,
