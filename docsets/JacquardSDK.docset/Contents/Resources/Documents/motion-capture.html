@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Motion Capture  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+
+    <a title="Motion Capture  Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          JacquardSDK 0.2.0 Docs
+        </a>
+         (100% documented)
+      </p>
+    
+      <div class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </div>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/google/JacquardSDKiOS">
+            <img class="header-icon" src="img/gh.png" alt="GitHub"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">JacquardSDK Reference</a>
+      <img class="carat" src="img/carat.png" alt=""/>
+      Motion Capture  Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Getting%20Started.html">Getting Started</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="tutorial.html">Tutorial</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="updating-firmware.html">Updating Firmware</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="integration.html">Integration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="api-overview.html">API Overview</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="motion-capture.html">Motion Capture</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="releases.html">Releases</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="cloud-api-terms.html">Cloud API Terms</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Connecting%20to%20Tags.html">Connecting to Tags</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/JacquardManager.html">JacquardManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/JacquardManagerImplementation.html">JacquardManagerImplementation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/ManagerScanningError.html">ManagerScanningError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/TagConnectionState.html">TagConnectionState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/TagConnectionError.html">TagConnectionError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Tags.html">Tags</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/JacquardTag.html">JacquardTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/ConnectedTag.html">ConnectedTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/SubscribableTag.html">SubscribableTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/AdvertisedTag.html">AdvertisedTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/PreConnectedTag.html">PreConnectedTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Tags.html#/s:11JacquardSDK14ConnectableTagP">ConnectableTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/TouchMode.html">TouchMode</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/SetNameError.html">SetNameError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Components%20and%20Gear.html">Components and Gear</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/Component.html">Component</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Components%20and%20Gear.html#/s:11JacquardSDK11ComponentIDa">ComponentID</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Components%20and%20Gear.html#/s:11JacquardSDK12GearMetadataa">GearMetadata</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Google_Jacquard_Protocol_Public_Sdk_GearMetadata.html">Google_Jacquard_Protocol_Public_Sdk_GearMetadata</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Google_Jacquard_Protocol_Public_Sdk_GearMetadata/Capability.html">– Capability</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Google_Jacquard_Protocol_Public_Sdk_GearMetadata/GearData.html">– GearData</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/ComponentInfo.html">ComponentInfo</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Commands.html">Commands</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/CommandRequest.html">CommandRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/CommandResponseStatus.html">CommandResponseStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/JacquardCommandError.html">JacquardCommandError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/BatteryStatusCommand.html">BatteryStatusCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/PlayLEDPatternCommand.html">PlayLEDPatternCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/PlayLEDPatternCommand/Error.html">– Error</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/PlayLEDPatternCommand/LEDPatternType.html">– LEDPatternType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/PlayLEDPatternCommand/LEDPatternPlayType.html">– LEDPatternPlayType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/PlayLEDPatternCommand/Color.html">– Color</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/PlayLEDPatternCommand/Frame.html">– Frame</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/PlayHapticCommand.html">PlayHapticCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/PlayHapticCommand/HapticPatternType.html">– HapticPatternType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/PlayHapticCommand/Error.html">– Error</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/PlayHapticCommand/HapticFrame.html">– HapticFrame</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/DisconnectTagCommand.html">DisconnectTagCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/ComponentInfoCommand.html">ComponentInfoCommand</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Notifications.html">Notifications</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/NotificationSubscription.html">NotificationSubscription</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/BatteryStatusNotificationSubscription.html">BatteryStatusNotificationSubscription</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/GestureNotificationSubscription.html">GestureNotificationSubscription</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/ContinuousTouchNotificationSubscription.html">ContinuousTouchNotificationSubscription</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Response%20Types.html">Response Types</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/BatteryStatus.html">BatteryStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/BatteryStatus/ChargingState.html">– ChargingState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/Gesture.html">Gesture</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/TouchData.html">TouchData</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Logging.html">Logging</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Logging.html#/s:11JacquardSDK09setGlobalA9SDKLoggeryyAA6Logger_pF">setGlobalJacquardSDKLogger(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/Logger.html">Logger</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/LogLevel.html">LogLevel</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/PrintLogger.html">PrintLogger</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other%20Classes.html">Other Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/IMUModuleImplementation.html">IMUModuleImplementation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/SDKConfig.html">SDKConfig</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other%20Enums.html">Other Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/APIError.html">APIError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Enums.html#/s:11JacquardSDK25AccelerometerSamplingRateO">AccelerometerSamplingRate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Enums.html#/s:11JacquardSDK11ConfigValueO">ConfigValue</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/DFUUpdateInfoStatus.html">DFUUpdateInfoStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Enums.html#/s:11JacquardSDK18DataCollectionModeO">DataCollectionMode</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/DataCollectionStatus.html">DataCollectionStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/FirmwareUpdateError.html">FirmwareUpdateError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/FirmwareUpdateState.html">FirmwareUpdateState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Enums.html#/s:11JacquardSDK21GyroscopeSamplingRateO">GyroscopeSamplingRate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/IMUSessionDownloadState.html">IMUSessionDownloadState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/IMUStreamingError.html">IMUStreamingError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/JacquardSDKVersion.html">JacquardSDKVersion</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/ModuleError.html">ModuleError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/ModuleStatus.html">ModuleStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/TagConstants.html">TagConstants</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other%20Extensions.html">Other Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Extensions.html#/c:@E@CBManagerState">CBManagerState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/Cancellable.html">Cancellable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/Publisher.html">Publisher</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other%20Protocols.html">Other Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/FirmwareUpdateManager.html">FirmwareUpdateManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/IMUModule.html">IMUModule</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/NotificationParser.html">NotificationParser</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other%20Structs.html">Other Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/APIServer.html">APIServer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Structs.html#/s:11JacquardSDK21ActivateModuleCommandV">ActivateModuleCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/ActivateModuleNotificationSubscription.html">ActivateModuleNotificationSubscription</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/DFUUpdateInfo.html">DFUUpdateInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Structs.html#/s:11JacquardSDK23DeactivateModuleCommandV">DeactivateModuleCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Structs.html#/s:11JacquardSDK19DeleteModuleCommandV">DeleteModuleCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/DeviceConfigElement.html">DeviceConfigElement</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/GetCustomConfigCommand.html">GetCustomConfigCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IMUSample.html">IMUSample</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IMUSamplingRate.html">IMUSamplingRate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IMUSessionData.html">IMUSessionData</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IMUSessionInfo.html">IMUSessionInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Structs.html#/s:11JacquardSDK18ListModulesCommandV">ListModulesCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Module.html">Module</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/SetCustomConfigCommand.html">SetCustomConfigCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Version.html">Version</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/VidPidMid.html">VidPidMid</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            
+            <h1 id='motion-capture' class='heading'>Motion Capture</h1>
+
+<p>UJT contains an Inertial Measurement Unit (IMU) sensor that consists of an accelerometer and gyroscope. With this feature, you can record, view and download your tag&rsquo;s IMU sensor data. Accelerometer data consits of a vector  (x, y, z) data, and Gyroscope has vector  (yaw, pitch, roll) data.</p>
+
+<p>This section will guide you to record, download, parse, erase IMU session. If you want the tag should collect IMU samples, loadable module must be activated. Note that activating IMU Module, will disable Wake on Motion(WoM) on the tag and you will also notice the tag battery draining considerably quickly.</p>
+<h4 id='1-instantiate' class='heading'>1. Instantiate</h4>
+
+<p>You can create instance of <code>ImuModule</code> using <code>ConnectedJacquardTag</code> as below -</p>
+<pre class="highlight swift"><code>    <span class="k">let</span> <span class="nv">imuModule</span> <span class="o">=</span> <span class="kt">IMUModuleImplementation</span><span class="p">(</span><span class="nv">connectedTag</span><span class="p">:</span> <span class="n">tag</span><span class="p">)</span>
+</code></pre>
+<h4 id='2-initialize' class='heading'>2. Initialize</h4>
+
+<p>This is a mandatory step before you start recording IMU samples. There are multiple steps performed during initialize process.
+Calling Initialize for the first time will load the Data Collection Loadable module(DCLM) on the device.
+This process will be similar to Firmware Updating and will only be done once. <code>ImuModule</code> will perform device firmware update(DFU) to download DCLM binary from cloud and send it to the tag. Once DFU is successful, <code>ImuModule</code> will activate the DCLM to finish initialize process.</p>
+<pre class="highlight swift"><code> <span class="n">imuModule</span><span class="o">.</span><span class="nf">initialize</span><span class="p">()</span><span class="o">.</span><span class="n">sink</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+   <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+   <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+     <span class="nf">print</span><span class="p">(</span><span class="s">"IMU initialize error: </span><span class="se">\(</span><span class="n">error</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+   <span class="k">case</span> <span class="o">.</span><span class="nv">finished</span><span class="p">:</span>
+     <span class="k">break</span>
+   <span class="p">}</span>
+ <span class="p">}</span> <span class="nv">receiveValue</span><span class="p">:</span> <span class="p">{</span>
+   <span class="nf">print</span><span class="p">(</span><span class="s">"IMU initialized"</span><span class="p">)</span>
+   <span class="c1">// After initialize, it's good practice to call `imuModule.checkStatus()`, to see if Tag is ready to record.</span>
+ <span class="p">}</span>
+</code></pre>
+<h4 id='3-start-amp-stop-imu-recording' class='heading'>3. Start &amp; stop IMU recording.</h4>
+
+<p>You can start collecting IMU samples by calling <code>imuModule.startRecording(sessionID:)</code> api.
+Provide a unique SessionID, less than 30 characters. It is a good practice to simply pass in the timestamp so that the SessionID is unique.
+Similarly Call <code>imuModule.stopRecording()</code> to end current IMU session.</p>
+<pre class="highlight swift"><code><span class="n">imuModule</span><span class="o">.</span><span class="nf">startRecording</span><span class="p">(</span><span class="nv">sessionID</span><span class="p">:</span> <span class="n">timestamp</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">sink</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+    <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+      <span class="nf">print</span><span class="p">(</span><span class="s">"Could not start IMUSession: </span><span class="se">\(</span><span class="n">error</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nv">finished</span><span class="p">:</span>
+      <span class="k">break</span>
+    <span class="p">}</span>
+  <span class="p">}</span> <span class="nv">receiveValue</span><span class="p">:</span> <span class="p">{</span> <span class="n">status</span> <span class="k">in</span>
+    <span class="k">switch</span> <span class="n">status</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nv">logging</span><span class="p">:</span>
+      <span class="c1">// Indicates the recording has started.</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nv">lowBattery</span><span class="p">:</span>
+    <span class="c1">// Indicates the tag battery is not enough to start recording. Minimum battery should be 50%.</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nv">lowMemory</span><span class="p">:</span>
+    <span class="c1">// Indicates the tag storage is not enough to start recording.</span>
+    <span class="k">default</span><span class="p">:</span>
+      <span class="k">break</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>An important point to remember here is that - you should not attach/detach the tag from gear during IMU session.
+Which means - while starting a new IMU session whichever is the gear state, either attached or detached, must be same till you call <code>stopImuSession()</code>
+api.</p>
+
+</div>
+<h4 id='4-fetch-imu-session-list' class='heading'>4. Fetch IMU session list</h4>
+
+<p>Calling this api will return each session individually, receiveValue for the publisher will be called everytime a session is received.</p>
+<pre class="highlight swift"><code><span class="c1">// Call listSessions api and sink immediately on the returned publisher to observe IMUSessions.</span>
+<span class="n">imuModule</span><span class="o">.</span><span class="nf">listSessions</span><span class="p">()</span><span class="o">.</span><span class="n">sink</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
+  <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"List Sessions error: </span><span class="se">\(</span><span class="n">error</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+  <span class="k">case</span> <span class="o">.</span><span class="nv">finished</span><span class="p">:</span>
+    <span class="k">break</span>
+  <span class="p">}</span>
+<span class="p">}</span> <span class="nv">receiveValue</span><span class="p">:</span> <span class="p">{</span> <span class="p">[</span><span class="k">weak</span> <span class="k">self</span><span class="p">]</span> <span class="n">sessionInfo</span> <span class="k">in</span>
+  <span class="c1">// Hold the sessionInfo objects.</span>
+  <span class="k">guard</span> <span class="k">let</span> <span class="nv">self</span> <span class="o">=</span> <span class="k">self</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+  <span class="k">self</span><span class="o">.</span><span class="n">imuSessions</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">session</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+<h4 id='5-download-imu-session' class='heading'>5. Download IMU session</h4>
+
+<p>Calling listSessions() only fetches the metadata for the recorded sessions on the tag,
+Once the metadata is fetched, you can download the actual session file, using below code.</p>
+
+<p>The apis gives you download progress and file path where IMU session data will be saved. As tag has
+limited storage, to free up the space, The Jacquard SDK will erase the session file from Tag once download is complete.
+It is highly recommended to move the file to another directory for further use. If there is an active IMU session on the tag, you can&rsquo;t call
+this api. To cancel ongoing download, you can simply call <code>imuModule.stopDownloading()</code>.</p>
+<pre class="highlight swift"><code><span class="n">imuModule</span><span class="o">.</span><span class="nf">downloadIMUSessionData</span><span class="p">(</span><span class="nv">session</span><span class="p">:</span> <span class="n">session</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">sink</span> <span class="p">{</span> <span class="n">completion</span> <span class="k">in</span>
+    <span class="k">switch</span> <span class="n">completion</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nv">finished</span><span class="p">:</span>
+      <span class="nf">print</span><span class="p">(</span><span class="s">"IMU file downloaded."</span><span class="p">)</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+      <span class="nf">print</span><span class="p">(</span><span class="s">"failed to download IMU file: </span><span class="se">\(</span><span class="n">error</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span> <span class="nv">receiveValue</span><span class="p">:</span> <span class="p">{</span> <span class="p">[</span><span class="k">weak</span> <span class="k">self</span><span class="p">]</span> <span class="n">downloadState</span> <span class="k">in</span>
+    <span class="k">guard</span> <span class="k">let</span> <span class="nv">self</span> <span class="o">=</span> <span class="k">self</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+    <span class="k">switch</span> <span class="n">downloadState</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">downloading</span><span class="p">(</span><span class="k">let</span> <span class="nv">progress</span><span class="p">):</span>
+      <span class="nf">print</span><span class="p">(</span><span class="s">"IMU downloading... </span><span class="se">\(</span><span class="n">progress</span><span class="se">)</span><span class="s">%"</span><span class="p">)</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">downloaded</span><span class="p">(</span><span class="k">let</span> <span class="nv">filePath</span><span class="p">):</span>
+      <span class="nf">print</span><span class="p">(</span><span class="s">"IMU state downloaded IMU file </span><span class="se">\(</span><span class="n">filePath</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+      <span class="c1">// Copy file locally to another folder.</span>
+      <span class="p">}</span>
+    <span class="kd">@unknown</span> <span class="k">default</span><span class="p">:</span>
+      <span class="nf">preconditionFailure</span><span class="p">(</span><span class="s">"switch case not implemented."</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre>
+<h4 id='6-erase-imu-session-s' class='heading'>6. Erase IMU session(s)</h4>
+
+<p>You can either choose to delete a specific IMU session or all sessions from the tag.</p>
+<pre class="highlight swift"><code><span class="n">imuModule</span><span class="o">.</span><span class="nf">eraseSession</span><span class="p">(</span><span class="nv">session</span><span class="p">:</span> <span class="n">sessionInfo</span><span class="p">)</span>
+</code></pre>
+
+<p>OR</p>
+<pre class="highlight swift"><code><span class="n">imuModule</span><span class="o">.</span><span class="nf">eraseAllSessions</span><span class="p">()</span>
+</code></pre>
+<h4 id='7-parse-imu-session-data' class='heading'>7. Parse IMU session data</h4>
+
+<p>Once you download the IMU session to the mobile device, You can view the IMU samples by parsing the session file. You can pass the downloaded session file path to below api to parse IMU session. It will return an <code><a href="Structs/IMUSessionData.html">IMUSessionData</a></code> object that will contain the vector data for accelerometer and gyroscope.</p>
+<pre class="highlight swift"><code><span class="n">imuModule</span><span class="o">.</span><span class="nf">parseIMUSession</span><span class="p">(</span><span class="nv">path</span><span class="p">:</span> <span class="n">filePath</span><span class="p">)</span>
+</code></pre>
+<h4 id='8-get-data-collection-status' class='heading'>8. Get Data Collection status</h4>
+
+<p>To know the current data collection status of the tag, use below code -</p>
+<pre class="highlight swift"><code><span class="n">imuModule</span><span class="o">.</span><span class="nf">checkStatus</span><span class="p">()</span>
+</code></pre>
+
+<p>The different states a tag could be in, are specified below.</p>
+<pre class="highlight plaintext"><code>enum DataCollectionStatus {
+  /// No logging in progress.
+  case idle
+  /// Session recording in progress.
+  case logging
+  /// Session data transfer in progress.
+  case dataTransferInProgress
+  /// Erasing session data in progress.
+  case erasingData
+  /// Not sufficient storage to start logging.
+  case lowMemory
+  /// Not sufficient battery to start logging. Minimum battery should be 50%.
+  case lowBattery
+  /// Error state.
+  case error
+}
+</code></pre>
+
+<p>If <code><a href="Enums/DataCollectionStatus.html">DataCollectionStatus</a></code> is <code>.idle</code> means the tag is ready to record new sessions.</p>
+<h4 id='9-deactivate-data-collection-loadable-module' class='heading'>9. Deactivate Data Collection Loadable Module</h4>
+
+<p>When you no longer require <code><a href="Protocols/IMUModule.html">IMUModule</a></code>, it is advisable to deactivate the data collection module to save the tag battery.</p>
+<pre class="highlight swift"><code><span class="n">imuModule</span><span class="o">.</span><span class="nf">deactivateModule</span><span class="p">()</span>
+</code></pre>
+
+          </div>
+        </section>
+
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>Copyright 2021-present LLC.</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+    </section>
+  </body>
+</html>

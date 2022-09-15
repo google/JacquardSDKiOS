@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>IMUModule Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Protocol/IMUModule" class="dashAnchor"></a>
+
+    <a title="IMUModule Protocol Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          JacquardSDK 0.2.0 Docs
+        </a>
+         (100% documented)
+      </p>
+    
+      <div class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </div>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/google/JacquardSDKiOS">
+            <img class="header-icon" src="../img/gh.png" alt="GitHub"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">JacquardSDK Reference</a>
+      <img class="carat" src="../img/carat.png" alt=""/>
+      IMUModule Protocol Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Getting%20Started.html">Getting Started</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../tutorial.html">Tutorial</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../updating-firmware.html">Updating Firmware</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../integration.html">Integration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../api-overview.html">API Overview</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../motion-capture.html">Motion Capture</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../releases.html">Releases</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../cloud-api-terms.html">Cloud API Terms</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Connecting%20to%20Tags.html">Connecting to Tags</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/JacquardManager.html">JacquardManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/JacquardManagerImplementation.html">JacquardManagerImplementation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ManagerScanningError.html">ManagerScanningError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TagConnectionState.html">TagConnectionState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TagConnectionError.html">TagConnectionError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Tags.html">Tags</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/JacquardTag.html">JacquardTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/ConnectedTag.html">ConnectedTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/SubscribableTag.html">SubscribableTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/AdvertisedTag.html">AdvertisedTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/PreConnectedTag.html">PreConnectedTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Tags.html#/s:11JacquardSDK14ConnectableTagP">ConnectableTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TouchMode.html">TouchMode</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/SetNameError.html">SetNameError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Components%20and%20Gear.html">Components and Gear</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/Component.html">Component</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Components%20and%20Gear.html#/s:11JacquardSDK11ComponentIDa">ComponentID</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Components%20and%20Gear.html#/s:11JacquardSDK12GearMetadataa">GearMetadata</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Google_Jacquard_Protocol_Public_Sdk_GearMetadata.html">Google_Jacquard_Protocol_Public_Sdk_GearMetadata</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Google_Jacquard_Protocol_Public_Sdk_GearMetadata/Capability.html">– Capability</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Google_Jacquard_Protocol_Public_Sdk_GearMetadata/GearData.html">– GearData</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/ComponentInfo.html">ComponentInfo</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Commands.html">Commands</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/CommandRequest.html">CommandRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/CommandResponseStatus.html">CommandResponseStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/JacquardCommandError.html">JacquardCommandError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/BatteryStatusCommand.html">BatteryStatusCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/PlayLEDPatternCommand.html">PlayLEDPatternCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/PlayLEDPatternCommand/Error.html">– Error</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/PlayLEDPatternCommand/LEDPatternType.html">– LEDPatternType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/PlayLEDPatternCommand/LEDPatternPlayType.html">– LEDPatternPlayType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/PlayLEDPatternCommand/Color.html">– Color</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/PlayLEDPatternCommand/Frame.html">– Frame</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/PlayHapticCommand.html">PlayHapticCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/PlayHapticCommand/HapticPatternType.html">– HapticPatternType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/PlayHapticCommand/Error.html">– Error</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/PlayHapticCommand/HapticFrame.html">– HapticFrame</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DisconnectTagCommand.html">DisconnectTagCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/ComponentInfoCommand.html">ComponentInfoCommand</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Notifications.html">Notifications</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/NotificationSubscription.html">NotificationSubscription</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/BatteryStatusNotificationSubscription.html">BatteryStatusNotificationSubscription</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/GestureNotificationSubscription.html">GestureNotificationSubscription</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/ContinuousTouchNotificationSubscription.html">ContinuousTouchNotificationSubscription</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Response%20Types.html">Response Types</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/BatteryStatus.html">BatteryStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/BatteryStatus/ChargingState.html">– ChargingState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/Gesture.html">Gesture</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/TouchData.html">TouchData</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Logging.html">Logging</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Logging.html#/s:11JacquardSDK09setGlobalA9SDKLoggeryyAA6Logger_pF">setGlobalJacquardSDKLogger(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/Logger.html">Logger</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/LogLevel.html">LogLevel</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PrintLogger.html">PrintLogger</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Other%20Classes.html">Other Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/IMUModuleImplementation.html">IMUModuleImplementation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SDKConfig.html">SDKConfig</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Other%20Enums.html">Other Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/APIError.html">APIError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Enums.html#/s:11JacquardSDK25AccelerometerSamplingRateO">AccelerometerSamplingRate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Enums.html#/s:11JacquardSDK11ConfigValueO">ConfigValue</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/DFUUpdateInfoStatus.html">DFUUpdateInfoStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Enums.html#/s:11JacquardSDK18DataCollectionModeO">DataCollectionMode</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/DataCollectionStatus.html">DataCollectionStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/FirmwareUpdateError.html">FirmwareUpdateError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/FirmwareUpdateState.html">FirmwareUpdateState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Enums.html#/s:11JacquardSDK21GyroscopeSamplingRateO">GyroscopeSamplingRate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/IMUSessionDownloadState.html">IMUSessionDownloadState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/IMUStreamingError.html">IMUStreamingError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/JacquardSDKVersion.html">JacquardSDKVersion</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ModuleError.html">ModuleError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/ModuleStatus.html">ModuleStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TagConstants.html">TagConstants</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Other%20Extensions.html">Other Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Extensions.html#/c:@E@CBManagerState">CBManagerState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/Cancellable.html">Cancellable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/Publisher.html">Publisher</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Other%20Protocols.html">Other Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/FirmwareUpdateManager.html">FirmwareUpdateManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/IMUModule.html">IMUModule</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/NotificationParser.html">NotificationParser</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Other%20Structs.html">Other Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/APIServer.html">APIServer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Structs.html#/s:11JacquardSDK21ActivateModuleCommandV">ActivateModuleCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/ActivateModuleNotificationSubscription.html">ActivateModuleNotificationSubscription</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DFUUpdateInfo.html">DFUUpdateInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Structs.html#/s:11JacquardSDK23DeactivateModuleCommandV">DeactivateModuleCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Structs.html#/s:11JacquardSDK19DeleteModuleCommandV">DeleteModuleCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/DeviceConfigElement.html">DeviceConfigElement</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/GetCustomConfigCommand.html">GetCustomConfigCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/IMUSample.html">IMUSample</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/IMUSamplingRate.html">IMUSamplingRate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/IMUSessionData.html">IMUSessionData</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/IMUSessionInfo.html">IMUSessionInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Other%20Structs.html#/s:11JacquardSDK18ListModulesCommandV">ListModulesCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Module.html">Module</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/SetCustomConfigCommand.html">SetCustomConfigCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/Version.html">Version</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/VidPidMid.html">VidPidMid</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            <h1>IMUModule</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">IMUModule</span></code></pre>
+
+                </div>
+              </div>
+            <p>Provides an interface to perform various operations related to IMU.</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK9IMUModuleP10initialize7Combine12AnyPublisherVyytAA11ModuleErrorOGyF"></a>
+                    <a name="//apple_ref/swift/Method/initialize()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK9IMUModuleP10initialize7Combine12AnyPublisherVyytAA11ModuleErrorOGyF">initialize()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Configures the tag for IMU data access.</p>
+
+<p>Before accessing IMU data, the tag must have IMU module loaded and activated.
+This method will perform all required steps asynchronously and publish when
+completed.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">initialize</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">Void</span><span class="p">,</span> <span class="kt"><a href="../Enums/ModuleError.html">ModuleError</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Any publisher with a <code>Void</code> Result, indicating that IMUModule activation was
+successful or will publish a <code><a href="../Enums/ModuleError.html">ModuleError</a></code> in case of  an error.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK9IMUModuleP14activateModule7Combine12AnyPublisherVyytAA0E5ErrorOGyF"></a>
+                    <a name="//apple_ref/swift/Method/activateModule()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK9IMUModuleP14activateModule7Combine12AnyPublisherVyytAA0E5ErrorOGyF">activateModule()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Activates the module.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">activateModule</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">Void</span><span class="p">,</span> <span class="kt"><a href="../Enums/ModuleError.html">ModuleError</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Any publisher with a <code>Void</code> Result, indicating that IMUModule activation was
+successful or a <code><a href="../Enums/ModuleError.html">ModuleError</a></code> in case of  failure.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK9IMUModuleP16deactivateModule7Combine12AnyPublisherVyytAA0E5ErrorOGyF"></a>
+                    <a name="//apple_ref/swift/Method/deactivateModule()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK9IMUModuleP16deactivateModule7Combine12AnyPublisherVyytAA0E5ErrorOGyF">deactivateModule()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Deactivates the module.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">deactivateModule</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">Void</span><span class="p">,</span> <span class="kt"><a href="../Enums/ModuleError.html">ModuleError</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Any publisher with a <code>Void</code> Result, indicating that IMUModule deactivation was
+successful or a <code><a href="../Enums/ModuleError.html">ModuleError</a></code> in case of  failure.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK9IMUModuleP14startRecording9sessionID08campaignG005groupG007productG007subjectG012samplingRate7Combine12AnyPublisherVyAA20DataCollectionStatusOs5Error_pGSS_S4SAA011IMUSamplingM0VtF"></a>
+                    <a name="//apple_ref/swift/Method/startRecording(sessionID:campaignID:groupID:productID:subjectID:samplingRate:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK9IMUModuleP14startRecording9sessionID08campaignG005groupG007productG007subjectG012samplingRate7Combine12AnyPublisherVyAA20DataCollectionStatusOs5Error_pGSS_S4SAA011IMUSamplingM0VtF">startRecording(sessionID:<wbr>campaignID:<wbr>groupID:<wbr>productID:<wbr>subjectID:<wbr>samplingRate:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Starts recording IMU data.</p>
+
+<p>Parameters cannot be empty,</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">startRecording</span><span class="p">(</span>
+  <span class="nv">sessionID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+  <span class="nv">campaignID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+  <span class="nv">groupID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+  <span class="nv">productID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+  <span class="nv">subjectID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+  <span class="nv">samplingRate</span><span class="p">:</span> <span class="kt"><a href="../Structs/IMUSamplingRate.html">IMUSamplingRate</a></span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt"><a href="../Enums/DataCollectionStatus.html">DataCollectionStatus</a></span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sessionID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Unique id provided by the client app. Should be non empty &amp; less than 30 characters.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>campaignID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Identifier the Campaign of a recording session. Should be non empty &amp; less than 30 characters.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>groupID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Identifier the Group or setting of a recording session. Should be non empty &amp; less than 30 characters.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>productID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Identifier the Product used for recording the IMU Data. Should be non empty &amp; less than 30 characters.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>subjectID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Identifier for the Subject/User performing the motion. Should be non empty &amp; less than 30 characters.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>samplingRate</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Sampling rate for Accelerometer and Gyroscope sensors of the Tag.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Any publisher with a <code><a href="../Enums/DataCollectionStatus.html">DataCollectionStatus</a></code> Result. Verify status to confirm IMU recording was started
+or return an error if recording could not be started.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK9IMUModuleP13stopRecording7Combine12AnyPublisherVyyts5Error_pGyF"></a>
+                    <a name="//apple_ref/swift/Method/stopRecording()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK9IMUModuleP13stopRecording7Combine12AnyPublisherVyyts5Error_pGyF">stopRecording()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Stops the current IMU recording session.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">stopRecording</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">Void</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Any publisher with a <code>Void</code> Result, indicating that IMU recording was stopped
+or will publish an error if recording could not be stopped.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK9IMUModuleP12listSessions7Combine12AnyPublisherVyAA14IMUSessionInfoVs5Error_pGyF"></a>
+                    <a name="//apple_ref/swift/Method/listSessions()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK9IMUModuleP12listSessions7Combine12AnyPublisherVyAA14IMUSessionInfoVs5Error_pGyF">listSessions()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Requests Tag to send IMU sessions.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">listSessions</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/IMUSessionInfo.html">IMUSessionInfo</a></span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Any publisher that publishes <code><a href="../Structs/IMUSessionInfo.html">IMUSessionInfo</a></code> objects available on the tag,
+or will publish an error if List sessions request was not acknowledged by the Tag.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK9IMUModuleP12eraseSessiony7Combine12AnyPublisherVyyts5Error_pGAA14IMUSessionInfoVF"></a>
+                    <a name="//apple_ref/swift/Method/eraseSession(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK9IMUModuleP12eraseSessiony7Combine12AnyPublisherVyyts5Error_pGAA14IMUSessionInfoVF">eraseSession(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Deletes a particular session from the device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">eraseSession</span><span class="p">(</span><span class="n">_</span> <span class="nv">session</span><span class="p">:</span> <span class="kt"><a href="../Structs/IMUSessionInfo.html">IMUSessionInfo</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">Void</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>session</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>IMU session to delete.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Any publisher with a <code>Void</code> Result, indicating that session was erased
+or will publish an error if the session could not be erased from the tag.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK9IMUModuleP16eraseAllSessions7Combine12AnyPublisherVyyts5Error_pGyF"></a>
+                    <a name="//apple_ref/swift/Method/eraseAllSessions()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK9IMUModuleP16eraseAllSessions7Combine12AnyPublisherVyyts5Error_pGyF">eraseAllSessions()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Deletes all sessions from the device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">eraseAllSessions</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">Void</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Any publisher with a <code>Void</code> Result, indicating that all sessions were erased
+or will publish an error if the sessions could not be erased from the tag.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK9IMUModuleP22downloadIMUSessionData7session7Combine12AnyPublisherVyAA0E13DownloadStateOs5Error_pGAA0E4InfoV_tF"></a>
+                    <a name="//apple_ref/swift/Method/downloadIMUSessionData(session:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK9IMUModuleP22downloadIMUSessionData7session7Combine12AnyPublisherVyAA0E13DownloadStateOs5Error_pGAA0E4InfoV_tF">downloadIMUSessionData(session:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retrieves data for an IMUSesion.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">downloadIMUSessionData</span><span class="p">(</span>
+  <span class="nv">session</span><span class="p">:</span> <span class="kt"><a href="../Structs/IMUSessionInfo.html">IMUSessionInfo</a></span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt"><a href="../Enums/IMUSessionDownloadState.html">IMUSessionDownloadState</a></span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>session</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>IMU session for which data download will be done.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Any publisher with <code>IMUSesionDownloadState</code> as Result,
+<code>IMUSesionDownloadState.downloading</code> indicates the progress of download.
+<code>IMUSesionDownloadState.downloaded</code> contains the URL path of the downloaded file .
+will publish an error if the session data could not be fetched.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK9IMUModuleP15stopDownloading7Combine12AnyPublisherVyyts5Error_pGyF"></a>
+                    <a name="//apple_ref/swift/Method/stopDownloading()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK9IMUModuleP15stopDownloading7Combine12AnyPublisherVyyts5Error_pGyF">stopDownloading()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Will stop the current IMU session downloading.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">stopDownloading</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">Void</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Any publisher with a <code>Void</code> Result, indicating that IMU session download was stopped.
+or will publish an error if downloading could not be stopped.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK9IMUModuleP15parseIMUSession2at7Combine12AnyPublisherVySb11fullyParsed_AA0E4DataV7sessionts5Error_pG10Foundation3URLV_tF"></a>
+                    <a name="//apple_ref/swift/Method/parseIMUSession(at:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK9IMUModuleP15parseIMUSession2at7Combine12AnyPublisherVySb11fullyParsed_AA0E4DataV7sessionts5Error_pG10Foundation3URLV_tF">parseIMUSession(at:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retrieves data for an IMUSession.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">parseIMUSession</span><span class="p">(</span>
+  <span class="n">at</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="p">(</span><span class="nv">fullyParsed</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="nv">session</span><span class="p">:</span> <span class="kt"><a href="../Structs/IMUSessionData.html">IMUSessionData</a></span><span class="p">),</span> <span class="kt">Error</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>at</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>File path of the downloaded IMU session file.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Any publisher with a <code>bool</code> and <code><a href="../Structs/IMUSessionData.html">IMUSessionData</a></code> as Result.
+Bool indicates if file was fully parsed, publisher will publish an error if the session data could not be parsed.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK9IMUModuleP15parseIMUSessiony7Combine12AnyPublisherVySb11fullyParsed_AA0E4DataV7sessionts5Error_pGAA0E4InfoVF"></a>
+                    <a name="//apple_ref/swift/Method/parseIMUSession(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK9IMUModuleP15parseIMUSessiony7Combine12AnyPublisherVySb11fullyParsed_AA0E4DataV7sessionts5Error_pGAA0E4InfoVF">parseIMUSession(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retrieves data for an IMUSession.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">parseIMUSession</span><span class="p">(</span>
+  <span class="n">_</span> <span class="nv">session</span><span class="p">:</span> <span class="kt"><a href="../Structs/IMUSessionInfo.html">IMUSessionInfo</a></span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="p">(</span><span class="nv">fullyParsed</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="nv">session</span><span class="p">:</span> <span class="kt"><a href="../Structs/IMUSessionData.html">IMUSessionData</a></span><span class="p">),</span> <span class="kt">Error</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>session</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>IMU session to be parsed.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Any publisher with a <code>bool</code> and <code><a href="../Structs/IMUSessionData.html">IMUSessionData</a></code> as Result.
+Bool indicates if file was fully parsed, publisher will publish an error if the session data could not be parsed.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK9IMUModuleP17startIMUStreaming12samplingRate7Combine12AnyPublisherVyAA9IMUSampleVs5Error_pGAA011IMUSamplingG0V_tF"></a>
+                    <a name="//apple_ref/swift/Method/startIMUStreaming(samplingRate:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK9IMUModuleP17startIMUStreaming12samplingRate7Combine12AnyPublisherVyAA9IMUSampleVs5Error_pGAA011IMUSamplingG0V_tF">startIMUStreaming(samplingRate:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Starts streaming IMU data.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">startIMUStreaming</span><span class="p">(</span><span class="nv">samplingRate</span><span class="p">:</span> <span class="kt"><a href="../Structs/IMUSamplingRate.html">IMUSamplingRate</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/IMUSample.html">IMUSample</a></span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Any publisher with a <code><a href="../Structs/IMUSample.html">IMUSample</a></code> Result, indicating motion sensor data for the sample from the stream
+or will publish an error if streaming could not be started.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK9IMUModuleP16stopIMUStreaming7Combine12AnyPublisherVyyts5Error_pGyF"></a>
+                    <a name="//apple_ref/swift/Method/stopIMUStreaming()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK9IMUModuleP16stopIMUStreaming7Combine12AnyPublisherVyyts5Error_pGyF">stopIMUStreaming()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Stops the IMU streaming.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">stopIMUStreaming</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">Void</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Any publisher with a <code>Void</code> Result, indicating that IMU streaming was stopped
+or will publish an error if streaming could not be stopped.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK9IMUModuleP21getDataCollectionMode7Combine12AnyPublisherVyAA0efG0Os5Error_pGyF"></a>
+                    <a name="//apple_ref/swift/Method/getDataCollectionMode()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK9IMUModuleP21getDataCollectionMode7Combine12AnyPublisherVyAA0efG0Os5Error_pGyF">getDataCollectionMode()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Provides current data collection mode.
+It is valid only if <code><a href="../Enums/DataCollectionStatus.html">DataCollectionStatus</a></code> is <code>.logging</code>. User is responsible to check
+the <code><a href="../Enums/DataCollectionStatus.html">DataCollectionStatus</a></code> and if it is <code>.logging</code> then only this API should be called.
+It might return an old stored value of mode or an error if config couldn&rsquo;t be fetched.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">getDataCollectionMode</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt"><a href="../Other%20Enums.html#/s:11JacquardSDK18DataCollectionModeO">DataCollectionMode</a></span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Any publisher with a <code><a href="../Other%20Enums.html#/s:11JacquardSDK18DataCollectionModeO">DataCollectionMode</a></code> indicating current data collection mode
+or will publish an error if data collection mode could not be retrieved from the saved config.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>Copyright 2021-present LLC.</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+    </section>
+  </body>
+</html>

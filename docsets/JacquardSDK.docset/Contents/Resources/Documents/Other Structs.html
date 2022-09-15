@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Other Structures  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Section/Other Structures" class="dashAnchor"></a>
+
+    <a title="Other Structures  Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          JacquardSDK 0.2.0 Docs
+        </a>
+         (100% documented)
+      </p>
+    
+      <div class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </div>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/google/JacquardSDKiOS">
+            <img class="header-icon" src="img/gh.png" alt="GitHub"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">JacquardSDK Reference</a>
+      <img class="carat" src="img/carat.png" alt=""/>
+      Other Structures  Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Getting%20Started.html">Getting Started</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="tutorial.html">Tutorial</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="updating-firmware.html">Updating Firmware</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="integration.html">Integration</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="api-overview.html">API Overview</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="motion-capture.html">Motion Capture</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="releases.html">Releases</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="cloud-api-terms.html">Cloud API Terms</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Connecting%20to%20Tags.html">Connecting to Tags</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/JacquardManager.html">JacquardManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/JacquardManagerImplementation.html">JacquardManagerImplementation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/ManagerScanningError.html">ManagerScanningError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/TagConnectionState.html">TagConnectionState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/TagConnectionError.html">TagConnectionError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Tags.html">Tags</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/JacquardTag.html">JacquardTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/ConnectedTag.html">ConnectedTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/SubscribableTag.html">SubscribableTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/AdvertisedTag.html">AdvertisedTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/PreConnectedTag.html">PreConnectedTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Tags.html#/s:11JacquardSDK14ConnectableTagP">ConnectableTag</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/TouchMode.html">TouchMode</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/SetNameError.html">SetNameError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Components%20and%20Gear.html">Components and Gear</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/Component.html">Component</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Components%20and%20Gear.html#/s:11JacquardSDK11ComponentIDa">ComponentID</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Components%20and%20Gear.html#/s:11JacquardSDK12GearMetadataa">GearMetadata</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Google_Jacquard_Protocol_Public_Sdk_GearMetadata.html">Google_Jacquard_Protocol_Public_Sdk_GearMetadata</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Google_Jacquard_Protocol_Public_Sdk_GearMetadata/Capability.html">– Capability</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Google_Jacquard_Protocol_Public_Sdk_GearMetadata/GearData.html">– GearData</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/ComponentInfo.html">ComponentInfo</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Commands.html">Commands</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/CommandRequest.html">CommandRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/CommandResponseStatus.html">CommandResponseStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/JacquardCommandError.html">JacquardCommandError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/BatteryStatusCommand.html">BatteryStatusCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/PlayLEDPatternCommand.html">PlayLEDPatternCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/PlayLEDPatternCommand/Error.html">– Error</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/PlayLEDPatternCommand/LEDPatternType.html">– LEDPatternType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/PlayLEDPatternCommand/LEDPatternPlayType.html">– LEDPatternPlayType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/PlayLEDPatternCommand/Color.html">– Color</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/PlayLEDPatternCommand/Frame.html">– Frame</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/PlayHapticCommand.html">PlayHapticCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/PlayHapticCommand/HapticPatternType.html">– HapticPatternType</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/PlayHapticCommand/Error.html">– Error</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/PlayHapticCommand/HapticFrame.html">– HapticFrame</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/DisconnectTagCommand.html">DisconnectTagCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/ComponentInfoCommand.html">ComponentInfoCommand</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Notifications.html">Notifications</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/NotificationSubscription.html">NotificationSubscription</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/BatteryStatusNotificationSubscription.html">BatteryStatusNotificationSubscription</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/GestureNotificationSubscription.html">GestureNotificationSubscription</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/ContinuousTouchNotificationSubscription.html">ContinuousTouchNotificationSubscription</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Response%20Types.html">Response Types</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/BatteryStatus.html">BatteryStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/BatteryStatus/ChargingState.html">– ChargingState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/Gesture.html">Gesture</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/TouchData.html">TouchData</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Logging.html">Logging</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Logging.html#/s:11JacquardSDK09setGlobalA9SDKLoggeryyAA6Logger_pF">setGlobalJacquardSDKLogger(_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/Logger.html">Logger</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/LogLevel.html">LogLevel</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/PrintLogger.html">PrintLogger</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other%20Classes.html">Other Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/IMUModuleImplementation.html">IMUModuleImplementation</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/SDKConfig.html">SDKConfig</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other%20Enums.html">Other Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/APIError.html">APIError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Enums.html#/s:11JacquardSDK25AccelerometerSamplingRateO">AccelerometerSamplingRate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Enums.html#/s:11JacquardSDK11ConfigValueO">ConfigValue</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/DFUUpdateInfoStatus.html">DFUUpdateInfoStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Enums.html#/s:11JacquardSDK18DataCollectionModeO">DataCollectionMode</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/DataCollectionStatus.html">DataCollectionStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/FirmwareUpdateError.html">FirmwareUpdateError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/FirmwareUpdateState.html">FirmwareUpdateState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Enums.html#/s:11JacquardSDK21GyroscopeSamplingRateO">GyroscopeSamplingRate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/IMUSessionDownloadState.html">IMUSessionDownloadState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/IMUStreamingError.html">IMUStreamingError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/JacquardSDKVersion.html">JacquardSDKVersion</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/ModuleError.html">ModuleError</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/ModuleStatus.html">ModuleStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/TagConstants.html">TagConstants</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other%20Extensions.html">Other Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Extensions.html#/c:@E@CBManagerState">CBManagerState</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/Cancellable.html">Cancellable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/Publisher.html">Publisher</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other%20Protocols.html">Other Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/FirmwareUpdateManager.html">FirmwareUpdateManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/IMUModule.html">IMUModule</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/NotificationParser.html">NotificationParser</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Other%20Structs.html">Other Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/APIServer.html">APIServer</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Structs.html#/s:11JacquardSDK21ActivateModuleCommandV">ActivateModuleCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/ActivateModuleNotificationSubscription.html">ActivateModuleNotificationSubscription</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/DFUUpdateInfo.html">DFUUpdateInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Structs.html#/s:11JacquardSDK23DeactivateModuleCommandV">DeactivateModuleCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Structs.html#/s:11JacquardSDK19DeleteModuleCommandV">DeleteModuleCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/DeviceConfigElement.html">DeviceConfigElement</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/GetCustomConfigCommand.html">GetCustomConfigCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IMUSample.html">IMUSample</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IMUSamplingRate.html">IMUSamplingRate</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IMUSessionData.html">IMUSessionData</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/IMUSessionInfo.html">IMUSessionInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Other%20Structs.html#/s:11JacquardSDK18ListModulesCommandV">ListModulesCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Module.html">Module</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/SetCustomConfigCommand.html">SetCustomConfigCommand</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Version.html">Version</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/VidPidMid.html">VidPidMid</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            <h1>Other Structures</h1>
+            <p>The following structures are available globally.</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK22GetCustomConfigCommandV"></a>
+                    <a name="//apple_ref/swift/Struct/GetCustomConfigCommand" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK22GetCustomConfigCommandV">GetCustomConfigCommand</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Command to get the custom config.</p>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code>Commands</code>
+
+</div>
+
+                        <a href="Structs/GetCustomConfigCommand.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">GetCustomConfigCommand</span> <span class="p">:</span> <span class="kt"><a href="Protocols/CommandRequest.html">CommandRequest</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK22SetCustomConfigCommandV"></a>
+                    <a name="//apple_ref/swift/Struct/SetCustomConfigCommand" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK22SetCustomConfigCommandV">SetCustomConfigCommand</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Command to set the custom config.</p>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code>Commands</code>
+
+</div>
+
+                        <a href="Structs/SetCustomConfigCommand.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">SetCustomConfigCommand</span> <span class="p">:</span> <span class="kt"><a href="Protocols/CommandRequest.html">CommandRequest</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK19DeviceConfigElementV"></a>
+                    <a name="//apple_ref/swift/Struct/DeviceConfigElement" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK19DeviceConfigElementV">DeviceConfigElement</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents custom config element to be set on the component.</p>
+
+                        <a href="Structs/DeviceConfigElement.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">DeviceConfigElement</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK15IMUSamplingRateV"></a>
+                    <a name="//apple_ref/swift/Struct/IMUSamplingRate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK15IMUSamplingRateV">IMUSamplingRate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Defines the sampling rate for Accelerometer and Gyroscope sensors of the Tag.</p>
+
+<p>Using high configuration reduces battery life of the tag.
+Default configuration is set to low.</p>
+
+                        <a href="Structs/IMUSamplingRate.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">IMUSamplingRate</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK14IMUSessionInfoV"></a>
+                    <a name="//apple_ref/swift/Struct/IMUSessionInfo" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK14IMUSessionInfoV">IMUSessionInfo</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Metadata for a recorded IMU session.</p>
+
+<p>All data collected as part of a data collection session can be organized with the following hierarchy:
+Campaign</p>
+
+<ul>
+<li>Group
+
+<ul>
+<li>Session
+
+<ul>
+<li>Subject (User)
+A campaign sets the overall goal for a data collection exercise.
+Campaigns may contain one or more groups which in turn can contain one or more session which may contain one or more subjects.
+For example, Campaign 1234 consists of motion data gathered while the subject is walking.
+Data collection for Group 5 under campaign 1234 is recorded at 2pm on July 15 2021 and has 10 subjects/users.
+Group 5 may carry out multiple Sessions. Therefore, each data collection session needs to be labelled with the
+campaign identifier, group identifier, session identifier and subject identifier.</li>
+</ul></li>
+</ul></li>
+</ul>
+
+                        <a href="Structs/IMUSessionInfo.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">IMUSessionInfo</span> <span class="p">:</span> <span class="kt">Codable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK14IMUSessionDataV"></a>
+                    <a name="//apple_ref/swift/Struct/IMUSessionData" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK14IMUSessionDataV">IMUSessionData</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Holds the data for a recorded IMU session.</p>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code><a href="Structs/IMUSessionInfo.html">IMUSessionInfo</a></code> &amp; <code><a href="Structs/IMUSample.html">IMUSample</a></code>.
+
+</div>
+
+                        <a href="Structs/IMUSessionData.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">IMUSessionData</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK9IMUSampleV"></a>
+                    <a name="//apple_ref/swift/Struct/IMUSample" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK9IMUSampleV">IMUSample</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>UJT contains an Inertial Measurement Unit (IMU) sensor that consists of an accelerometer and gyroscope.</p>
+
+<p>This will hold the data for the sensors in vector, and the timestamp for the sample.
+Binary format description: go/jacquard-dc-framework#heading=h.lgt57q4p2c8c</p>
+
+                        <a href="Structs/IMUSample.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">IMUSample</span> <span class="p">:</span> <span class="kt">Equatable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK6ModuleV"></a>
+                    <a name="//apple_ref/swift/Struct/Module" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK6ModuleV">Module</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An object that holds information of a loadable module.</p>
+
+                        <a href="Structs/Module.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Module</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK18ListModulesCommandV"></a>
+                    <a name="//apple_ref/swift/Struct/ListModulesCommand" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK18ListModulesCommandV">ListModulesCommand</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Command request to retrieve all the modules available in the device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ListModulesCommand</span> <span class="p">:</span> <span class="kt"><a href="Protocols/CommandRequest.html">CommandRequest</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK21ActivateModuleCommandV"></a>
+                    <a name="//apple_ref/swift/Struct/ActivateModuleCommand" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK21ActivateModuleCommandV">ActivateModuleCommand</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Command request to activate a module in the device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ActivateModuleCommand</span> <span class="p">:</span> <span class="kt"><a href="Protocols/CommandRequest.html">CommandRequest</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK38ActivateModuleNotificationSubscriptionV"></a>
+                    <a name="//apple_ref/swift/Struct/ActivateModuleNotificationSubscription" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK38ActivateModuleNotificationSubscriptionV">ActivateModuleNotificationSubscription</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Notification subscription for module activation.</p>
+
+                        <a href="Structs/ActivateModuleNotificationSubscription.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ActivateModuleNotificationSubscription</span> <span class="p">:</span> <span class="kt"><a href="Protocols/NotificationSubscription.html">NotificationSubscription</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK23DeactivateModuleCommandV"></a>
+                    <a name="//apple_ref/swift/Struct/DeactivateModuleCommand" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK23DeactivateModuleCommandV">DeactivateModuleCommand</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Command request to de-activate a module in the device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">DeactivateModuleCommand</span> <span class="p">:</span> <span class="kt"><a href="Protocols/CommandRequest.html">CommandRequest</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK19DeleteModuleCommandV"></a>
+                    <a name="//apple_ref/swift/Struct/DeleteModuleCommand" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK19DeleteModuleCommandV">DeleteModuleCommand</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Command request to delete a module in the device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">DeleteModuleCommand</span> <span class="p">:</span> <span class="kt"><a href="Protocols/CommandRequest.html">CommandRequest</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK7VersionV"></a>
+                    <a name="//apple_ref/swift/Struct/Version" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK7VersionV">Version</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents a firmware version made up of a sequence of digits labeled major, minor and micro.</p>
+
+                        <a href="Structs/Version.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Version</span> <span class="p">:</span> <span class="kt">Codable</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Version</span><span class="p">:</span> <span class="kt">Comparable</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Version</span><span class="p">:</span> <span class="kt">CustomStringConvertible</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK13DFUUpdateInfoV"></a>
+                    <a name="//apple_ref/swift/Struct/DFUUpdateInfo" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK13DFUUpdateInfoV">DFUUpdateInfo</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Provides firmware update related information.</p>
+
+                        <a href="Structs/DFUUpdateInfo.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">DFUUpdateInfo</span> <span class="p">:</span> <span class="kt">Codable</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">DFUUpdateInfo</span><span class="p">:</span> <span class="kt">Equatable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK9APIServerV"></a>
+                    <a name="//apple_ref/swift/Struct/APIServer" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK9APIServerV">APIServer</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Defines the base URL of an API Server, and provides a default production value.</p>
+
+<p>The actual base URL used can be overridden by an environment variable called <code>JACQUARD_BASE_URL_OVERRIDE</code>,
+useful eg. for CI servers running hermetic integration tests or custom Xcode testing Schemes.</p>
+
+                        <a href="Structs/APIServer.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">APIServer</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11JacquardSDK9VidPidMidV"></a>
+                    <a name="//apple_ref/swift/Struct/VidPidMid" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11JacquardSDK9VidPidMidV">VidPidMid</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents properties for any component. i.e. tag/interposer/module.</p>
+
+                        <a href="Structs/VidPidMid.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">VidPidMid</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>Copyright 2021-present LLC.</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+    </section>
+  </body>
+</html>
