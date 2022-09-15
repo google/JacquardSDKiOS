@@ -1,0 +1,95 @@
+# Copyright 2021 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.=
+
+# Run with: jazzy --config jazzy.yaml
+
+# Note that if you have the example app building, you can get a quicker
+# edit/preview cycle by temporarily replaxing the podspec line with:
+build_tool_arguments: [ "-scheme", "JacquardSDK", "-target", "JacquardSDK"]
+# since this avoids downloading and compiling dependencies.
+
+#podspec: JacquardSDK.podspec
+copyright: Copyright 2021-present LLC.
+author: Google LLC.
+github_url: https://github.com/google/JacquardSDKiOS
+documentation: docs/*.md
+output: generated-docs
+sdk: iphonesimulator
+clean: true
+theme: fullwidth
+abstract: docs/abstracts/*.md
+custom_categories:
+ - name: "Getting Started"
+   children:
+    - "Tutorial"
+    - "Updating Firmware"
+    - "Integration"
+    - "API Overview"
+    - "Motion Capture"
+    - "Releases"
+    - "License"
+    - "Cloud API Terms"
+    - "Contributing"
+    - "Code of Conduct"
+ - name: "Connecting to Tags"
+   children:
+    - JacquardManager
+    - JacquardManagerImplementation
+    - ManagerScanningError
+    - TagConnectionState
+    - TagConnectionError
+ - name: "Tags"
+   children:
+    - JacquardTag
+    - ConnectedTag
+    - SubscribableTag
+    - AdvertisedTag
+    - PreConnectedTag
+    - ConnectableTag
+    - TouchMode
+    - SetNameError
+ - name: "Components and Gear"
+   children:
+    - Component
+    - ComponentID
+    - GearMetadata
+    - Google_Jacquard_Protocol_Public_Sdk_GearMetadata
+    - ComponentInfo
+ - name: "Commands"
+   children:
+    - CommandRequest
+    - CommandResponseStatus
+    - JacquardCommandError
+    - BatteryStatusCommand
+    - PlayLEDPatternCommand
+    - PlayHapticCommand
+    - DisconnectTagCommand
+    - ComponentInfoCommand
+ - name: "Notifications"
+   children:
+    - NotificationSubscription
+    - BatteryStatusNotificationSubscription
+    - GestureNotificationSubscription
+    - ContinuousTouchNotificationSubscription
+ - name: "Response Types"
+   children:
+    - BatteryStatus
+    - Gesture
+    - TouchData
+ - name: "Logging"
+   children:
+    - setGlobalJacquardSDKLogger(_:)
+    - Logger
+    - LogLevel
+    - PrintLogger

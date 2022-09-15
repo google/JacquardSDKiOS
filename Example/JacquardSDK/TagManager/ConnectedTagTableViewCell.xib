@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConnectedTagTableViewCell" customModule="JacquardSDK_Example" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="connectedTagCellIdentifier" id="WBL-bw-gfq" customClass="ConnectedTagTableViewCell" customModule="JacquardSDK_Example" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="346" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WBL-bw-gfq" id="sPb-B4-fls">
+                <rect key="frame" x="0.0" y="0.0" width="346" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="huu-RL-GZY">
+                        <rect key="frame" x="0.0" y="5" width="346" height="34"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jacquard Tag 006P" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEm-u3-4BM">
+                                <rect key="frame" x="13" y="6.5" width="170" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vQ1-bu-exk">
+                                <rect key="frame" x="303" y="5" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="JrW-g3-vAu"/>
+                                    <constraint firstAttribute="height" constant="24" id="ZHg-Y5-g7g"/>
+                                </constraints>
+                                <state key="normal" image="circularUncheck"/>
+                                <state key="selected" image="circularCheck"/>
+                                <connections>
+                                    <action selector="checkboxTapped:" destination="WBL-bw-gfq" eventType="touchUpInside" id="409-OE-18U"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disconnected" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CyA-4Q-EGZ">
+                                <rect key="frame" x="183" y="10" width="153" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="5jo-pQ-sA8"/>
+                            <constraint firstItem="aEm-u3-4BM" firstAttribute="centerY" secondItem="huu-RL-GZY" secondAttribute="centerY" id="ADH-XM-7SH"/>
+                            <constraint firstItem="vQ1-bu-exk" firstAttribute="leading" secondItem="aEm-u3-4BM" secondAttribute="trailing" constant="120" id="MKf-BF-5Px"/>
+                            <constraint firstItem="vQ1-bu-exk" firstAttribute="centerY" secondItem="huu-RL-GZY" secondAttribute="centerY" id="NLO-01-xni"/>
+                            <constraint firstItem="CyA-4Q-EGZ" firstAttribute="leading" secondItem="aEm-u3-4BM" secondAttribute="trailing" id="ZpN-kW-xdV"/>
+                            <constraint firstAttribute="trailing" secondItem="CyA-4Q-EGZ" secondAttribute="trailing" constant="10" id="e3f-RS-gCq"/>
+                            <constraint firstItem="CyA-4Q-EGZ" firstAttribute="centerY" secondItem="huu-RL-GZY" secondAttribute="centerY" id="mNL-49-uOK"/>
+                            <constraint firstAttribute="trailing" secondItem="vQ1-bu-exk" secondAttribute="trailing" constant="19" id="nTz-BQ-JSz"/>
+                            <constraint firstItem="aEm-u3-4BM" firstAttribute="leading" secondItem="huu-RL-GZY" secondAttribute="leading" constant="13" id="owZ-Od-73n"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="huu-RL-GZY" firstAttribute="leading" secondItem="sPb-B4-fls" secondAttribute="leading" id="Agh-GJ-BdY"/>
+                    <constraint firstAttribute="trailing" secondItem="huu-RL-GZY" secondAttribute="trailing" id="Vke-9H-jcD"/>
+                    <constraint firstItem="huu-RL-GZY" firstAttribute="top" secondItem="sPb-B4-fls" secondAttribute="top" constant="5" id="l0v-y9-cw5"/>
+                    <constraint firstAttribute="bottom" secondItem="huu-RL-GZY" secondAttribute="bottom" constant="5" id="nDf-Je-Iqk"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="checkboxButton" destination="vQ1-bu-exk" id="6QR-2f-On6"/>
+                <outlet property="statusLabel" destination="CyA-4Q-EGZ" id="85c-CY-1ZT"/>
+                <outlet property="title" destination="aEm-u3-4BM" id="hLc-Fd-Txl"/>
+            </connections>
+            <point key="canvasLocation" x="-246.37681159420291" y="-56.25"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="circularCheck" width="24" height="24"/>
+        <image name="circularUncheck" width="24" height="24"/>
+    </resources>
+</document>

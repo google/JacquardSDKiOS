@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlacesListViewController" customModule="JacquardSDK_Example" customModuleProvider="target">
+            <connections>
+                <outlet property="locationCountLabel" destination="yjQ-f0-pKi" id="lHh-xv-JTV"/>
+                <outlet property="tableView" destination="4Ro-V2-jvO" id="SVv-sL-9zp"/>
+                <outlet property="view" destination="3XL-Do-9i6" id="q52-IP-DNj"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="3XL-Do-9i6">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Places" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tP2-Nw-27U">
+                    <rect key="frame" x="24" y="89" width="366" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="tj8-dq-lXH"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yjQ-f0-pKi">
+                    <rect key="frame" x="24" y="129" width="366" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="5bg-nM-A2e"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Ro-V2-jvO">
+                    <rect key="frame" x="8" y="177" width="398" height="685"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="LLn-eu-UTW"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="tP2-Nw-27U" firstAttribute="top" secondItem="LLn-eu-UTW" secondAttribute="top" constant="45" id="3uB-HS-5rD"/>
+                <constraint firstItem="yjQ-f0-pKi" firstAttribute="leading" secondItem="LLn-eu-UTW" secondAttribute="leading" constant="24" id="6CU-du-1h3"/>
+                <constraint firstAttribute="trailing" secondItem="yjQ-f0-pKi" secondAttribute="trailing" constant="24" id="ESi-hs-e8J"/>
+                <constraint firstItem="tP2-Nw-27U" firstAttribute="leading" secondItem="LLn-eu-UTW" secondAttribute="leading" constant="24" id="NU1-GV-2fg"/>
+                <constraint firstItem="LLn-eu-UTW" firstAttribute="trailing" secondItem="tP2-Nw-27U" secondAttribute="trailing" constant="24" id="W2y-BZ-9nL"/>
+                <constraint firstItem="4Ro-V2-jvO" firstAttribute="top" secondItem="yjQ-f0-pKi" secondAttribute="bottom" constant="24" id="aNB-gI-ezn"/>
+                <constraint firstItem="yjQ-f0-pKi" firstAttribute="top" secondItem="tP2-Nw-27U" secondAttribute="bottom" constant="8" id="f8O-DI-i19"/>
+                <constraint firstItem="4Ro-V2-jvO" firstAttribute="bottom" secondItem="LLn-eu-UTW" secondAttribute="bottom" id="lUW-Np-ZIm"/>
+                <constraint firstItem="4Ro-V2-jvO" firstAttribute="leading" secondItem="LLn-eu-UTW" secondAttribute="leading" constant="8" id="nht-QI-tI1"/>
+                <constraint firstItem="LLn-eu-UTW" firstAttribute="trailing" secondItem="4Ro-V2-jvO" secondAttribute="trailing" constant="8" id="y9Q-Q2-NoV"/>
+            </constraints>
+            <point key="canvasLocation" x="121.73913043478262" y="76.339285714285708"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

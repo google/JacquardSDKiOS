@@ -1,0 +1,44 @@
+{
+  "vendors" : [{
+    "id" : "74-a8-ce-54",
+    "name" : "Levi's",
+    "products" : [{
+        "id" : "8a-66-50-f4",
+        "name" : "Trucker Jacket",
+        "image" : "ic_jacket",
+        "capabilities" : [1,2,3]
+      }]
+    }, {
+      "id" : "87-b4-30-b6",
+      "name" : "Samsonite",
+      "products" : [{
+          "id" : "b7-07-97-2a",
+          "name" : "Konnect-i",
+          "image" : "ic_backpack",
+          "capabilities" : [1,2,3]
+        }]
+    }, {
+      "id" : "fb-57-a1-12",
+      "name" : "Saint Laurent",
+      "products" : [{
+          "id" : "5c-d8-78-b0",
+          "name" : "Cit-e Backpack",
+          "image" : "ic_backpack",
+          "capabilities" : [0,1,2,3]
+      }]
+    }, {
+      "id" : "11-78-30-c8",
+      "name" : "Google",
+      "products": [{
+        "id" : "15-29-c7-5b",
+        "name" : "Patch A0",
+        "image" : "ic_patch_A0",
+        "capabilities" : [1, 2, 3]
+      }, {
+        "id" : "09-2f-41-ab",
+        "name" : "Patch B0",
+        "image" : "ic_patch_B0",
+        "capabilities" : [0, 1, 2, 3]
+      }]
+    }]
+}
